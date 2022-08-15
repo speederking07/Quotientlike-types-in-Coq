@@ -1,17 +1,23 @@
 Require Import StrictProp.
 Require Import Setoid.
 
+Lemma Spr1_inj {A P} {a b : @Ssig A P} (e : Spr1 a = Spr1 b) : a = b.
+Proof.
+  destruct a, b. cbn in e. subst. reflexivity.
+Qed.
+
 (* To jest nasza funkcja kanalizująca*)
 Definition normalzation {A: Type} (f: A -> A) :=
   forall x: A, f x = f (f x).
 
-Record quotient {A: Type} {f: A->A} (n: normalzation f) := {
-  val: A;
-  proof: Squash( val = f val )
-}.
+Inductive s_eq {A: Type} : A -> A -> SProp :=
+| seq_refl : forall x: A, s_eq x x.
 
-Arguments val {A f _} _.
-Arguments proof {A f _} _.
+Definition isNorm (A: Type) (f: A->A) (n: normalzation f) (x: A) : SProp := s_eq x (f x).
+
+
+Definition quotient {A: Type} {f: A->A} (N: normalzation f) : Type :=
+  Ssig (isNorm A f N).
 
 Class equivalance_relation {A: Type} (R: A -> A -> Prop) := equiv_proof {
   equiv_refl  : forall x: A, R x x;
@@ -31,16 +37,19 @@ Proof.
   - intros x y z H H0. destruct H, H0. reflexivity.
 Qed. 
 
+Print Ssig.
+
 
 Theorem only_one_repersentant {A: Type} (f: A -> A) (N: normalzation f) (q q': quotient N) 
-  : norm_equiv f N (val q) (val q') -> q = q'.
+  : norm_equiv f N (Spr1 q) (Spr1 q') -> s_eq q q'.
 Proof.
-  intro H. unfold norm_equiv in H. destruct q, q'. cbn in *. assert (val0 = val1).
-  - destruct H. transitivity (f val0).
-    + admit.
-    + admit.
-  - subst. reflexivity.
-Abort.
+  intro H. destruct q, q'. cbn in *. unfold norm_equiv in H. unfold isNorm in *.
+  assert (s_eq Spr1 Spr0).
+  - destruct Spr2, Spr3. subst. constructor.
+  - destruct H0. constructor.
+Qed.
+
+Check only_one_repersentant.
 
 
 
