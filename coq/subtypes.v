@@ -53,7 +53,9 @@ Qed.
 
 Definition not_K : Prop := exists A: Type, exists x y: A, exists p q: x = y, p <> q.
 
-Definition K {A: Type} (x y: A) (p q: x = y): Prop := p = q.
+Definition K := forall {A: Type} (x y: A) (p q: x = y), p = q.
+
+
 
 
 Lemma eq_JMeq : forall (A: Type) (x y: A), x = y -> x ~= y.
@@ -82,15 +84,32 @@ Proof.
 Qed.
 Print Assumptions  not_unique_sigT.
 
+Print eq_dep.
 
+Definition Irrelevance := forall (P: Prop) (x y: P), x = y.
+Require Import Coq.Logic.Eqdep_dec.
 
-Theorem irrelevance_unique_sig : (forall (P: Prop) (x y: P), x = y) -> forall (A: Type) (P: A -> Prop) (x y: {z: A| P z}),
+Theorem irrelevance_uniqnes : Irrelevance -> forall (A: Type) (P: A -> Prop) (x y: {z: A| P z}),
   proj1_sig x = proj1_sig y -> x = y.
 Proof.
-  intros K A P [x_v x_p] [y_v y_p] H. cbn in H. subst. apply eq_dep_eq_sig.
-  specialize (K (P y_v) x_p y_p). subst. constructor.
+  intros Irr A P [x_v x_p] [y_v y_p] H.
+  cbn in H; subst.
+  apply eq_dep_eq_sig.
+  specialize (Irr (P y_v) x_p y_p); subst.
+  constructor.
 Qed.
 
+Theorem uniqnes_irrelevance : (forall (A: Type) (P: A -> Prop) (x y: {z: A| P z}),
+  proj1_sig x = proj1_sig y -> x = y) -> Irrelevance.
+Proof.
+  intros Uniq P x y.
+  specialize (Uniq unit (fun _ => P) (exist _ tt x) (exist _ tt y) eq_refl). 
+  refine (eq_dep_eq_dec (A := unit) _ _).
+  - intros. left. destruct x0, y0. reflexivity.
+  - apply eq_sig_eq_dep. apply Uniq.
+Qed.
+
+Print Assumptions uniqnes_irrelevance.
 
 Class izo (A B: Type) := izo_def {
   f   : A -> B;
@@ -99,38 +118,7 @@ Class izo (A B: Type) := izo_def {
   id2 : forall b: B, f (inv b) = b;
 }.
 
-Theorem sig_izo_sigT (A: Type) (P: A -> Prop) : izo {x : A | P x} {y : A & {x : A | P x}}.
-Proof.
-  apply izo_def.
 
 
-
-
-Definition Eq_dep_eq_on {U: Type} (P : U -> Type) (p : U) (x : P p) :=
-    forall (y : P p), eq_dep U P p x p y -> x = y.
-
-Definition Eq_dep_eq := forall (U: Type) (P : U -> Type) (p : U) (x : P p), Eq_dep_eq_on P p x.
-
-Definition UIP_on_ {U: Type} (x y : U) (p1 : x = y) :=
-    forall (p2 : x = y), p1 = p2.
-
-Definition UIP_ := forall (U: Type) (x y : U) (p1 : x = y), UIP_on_ x y p1.
-
-
-Lemma eq_dep_eq_on__UIP_on (U: Type) (x y : U) (p1 : x = y) :
-    Eq_dep_eq_on (fun y => x = y) x eq_refl -> UIP_on_ x y p1.
-Proof.
-  intro eq_dep_eq. red. destruct p1. intros p2. apply eq_dep_eq. destruct p2. constructor.
-Qed.
-
-Lemma eq_dep_eq__UIP : Eq_dep_eq -> UIP_.
-Proof.
-  intros eq_dep_eq U x y p1. destruct p1. intros p2. apply eq_dep_eq. destruct p2. constructor.
-Qed.
-
-Lemma UIP_eq_dep_eq_ : UIP_ -> Eq_dep_eq.
-Proof.
-  intros uip U P p x y H. unfold UIP_ in uip. unfold UIP_on_ in uip. dependent destruction H.
-Qed.
 
 

@@ -16,4 +16,4 @@ Definition norm {A: Type} `{choosable A} (R: A -> A -> bool) `{equivalance_relat
 Theorem norm_unique {A: Type} `{choosable A} (R: A -> A -> bool) `{equivalance_relation A R} (x y: A) :
   R x y = true -> norm R x = norm R y.
 Proof.
-  intro. unfold norm. unfold equiv_exists.
+  intro. unfold norm. unfold equiv_exists. 
