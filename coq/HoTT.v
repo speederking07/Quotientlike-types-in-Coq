@@ -266,6 +266,20 @@ Proof.
   destruct p. cbn. reflexivity.
 Qed.
 
+
+Theorem dep_pair_eq : forall (A: Type) (P: A -> Type) (x y: A) (p: P x) (q: P y),
+  existT P x p = existT P y q -> exists e: x = y, transport e p = q.
+Proof.
+  intros A P x y p q H. inversion H. exists eq_refl. cbn. trivial. Show Proof. 
+Qed.
+
+Theorem dep_pair_eq_inv : forall (A: Type) (P: A -> Type) (x y: A) (p: P x) (q: P y),
+   (exists e: x = y, transport e p = q) -> existT P x p = existT P y q.
+Proof.
+  intros A P x y p q (-> & []). cbn. reflexivity. Show Proof. 
+Qed.
+
+
 Definition pointwise_paths {A B: Type}  (f g : A -> B)
   := forall x, f x = g x.
 
