@@ -1,5 +1,7 @@
 Require Import StrictProp.
 Print StrictProp.
+Print True.
+Check True : Prop.
 Definition twoElem (A: Type): SProp :=
   Squash (exists x y: A, x <> y /\ (forall z: A, x = z \/ y = z)).
 

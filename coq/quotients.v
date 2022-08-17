@@ -7,17 +7,16 @@ Proof.
 Qed.
 
 (* To jest nasza funkcja kanalizująca*)
+
 Definition normalzation {A: Type} (f: A -> A) :=
   forall x: A, f x = f (f x).
 
-Inductive s_eq {A: Type} : A -> A -> SProp :=
-| seq_refl : forall x: A, s_eq x x.
-
-Definition isNorm (A: Type) (f: A->A) (n: normalzation f) (x: A) : SProp := s_eq x (f x).
+Inductive Seq {A: Type} : A -> A -> SProp :=
+| srefl : forall x: A, Seq x x.
 
 
-Definition quotient {A: Type} {f: A->A} (N: normalzation f) : Type :=
-  Ssig (isNorm A f N).
+Definition Squotient {A: Type} {f: A->A} (N: normalzation f) : Type :=
+  Ssig (fun x : A => Seq x (f x)).
 
 Class equivalance_relation {A: Type} (R: A -> A -> Prop) := equiv_proof {
   equiv_refl  : forall x: A, R x x;
@@ -40,16 +39,20 @@ Qed.
 Print Ssig.
 
 
-Theorem only_one_repersentant {A: Type} (f: A -> A) (N: normalzation f) (q q': quotient N) 
-  : norm_equiv f N (Spr1 q) (Spr1 q') -> s_eq q q'.
+Theorem only_one_repersentant {A: Type} (f: A -> A) (N: normalzation f) 
+  (q q': Squotient N) : norm_equiv f N (Spr1 q) (Spr1 q') -> Seq q q'.
 Proof.
-  intro H. destruct q, q'. cbn in *. unfold norm_equiv in H. unfold isNorm in *.
-  assert (s_eq Spr1 Spr0).
-  - destruct Spr2, Spr3. subst. constructor.
-  - destruct H0. constructor.
+  intro H. 
+  destruct q, q'. cbn in *. 
+  assert (E: Seq Spr1 Spr0).
+  - unfold norm_equiv in H. destruct Spr2, Spr3.
+    subst. constructor.
+  - destruct E. constructor.
 Qed.
 
 Check only_one_repersentant.
+
+
 
 
 

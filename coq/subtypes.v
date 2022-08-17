@@ -55,9 +55,6 @@ Definition not_K : Prop := exists A: Type, exists x y: A, exists p q: x = y, p <
 
 Definition K := forall {A: Type} (x y: A) (p q: x = y), p = q.
 
-
-
-
 Lemma eq_JMeq : forall (A: Type) (x y: A), x = y -> x ~= y.
 Proof.
   intros A x y H. rewrite H. trivial.
@@ -119,6 +116,88 @@ Class izo (A B: Type) := izo_def {
 }.
 
 
+Definition normalizing_function {A: Type} (f: A -> A) :=
+  forall x: A, f x = f (f x).
+
+Inductive quotient {A: Type} {f: A -> A} (N: normalizing_function f) : Type :=
+| existQ : forall x: A, x = f x -> quotient N.
+
+Print proj2_sig.
+
+Definition proj1Q {A: Type} {f: A -> A} {N: normalizing_function f} (x : quotient N) : A := let (a, _) := x in a.
+
+Definition proj2Q {A: Type} {f: A -> A} {N: normalizing_function f} (x : quotient N) : proj1Q x = f (proj1Q x).
+Proof. destruct x. cbn. assumption. Defined.
+
+Theorem uniqnes_quotient {A: Type} (f: A -> A) (N: normalizing_function f) (q q': quotient N) 
+  : K -> (proj1Q q) = (proj1Q q') -> q = q'.
+Proof.
+  intros K H. 
+  destruct q, q'. 
+  cbn in *. subst. 
+  destruct (K A x0 (f x0) e e0).
+  reflexivity.
+Qed.
+
+Class equivalance_relation {A: Type} (R: A -> A -> Prop) := equiv_proof {
+  equiv_refl  : forall x: A, R x x;
+  equiv_sym   : forall x y: A, R x y -> R y x;
+  equiv_trans : forall x y z: A, R x y -> R y z -> R x z;
+}.
+
+Definition norm_equiv {A: Type} (f: A -> A) (N: normalizing_function f) (x y: A) : Prop :=
+  f x = f y.
+
+Theorem norm_equiv_is_equivalance_relation (A: Type) (f: A -> A) (N: normalizing_function f)
+  : equivalance_relation (norm_equiv f N).
+Proof.
+  unfold norm_equiv. apply equiv_proof.
+  - intro x. reflexivity.
+  - intros x y H. symmetry. assumption.
+  - intros x y z H H0. destruct H, H0. reflexivity.
+Qed. 
+
+Theorem norm_equiv_quotient {A: Type} (f: A -> A) (N: normalizing_function f) (q q': quotient N) 
+  : K -> norm_equiv f N (proj1Q q) (proj1Q q') -> q = q'.
+Proof.
+  intros K H. destruct q, q'.
+  cbn in *. unfold norm_equiv in H. 
+  assert (x = x0).
+  - rewrite e, H, <- e0. reflexivity.
+  - subst. destruct (K A x0 (f x0) e e0).
+    reflexivity.
+Qed.
+
+Lemma eq_dep_unit : forall (P : unit -> Type) (x y : P tt), eq_dep unit P tt x tt y -> x = y.
+Proof.
+  intros P x y H. apply eq_dep_eq_dec.
+  - intros x0 y0. destruct x0, y0. left. reflexivity.
+  - assumption.
+Qed.
+
+Theorem not_unique_sigT' : exists (A: Type) (P: A -> Type) (x y: sigT P),
+  projT1 x = projT1 y /\ x <> y.
+Proof.
+  exists unit. exists (fun _ => bool). exists (existT _ tt true), (existT _ tt false).
+  split.
+  - cbn. reflexivity.
+  - intro e. assert (true = false).
+    + assert (eq_dep unit (fun _ : unit => bool) tt true tt false).
+      * apply eq_sigT_eq_dep. assumption.
+      * apply (eq_dep_unit (fun _ => bool) true false). assumption.
+    + inversion H.
+Qed.
 
 
-
+Theorem not_unique_sig : not_K -> exists (A: Type) (P: A -> Prop) (x y: sig P),
+  proj1_sig x = proj1_sig y /\ x <> y.
+Proof.
+  unfold not_K.
+  intros (A & x & y & p & q & H).
+  exists unit. exists (fun _ => x = y). exists (exist _ tt p), (exist _ tt q).
+  split.
+  - cbn. reflexivity.
+  - intro e. apply H. assert (eq_dep unit (fun _ : unit => x = y) tt p tt q).
+    + apply eq_sig_eq_dep. assumption.
+    + apply (eq_dep_unit (fun _ => x = y) p q). assumption.
+Qed.
