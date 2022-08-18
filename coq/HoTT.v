@@ -11,21 +11,21 @@ Notation "p ^" := (eq_sym p) (at level 30).
 Notation "f @ g" := (eq_trans f g) (at level 40). 
 
 Class Decidable (A : Type) :=
-  dec : A + (!A).
+  dec : A + (A -> False).
+
+Class DecidableEq (A : Type) :=
+  dec_eq : forall x y: A, Decidable (x = y).
 Arguments dec A {_}.
 
-Definition DecidablePath (A : Type) :=
-  forall x y: A, Decidable (x = y).
-
-Class Contr (A: Type) := {
+Class isContr (A: Type) := ContrBuilder {
   center : A;
   contr : forall x: A, x = center
 }.
 
-Class HProp (P : Type) :=
+Class isHProp (P : Type) :=
   hProp : forall p q : P, p = q.
 
-Class HSet (X : Type) := 
+Class isHSet (X : Type) := 
   hSet : forall (x y : X) (p q : x = y), p = q.
 
 Class EqDec (A : Type) := { 
@@ -41,35 +41,36 @@ Class WeaklyConstant {A B: Type} (f : A -> B) :=
   wconst : forall x y, f x = f y.
 
 Class Collapsible (A : Type) :={ 
-  collapse : A -> A ;
-  wconst_collapse : WeaklyConstant collapse
+  collapse        : A -> A ;
+  wconst_collapse : forall x y: A, collapse x = collapse y
 }.
 
-Theorem map_tought_HProp : forall A B P: Type, forall f: A -> P, forall g: P -> B,
-  HProp P -> WeaklyConstant (g $ f).
+Theorem map_tought_isHProp : forall A B P: Type, forall f: A -> P, forall g: P -> B,
+  isHProp P -> WeaklyConstant (g $ f).
 Proof.
-  intros A B P f g HProp. unfold WeaklyConstant. intros x y. unfold dot. assert (f x = f y).
-  - destruct (HProp  (f x) (f y)). reflexivity.
+  intros A B P f g isHProp. unfold WeaklyConstant. intros x y. unfold dot. assert (f x = f y).
+  - destruct (isHProp  (f x) (f y)). reflexivity.
   - destruct H. reflexivity.
 Qed.
 
-Theorem dec_means_collaps : forall A : Type, Decidable A -> Collapsible A.
+Theorem dec_is_collaps : forall A : Type, Decidable A -> Collapsible A.
 Proof.
   intros A eq. destruct eq.
-  - exists (fun x => a). unfold WeaklyConstant. intros x y. reflexivity.
-  - exists (fun x => x). unfold WeaklyConstant. intros x y. assert Empty by auto. destruct H.
+  - exists (fun x => a). intros x y. reflexivity.
+  - exists (fun x => x); intros x y.
+    exfalso; apply f; assumption.
 Qed.
 
 Class PathCollapsible (A : Type) :=
   path_coll : forall (x y : A), Collapsible (x = y).
 
-Theorem eq_dec_means_collapsible : forall A : Type, DecidablePath A -> PathCollapsible A.
+Theorem eq_dec_is_path_collaps : forall A : Type, DecidableEq A -> PathCollapsible A.
 Proof.
-  intros A dec x y. apply dec_means_collaps. specialize (dec x y). assumption.
+  intros A dec x y. apply dec_is_collaps. apply dec.
 Qed.
 
 Lemma loop_eq : forall A: Type, forall x y: A, forall p: x = y, 
-  eq_refl = (p ^) @ p.
+  eq_refl = eq_trans (eq_sym p) p.
 Proof.
   intros A x y []. cbn. reflexivity.
 Qed.
@@ -80,20 +81,22 @@ Proof.
   intros A x y []. cbn. reflexivity.
 Qed.
 
-Theorem pathcoll_means_hset (A : Type) : PathCollapsible A -> HSet A.
+Theorem path_collaps_is_hset (A : Type) : PathCollapsible A -> isHSet A.
 Proof.
-  unfold HSet. intros H x y. unfold PathCollapsible in *.
-  assert (h: forall e: x=y, e = ((collapse (eq_refl x)) ^) @ (collapse e)).
+  unfold isHSet, PathCollapsible; intros C x y.
+  cut (forall e: x=y, e = eq_trans (eq_sym(collapse(eq_refl x))) (collapse e)).
+  - intros H p q. 
+    rewrite (H q), (H p), (wconst_collapse p q).
+    reflexivity.
   - intros []. apply loop_eq.
-  - intros p q. rewrite (h q), (h p), (wconst_collapse p q). reflexivity.
 Qed.
 
-Theorem pathdec_hset (A: Type) : DecidablePath A -> HSet A.
+Theorem pathdec_hset (A: Type) : DecidableEq A -> isHSet A.
 Proof.
-  intros H. apply pathcoll_means_hset. apply eq_dec_means_collapsible. assumption.
+  intros H. apply path_collaps_is_hset. apply eq_dec_is_path_collaps. assumption.
 Qed.
 
-Theorem eqDec_pathdec : forall A: Type, EqDec A -> DecidablePath A.
+Theorem eqDec_pathdec : forall A: Type, EqDec A -> DecidableEq A.
 Proof.
   intros A H x y. destruct H. case_eq (eqf0 x y).
   - intro H1. left. apply (eqf_leibniz0 x y). assumption.
@@ -107,75 +110,75 @@ Definition isLeft {A B: Type} (x : A + B): bool :=
   | _ => false
   end.
 
-Theorem pathdec_eqDec : forall A: Type, DecidablePath A -> EqDec A.
+Theorem pathdec_eqDec : forall A: Type, DecidableEq A -> EqDec A.
 Proof.
-  intros A H. unfold DecidablePath in H. exists (fun x y => isLeft (H x y)).
+  intros A H. unfold DecidableEq in H. exists (fun x y => isLeft (H x y)).
   intros x y. split.
   - case_eq (H x y); intros p H1.
     + intros _. assumption.
     + cbn. intro H2. discriminate.
   - intro H1. subst. case_eq (H y y); intros p H1.
     + cbn. reflexivity.
-    + assert Empty by auto. contradiction.
+    + contradiction.
 Qed.
 
-Theorem dec_eq_hset : forall A: Type, EqDec A -> HSet A.
+Theorem dec_eq_hset : forall A: Type, EqDec A -> isHSet A.
 Proof.
   intros A H. apply pathdec_hset. apply eqDec_pathdec. assumption.
 Qed.
 
-Definition path_contr {A: Type} `{Contr A} (x y: A) : x = y :=
- (contr x) @ ((contr y)^).
+Definition path_contr {A: Type} `{isContr A} (x y: A) : x = y :=
+ eq_trans (contr x) (eq_sym (contr y)).
 
-Lemma all_path_eq_in_contr {A: Type} `{Contr A} {x y: A}: forall p q: x = y, p = q.
+Lemma all_path_eq_in_contr {A: Type} `{isContr A} {x y: A}: forall p q: x = y, p = q.
 Proof.
   intros p q. assert (forall e: x = y, e = path_contr x y).
   - intros []. unfold path_contr. unfold contr. destruct H. apply loop_eq'.
   - rewrite (H0 p). rewrite (H0 q). reflexivity.
 Qed.
 
-Lemma contr_bottom (A: Type) `{Contr A} (x y: A): Contr (x = y).
+Lemma contr_bottom (A: Type) `{isContr A} (x y: A): isContr (x = y).
 Proof.
   exists (path_contr x y).
   intros p. apply all_path_eq_in_contr.
 Qed.
 
-Theorem contr_is_hprop (A: Type) `{Contr A} : HProp A.
+Theorem contr_is_hprop (A: Type) `{isContr A} : isHProp A.
 Proof.
-  unfold HProp. intros p q. destruct H. rewrite contr0.
+  unfold isHProp. intros p q. destruct H. rewrite contr0.
   specialize (contr0 p). rewrite contr0. reflexivity.
 Qed.
 
-Theorem contr_not_eq_hprop : exists A: Type, HProp A /\ (! Contr A).
+Theorem contr_not_eq_hprop : exists A: Type, isHProp A /\ (! isContr A).
 Proof.
   exists Empty. split.
-  - unfold HProp. intros [] _.
+  - unfold isHProp. intros [] _.
   - intros []. destruct center0.
 Qed. 
 
-Lemma all_path_eq_in_hprop {A: Type} `{HProp A} {x y: A}: forall p q: x = y, p = q.
+Lemma all_path_eq_in_hprop {A: Type} `{isHProp A} {x y: A}: forall p q: x = y, p = q.
 Proof.
-  intros p q. assert (HProp (x=y)).
+  intros p q. assert (isHProp (x=y)).
   - apply contr_is_hprop. apply contr_bottom. exists x. intro z. apply H.
   - apply H0. 
 Qed.
 
-Theorem hprop_def (A: Type) `{HProp A} (x y: A) : Contr (x = y).
+Theorem hprop_def (A: Type) `{isHProp A} (x y: A) : isContr (x = y).
 Proof.
   exists (H x y). intro p. apply all_path_eq_in_hprop.
 Qed.
 
-Theorem hprop_inv (A: Type) `{Contr A} (x y: A) : HProp (x = y).
+Theorem hprop_inv (A: Type) `{isContr A} (x y: A) : isHProp (x = y).
 Proof.
   apply contr_is_hprop. apply contr_bottom. assumption.
 Qed.
 
-Theorem hprop_is_hset (A: Type) `{HProp A} : HSet A.
+Theorem hprop_is_hset (A: Type) `{isHProp A} : isHSet A.
 Proof.
-  unfold HSet. intros x y p q. apply all_path_eq_in_hprop.
+  unfold isHSet. intros x y p q. apply all_path_eq_in_hprop.
 Qed.
 
-Theorem hprop_not_eq_hset : exists A: Type, HSet A /\ !HProp A.
+Theorem hprop_not_eq_hset : exists A: Type, isHSet A /\ !isHProp A.
 Proof.
   exists bool. split.
   - apply pathdec_hset. intros x y. unfold Decidable. 
@@ -183,24 +186,84 @@ Proof.
   - intro H. specialize (H true false). discriminate.
 Qed.
 
-Theorem hset_def {A: Type} `{HSet A} (x y: A) : HProp (x = y).
+Theorem hset_def {A: Type} `{isHSet A} (x y: A) : isHProp (x = y).
 Proof.
-  unfold HProp. apply H.
+  unfold isHProp. apply H.
 Qed. 
 
-Theorem paths_between_paths_are_eq_in_hset {A: Type} `{HSet A} {x y: A} {a b: x = y}:
+Theorem paths_between_paths_are_eq_in_hset {A: Type} `{isHSet A} {x y: A} {a b: x = y}:
  forall p q: a = b, p = q.
 Proof.
-  intros p q. assert (Contr (p = q)). 
-  - unfold HSet in H. apply contr_bottom. apply contr_bottom. exists a. intro c. apply H.
+  intros p q. assert (isContr (p = q)). 
+  - unfold isHSet in H. apply contr_bottom. apply contr_bottom. exists a. intro c. apply H.
   - destruct H0. assumption.
 Qed. 
 
-Theorem hset_inv {A: Type} `{HProp A} (x y: A) : HSet (x = y).
+Theorem hset_inv {A: Type} `{isHProp A} (x y: A) : isHSet (x = y).
 Proof.
-  intros a b p q. assert (HSet A) by (apply hprop_is_hset; assumption).
+  intros a b p q. assert (isHSet A) by (apply hprop_is_hset; assumption).
   apply paths_between_paths_are_eq_in_hset.
 Qed.
+
+
+
+
+
+Inductive universe_level : Type :=
+| minus_two  : universe_level
+| S_universe : universe_level -> universe_level.
+
+Definition HPropLevel := S_universe minus_two.
+
+Definition HSetLevel := S_universe HPropLevel.
+
+Fixpoint isNType (n : universe_level) (A : Type) : Type :=
+match n with
+| minus_two => isContr A
+| S_universe n' => forall x y: A, isNType n' (x = y)
+end.
+
+Theorem isHProp_def : forall A: Type, isNType HPropLevel A -> isHProp A.
+Proof.
+  unfold isNType. cbn.
+  intros A H p q. destruct (H p q). assumption. 
+Qed.
+
+Theorem isHProp_def' : forall A: Type, isHProp A -> isNType HPropLevel A.
+Proof.
+  unfold isNType. cbn.
+  intros A H p q. apply hprop_def. assumption.
+Qed.
+
+Theorem isHSet_def : forall A: Type, isNType HSetLevel A -> isHSet A.
+Proof.
+  unfold isNType. cbn.
+  intros A H x y p q. destruct (H x y p q). assumption. 
+Qed.
+
+Theorem isHSet_def' : forall A: Type, isHSet A -> isNType HSetLevel A.
+Proof.
+  unfold isNType. cbn.
+  intros A H x y p q. apply hprop_def. apply hset_def.
+Qed.
+
+
+Theorem NType_incusion : forall A: Type, forall n : universe_level,
+  isNType n A -> isNType (S_universe n) A.
+Proof.
+  intros A n; revert A.
+  induction n; intros A H.
+  - cbn in *; intros x y.
+    apply contr_bottom.
+    assumption.
+  - simpl in *; intros x y.
+    apply IHn.
+    apply H.
+Qed.
+
+
+
+
 
 Definition id {A: Type} (x: A) := x.
 
@@ -209,10 +272,10 @@ Definition ap {A B: Type} {x y: A} (f: A -> B) (p: x = y): f x = f y :=
   | eq_refl => eq_refl
   end.
 
-Definition transport {A: Type} {x y: A} {P: A -> Type} (p: x = y) : P x -> P y :=
-  match p with
-  | eq_refl => id
-  end.
+Definition transport {A: Type} {x y: A} {P: A -> Type} (path: x = y) (q : P x) : P y :=
+match path with
+| eq_refl => q
+end.
 
 Notation "p *" := (transport p) (at level 20). 
 
@@ -268,16 +331,19 @@ Qed.
 
 
 Theorem dep_pair_eq : forall (A: Type) (P: A -> Type) (x y: A) (p: P x) (q: P y),
-  existT P x p = existT P y q -> exists e: x = y, transport e p = q.
+  existT P x p = existT P y q -> exists path: x = y, transport path p = q.
 Proof.
-  intros A P x y p q H. inversion H. exists eq_refl. cbn. trivial. Show Proof. 
+  intros A P x y p q H. inversion H.
+  exists eq_refl. cbn. trivial.
 Qed.
 
 Theorem dep_pair_eq_inv : forall (A: Type) (P: A -> Type) (x y: A) (p: P x) (q: P y),
    (exists e: x = y, transport e p = q) -> existT P x p = existT P y q.
 Proof.
-  intros A P x y p q (-> & []). cbn. reflexivity. Show Proof. 
+  intros A P x y p q (-> & []). cbn. reflexivity.
 Qed.
+
+
 
 
 Definition pointwise_paths {A B: Type}  (f g : A -> B)
@@ -302,7 +368,7 @@ Class IsEquiv' {A B : Type} (f : A -> B) := {
 }.
 
 Class IsEquiv'' {A B : Type} (f : A -> B) := 
-  contr_equiv : forall y: B, Contr(exists x, f x = y).
+  contr_equiv : forall y: B, isContr(exists x, f x = y).
 
 
 Theorem equiv_same (A B: Type) (f: A -> B) `{IsEquiv A B f} : IsEquiv' f.
@@ -325,8 +391,8 @@ Notation "A <~> B" := (Equiv A B) (at level 120).
 
 Check (fun x => equiv_inv (equiv_fun x)).
 
-Theorem hprop_from_hset_eq (A: Type) `{HSet A} (P: A -> Prop) (f: A -> A)
-  (H0: forall x, x = f x <~> P x) (x: A) : HProp (P x).
+Theorem hprop_from_hset_eq (A: Type) `{isHSet A} (P: A -> Prop) (f: A -> A)
+  (H0: forall x, x = f x <~> P x) (x: A) : isHProp (P x).
 Proof.
   intros p q. specialize (H0 x). destruct H0. destruct equiv_isequiv0.
   unfold pointwise_paths in *. assert (id p = id q).
