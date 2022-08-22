@@ -1,0 +1,26 @@
+Require Import Setoid.
+Require Import Coq.Lists.List.
+Import ListNotations.
+
+Print In.
+
+Inductive Deduplicated {A: Type} : list A -> Prop :=
+| DedupNil  : Deduplicated []
+| DedupCons : forall (x: A) (l: list A), ~ In x l -> Deduplicated l -> Deduplicated (x::l).
+
+Fixpoint any {A: Type} (p : A -> bool) (l: list A) : bool :=
+  match l with
+  | [] => false
+  | (x::l') => if p x then true else any p l'
+  end.
+
+Definition Elem_eq (A: Type) (l l' : list A) : Prop := 
+  forall p : A -> bool, any p l = any p l'.
+
+Definition Same_elements (A: Type) (l l' : list A) : Prop := 
+  forall x : A, In x l <-> In x l'.
+
+Class DecidableEq (A : Type) := {
+  dec_eq : forall x y: A, Decidable (x = y).
+Arguments dec A {_}.
+
