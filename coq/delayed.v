@@ -68,8 +68,8 @@ Qed.
 Lemma left_id_bind (A B : Type) (f: A -> delayed B) (x: A) : 
   Eq_delayed (bind (pure x) f) (f x).
 Proof.
-  revert A B f x. cofix CH. intros A B f x. destruct (bind (pure x) f) as [[v | d]] eqn:e.
-  - constructor. left. exists v. split; auto.  destruct (f x) as [[v' | d']] eqn:e'.
+  unfold pure, delayed_val. destruct (bind {| state := inl x |} f) eqn:e.
+  constructor. destruct state0.
 Abort.
 
 Lemma right_id_bind (A B : Type) (x: delayed A) : 
