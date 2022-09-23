@@ -22,12 +22,26 @@ Proof.
   destruct (eqf_eq x x); auto.
 Qed.
 
+Definition eqf_true_iff {A: Type} `{Group A} {x y: A} : eqf x y = true <-> x = y.
+Proof.
+  destruct (eqf_eq x y); split; auto. intros F. discriminate.
+Qed.
+
 Definition eqf_false_iff {A: Type} `{Group A} {x y: A} : eqf x y = false <-> x <> y.
 Proof.
   split.
   - intros H0 H1. subst. rewrite eqf_refl in H0. discriminate.
   - intros H0. destruct (eqf_eq x y); auto. subst. contradiction.
 Defined.
+
+Lemma eqf_sym {A: Type} `{Group A} (x y: A) : eqf x y = eqf y x.
+Proof.
+  destruct (eqf_eq x y).
+  - subst. rewrite eqf_refl. auto.
+  - assert (y <> x) by (apply not_eq_sym; auto). rewrite <- eqf_false_iff in H0.
+    rewrite H0. auto.
+Qed.
+
 
 (* Notation "a @ b" := (op a b) (at level 51, right associativity).
 Notation "c ^" := (inv c) (at level 40). *)
@@ -452,6 +466,85 @@ Proof.
   auto.
 Qed.
 
+Lemma eqb_sym (x y : bool) : eqb x y = eqb y x.
+Proof.
+  destruct x, y; auto.
+Qed.
+
+Lemma eqb_both_neg (x: bool) : eqb (negb x) (negb x) = true.
+Proof.
+  destruct x; auto.
+Qed.
+
+Lemma eqb_false_chain (x y z: bool) : eqb x y = false -> eqb y z = false -> x = z.
+Proof.
+  intros H H0. destruct x, y, z; auto; cbn in *; discriminate.
+Qed.
+
+Lemma condition_iff {A: Type} `{Group A} (b b': bool) (v v': A) :
+  v <> v' \/ b = b' <-> negb (eqf v v') || eqb b b' = true.
+Proof.
+  split.
+  - intros [|].
+    + rewrite <- eqf_false_iff in H0. rewrite H0. auto.
+    + subst. rewrite eqb_reflx, orb_true_r. auto.
+  - intro H0. rewrite orb_true_iff, negb_true_iff in H0. destruct H0.
+    + left. rewrite <- eqf_false_iff. auto.
+    + right. apply eqb_prop. auto.
+Qed.
+
+Lemma condition_false_iff {A: Type} `{Group A} (b b': bool) (v v': A) :
+  v = v' /\ b = negb b' <-> negb (eqf v v') || eqb b b' = false.
+Proof.
+  split.
+  - intros []. subst. rewrite eqf_refl, eqb_negb1. auto.
+  - intro H0. rewrite orb_false_iff, negb_false_iff in H0. destruct H0. split.
+    + rewrite <- eqf_true_iff. auto.
+    + destruct b, b'; auto; cbn in *; try discriminate.
+Qed.
+
+Lemma canon_cons_inv_elem {A: Type} `{Group A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
+  Normalized x -> negb (eqf v v') || eqb b b' = false -> canon_cons b v (canon_cons b' v' x) = x.
+Proof.
+  intros Nx H0. induction Nx as [| b'' v'' | b'' b''' v'' v'''].
+  - cbn. rewrite H0. auto.
+  - cbn. destruct (negb (eqf v' v'') || eqb b' b'') eqn:H1.
+    + cbn. rewrite H0. auto.
+    + cbn. rewrite orb_false_iff, negb_false_iff in H0, H1. destruct H0, H1.
+      rewrite eqf_true_iff in H0. rewrite eqf_true_iff in H1. subst. f_equal. f_equal.
+      apply eqb_false_chain with (y := b'); auto.
+  - rewrite condition_iff in H1. cbn. destruct (negb (eqf v' v'') || eqb b' b'') eqn:H2.
+    + cbn. rewrite H0. auto.
+    + cbn in *. rewrite <- condition_false_iff in H0, H2.
+      destruct H0, H2. subst. rewrite negb_involutive, H1. auto.
+Qed.
+
+Lemma normalized_without_head {A: Type} `{Group A} (b: bool) (v: A) (x: CanonFreeGroup A) :
+  Normalized ((b, v) :: x) -> Normalized x.
+Proof.
+  intros Nx. destruct x.
+  - constructor.
+  - destruct p as (b', v'). dependent destruction Nx. auto.
+Qed.
+
+Lemma canon_concat_cons {A: Type} `{Group A} (b: bool) (v: A) (x y: CanonFreeGroup A) :
+  Normalized x -> Normalized y -> canon_concat (canon_cons b v x) y  = canon_cons b v (canon_concat x y).
+Proof.
+  intros Nx Ny. destruct x as [| (b' & v') x']; auto. cbn. 
+  destruct (negb (eqf v v') || eqb b b') eqn:e; auto. symmetry.
+  apply canon_cons_inv_elem; auto. apply concat_norm; auto. 
+  apply (normalized_without_head b' v'). auto.
+Qed.
+
+Theorem canon_concat_assoc {A: Type} `{Group A} (x y z: CanonFreeGroup A) : Normalized x -> 
+   Normalized y -> Normalized z -> canon_concat (canon_concat x y) z = canon_concat x (canon_concat y z).
+Proof.
+  revert y z. induction x; intros y z Nx Ny Nz; auto. cbn. destruct a. 
+  rewrite canon_concat_cons, IHx; auto.
+  - apply (normalized_without_head b a). auto.
+  - apply concat_norm; auto. apply (normalized_without_head b a). auto.
+Qed.
+
 Theorem cons_append_comm {A: Type} `{Group A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
   canon_cons b v (canon_append b' v' x) = canon_append b' v' (canon_cons b v x).
 Proof.
@@ -478,17 +571,51 @@ Proof.
   cbn. rewrite eqf_refl, eqb_negb2. cbn. auto.
 Qed.
 
+Lemma cannon_inv_concat {A: Type} `{Group A} (x y: CanonFreeGroup A) : 
+  canon_apinv x y = canon_inv x ++ y.
+Proof.
+  unfold canon_inv. revert y. induction x; auto; intros y.
+  cbn. destruct a. rewrite IHx, (IHx [(negb b, a)]), <- app_assoc.
+  auto.
+Qed.
+
 Lemma cannon_inv_append {A: Type} `{Group A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
   canon_inv (x ++ [(b, v)]) = (negb b, v) :: canon_inv x.
 Proof.
-  admit.
-Admitted.
+  revert b v. induction x; auto. intros b v. cbn. destruct a.
+  rewrite cannon_inv_concat, IHx, cannon_inv_concat, app_comm_cons. auto.
+Qed.
 
+Lemma append_at_end {A: Type} `{Group A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
+  Normalized (x ++ [(b, v)]) -> x ++ [(b, v)] = canon_append b v x.
+Proof.
+  revert b v. induction x; auto; intros b v H0; destruct a. cbn in *.
+  destruct x.
+  - cbn in *. dependent destruction H0. destruct H0.
+    + rewrite <- eqf_false_iff in H0. rewrite eqf_sym, H0. auto.
+    + subst. rewrite eqb_reflx, orb_true_r. auto.
+  - rewrite IHx; auto. dependent destruction H0; auto.
+Qed.
+
+Lemma concat_normalized_l {A: Type} `{Group A} (x y: CanonFreeGroup A) :
+  Normalized (x ++ y) -> Normalized x.
+Proof.
+  destruct x.
+  - constructor.
+  - intros H0. revert H0. revert p. induction x; intros p H0.
+    + destruct p. constructor.
+    + destruct p, a. constructor; dependent destruction H0; auto.
+Qed.
 
 Theorem canon_left_inv {A: Type} `{Group A} (x : CanonFreeGroup A) : 
-  canon_concat (canon_inv x) x = [].
+  Normalized x -> canon_concat (canon_inv x) x = [].
 Proof.
-  induction x using rev_ind; auto. destruct x. rewrite cannon_inv_append. cbn.
+  induction x using rev_ind; auto. intros N. destruct x.
+  rewrite cannon_inv_append. cbn. rewrite append_at_end; auto.
+  rewrite canon_concat_append, IHx.
+  - cbn. rewrite eqf_refl, eqb_negb1. auto.
+  - apply (concat_normalized_l x0 [(b, a)]). auto.
+Qed.
 
 
 
