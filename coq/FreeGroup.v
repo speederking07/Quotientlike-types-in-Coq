@@ -314,9 +314,6 @@ Fixpoint canon_concat {A: Type} `{Group A} (x y: CanonFreeGroup A) : CanonFreeGr
   | (b, v) :: x' => canon_cons b v (canon_concat x' y)
   end.
 
-Definition fg_canon_concat {A: Type} `{Group A} (x y: FreeGroup A) : FreeGroup A :=
-  to_uniq (canon_concat (to_canon x) (to_canon y)).
-
 Theorem concat_norm {A: Type} `{Group A} (x y: CanonFreeGroup A) : 
   Normalized x -> Normalized y -> Normalized (canon_concat x y).
 Proof.
@@ -503,6 +500,24 @@ Proof.
     + destruct b, b'; auto; cbn in *; try discriminate.
 Qed.
 
+Lemma append_for_normalized {A: Type} `{Group A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
+  Normalized (x ++ [(b, v)]) -> x ++ [(b, v)] = canon_append b v x.
+Proof.
+  revert b v. induction x; auto; intros b v H0; destruct a. cbn in *.
+  destruct x.
+  - cbn in *. dependent destruction H0. destruct H0.
+    + rewrite <- eqf_false_iff in H0. rewrite eqf_sym, H0. auto.
+    + subst. rewrite eqb_reflx, orb_true_r. auto.
+  - rewrite IHx; auto. dependent destruction H0; auto.
+Qed.
+
+Lemma cons_for_normalized {A: Type} `{Group A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
+  Normalized ((b, v) :: x) -> (b, v) :: x = canon_cons b v x.
+Proof.
+  intros Nx. destruct x as [| (b' & v')]; auto. cbn. dependent destruction Nx.
+  rewrite condition_iff in H0. rewrite H0. auto.
+Qed.
+
 Lemma canon_cons_inv_elem {A: Type} `{Group A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
   Normalized x -> negb (eqf v v') || eqb b b' = false -> canon_cons b v (canon_cons b' v' x) = x.
 Proof.
@@ -545,16 +560,62 @@ Proof.
   - apply concat_norm; auto. apply (normalized_without_head b a). auto.
 Qed.
 
-Theorem cons_append_comm {A: Type} `{Group A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
-  canon_cons b v (canon_append b' v' x) = canon_append b' v' (canon_cons b v x).
+Lemma normalized_head {A: Type} `{Group A} (b: bool) (v: A) (x: CanonFreeGroup A) :
+  hd_error x = None \/ (exists (b' : bool) (v' : A), hd_error x = Some (b', v') /\ (v <> v' \/ b = b'))
+   -> Normalized x -> Normalized ((b, v) :: x).
 Proof.
-  admit.
-Admitted.
+  intros H0 Nx. destruct x as [| (b'' & v'')].
+  - constructor.
+  - constructor; auto. destruct H0.
+    + cbn in H0. inversion H0.
+    + cbn in H0. destruct H0 as [b' (v' & (H0 & H1))]. inversion H0. subst. auto.
+Qed.
+  
+
+Lemma noramlized_singl_append {A: Type} `{Group A} (b0 b1 b': bool) (v0 v1 v': A) (x: CanonFreeGroup A) :
+  Normalized ((b0, v0) :: (b1, v1) :: x) -> canon_concat ((b0, v0) :: (b1, v1) :: x) [(b', v')] 
+  = (b0, v0) :: canon_concat ((b1, v1) :: x) [(b', v')].
+Proof.
+  revert b0 b1 v0 v1. induction x as [| (b2 & v2)]; intros b0 b1 v0 v1 Nx. 
+  - cbn. dependent destruction Nx. destruct ( negb (eqf v1 v') || eqb b1 b') eqn:e; auto.
+    cbn. rewrite condition_iff in H0. rewrite H0. auto.
+  - cbn in *. dependent destruction Nx. rewrite IHx; auto. rewrite condition_iff in H0.
+    cbn. rewrite H0. auto.
+Qed.
+
+Lemma append_is_concat_at_end {A: Type} `{Group A} (b: bool) (v: A) (x: CanonFreeGroup A) :
+  Normalized x -> canon_append b v x = canon_concat x [(b, v)].
+Proof.
+  intros Nx. revert b v. induction Nx as [| b' v' | b' b'' v' v'']; auto; intros b v.
+  - cbn. rewrite eqf_sym, eqb_sym. auto.
+  - rewrite noramlized_singl_append. 
+    + cbn in *. rewrite IHNx; auto.
+    + constructor; auto.
+Qed.
+
+Lemma cons_is_concat_at_start {A: Type} `{Group A} (b: bool) (v: A) (x: CanonFreeGroup A) :
+  canon_cons b v x = canon_concat [(b, v)] x.
+Proof.
+  cbn. auto.
+Qed.
+
+Theorem cons_append_comm {A: Type} `{Group A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
+  Normalized x -> canon_cons b v (canon_append b' v' x) = canon_append b' v' (canon_cons b v x).
+Proof.
+  intros Nx. rewrite cons_is_concat_at_start, cons_is_concat_at_start, 
+  append_is_concat_at_end, append_is_concat_at_end, canon_concat_assoc; auto.
+  - constructor.
+  - constructor.
+  - apply concat_norm; auto; try constructor.
+Qed.
 
 Theorem canon_concat_append {A: Type} `{Group A} (b: bool) (v: A) (x y: CanonFreeGroup A) :
+  Normalized x -> Normalized y -> 
   canon_concat x (canon_append b v y) = canon_append b v (canon_concat x y).
 Proof.
-  induction x; auto. cbn. destruct a. rewrite IHx. apply cons_append_comm.
+  induction x; auto. intros Nx Ny. cbn. destruct a. rewrite IHx; auto. apply cons_append_comm.
+  - apply concat_norm; auto. apply (normalized_without_head b0 a); auto.
+  - apply (normalized_without_head b0 a); auto.
 Qed.
 
 Lemma appinv_list_remaining {A: Type} `{Group A} (x y: CanonFreeGroup A) :
@@ -586,36 +647,193 @@ Proof.
   rewrite cannon_inv_concat, IHx, cannon_inv_concat, app_comm_cons. auto.
 Qed.
 
-Lemma append_at_end {A: Type} `{Group A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
-  Normalized (x ++ [(b, v)]) -> x ++ [(b, v)] = canon_append b v x.
-Proof.
-  revert b v. induction x; auto; intros b v H0; destruct a. cbn in *.
-  destruct x.
-  - cbn in *. dependent destruction H0. destruct H0.
-    + rewrite <- eqf_false_iff in H0. rewrite eqf_sym, H0. auto.
-    + subst. rewrite eqb_reflx, orb_true_r. auto.
-  - rewrite IHx; auto. dependent destruction H0; auto.
-Qed.
-
 Lemma concat_normalized_l {A: Type} `{Group A} (x y: CanonFreeGroup A) :
   Normalized (x ++ y) -> Normalized x.
 Proof.
-  destruct x.
+  destruct x as [| (b, v)].
   - constructor.
-  - intros H0. revert H0. revert p. induction x; intros p H0.
-    + destruct p. constructor.
-    + destruct p, a. constructor; dependent destruction H0; auto.
+  - revert b v. induction x as [| (b', v')]; intros b v H0.
+    + constructor.
+    + dependent destruction H0. constructor; auto.
+Qed.
+
+Lemma concat_normalized_r {A: Type} `{Group A} (x y: CanonFreeGroup A) :
+  Normalized (x ++ y) -> Normalized y.
+Proof.
+  revert y. induction x as [| (b, v)]; intros y.
+  - cbn. auto.
+  - intros H0. apply IHx. rewrite <- app_comm_cons in H0.
+    apply (normalized_without_head b v). auto.
+Qed.
+
+Lemma normalized_list_concat {A: Type} `{Group A} (b b': bool) (v v': A) (x y: CanonFreeGroup A) :
+  Normalized (x ++ [(b, v)]) -> Normalized ((b', v') :: y) ->
+  v <> v' \/ b = b' -> Normalized (x ++ (b, v) :: (b', v') :: y).
+Proof.
+  revert b b' v v' y. induction x using rev_ind; intros b b' v v' y Nx Ny H0.
+  - cbn. constructor; auto.
+  - rewrite <- app_assoc. cbn. destruct x as (b'', v''). apply IHx.
+    + apply (concat_normalized_l (x0 ++ [(b'', v'')]) [(b, v)]). auto.
+    + constructor; auto.
+    + assert (Normalized [(b'', v''); (b, v)]).
+      { apply (concat_normalized_r x0). rewrite <- app_assoc in Nx. auto. }
+      dependent destruction H1. auto.
+Qed. 
+
+Theorem rev_normalized {A: Type} `{Group A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
+  Normalized (x ++ [(b, v)]) -> v <> v' \/ b = b' -> Normalized (x ++ [(b, v); (b', v')]).
+Proof.
+  revert b b' v v'. destruct x as [| (b'', v'')] using rev_ind ; intros b b' v v' Nx H0.
+  - cbn. constructor; auto. constructor.
+  - apply normalized_list_concat; auto. constructor.
+Qed. 
+
+Theorem inv_norm {A: Type} `{Group A} (x: CanonFreeGroup A) : 
+  Normalized x -> Normalized (canon_inv x).
+Proof.
+  intros Nx. induction Nx.
+  - cbn. constructor.
+  - cbn. constructor.
+  - cbn in *. rewrite cannon_inv_concat in IHNx. rewrite cannon_inv_concat.
+    apply rev_normalized; auto. destruct H0; auto. subst. auto.
 Qed.
 
 Theorem canon_left_inv {A: Type} `{Group A} (x : CanonFreeGroup A) : 
   Normalized x -> canon_concat (canon_inv x) x = [].
 Proof.
   induction x using rev_ind; auto. intros N. destruct x.
-  rewrite cannon_inv_append. cbn. rewrite append_at_end; auto.
-  rewrite canon_concat_append, IHx.
+  rewrite cannon_inv_append. cbn. rewrite append_for_normalized; auto.
+  assert (Normalized x0). { apply (concat_normalized_l x0 [(b, a)]). auto. }
+  rewrite canon_concat_append, IHx; auto.
   - cbn. rewrite eqf_refl, eqb_negb1. auto.
-  - apply (concat_normalized_l x0 [(b, a)]). auto.
+  - apply inv_norm; auto.
 Qed.
 
+Theorem canon_left_id {A: Type} `{Group A} (x : CanonFreeGroup A) : 
+  canon_concat [] x = x.
+Proof.
+  auto.
+Qed.
+
+Theorem canon_right_id {A: Type} `{Group A} (x : CanonFreeGroup A) : 
+  Normalized x -> canon_concat x [] = x.
+Proof.
+  intros Nx. induction x as [| (b, v)]; auto. cbn. rewrite IHx, cons_for_normalized; auto.
+  apply (normalized_without_head b v); auto.
+Qed.
+
+(* Free Group eqdec *)
+
+Fixpoint fg_eq' {A: Type} `{Group A} (x y: NonEmptyFreeGroup A) : bool :=
+  match x, y with
+  | Singl xb xv,    Singl yb yv    => eqb xb yb && eqf xv yv
+  | Switch xr _ x', Switch yr _ y' => eqf xr yr && fg_eq' x' y'
+  | Stay xr x',     Stay yr y'     => eqf xr yr && fg_eq' x' y'
+  | _,              _              => false
+  end.
+
+Definition fg_eq {A: Type} `{Group A} (x y: FreeGroup A) : bool :=
+  match x, y with
+  | None,    None    => true
+  | Some x', Some y' => fg_eq' x' y'
+  | _,       _       => false
+  end.
+
+Theorem fq_eqf_eq {A: Type} `{Group A} (x y: FreeGroup A) : reflect (x = y) (fg_eq x y).
+Proof.
+  apply iff_reflect. split.
+  - intros []. destruct x as [x |]; auto. induction x.
+    + cbn. rewrite eqb_reflx, eqf_refl. auto.
+    + cbn in *. rewrite eqf_refl, IHx. auto.
+    + cbn in *. rewrite eqf_refl, IHx. auto.
+  - intros H0. destruct x as [x |]; destruct y as [y |]; cbn in *; try inversion H0; auto.
+    f_equal. revert H0 H2. intros _. revert y. induction x; intros y H0.
+    + destruct y; cbn in *; try inversion H0. rewrite andb_true_iff in H0.
+      destruct H0. rewrite eqb_true_iff in H0. rewrite eqf_true_iff in H1. 
+      subst. auto.
+    + destruct y; cbn in *; inversion H0. rewrite andb_true_iff in H0.
+      destruct H0. rewrite eqf_true_iff in H0. rewrite andb_true_iff in H2.
+      destruct H2. specialize (IHx y H1). subst. auto.
+    + destruct y; cbn in *; inversion H0. rewrite andb_true_iff in H0.
+      destruct H0. rewrite eqf_true_iff in H0. subst. f_equal. apply IHx.
+      rewrite andb_true_iff in H2. destruct H2. auto.
+Qed.
+
+Definition fg_canon_concat {A: Type} `{Group A} (x y: FreeGroup A) : FreeGroup A :=
+  to_uniq (canon_concat (to_canon x) (to_canon y)).
+
+Definition fg_canon_inv {A: Type} `{Group A} (x: FreeGroup A) : FreeGroup A :=
+  to_uniq (canon_inv (to_canon x)).
 
 
+(* Free Group is Group *)
+Definition fg_zero {A: Type} `{Group A} := None (A := NonEmptyFreeGroup A).
+
+Theorem fq_left_inv {A: Type} `{Group A} (x y: FreeGroup A) : 
+  fg_canon_concat (fg_canon_inv x) x = fg_zero.
+Proof.
+  unfold fg_canon_concat, fg_canon_inv. rewrite canon_epi_free_group.
+  - rewrite canon_left_inv; auto. apply free_group_is_normal.
+  - apply inv_norm. apply free_group_is_normal.
+Qed.
+
+Theorem fq_right_inv {A: Type} `{Group A} (x y: FreeGroup A) : 
+  fg_canon_concat x (fg_canon_inv x) = fg_zero.
+Proof.
+  unfold fg_canon_concat, fg_canon_inv. rewrite canon_epi_free_group.
+  - rewrite canon_right_inv; auto.
+  - apply inv_norm. apply free_group_is_normal.
+Qed.
+
+Theorem fq_left_id {A: Type} `{Group A} (x y: FreeGroup A) : 
+  fg_canon_concat fg_zero x = x.
+Proof.
+  unfold fg_canon_concat, fg_canon_inv. cbn. apply free_group_epi_canon.
+Qed.
+
+Theorem fq_right_id {A: Type} `{Group A} (x y: FreeGroup A) : 
+  fg_canon_concat x fg_zero = x.
+Proof.
+  unfold fg_canon_concat, fg_canon_inv. cbn. rewrite canon_right_id.
+  - apply free_group_epi_canon.
+  - apply free_group_is_normal.
+Qed.
+
+Theorem fq_op_assoc {A: Type} `{Group A} (x y z: FreeGroup A) : 
+  fg_canon_concat (fg_canon_concat x y) z = fg_canon_concat x (fg_canon_concat y z).
+Proof.
+  unfold fg_canon_concat, fg_canon_inv. rewrite canon_epi_free_group, canon_epi_free_group.
+  - rewrite canon_concat_assoc; auto; try apply free_group_is_normal.
+  - apply concat_norm; apply free_group_is_normal.
+  - apply concat_norm; apply free_group_is_normal.
+Qed.
+
+Global Program Instance FreeGroup_is_Group {A: Type} `{Group A} : Group (FreeGroup A) := {
+  zero      := fg_zero;
+  op        := fg_canon_concat;
+  inv       := fg_canon_inv;
+  eqf       := fg_eq;
+}.
+
+Next Obligation. apply fq_left_id; auto. Defined.
+Next Obligation. apply fq_right_id; auto. Defined.
+Next Obligation. apply fq_left_inv; auto. Defined.
+Next Obligation. apply fq_right_inv; auto. Defined.
+Next Obligation. apply fq_op_assoc; auto. Defined.
+Next Obligation. apply fq_eqf_eq; auto. Defined.
+
+
+
+(* Suspicous Integrals *)
+Global Program Instance Unit_is_Group : Group unit := {
+  zero      := tt;
+  op        := fun _ _ => tt;
+  inv       := fun _ => tt;
+  eqf       := fun _ _ => true;
+}.
+
+Next Obligation. destruct x; auto. Defined.
+Next Obligation. destruct x; auto. Defined.
+Next Obligation. constructor. destruct x, y. auto. Defined.
+
+Definition Integrals := FreeGroup unit.
