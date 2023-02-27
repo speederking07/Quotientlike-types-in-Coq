@@ -3,6 +3,8 @@ Require Import Coq.Program.Equality.
 Require Import Coq.Lists.List.
 Import ListNotations.
 
+Print list.
+
 Inductive FreeMonoid (A: Type) :=
 | leaf : FreeMonoid A
 | var  : A -> FreeMonoid A

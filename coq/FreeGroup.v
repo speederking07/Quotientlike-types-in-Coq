@@ -824,7 +824,7 @@ Next Obligation. apply fq_eqf_eq; auto. Defined.
 
 
 
-(* Suspicous Integrals *)
+(* Suspicous Integers *)
 Global Program Instance Unit_is_Group : Group unit := {
   zero      := tt;
   op        := fun _ _ => tt;
