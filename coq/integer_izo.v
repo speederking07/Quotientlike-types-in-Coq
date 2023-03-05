@@ -303,6 +303,16 @@ Proof.
   - cbn. apply map_n_abs_neg. assumption.
 Qed.
 
+Lemma h_surjection : forall y: Z, exists x: Z', h x = y.
+Proof.
+  intros y. exists (h_inv y). apply h_bijection.
+Qed.
+
+Lemma h_iniection : forall x y: Z', h x = h y -> x = y.
+Proof.
+  intros x y H. rewrite <- (h_bijection' x), <- (h_bijection' y). f_equal. assumption.
+Qed.
+
 
 
 Lemma pred'_for_pos : forall x : Z', pos x = true -> pred' (Next x) = x.

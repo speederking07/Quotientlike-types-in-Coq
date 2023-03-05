@@ -50,6 +50,18 @@ Definition sub {A: Type} `{Group A} (x y: A) := op x (inv y).
 
 Definition CanonFreeGroup (A: Type) `{Group A} := list (bool*A).
 
+Fixpoint normalize {A: Type} `{Group A} (x: CanonFreeGroup A) :=
+match x with
+| [] => []
+| (b, v) :: x' => 
+    match normalize x' with
+    | [] => [(b, v)]
+    | (b', v') :: x'' => if andb (eqf v v') (xorb b b')
+                         then x''
+                         else (b, v) :: (b', v') :: x''
+    end
+end.
+
 Inductive Normalized {A: Type} `{Group A} : CanonFreeGroup A -> Prop :=
 | NNil   : Normalized []
 | NSingl : forall (b : bool) (v : A), Normalized [(b, v)]
@@ -88,23 +100,23 @@ match x with
 end.
 
 Fixpoint to_canon' {A: Type} `{Group A} (x: NonEmptyFreeGroup A) : CanonFreeGroup A :=
-  match x with 
-  | Singl b v     => [(b, v)]
-  | Stay v x'     => match to_canon' x' with
-                     | [] => [(true, v)] (* should not be there *)
-                     | (b, v') :: y => (b, op v v') :: (b, v') :: y
-                     end
-  | Switch v _ x' => match to_canon' x' with
-                     | [] => [(true, v)] (* should not be there *)
-                     | (b, v') :: y => (negb b, op v v') :: (b, v') :: y
-                     end
-  end.
+match x with 
+| Singl b v     => [(b, v)]
+| Stay v x'     => match to_canon' x' with
+                   | [] => [(true, v)] (* invalid *)
+                   | (b, v') :: y => (b, op v v') :: (b, v') :: y
+                   end
+| Switch v _ x' => match to_canon' x' with
+                   | [] => [(true, v)] (* invalid *)
+                   | (b, v') :: y => (negb b, op v v') :: (b, v') :: y
+                   end
+end.
 
 Definition to_canon {A: Type} `{Group A} (x: FreeGroup A) : CanonFreeGroup A :=
-  match x with
-  | None => []
-  | Some x' => to_canon' x'
-  end.
+match x with
+| None => []
+| Some x' => to_canon' x'
+end.
 
 Lemma op_sub {A: Type} `{Group A} (x y : A) : op (sub x y) y = x.
 Proof.
