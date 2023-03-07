@@ -37,7 +37,16 @@ match x with
 | D x' => let (p, q) := qplus_i x' in (p, p + q)
 end.
 
-Definition valid (x: Q) := num x > 0 /\ den x > 0.
+Definition CoPrime (a b: nat) := gcd a b = 1.
+
+
+
+
+(* Baisc math lemmas *)
+Lemma CoPrime_symm (a b: nat) : CoPrime a b -> CoPrime b a.
+Proof.
+  unfold CoPrime. rewrite Nat.gcd_comm. auto.
+Qed.
 
 Lemma pos_mul_comp : forall a b k: nat, ((S k * a) ?= (S k * b)) = (a ?= b).
 Proof.
@@ -54,33 +63,12 @@ Proof.
   intros n k. cbn. auto.
 Qed.
 
-Theorem qplus_c'_mul_pos : forall p q n k: nat,
-  qplus_c' (S k * p) (S k * q) n = qplus_c' p q n.
-Proof.
-  intros p q n. revert p q. induction n; intros p q k; auto.
-  simpl. rewrite <- (IHn p (q - p) k), <- (IHn (p - q) q k), <- (pos_mul_comp p q k).
-  simpl. destruct (p + k * p ?= q + k * q) eqn:P; auto.
-  - f_equal. f_equal. assert (p < q).
-    + rewrite Compare_dec.nat_compare_lt, <- P. symmetry.
-      rewrite mul_exp, mul_exp. apply pos_mul_comp.
-    + rewrite <- Compare_dec.nat_compare_lt in P. lia.
-  - f_equal. f_equal. assert (p > q).
-    + rewrite Compare_dec.nat_compare_gt, <- P. symmetry. 
-      rewrite mul_exp, mul_exp. apply pos_mul_comp.
-    + rewrite <- Compare_dec.nat_compare_gt in P. lia.
-Qed.
-
-
-
-
-
 Lemma mul_div (a b : nat) : (b | a) -> a / b * b = a.
 Proof.
   intros h. destruct h as (k & H). rewrite H. destruct b.
   - cbn. rewrite Nat.mul_0_r. auto.
   - rewrite Nat.div_mul; auto.
 Qed.
-
 
 Lemma div_sub_same (a b c: nat) : c <> 0 -> (a * c - b * c) / c = a - b.
 Proof.
@@ -94,6 +82,13 @@ Proof.
   intros H. rewrite <- (Nat.mul_cancel_r _ _ c); auto. rewrite mul_div.
   - rewrite Nat.mul_add_distr_r. auto.
   - exists (a + b). rewrite Nat.mul_add_distr_r. auto.
+Qed.
+
+Lemma div_sub_add_same (a b c d: nat) : d <> 0 -> (a * d - b * d + c * d) / d = a - b + c.
+Proof.
+  intros H. rewrite <- (Nat.mul_cancel_r _ _ d); auto. rewrite mul_div.
+  - rewrite Nat.mul_add_distr_r, Nat.mul_sub_distr_r. auto.
+  - exists (a - b + c). rewrite Nat.mul_add_distr_r, Nat.mul_sub_distr_r. auto.
 Qed.
 
 Lemma mul_div_eq (a b c: nat) : c <> 0 -> a = b * c -> b = a / c.
@@ -113,11 +108,69 @@ Proof.
     rewrite Nat.compare_gt_iff in *. lia.
 Qed.
 
+Lemma gcd_pos_l (p q: nat) : p > 0 -> gcd p q <> 0.
+Proof.
+  intros H E. rewrite Nat.gcd_eq_0 in E. lia.
+Qed.
+
+Lemma le_exists_sum (a b: nat) : a <= b -> exists c, b = a + c.
+Proof.
+  intros H. exists (b - a). lia.
+Qed.
+
+Lemma zero_div (x: nat) : x / 0 = 0.
+Proof.
+  induction x; auto.
+Qed.
+
+Lemma id_mul_is_1 (a b : nat) : a > 0 -> a = b * a -> b = 1.
+Proof.
+  intros P H. destruct a.
+  - lia.
+  - destruct b.
+    + cbn in *. inversion H.
+    + lia.
+Qed.
+
+Lemma lt_gt_symm (a b: nat) : a > b <-> b < a.
+Proof.
+  split; lia.
+Qed.
+
+Lemma eq_sym {A: Type} (x y: A) : x = y <-> y = x.
+Proof.
+  split; auto.
+Qed.
+
+Lemma gt_zero (x: nat) : x > 0 <-> x <> 0.
+Proof.
+  lia.
+Qed.
+
+Theorem co_prime_gcd (a b: nat) :
+  a > 0 -> CoPrime (a / gcd a b) (b / gcd a b).
+Proof.
+  intros Pa. apply Nat.gcd_div_gcd; auto. destruct (gcd a b) eqn: H; try lia.
+  assert (a = 0) by (apply (Nat.gcd_eq_0_l a b); auto). lia. 
+Qed.
+
+Lemma div_swap (a b c : nat) : b <> 0 -> (b | c) -> a * b = c -> a = c / b.
+Proof.
+  intros P (k & D) E. rewrite D in *. rewrite Nat.div_mul; auto.
+  rewrite Nat.mul_cancel_r in E; auto.
+Qed.
+
+Lemma div_mul_comm (a b c: nat) : (b | a) -> (b | c) -> a / b * c = a * (c / b).
+Proof.
+  intros (k & H) (k' & H'). destruct b.
+  - lia.
+  - rewrite H, H'. rewrite Nat.div_mul, Nat.div_mul; lia.
+Qed.
 
 
 
 
-(* Fuel *)
+(* Fuel lemmas *)
 Function len (x: Qplus) : nat :=
 match x with
 | One  => 1
@@ -138,8 +191,11 @@ Lemma enough_fuel (p q h: nat) : p > 0 -> q > 0 ->
   (p + q) / gcd p q <= h -> len (qplus_c' p q h) < h.
 Proof.
   revert p q. induction h; intros p q Pp Pq E;
-  assert (G: gcd p q <> 0) by admit.
-  - admit.
+  assert (G: gcd p q <> 0) by (apply gcd_pos_l; auto);
+  assert (gcd p q | p) by apply Nat.gcd_divide; destruct H as (k & P);
+  assert (gcd p q | q) by apply Nat.gcd_divide; destruct H as (k' & Q).
+  - remember (gcd p q) as g. rewrite P, Q, div_add_same in E; try lia.
+    destruct k, k'; try lia.  
   - cbn. destruct (p ?= q) eqn:F.
     + cbn in *. rewrite Nat.compare_eq_iff in F. subst.
       assert ((q + q) / q = (q + 1 * q) / q) by (rewrite Nat.mul_1_l; auto).
@@ -147,8 +203,6 @@ Proof.
     + cbn. apply Lt.lt_n_S. rewrite Nat.compare_lt_iff in F. apply IHh; try lia.
       rewrite Nat.gcd_sub_diag_r; try lia. apply Le.le_S_n. 
       apply (Nat.le_trans _ ((p + q) / gcd p q) _); auto.
-      assert (gcd p q | p) by apply Nat.gcd_divide. destruct H as (k & P).
-      assert (gcd p q | q) by apply Nat.gcd_divide. destruct H as (k' & Q).
       remember (gcd p q) as g. rewrite P, Q. 
       rewrite Nat.div_add_l, div_add_same, div_sub_same; try lia.
       rewrite Minus.le_plus_minus_r; try lia.
@@ -158,23 +212,41 @@ Proof.
     + cbn. apply Lt.lt_n_S. rewrite Nat.compare_gt_iff in F. apply IHh; try lia.
       rewrite Nat.gcd_comm, Nat.gcd_sub_diag_r, Nat.gcd_comm; try lia. 
       apply Le.le_S_n. apply (Nat.le_trans _ ((p + q) / gcd p q) _); auto.
-      assert (gcd p q | p) by apply Nat.gcd_divide. destruct H as (k & P).
-      assert (gcd p q | q) by apply Nat.gcd_divide. destruct H as (k' & Q).
-      remember (gcd p q) as g. rewrite P, Q. admit.
-Admitted.
+      remember (gcd p q) as g. rewrite P, Q.
+      rewrite div_sub_add_same, div_add_same; lia.
+Qed.
 
-Lemma fuel_for_qplus_c (p q: nat) :
+Lemma fuel_for_qplus_c (p q: nat) : p > 0 -> q > 0 -> 
   qplus_c' p q ((p + q) / gcd p q) = qplus_c' p q (S ((p + q) / gcd p q)).
 Proof.
-  apply more_than_enough_fuel. apply enough_fuel.
-Admitted.
+  intros Pp Pq. apply more_than_enough_fuel. apply enough_fuel; lia.
+Qed.
 
-Lemma fuel_for_qplus_c' (p q f: nat) :
+Lemma fuel_for_qplus_c_add (p q f: nat) : p > 0 -> q > 0 -> 
+  qplus_c' p q ((p + q) / gcd p q) = qplus_c' p q (f + (p + q) / gcd p q).
+Proof.
+  intros Pp Pq. induction f; auto. rewrite Nat.add_succ_l.
+  rewrite <- more_than_enough_fuel; auto. destruct IHf. induction f.
+  - cbn. apply enough_fuel; auto.
+  - lia.
+Qed. 
+
+Lemma fuel_for_qplus_c' (p q f: nat) : p > 0 -> q > 0 -> 
   ((p + q) / gcd p q) <= f -> qplus_c' p q ((p + q) / gcd p q) = qplus_c' p q f.
 Proof.
-  admit.
-Admitted.
+  intros Pp Pq H. 
+  assert (exists k, f = ((p + q) / gcd p q) + k) by (apply le_exists_sum; auto).
+  destruct H0 as (k & E). rewrite (Nat.add_comm _ k) in E. rewrite E.
+  apply fuel_for_qplus_c_add; auto.
+Qed.
 
+
+
+
+
+
+(* Valid definition and lemmas *)
+Definition valid (x: Q) := num x > 0 /\ den x > 0.
 
 Lemma qplus_valid (x: Qplus) : valid (qplus_i x).
 Proof.
@@ -183,20 +255,47 @@ Proof.
   - cbn. destruct (qplus_i x). cbn in *. lia.
 Qed.
 
-Definition CoPrime (a b: nat) := gcd a b = 1.
-
-Lemma CoPrime_symm (a b: nat) : CoPrime a b -> CoPrime b a.
+Lemma reduces_valid (p q: nat) : valid (p, q) -> 
+  valid (p / gcd p q, q / gcd p q).
 Proof.
-  unfold CoPrime. rewrite Nat.gcd_comm. auto.
+  intros (Pp & Pq). assert (gcd p q <> 0).
+  { cbn in *. intros H. rewrite Nat.gcd_eq_0 in H. lia. }
+  split; cbn in *; rewrite gt_zero; intros H'; 
+  rewrite <- (Nat.mul_cancel_r _ _ (gcd p q)) in H'; auto;
+  rewrite mul_div in H'; try lia. 
+  - apply Nat.gcd_divide_l.
+  - apply Nat.gcd_divide_r.
 Qed.
 
-Definition norm (x: Q) := CoPrime (num x) (den x).
-
-
-
-Lemma zero_div (x: nat) : x / 0 = 0.
+Lemma valid_sub_l (a b c: nat) : a > b -> valid (a, b) -> valid (a - b, b).
 Proof.
-  induction x; auto.
+  unfold valid. cbn. intros E (Pa & Pb). split; lia.
+Qed.
+
+Lemma valid_sub_r (a b c: nat) : b > a -> valid (a, b) -> valid (a , b - a).
+Proof.
+  unfold valid. cbn. intros E (Pa & Pb). split; lia.
+Qed.
+
+
+
+
+
+(* Multiplying by constant do not change trance *)
+Theorem qplus_c'_mul_pos : forall p q n k: nat,
+  qplus_c' (S k * p) (S k * q) n = qplus_c' p q n.
+Proof.
+  intros p q n. revert p q. induction n; intros p q k; auto.
+  simpl. rewrite <- (IHn p (q - p) k), <- (IHn (p - q) q k), <- (pos_mul_comp p q k).
+  simpl. destruct (p + k * p ?= q + k * q) eqn:P; auto.
+  - f_equal. f_equal. assert (p < q).
+    + rewrite Compare_dec.nat_compare_lt, <- P. symmetry.
+      rewrite mul_exp, mul_exp. apply pos_mul_comp.
+    + rewrite <- Compare_dec.nat_compare_lt in P. lia.
+  - f_equal. f_equal. assert (p > q).
+    + rewrite Compare_dec.nat_compare_gt, <- P. symmetry. 
+      rewrite mul_exp, mul_exp. apply pos_mul_comp.
+    + rewrite <- Compare_dec.nat_compare_gt in P. lia.
 Qed.
 
 Lemma gcd_ge (n m: nat): (n + m) / gcd n m <= (n + m + m) / gcd (n + m) m.
@@ -211,17 +310,20 @@ Qed.
 Theorem qplus_mono (x : Qplus) :  qplus_c (qplus_i x) = x.
 Proof.
   unfold qplus_c. induction x; auto.
-  - cbn. destruct (qplus_i x) eqn: e. rewrite fuel_for_qplus_c. cbn.
+  - cbn. destruct (qplus_i x) eqn: e. 
     assert (num (qplus_i x) > 0 /\ den (qplus_i x) > 0) by apply qplus_valid.
-    rewrite e in H. cbn in H. inversion H. assert (n + n0 ?= n0 = Gt).
+    rewrite e in H. cbn in H. inversion H.  rewrite fuel_for_qplus_c; try lia. cbn.
+    assert (n + n0 ?= n0 = Gt).
     + rewrite Nat.compare_gt_iff. lia.
-    + rewrite H2, <- IHx. rewrite Nat.add_sub. f_equal. symmetry. apply fuel_for_qplus_c'. apply gcd_ge.
-  - cbn. destruct (qplus_i x) eqn: e. rewrite fuel_for_qplus_c. cbn.
+    + rewrite H2, <- IHx. rewrite Nat.add_sub. f_equal. symmetry. 
+      apply fuel_for_qplus_c'; auto. apply gcd_ge.
+  - cbn. destruct (qplus_i x) eqn: e. 
     assert (num (qplus_i x) > 0 /\ den (qplus_i x) > 0) by apply qplus_valid.
-    rewrite e in H. cbn in H. inversion H. assert (n ?= n + n0 = Lt).
+    rewrite e in H. cbn in H. inversion H. 
+    rewrite fuel_for_qplus_c; try lia. cbn. assert (n ?= n + n0 = Lt).
     + rewrite Nat.compare_lt_iff. lia.
     + rewrite H2, <- IHx. rewrite (Nat.add_comm n n0), Nat.add_sub. f_equal.
-      symmetry. rewrite (Nat.add_comm n0 n), Nat.add_assoc. apply fuel_for_qplus_c'.
+      symmetry. rewrite (Nat.add_comm n0 n), Nat.add_assoc. apply fuel_for_qplus_c'; auto.
       rewrite (Nat.add_comm n n0), (Nat.gcd_comm n n0), (Nat.gcd_comm n (n0 + n)).
       rewrite <- Nat.add_assoc, (Nat.add_comm n n0), Nat.add_assoc, (Nat.add_comm n n0). apply gcd_ge.
 Qed.
@@ -241,6 +343,8 @@ Qed.
 
 
 
+
+(* Frac_eq definition and theorems *)
 Definition frac_eq (a b : Q) := num a * den b = num b * den a.
 
 Theorem frac_eq_relf (x: Q) `{valid x} : frac_eq x x.
@@ -272,15 +376,6 @@ Proof.
       apply Mult.mult_is_one. auto.
     }
     destruct H0 as (k1 & k'1). subst. lia.
-Qed.
-
-Lemma id_mul_is_1 (a b : nat) : a > 0 -> a = b * a -> b = 1.
-Proof.
-  intros P H. destruct a.
-  - lia.
-  - destruct b.
-    + cbn in *. inversion H.
-    + lia.
 Qed.
 
 Theorem gcd_equiv (a b c d: nat) : a > 0 -> c > 0 -> 
@@ -316,44 +411,34 @@ Proof.
     f_equal. lia.
 Qed.
 
-Theorem co_prime_gcd (a b: nat) :
-  a > 0 -> CoPrime (a / gcd a b) (b / gcd a b).
-Proof.
-  intros Pa. apply Nat.gcd_div_gcd; auto. destruct (gcd a b) eqn: H; try lia.
-  assert (a = 0) by (apply (Nat.gcd_eq_0_l a b); auto). lia. 
-Qed.
-
 Theorem frac_eq_trans (x y z: Q) : valid x -> valid y -> valid z -> 
   frac_eq x y -> frac_eq y z -> frac_eq x z.
 Proof.
   destruct x as (x & x'). destruct y as (y & y'). destruct z as (z & z').
   unfold valid, frac_eq. cbn. intros (Px & Px') (Py & Py') (Pz & Pz') H H'.
   assert (x * gcd y y' = y * gcd x x') by (apply gcd_equiv; auto).
-
-  admit.
-  
-Admitted.
-
-Lemma gt_zero (x: nat) : x > 0 <-> x <> 0.
-Proof.
-  lia.
-Qed.
-
-Lemma reduces_valid (p q: nat) : valid (p, q) -> 
-  valid (p / gcd p q, q / gcd p q).
-Proof.
-  intros (Pp & Pq). assert (gcd p q <> 0).
-  { cbn in *. intros H. rewrite Nat.gcd_eq_0 in H. lia. }
-  split; cbn in *; rewrite gt_zero; intros H'; 
-  rewrite <- (Nat.mul_cancel_r _ _ (gcd p q)) in H'; auto;
-  rewrite mul_div in H'; try lia. 
-  - apply Nat.gcd_divide_l.
-  - apply Nat.gcd_divide_r.
+  assert (P: gcd y y' <> 0) by (apply gcd_pos_l; auto).
+  assert (E: x = y * gcd x x' / gcd y y'). 
+  { apply div_swap; auto. apply Nat.divide_mul_l. apply Nat.gcd_divide. } 
+  rewrite E in H. rewrite div_mul_comm, <- Nat.mul_assoc, Nat.mul_cancel_l in H; 
+  try apply Nat.gcd_divide; try lia.
+  - remember (gcd x x') as gx. remember (gcd y y') as gy. rewrite <-H, E.
+    rewrite (Nat.mul_comm _ z'), <-(Nat.mul_cancel_r _ _ gy); try lia.
+    rewrite <- Nat.mul_assoc, <- Nat.mul_assoc, Heqgx, Heqgy. 
+    rewrite mul_div, <- Nat.divide_div_mul_exact, mul_div; 
+    try apply Nat.gcd_divide; try lia.
+    + rewrite Nat.mul_assoc, (Nat.mul_comm z'), H'. lia.
+    + apply Nat.divide_mul_r. apply Nat.gcd_divide.
+    + apply Nat.divide_mul_l. apply Nat.gcd_divide.
+  - apply Nat.divide_mul_l. apply Nat.gcd_divide.  
 Qed.
 
 
-Definition normal (x: Q) := valid x /\ CoPrime (num x) (den x).
 
+
+
+
+(* Proof that qplus glues equivalet fractions *)
 Theorem qplus_glue_frac_eq (x y: Q) : valid x -> valid y ->
   frac_eq x y -> qplus_c x = qplus_c y.
 Proof.
@@ -390,36 +475,59 @@ Proof.
       * apply qplus_c_mul_pos.
 Qed.
 
+
+
+
+(* Ancilary lemmas about reverting gplus_c *)
+Lemma qplus_0_l (a : nat) : qplus_c (O, S a) = D One.
+Proof.
+  unfold qplus_c. rewrite Nat.gcd_0_l, Nat.add_0_l, Nat.div_same; try lia; auto.
+Qed.
+
+Lemma qplus_0_r (a : nat) : qplus_c (S a, O) = N One.
+Proof.
+  unfold qplus_c. rewrite Nat.gcd_0_r, Nat.add_0_r, Nat.div_same; try lia; auto.
+Qed.
+
 Lemma qplus_go_back_One (p q: nat) : qplus_c (p, q) = One <->
   p = q.
 Proof.
   split.
-  - cbn. rewrite fuel_for_qplus_c. cbn. intros H. 
-    destruct (p ?= q) eqn:e; try inversion H. 
-    rewrite Nat.compare_eq_iff in e. auto.
-  - intros. subst. cbn. rewrite fuel_for_qplus_c. cbn.
-    rewrite Nat.compare_refl. auto.
+  - intro H. destruct p, q; auto.
+    + rewrite qplus_0_l in H. inversion H.
+    + rewrite qplus_0_r in H. inversion H.
+    + unfold qplus_c in *. rewrite fuel_for_qplus_c in H; try lia. cbn in *. 
+      destruct (p ?= q) eqn:e; try inversion H. 
+      rewrite Nat.compare_eq_iff in e. auto.
+  - intros. subst. cbn. rewrite Nat.gcd_diag. destruct q; auto.
+    assert ((S q + S q) / S q = 2).
+    { rewrite <- (Nat.mul_cancel_r _ _ (S q)); try lia. rewrite mul_div; try lia.
+      exists 2. lia. }
+    rewrite H. cbn. rewrite Nat.compare_refl. auto.
 Qed.
 
 Lemma qplus_N_bigger (p q: nat) (t: Qplus) :
   qplus_c (p, q) = N t -> p > q.
 Proof.
-  cbn. rewrite fuel_for_qplus_c. cbn. intros H.
-  destruct (p ?= q) eqn:e; inversion H.
-  apply Compare_dec.nat_compare_Gt_gt. assumption.
+  intros H. destruct p, q; auto. 
+  - inversion H.
+  - rewrite qplus_0_l in H. inversion H.
+  - lia.
+  - unfold qplus_c in *. rewrite fuel_for_qplus_c in *; try lia. cbn in *.
+    destruct (p ?= q) eqn:e; inversion H.
+    apply Compare_dec.nat_compare_Gt_gt. assumption.
 Qed.
 
 Lemma qplus_D_bigger (p q: nat) (t: Qplus) :
   qplus_c (p, q) = D t -> q > p.
 Proof.
-  cbn. rewrite fuel_for_qplus_c. cbn. intros H.
-  destruct (p ?= q) eqn:e; inversion H.
-  apply Compare_dec.nat_compare_Lt_lt. assumption.
-Qed.
-
-Lemma lt_gt_symm (a b: nat) : a > b <-> b < a.
-Proof.
-  split; lia.
+  intros H. destruct p, q; auto. 
+  - inversion H.
+  - lia.
+  - rewrite qplus_0_r in H. inversion H.
+  - unfold qplus_c in *. rewrite fuel_for_qplus_c in *; try lia. cbn in *.
+    destruct (p ?= q) eqn:e; inversion H.
+    apply Compare_dec.nat_compare_Lt_lt. assumption.
 Qed.
 
 Lemma qplus_go_back_N (p q: nat) (t: Qplus) : valid (p, q) -> 
@@ -427,10 +535,10 @@ Lemma qplus_go_back_N (p q: nat) (t: Qplus) : valid (p, q) ->
 Proof.
   intros  (Vp & Vq). cbn in *.
   intros H. assert (p > q) by (apply (qplus_N_bigger _ _ t); auto). 
-  rewrite fuel_for_qplus_c in H. cbn in *.
+  rewrite fuel_for_qplus_c in H; auto. cbn in *.
   rewrite Compare_dec.nat_compare_gt in H0. rewrite H0 in H.
   rewrite <- Compare_dec.nat_compare_gt in H0.
-  inversion H. apply fuel_for_qplus_c'.
+  inversion H. apply fuel_for_qplus_c'; try lia.
   rewrite Nat.gcd_comm, Nat.gcd_sub_diag_r, Nat.gcd_comm; try lia.
   apply Nat.div_le_mono; try lia. intro G. rewrite Nat.gcd_eq_0 in G.
   lia.
@@ -441,19 +549,14 @@ Lemma qplus_go_back_D (p q: nat) (t: Qplus) :  valid (p, q) ->
 Proof.
   intros  (Vp & Vq). cbn in *.
   intros H. assert (q > p) by (apply (qplus_D_bigger _ _ t); auto). 
-  rewrite fuel_for_qplus_c in H. cbn in *.
+  rewrite fuel_for_qplus_c in H; auto. cbn in *.
   Search (_ < _ <-> _ > _).
   rewrite lt_gt_symm, Compare_dec.nat_compare_lt in H0. rewrite H0 in H.
   rewrite <- Compare_dec.nat_compare_lt in H0.
-  inversion H. apply fuel_for_qplus_c'.
+  inversion H. apply fuel_for_qplus_c'; try lia.
   rewrite Nat.gcd_sub_diag_r, Nat.gcd_comm; try lia.
   apply Nat.div_le_mono; try lia. intro G. rewrite Nat.gcd_eq_0 in G.
   lia.
-Qed.
-
-Lemma eq_sym {A: Type} (x y: A) : x = y <-> y = x.
-Proof.
-  split; auto.
 Qed.
 
 Lemma frac_eq_N (p q p' q': nat) : p > q -> p' > q' ->
@@ -476,16 +579,12 @@ Proof.
   - rewrite (Nat.mul_comm p q'). apply Nat.mul_le_mono; lia.
 Qed.
 
-Lemma valid_sub_l (a b c: nat) : a > b -> valid (a, b) -> valid (a - b, b).
-Proof.
-  unfold valid. cbn. intros E (Pa & Pb). split; lia.
-Qed.
 
-Lemma valid_sub_r (a b c: nat) : b > a -> valid (a, b) -> valid (a , b - a).
-Proof.
-  unfold valid. cbn. intros E (Pa & Pb). split; lia.
-Qed.
 
+
+
+
+(* qplus is valid representation for fractions *)
 Theorem qplus_epi (x y: Q) : valid x -> valid y ->
   qplus_c x = qplus_c y -> frac_eq x y.
 Proof.
