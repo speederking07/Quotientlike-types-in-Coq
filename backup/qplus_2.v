@@ -608,7 +608,7 @@ Qed.
 Theorem qplus_mono' : forall y: Qplus, exists x: Q, qplus_c x = y.
 Proof.
   intros y. exists (qplus_i y). apply qplus_mono.
-Qed.git 
+Qed.
 
 
 

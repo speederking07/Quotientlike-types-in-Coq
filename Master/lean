@@ -1,0 +1,82 @@
+Require Import Setoid.
+
+Inductive NonEmpty (A: Type) : Prop := intro : A -> NonEmpty A.
+
+Axiom axiom_of_prop_ext : forall P Q: Prop, (P <-> Q) <-> (P = Q).
+Axiom axiom_of_choise : forall A: Type, NonEmpty A -> A.
+
+Lemma nonempty_equiv (A: Type) : NonEmpty A <-> exists x: A, True.
+Proof.
+  split; intros H.
+  - destruct H. exists X. auto.
+  - admit.
+Admitted.
+
+Definition choose (A: Type) (P : A -> Prop) (h : exists x, P x) : A.
+Proof.
+  apply axiom_of_choise. constructor. admit.
+Admitted.
+
+Theorem em (P: Prop) : P \/ ~P.
+  assert (exists x, x = (True \/ P)) by (exists (True \/ P); auto).
+  assert (exists x, x = (False \/ P)) by (exists (False \/ P); auto).
+Abort.
+
+Axiom Quot : forall {A: Type}, (A -> A -> Prop) -> Type.
+
+Axiom Quot_mk : forall {A:  Type} (r: A -> A -> Prop),
+  A -> Quot r.
+
+Axiom Quot_ind : 
+  forall (A:  Type) (r: A -> A -> Prop) (P: Quot r -> Prop),
+    (forall a: A, P (Quot_mk r a)) -> forall q: Quot r, P q.
+
+Axiom Quot_lift :
+  forall {A:  Type} {r: A -> A -> Prop} {B: Type} (f: A -> B),
+    (forall a b: A, r a b -> f a = f b) -> Quot r -> B.
+
+Axiom Quot_sound :
+  forall (A: Type) (r: A -> A -> Prop) (a b: A),
+    r a b -> Quot_mk r a = Quot_mk r b.
+
+Definition fun_ext_eq (A B: Type) (f g: A -> B) := forall x: A, f x = g x.
+
+Definition ExtFun (A B: Type) := Quot (fun_ext_eq A B).
+
+Definition id {A: Type} (x: A) := x.
+
+Theorem eq_lift (A:  Type) (r: A -> A -> Prop) (B: Type) (f: A -> B) (x y: Quot r)
+  (R: forall a b: A, r a b -> f a = f b) : x = y -> Quot_lift f R x = Quot_lift f R y.
+Proof.
+  intros H. subst. auto.
+Qed.
+
+Theorem fun_ext (A B: Type) (f g: A -> B): (forall x, f x = g x) -> f = g.
+Proof.
+  intros H. assert (Quot_mk (fun_ext_eq A B) f = Quot_mk (fun_ext_eq A B) g).
+  { apply Quot_sound. auto. }
+  assert (forall a b: A, (fun_ext_eq A B) a b -> a = b
+  rewrite id_is_id, (id_is_id (Quot_mk (fun_ext_eq A B) f)) in H0.
+  rewrite Quot_lift in H0.
+  assert (forall y, y = id y).
+  
+
+
+
+
+Axiom Quot : forall A: Type, (A -> A -> Prop) -> Type.
+
+Axiom Quot.mk : forall (A:  Type) (r: A -> A -> Prop),
+  A -> Quot r.
+
+Axiom Quot.ind : 
+  forall (A:  Type) (r: A -> A -> Prop) (P: Quot r -> Prop),
+      (forall a: A, P (Quot.mk r a)) -> forall q: Quot r, P q.
+
+Axiom Quot.lift :
+  forall (A:  Type) (r: A -> A -> Prop) (B: Type) (f: A -> B),
+    (forall a b: A, r a b -> f a = f b) -> Quot r -> B.
+
+Axiom Quot.sound :
+  forall (A: Type) (r: A -> A -> Prop) (a b: A),
+    r a b -> Quot.mk r a = Quot.mk r b.

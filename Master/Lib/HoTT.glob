@@ -1,0 +1,1135 @@
+DIGEST c37554ccc6c572668d43181af91dda72
+FLib.HoTT
+R15:20 Coq.Setoids.Setoid <> <> lib
+ind 34:38 <> Empty
+def 65:67 <> dot
+binder 70:70 <> A:3
+binder 72:72 <> B:4
+binder 74:74 <> C:5
+R82:85 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R81:81 Lib.HoTT <> B:4 var
+R86:86 Lib.HoTT <> C:5 var
+binder 78:78 <> f:6
+R94:97 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R93:93 Lib.HoTT <> A:3 var
+R98:98 Lib.HoTT <> B:4 var
+binder 90:90 <> g:7
+R112:112 Lib.HoTT <> A:3 var
+binder 109:109 <> x:8
+R118:118 Lib.HoTT <> f:6 var
+R121:121 Lib.HoTT <> g:7 var
+R123:123 Lib.HoTT <> x:8 var
+R149:151 Lib.HoTT <> dot def
+not 137:137 <> :::x_'$'_x
+R194:197 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R198:202 Lib.HoTT <> Empty ind
+not 183:183 <> :::'!'_x
+R240:245 Coq.Init.Logic <> eq_sym thm
+not 230:230 <> :::x_'^'
+R287:294 Coq.Init.Logic <> eq_trans thm
+not 275:275 <> :::x_'@'_x
+ind 324:332 <> Decidable
+constr 350:352 <> dec
+rec 324:332 <> Decidable
+proj 350:352 <> dec
+binder 335:335 <> A:9
+R357:360 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R371:371 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R356:356 Lib.HoTT <> A:9 var
+R362:365 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R361:361 Lib.HoTT <> A:9 var
+R366:370 Coq.Init.Logic <> False ind
+ind 381:391 <> DecidableEq
+constr 409:414 <> dec_eq
+rec 381:391 <> DecidableEq
+proj 409:414 <> dec_eq
+binder 394:394 <> A:12
+R430:430 Lib.HoTT <> A:12 var
+binder 425:425 <> x:14
+binder 427:427 <> y:15
+R433:441 Lib.HoTT <> Decidable class
+R445:447 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R444:444 Lib.HoTT <> x:14 var
+R448:448 Lib.HoTT <> y:15 var
+R462:464 Lib.HoTT <> dec def
+R462:464 Lib.HoTT <> dec def
+constr 501:512 <> ContrBuilder
+rec 480:486 <> isContr
+proj 518:523 <> center
+proj 532:536 <> contr
+binder 489:489 <> A:17
+R527:527 Lib.HoTT <> A:17 var
+R550:550 Lib.HoTT <> A:17 var
+binder 547:547 <> x:20
+R554:556 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R553:553 Lib.HoTT <> x:20 var
+R557:562 Lib.HoTT <> center:19 meth
+ind 574:580 <> isHProp
+constr 598:602 <> hProp
+rec 574:580 <> isHProp
+proj 598:602 <> hProp
+binder 583:583 <> P:22
+R619:619 Lib.HoTT <> P:22 var
+binder 613:613 <> p:24
+binder 615:615 <> q:25
+R623:625 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R622:622 Lib.HoTT <> p:24 var
+R626:626 Lib.HoTT <> q:25 var
+ind 636:641 <> isHSet
+constr 660:663 <> hSet
+rec 636:641 <> isHSet
+proj 660:663 <> hSet
+binder 644:644 <> X:27
+R681:681 Lib.HoTT <> X:27 var
+binder 675:675 <> x:29
+binder 677:677 <> y:30
+R692:694 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R691:691 Lib.HoTT <> x:29 var
+R695:695 Lib.HoTT <> y:30 var
+binder 685:685 <> p:31
+binder 687:687 <> q:32
+R700:702 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R699:699 Lib.HoTT <> p:31 var
+R703:703 Lib.HoTT <> q:32 var
+rec 713:717 <> EqDec
+proj 738:740 <> eqf
+proj 763:773 <> eqf_leibniz
+binder 720:720 <> A:34
+R745:748 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R744:744 Lib.HoTT <> A:34 var
+R750:753 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R749:749 Lib.HoTT <> A:34 var
+R754:757 Coq.Init.Datatypes <> bool ind
+binder 784:784 <> x:37
+binder 786:786 <> y:38
+R803:807 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R796:798 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R789:791 Lib.HoTT <> eqf:36 meth
+R795:795 Lib.HoTT <> y:38 var
+R793:793 Lib.HoTT <> x:37 var
+R799:802 Coq.Init.Datatypes <> true constr
+R809:811 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R808:808 Lib.HoTT <> x:37 var
+R812:812 Lib.HoTT <> y:38 var
+ind 911:924 <> WeaklyConstant
+constr 956:961 <> wconst
+rec 911:924 <> WeaklyConstant
+proj 956:961 <> wconst
+binder 927:927 <> A:40
+binder 929:929 <> B:41
+R944:947 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R943:943 Lib.HoTT <> A:40 var
+R948:948 Lib.HoTT <> B:41 var
+binder 939:939 <> f:42
+binder 972:972 <> x:44
+binder 974:974 <> y:45
+R980:982 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R977:977 Lib.HoTT <> f:42 var
+R979:979 Lib.HoTT <> x:44 var
+R983:983 Lib.HoTT <> f:42 var
+R985:985 Lib.HoTT <> y:45 var
+rec 995:1005 <> Collapsible
+proj 1025:1032 <> collapse
+proj 1054:1068 <> wconst_collapse
+binder 1008:1008 <> A:47
+R1044:1047 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1043:1043 Lib.HoTT <> A:47 var
+R1048:1048 Lib.HoTT <> A:47 var
+R1084:1084 Lib.HoTT <> A:47 var
+binder 1079:1079 <> x:50
+binder 1081:1081 <> y:51
+R1097:1099 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1087:1094 Lib.HoTT <> collapse:49 meth
+R1096:1096 Lib.HoTT <> x:50 var
+R1100:1107 Lib.HoTT <> collapse:49 meth
+R1109:1109 Lib.HoTT <> y:51 var
+prf 1123:1140 <> map_tought_isHProp
+binder 1151:1151 <> A:53
+binder 1153:1153 <> B:54
+binder 1155:1155 <> P:55
+R1175:1178 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1174:1174 Lib.HoTT <> A:53 var
+R1179:1179 Lib.HoTT <> P:55 var
+binder 1171:1171 <> f:56
+R1193:1196 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1192:1192 Lib.HoTT <> P:55 var
+R1197:1197 Lib.HoTT <> B:54 var
+binder 1189:1189 <> g:57
+R1211:1214 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1202:1208 Lib.HoTT <> isHProp class
+R1210:1210 Lib.HoTT <> P:55 var
+R1215:1228 Lib.HoTT <> WeaklyConstant class
+R1232:1234 Lib.HoTT <> :::x_'$'_x not
+R1231:1231 Lib.HoTT <> g:57 var
+R1235:1235 Lib.HoTT <> f:56 var
+R1281:1294 Lib.HoTT <> WeaklyConstant class
+R1316:1318 Lib.HoTT <> dot def
+R1332:1334 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1332:1334 Coq.Init.Logic <> ::type_scope:x_'='_x not
+prf 1434:1447 <> dec_is_collaps
+binder 1458:1458 <> A:58
+R1479:1482 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1468:1476 Lib.HoTT <> Decidable class
+R1478:1478 Lib.HoTT <> A:58 var
+R1483:1493 Lib.HoTT <> Collapsible class
+R1495:1495 Lib.HoTT <> A:58 var
+binder 1549:1549 <> x:59
+binder 1549:1549 <> x:60
+binder 1599:1599 <> x:61
+R1604:1604 Lib.HoTT <> x:61 var
+binder 1599:1599 <> x:62
+R1604:1604 Lib.HoTT <> x:62 var
+ind 1666:1680 <> PathCollapsible
+constr 1698:1706 <> path_coll
+rec 1666:1680 <> PathCollapsible
+proj 1698:1706 <> path_coll
+binder 1683:1683 <> A:63
+R1724:1724 Lib.HoTT <> A:63 var
+binder 1718:1718 <> x:65
+binder 1720:1720 <> y:66
+R1728:1738 Lib.HoTT <> Collapsible class
+R1742:1744 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1741:1741 Lib.HoTT <> x:65 var
+R1745:1745 Lib.HoTT <> y:66 var
+prf 1758:1779 <> eq_dec_is_path_collaps
+binder 1790:1790 <> A:68
+R1813:1816 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1800:1810 Lib.HoTT <> DecidableEq class
+R1812:1812 Lib.HoTT <> A:68 var
+R1817:1831 Lib.HoTT <> PathCollapsible class
+R1833:1833 Lib.HoTT <> A:68 var
+R1869:1882 Lib.HoTT <> dec_is_collaps thm
+R1869:1882 Lib.HoTT <> dec_is_collaps thm
+prf 1908:1914 <> loop_eq
+binder 1925:1925 <> A:69
+R1946:1946 Lib.HoTT <> A:69 var
+binder 1941:1941 <> x:70
+binder 1943:1943 <> y:71
+R1960:1962 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1959:1959 Lib.HoTT <> x:70 var
+R1963:1963 Lib.HoTT <> y:71 var
+binder 1956:1956 <> p:72
+R1976:1978 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1969:1975 Coq.Init.Logic <> eq_refl constr
+R1979:1986 Coq.Init.Logic <> eq_trans thm
+R1999:1999 Lib.HoTT <> p:72 var
+R1989:1994 Coq.Init.Logic <> eq_sym thm
+R1996:1996 Lib.HoTT <> p:72 var
+prf 2058:2065 <> loop_eq'
+binder 2076:2076 <> A:73
+R2097:2097 Lib.HoTT <> A:73 var
+binder 2092:2092 <> x:74
+binder 2094:2094 <> y:75
+R2111:2113 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2110:2110 Lib.HoTT <> x:74 var
+R2114:2114 Lib.HoTT <> y:75 var
+binder 2107:2107 <> p:76
+R2127:2129 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2120:2126 Coq.Init.Logic <> eq_refl constr
+R2131:2134 Lib.HoTT <> :::x_'@'_x not
+R2138:2138 Lib.HoTT <> :::x_'@'_x not
+R2130:2130 Lib.HoTT <> p:76 var
+R2136:2137 Lib.HoTT <> :::x_'^' not
+R2135:2135 Lib.HoTT <> p:76 var
+prf 2199:2218 <> path_collaps_is_hset
+binder 2221:2221 <> A:77
+R2250:2253 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2233:2247 Lib.HoTT <> PathCollapsible class
+R2249:2249 Lib.HoTT <> A:77 var
+R2254:2259 Lib.HoTT <> isHSet class
+R2261:2261 Lib.HoTT <> A:77 var
+R2280:2285 Lib.HoTT <> isHSet class
+R2288:2302 Lib.HoTT <> PathCollapsible class
+R2337:2337 Coq.Init.Logic <> ::type_scope:x_'='_x not
+binder 2333:2333 <> e:78
+R2342:2344 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2341:2341 Lib.HoTT <> e:78 var
+R2345:2352 Coq.Init.Logic <> eq_trans thm
+R2385:2392 Lib.HoTT <> collapse meth
+R2394:2394 Lib.HoTT <> e:78 var
+R2355:2360 Coq.Init.Logic <> eq_sym thm
+R2362:2369 Lib.HoTT <> collapse meth
+R2371:2377 Coq.Init.Logic <> eq_refl constr
+R2337:2337 Coq.Init.Logic <> ::type_scope:x_'='_x not
+binder 2333:2333 <> e:79
+R2342:2344 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2341:2341 Lib.HoTT <> e:79 var
+R2345:2352 Coq.Init.Logic <> eq_trans thm
+R2385:2392 Lib.HoTT <> collapse meth
+R2394:2394 Lib.HoTT <> e:79 var
+R2355:2360 Coq.Init.Logic <> eq_sym thm
+R2362:2369 Lib.HoTT <> collapse meth
+R2371:2377 Coq.Init.Logic <> eq_refl constr
+R2445:2459 Lib.HoTT <> wconst_collapse meth
+R2445:2459 Lib.HoTT <> wconst_collapse meth
+R2445:2459 Lib.HoTT <> wconst_collapse meth
+R2505:2511 Lib.HoTT <> loop_eq thm
+R2505:2511 Lib.HoTT <> loop_eq thm
+prf 2528:2539 <> pathdec_hset
+binder 2542:2542 <> A:80
+R2566:2569 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2553:2563 Lib.HoTT <> DecidableEq class
+R2565:2565 Lib.HoTT <> A:80 var
+R2570:2575 Lib.HoTT <> isHSet class
+R2577:2577 Lib.HoTT <> A:80 var
+R2605:2624 Lib.HoTT <> path_collaps_is_hset thm
+R2605:2624 Lib.HoTT <> path_collaps_is_hset thm
+R2633:2654 Lib.HoTT <> eq_dec_is_path_collaps thm
+R2633:2654 Lib.HoTT <> eq_dec_is_path_collaps thm
+prf 2683:2695 <> eqDec_pathdec
+binder 2706:2706 <> A:81
+R2722:2725 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2715:2719 Lib.HoTT <> EqDec class
+R2721:2721 Lib.HoTT <> A:81 var
+R2726:2736 Lib.HoTT <> DecidableEq class
+R2738:2738 Lib.HoTT <> A:81 var
+def 2977:2982 <> isLeft
+binder 2985:2985 <> A:82
+binder 2987:2987 <> B:83
+R3002:3004 Coq.Init.Datatypes <> ::type_scope:x_'+'_x not
+R3001:3001 Lib.HoTT <> A:82 var
+R3005:3005 Lib.HoTT <> B:83 var
+binder 2997:2997 <> x:84
+R3009:3012 Coq.Init.Datatypes <> bool ind
+R3025:3025 Lib.HoTT <> x:84 var
+R3036:3038 Coq.Init.Datatypes <> inl constr
+R3045:3048 Coq.Init.Datatypes <> true constr
+R3059:3063 Coq.Init.Datatypes <> false constr
+prf 3081:3093 <> pathdec_eqDec
+binder 3104:3104 <> A:86
+R3126:3129 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3113:3123 Lib.HoTT <> DecidableEq class
+R3125:3125 Lib.HoTT <> A:86 var
+R3130:3134 Lib.HoTT <> EqDec class
+R3136:3136 Lib.HoTT <> A:86 var
+R3167:3177 Lib.HoTT <> DecidableEq class
+binder 3197:3197 <> x:87
+binder 3199:3199 <> y:88
+R3204:3209 Lib.HoTT <> isLeft def
+R3214:3214 Lib.HoTT <> x:87 var
+R3216:3216 Lib.HoTT <> y:88 var
+binder 3197:3197 <> x:89
+binder 3199:3199 <> y:90
+R3204:3209 Lib.HoTT <> isLeft def
+R3214:3214 Lib.HoTT <> x:89 var
+R3216:3216 Lib.HoTT <> y:90 var
+prf 3449:3459 <> dec_eq_hset
+binder 3470:3470 <> A:91
+R3486:3489 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3479:3483 Lib.HoTT <> EqDec class
+R3485:3485 Lib.HoTT <> A:91 var
+R3490:3495 Lib.HoTT <> isHSet class
+R3497:3497 Lib.HoTT <> A:91 var
+R3527:3538 Lib.HoTT <> pathdec_hset thm
+R3527:3538 Lib.HoTT <> pathdec_hset thm
+R3547:3559 Lib.HoTT <> eqDec_pathdec thm
+R3547:3559 Lib.HoTT <> eqDec_pathdec thm
+def 3591:3600 <> path_contr
+binder 3603:3603 <> A:92
+R3614:3620 Lib.HoTT <> isContr class
+R3622:3622 Lib.HoTT <> A:92 var
+binder 3614:3622 <> H:93
+R3631:3631 Lib.HoTT <> A:92 var
+binder 3626:3626 <> x:94
+binder 3628:3628 <> y:95
+R3637:3639 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3636:3636 Lib.HoTT <> x:94 var
+R3640:3640 Lib.HoTT <> y:95 var
+R3646:3653 Coq.Init.Logic <> eq_trans thm
+R3666:3671 Coq.Init.Logic <> eq_sym thm
+R3674:3678 Lib.HoTT <> contr meth
+R3680:3680 Lib.HoTT <> y:95 var
+R3656:3660 Lib.HoTT <> contr meth
+R3662:3662 Lib.HoTT <> x:94 var
+prf 3692:3711 <> all_path_eq_in_contr
+binder 3714:3714 <> A:96
+R3725:3731 Lib.HoTT <> isContr class
+R3733:3733 Lib.HoTT <> A:96 var
+binder 3725:3733 <> H:97
+R3742:3742 Lib.HoTT <> A:96 var
+binder 3737:3737 <> x:98
+binder 3739:3739 <> y:99
+R3759:3761 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3758:3758 Lib.HoTT <> x:98 var
+R3762:3762 Lib.HoTT <> y:99 var
+binder 3753:3753 <> p:100
+binder 3755:3755 <> q:101
+R3766:3768 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3765:3765 Lib.HoTT <> p:100 var
+R3769:3769 Lib.HoTT <> q:101 var
+R3812:3814 Coq.Init.Logic <> ::type_scope:x_'='_x not
+binder 3808:3808 <> e:102
+R3819:3821 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3818:3818 Lib.HoTT <> e:102 var
+R3822:3831 Lib.HoTT <> path_contr def
+R3812:3814 Coq.Init.Logic <> ::type_scope:x_'='_x not
+binder 3808:3808 <> e:103
+R3819:3821 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3818:3818 Lib.HoTT <> e:103 var
+R3822:3831 Lib.HoTT <> path_contr def
+R3861:3870 Lib.HoTT <> path_contr def
+R3880:3884 Lib.HoTT <> contr meth
+R3905:3912 Lib.HoTT <> loop_eq' thm
+R3905:3912 Lib.HoTT <> loop_eq' thm
+prf 3976:3987 <> contr_bottom
+binder 3990:3990 <> A:104
+R4001:4007 Lib.HoTT <> isContr class
+R4009:4009 Lib.HoTT <> A:104 var
+binder 4001:4009 <> H:105
+R4018:4018 Lib.HoTT <> A:104 var
+binder 4013:4013 <> x:106
+binder 4015:4015 <> y:107
+R4022:4028 Lib.HoTT <> isContr class
+R4032:4034 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4031:4031 Lib.HoTT <> x:106 var
+R4035:4035 Lib.HoTT <> y:107 var
+R4056:4065 Lib.HoTT <> path_contr def
+R4056:4065 Lib.HoTT <> path_contr def
+R4091:4110 Lib.HoTT <> all_path_eq_in_contr thm
+R4091:4110 Lib.HoTT <> all_path_eq_in_contr thm
+prf 4127:4140 <> contr_is_hprop
+binder 4143:4143 <> A:108
+R4154:4160 Lib.HoTT <> isContr class
+R4162:4162 Lib.HoTT <> A:108 var
+binder 4154:4162 <> H:109
+R4167:4173 Lib.HoTT <> isHProp class
+R4175:4175 Lib.HoTT <> A:108 var
+R4194:4200 Lib.HoTT <> isHProp class
+prf 4311:4328 <> contr_not_eq_hprop
+R4332:4338 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R4346:4347 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 4339:4339 <> A:110
+R4357:4361 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R4373:4373 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R4348:4354 Lib.HoTT <> isHProp class
+R4356:4356 Lib.HoTT <> A:110 var
+R4362:4363 Lib.HoTT <> :::'!'_x not
+R4364:4370 Lib.HoTT <> isContr class
+R4372:4372 Lib.HoTT <> A:110 var
+R4392:4396 Lib.HoTT <> Empty ind
+R4392:4396 Lib.HoTT <> Empty ind
+R4417:4423 Lib.HoTT <> isHProp class
+prf 4485:4504 <> all_path_eq_in_hprop
+binder 4507:4507 <> A:111
+R4518:4524 Lib.HoTT <> isHProp class
+R4526:4526 Lib.HoTT <> A:111 var
+binder 4518:4526 <> H:112
+R4535:4535 Lib.HoTT <> A:111 var
+binder 4530:4530 <> x:113
+binder 4532:4532 <> y:114
+R4552:4554 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4551:4551 Lib.HoTT <> x:113 var
+R4555:4555 Lib.HoTT <> y:114 var
+binder 4546:4546 <> p:115
+binder 4548:4548 <> q:116
+R4559:4561 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4558:4558 Lib.HoTT <> p:115 var
+R4562:4562 Lib.HoTT <> q:116 var
+R4594:4600 Lib.HoTT <> isHProp class
+R4604:4604 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4594:4600 Lib.HoTT <> isHProp class
+R4604:4604 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4620:4633 Lib.HoTT <> contr_is_hprop thm
+R4620:4633 Lib.HoTT <> contr_is_hprop thm
+R4642:4653 Lib.HoTT <> contr_bottom thm
+R4642:4653 Lib.HoTT <> contr_bottom thm
+prf 4713:4721 <> hprop_def
+binder 4724:4724 <> A:117
+R4735:4741 Lib.HoTT <> isHProp class
+R4743:4743 Lib.HoTT <> A:117 var
+binder 4735:4743 <> H:118
+R4752:4752 Lib.HoTT <> A:117 var
+binder 4747:4747 <> x:119
+binder 4749:4749 <> y:120
+R4757:4763 Lib.HoTT <> isContr class
+R4767:4769 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4766:4766 Lib.HoTT <> x:119 var
+R4770:4770 Lib.HoTT <> y:120 var
+R4814:4833 Lib.HoTT <> all_path_eq_in_hprop thm
+R4814:4833 Lib.HoTT <> all_path_eq_in_hprop thm
+prf 4850:4858 <> hprop_inv
+binder 4861:4861 <> A:121
+R4872:4878 Lib.HoTT <> isContr class
+R4880:4880 Lib.HoTT <> A:121 var
+binder 4872:4880 <> H:122
+R4889:4889 Lib.HoTT <> A:121 var
+binder 4884:4884 <> x:123
+binder 4886:4886 <> y:124
+R4894:4900 Lib.HoTT <> isHProp class
+R4904:4906 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4903:4903 Lib.HoTT <> x:123 var
+R4907:4907 Lib.HoTT <> y:124 var
+R4926:4939 Lib.HoTT <> contr_is_hprop thm
+R4926:4939 Lib.HoTT <> contr_is_hprop thm
+R4948:4959 Lib.HoTT <> contr_bottom thm
+R4948:4959 Lib.HoTT <> contr_bottom thm
+prf 4988:5000 <> hprop_is_hset
+binder 5003:5003 <> A:125
+R5014:5020 Lib.HoTT <> isHProp class
+R5022:5022 Lib.HoTT <> A:125 var
+binder 5014:5022 <> H:126
+R5027:5032 Lib.HoTT <> isHSet class
+R5034:5034 Lib.HoTT <> A:125 var
+R5053:5058 Lib.HoTT <> isHSet class
+R5083:5102 Lib.HoTT <> all_path_eq_in_hprop thm
+R5083:5102 Lib.HoTT <> all_path_eq_in_hprop thm
+prf 5119:5135 <> hprop_not_eq_hset
+R5139:5145 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R5153:5154 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 5146:5146 <> A:127
+R5163:5166 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R5155:5160 Lib.HoTT <> isHSet class
+R5162:5162 Lib.HoTT <> A:127 var
+R5167:5167 Lib.HoTT <> :::'!'_x not
+R5168:5174 Lib.HoTT <> isHProp class
+R5176:5176 Lib.HoTT <> A:127 var
+R5195:5198 Coq.Init.Datatypes <> bool ind
+R5195:5198 Coq.Init.Datatypes <> bool ind
+R5218:5229 Lib.HoTT <> pathdec_hset thm
+R5218:5229 Lib.HoTT <> pathdec_hset thm
+R5251:5259 Lib.HoTT <> Decidable class
+R5345:5348 Coq.Init.Datatypes <> true constr
+R5350:5354 Coq.Init.Datatypes <> false constr
+R5345:5348 Coq.Init.Datatypes <> true constr
+R5350:5354 Coq.Init.Datatypes <> false constr
+prf 5386:5393 <> hset_def
+binder 5396:5396 <> A:128
+R5407:5412 Lib.HoTT <> isHSet class
+R5414:5414 Lib.HoTT <> A:128 var
+binder 5407:5414 <> H:129
+R5423:5423 Lib.HoTT <> A:128 var
+binder 5418:5418 <> x:130
+binder 5420:5420 <> y:131
+R5428:5434 Lib.HoTT <> isHProp class
+R5438:5440 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5437:5437 Lib.HoTT <> x:130 var
+R5441:5441 Lib.HoTT <> y:131 var
+R5461:5467 Lib.HoTT <> isHProp class
+prf 5494:5527 <> paths_between_paths_are_eq_in_hset
+binder 5530:5530 <> A:132
+R5541:5546 Lib.HoTT <> isHSet class
+R5548:5548 Lib.HoTT <> A:132 var
+binder 5541:5548 <> H:133
+R5557:5557 Lib.HoTT <> A:132 var
+binder 5552:5552 <> x:134
+binder 5554:5554 <> y:135
+R5567:5569 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5566:5566 Lib.HoTT <> x:134 var
+R5570:5570 Lib.HoTT <> y:135 var
+binder 5561:5561 <> a:136
+binder 5563:5563 <> b:137
+R5588:5590 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5587:5587 Lib.HoTT <> a:136 var
+R5591:5591 Lib.HoTT <> b:137 var
+binder 5582:5582 <> p:138
+binder 5584:5584 <> q:139
+R5595:5597 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5594:5594 Lib.HoTT <> p:138 var
+R5598:5598 Lib.HoTT <> q:139 var
+R5630:5636 Lib.HoTT <> isContr class
+R5640:5642 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5630:5636 Lib.HoTT <> isContr class
+R5640:5642 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5660:5665 Lib.HoTT <> isHSet class
+R5679:5690 Lib.HoTT <> contr_bottom thm
+R5679:5690 Lib.HoTT <> contr_bottom thm
+R5699:5710 Lib.HoTT <> contr_bottom thm
+R5699:5710 Lib.HoTT <> contr_bottom thm
+prf 5785:5792 <> hset_inv
+binder 5795:5795 <> A:140
+R5806:5812 Lib.HoTT <> isHProp class
+R5814:5814 Lib.HoTT <> A:140 var
+binder 5806:5814 <> H:141
+R5823:5823 Lib.HoTT <> A:140 var
+binder 5818:5818 <> x:142
+binder 5820:5820 <> y:143
+R5828:5833 Lib.HoTT <> isHSet class
+R5837:5839 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5836:5836 Lib.HoTT <> x:142 var
+R5840:5840 Lib.HoTT <> y:143 var
+R5877:5882 Lib.HoTT <> isHSet class
+R5897:5909 Lib.HoTT <> hprop_is_hset thm
+R5877:5882 Lib.HoTT <> isHSet class
+R5897:5909 Lib.HoTT <> hprop_is_hset thm
+R5933:5966 Lib.HoTT <> paths_between_paths_are_eq_in_hset thm
+R5933:5966 Lib.HoTT <> paths_between_paths_are_eq_in_hset thm
+ind 5989:6002 <> universe_level
+constr 6016:6024 <> minus_two
+constr 6046:6055 <> S_universe
+R6029:6042 Lib.HoTT <> universe_level:144 ind
+R6073:6076 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6059:6072 Lib.HoTT <> universe_level:144 ind
+R6077:6090 Lib.HoTT <> universe_level:144 ind
+def 6105:6114 <> HPropLevel
+R6119:6128 Lib.HoTT <> S_universe constr
+R6130:6138 Lib.HoTT <> minus_two constr
+def 6153:6161 <> HSetLevel
+R6166:6175 Lib.HoTT <> S_universe constr
+R6177:6186 Lib.HoTT <> HPropLevel def
+def 6199:6205 <> isNType
+R6212:6225 Lib.HoTT <> universe_level ind
+binder 6208:6208 <> n:146
+binder 6229:6229 <> A:147
+R6255:6255 Lib.HoTT <> n:146 var
+R6264:6272 Lib.HoTT <> minus_two constr
+R6277:6283 Lib.HoTT <> isContr class
+R6285:6285 Lib.HoTT <> A:147 var
+R6289:6298 Lib.HoTT <> S_universe constr
+R6318:6318 Lib.HoTT <> A:147 var
+binder 6313:6313 <> x:150
+binder 6315:6315 <> y:151
+R6321:6327 Lib.HoTT <> isNType:148 def
+R6334:6336 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6333:6333 Lib.HoTT <> x:150 var
+R6337:6337 Lib.HoTT <> y:151 var
+prf 6354:6364 <> isHProp_def
+binder 6375:6375 <> A:152
+R6404:6407 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6384:6390 Lib.HoTT <> isNType def
+R6392:6401 Lib.HoTT <> HPropLevel def
+R6403:6403 Lib.HoTT <> A:152 var
+R6408:6414 Lib.HoTT <> isHProp class
+R6416:6416 Lib.HoTT <> A:152 var
+R6435:6441 Lib.HoTT <> isNType def
+prf 6512:6523 <> isHProp_def'
+binder 6534:6534 <> A:153
+R6552:6555 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6543:6549 Lib.HoTT <> isHProp class
+R6551:6551 Lib.HoTT <> A:153 var
+R6556:6562 Lib.HoTT <> isNType def
+R6564:6573 Lib.HoTT <> HPropLevel def
+R6575:6575 Lib.HoTT <> A:153 var
+R6594:6600 Lib.HoTT <> isNType def
+R6632:6640 Lib.HoTT <> hprop_def thm
+R6632:6640 Lib.HoTT <> hprop_def thm
+prf 6669:6678 <> isHSet_def
+binder 6689:6689 <> A:154
+R6717:6720 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6698:6704 Lib.HoTT <> isNType def
+R6706:6714 Lib.HoTT <> HSetLevel def
+R6716:6716 Lib.HoTT <> A:154 var
+R6721:6726 Lib.HoTT <> isHSet class
+R6728:6728 Lib.HoTT <> A:154 var
+R6747:6753 Lib.HoTT <> isNType def
+prf 6832:6842 <> isHSet_def'
+binder 6853:6853 <> A:155
+R6870:6873 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6862:6867 Lib.HoTT <> isHSet class
+R6869:6869 Lib.HoTT <> A:155 var
+R6874:6880 Lib.HoTT <> isNType def
+R6882:6890 Lib.HoTT <> HSetLevel def
+R6892:6892 Lib.HoTT <> A:155 var
+R6911:6917 Lib.HoTT <> isNType def
+R6953:6961 Lib.HoTT <> hprop_def thm
+R6953:6961 Lib.HoTT <> hprop_def thm
+R6970:6977 Lib.HoTT <> hset_def thm
+R6970:6977 Lib.HoTT <> hset_def thm
+prf 6995:7008 <> NType_incusion
+binder 7019:7019 <> A:156
+R7039:7052 Lib.HoTT <> universe_level ind
+binder 7035:7035 <> n:157
+R7068:7071 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7057:7063 Lib.HoTT <> isNType def
+R7065:7065 Lib.HoTT <> n:157 var
+R7067:7067 Lib.HoTT <> A:156 var
+R7072:7078 Lib.HoTT <> isNType def
+R7081:7090 Lib.HoTT <> S_universe constr
+R7092:7092 Lib.HoTT <> n:157 var
+R7095:7095 Lib.HoTT <> A:156 var
+R7192:7203 Lib.HoTT <> contr_bottom thm
+R7192:7203 Lib.HoTT <> contr_bottom thm
+def 7299:7300 <> id
+binder 7303:7303 <> A:158
+R7316:7316 Lib.HoTT <> A:158 var
+binder 7313:7313 <> x:159
+R7322:7322 Lib.HoTT <> x:159 var
+def 7337:7338 <> ap
+binder 7341:7341 <> A:160
+binder 7343:7343 <> B:161
+R7358:7358 Lib.HoTT <> A:160 var
+binder 7353:7353 <> x:162
+binder 7355:7355 <> y:163
+R7366:7369 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7365:7365 Lib.HoTT <> A:160 var
+R7370:7370 Lib.HoTT <> B:161 var
+binder 7362:7362 <> f:164
+R7378:7380 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7377:7377 Lib.HoTT <> x:162 var
+R7381:7381 Lib.HoTT <> y:163 var
+binder 7374:7374 <> p:165
+R7388:7390 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7385:7385 Lib.HoTT <> f:164 var
+R7387:7387 Lib.HoTT <> x:162 var
+R7391:7391 Lib.HoTT <> f:164 var
+R7393:7393 Lib.HoTT <> y:163 var
+R7406:7406 Lib.HoTT <> p:165 var
+R7417:7423 Coq.Init.Logic <> eq_refl constr
+R7428:7434 Coq.Init.Logic <> eq_refl constr
+def 7455:7463 <> transport
+binder 7466:7466 <> A:167
+R7481:7481 Lib.HoTT <> A:167 var
+binder 7476:7476 <> x:168
+binder 7478:7478 <> y:169
+R7489:7492 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7488:7488 Lib.HoTT <> A:167 var
+binder 7485:7485 <> P:170
+R7507:7509 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7506:7506 Lib.HoTT <> x:168 var
+R7510:7510 Lib.HoTT <> y:169 var
+binder 7500:7503 <> path:171
+R7518:7518 Lib.HoTT <> P:170 var
+R7520:7520 Lib.HoTT <> x:168 var
+binder 7514:7514 <> q:172
+R7525:7525 Lib.HoTT <> P:170 var
+R7527:7527 Lib.HoTT <> y:169 var
+R7538:7541 Lib.HoTT <> path:171 var
+R7550:7556 Coq.Init.Logic <> eq_refl constr
+R7561:7561 Lib.HoTT <> q:172 var
+R7588:7596 Lib.HoTT <> transport def
+not 7578:7578 <> :::x_'*'
+def 7629:7631 <> apd
+binder 7634:7634 <> A:174
+R7649:7649 Lib.HoTT <> A:174 var
+binder 7644:7644 <> x:175
+binder 7646:7646 <> y:176
+R7657:7660 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7656:7656 Lib.HoTT <> A:174 var
+binder 7653:7653 <> P:177
+R7680:7680 Lib.HoTT <> A:174 var
+binder 7678:7678 <> x:178
+R7683:7683 Lib.HoTT <> P:177 var
+R7685:7685 Lib.HoTT <> x:178 var
+binder 7668:7668 <> f:179
+R7693:7695 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7692:7692 Lib.HoTT <> x:175 var
+R7696:7696 Lib.HoTT <> y:176 var
+binder 7689:7689 <> p:180
+R7715:7717 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7704:7704 Lib.HoTT <> :::x_'*' not
+R7706:7714 Lib.HoTT <> :::x_'*' not
+R7705:7705 Lib.HoTT <> p:180 var
+R7711:7711 Lib.HoTT <> f:179 var
+R7713:7713 Lib.HoTT <> x:175 var
+R7718:7718 Lib.HoTT <> f:179 var
+R7720:7720 Lib.HoTT <> y:176 var
+R7733:7733 Lib.HoTT <> p:180 var
+R7744:7750 Coq.Init.Logic <> eq_refl constr
+R7755:7761 Coq.Init.Logic <> eq_refl constr
+prf 7796:7803 <> ap_distr
+binder 7806:7806 <> A:182
+binder 7808:7808 <> B:183
+R7825:7825 Lib.HoTT <> A:182 var
+binder 7818:7818 <> x:184
+binder 7820:7820 <> y:185
+binder 7822:7822 <> z:186
+R7833:7836 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7832:7832 Lib.HoTT <> A:182 var
+R7837:7837 Lib.HoTT <> B:183 var
+binder 7829:7829 <> f:187
+R7845:7847 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7844:7844 Lib.HoTT <> x:184 var
+R7848:7848 Lib.HoTT <> y:185 var
+binder 7841:7841 <> p:188
+R7856:7858 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7855:7855 Lib.HoTT <> y:185 var
+R7859:7859 Lib.HoTT <> z:186 var
+binder 7852:7852 <> q:189
+R7878:7880 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7866:7867 Lib.HoTT <> ap def
+R7873:7875 Lib.HoTT <> :::x_'@'_x not
+R7872:7872 Lib.HoTT <> p:188 var
+R7876:7876 Lib.HoTT <> q:189 var
+R7869:7869 Lib.HoTT <> f:187 var
+R7881:7881 Lib.HoTT <> :::x_'@'_x not
+R7888:7892 Lib.HoTT <> :::x_'@'_x not
+R7899:7899 Lib.HoTT <> :::x_'@'_x not
+R7882:7883 Lib.HoTT <> ap def
+R7887:7887 Lib.HoTT <> p:188 var
+R7885:7885 Lib.HoTT <> f:187 var
+R7893:7894 Lib.HoTT <> ap def
+R7898:7898 Lib.HoTT <> q:189 var
+R7896:7896 Lib.HoTT <> f:187 var
+prf 7958:7963 <> ap_inv
+binder 7966:7966 <> A:190
+binder 7968:7968 <> B:191
+R7983:7983 Lib.HoTT <> A:190 var
+binder 7978:7978 <> x:192
+binder 7980:7980 <> y:193
+R7991:7994 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7990:7990 Lib.HoTT <> A:190 var
+R7995:7995 Lib.HoTT <> B:191 var
+binder 7987:7987 <> f:194
+R8003:8005 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8002:8002 Lib.HoTT <> x:192 var
+R8006:8006 Lib.HoTT <> y:193 var
+binder 7999:7999 <> p:195
+R8021:8023 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8011:8012 Lib.HoTT <> ap def
+R8018:8019 Lib.HoTT <> :::x_'^' not
+R8017:8017 Lib.HoTT <> p:195 var
+R8014:8014 Lib.HoTT <> f:194 var
+R8024:8024 Lib.HoTT <> :::x_'^' not
+R8031:8033 Lib.HoTT <> :::x_'^' not
+R8025:8026 Lib.HoTT <> ap def
+R8030:8030 Lib.HoTT <> p:195 var
+R8028:8028 Lib.HoTT <> f:194 var
+prf 8089:8095 <> ap_conn
+binder 8098:8098 <> A:196
+binder 8100:8100 <> B:197
+binder 8102:8102 <> C:198
+R8117:8117 Lib.HoTT <> A:196 var
+binder 8112:8112 <> x:199
+binder 8114:8114 <> y:200
+R8125:8128 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8124:8124 Lib.HoTT <> A:196 var
+R8129:8129 Lib.HoTT <> B:197 var
+binder 8121:8121 <> f:201
+R8137:8140 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8136:8136 Lib.HoTT <> B:197 var
+R8141:8141 Lib.HoTT <> C:198 var
+binder 8133:8133 <> g:202
+R8149:8151 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8148:8148 Lib.HoTT <> x:199 var
+R8152:8152 Lib.HoTT <> y:200 var
+binder 8145:8145 <> p:203
+R8172:8174 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8159:8160 Lib.HoTT <> ap def
+R8165:8166 Lib.HoTT <> ap def
+R8170:8170 Lib.HoTT <> p:203 var
+R8168:8168 Lib.HoTT <> f:201 var
+R8162:8162 Lib.HoTT <> g:202 var
+R8175:8176 Lib.HoTT <> ap def
+R8186:8186 Lib.HoTT <> p:203 var
+R8180:8182 Lib.HoTT <> :::x_'$'_x not
+R8179:8179 Lib.HoTT <> g:202 var
+R8183:8183 Lib.HoTT <> f:201 var
+prf 8242:8246 <> ap_id
+binder 8249:8249 <> A:204
+binder 8251:8251 <> B:205
+R8266:8266 Lib.HoTT <> A:204 var
+binder 8261:8261 <> x:206
+binder 8263:8263 <> y:207
+R8274:8276 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8273:8273 Lib.HoTT <> x:206 var
+R8277:8277 Lib.HoTT <> y:207 var
+binder 8270:8270 <> p:208
+R8289:8291 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8282:8283 Lib.HoTT <> ap def
+R8288:8288 Lib.HoTT <> p:208 var
+R8285:8286 Lib.HoTT <> id def
+R8292:8292 Lib.HoTT <> p:208 var
+prf 8372:8385 <> transport_dist
+binder 8388:8388 <> A:209
+R8402:8405 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8401:8401 Lib.HoTT <> A:209 var
+binder 8398:8398 <> P:210
+R8420:8420 Lib.HoTT <> A:209 var
+binder 8413:8413 <> x:211
+binder 8415:8415 <> y:212
+binder 8417:8417 <> z:213
+R8428:8430 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8427:8427 Lib.HoTT <> x:211 var
+R8431:8431 Lib.HoTT <> y:212 var
+binder 8424:8424 <> p:214
+R8439:8441 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8438:8438 Lib.HoTT <> y:212 var
+R8442:8442 Lib.HoTT <> z:213 var
+binder 8435:8435 <> q:215
+R8449:8449 Lib.HoTT <> P:210 var
+R8451:8451 Lib.HoTT <> x:211 var
+binder 8446:8446 <> u:216
+R8473:8475 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8458:8458 Lib.HoTT <> :::x_'*' not
+R8460:8472 Lib.HoTT <> :::x_'*' not
+R8459:8459 Lib.HoTT <> q:215 var
+R8465:8465 Lib.HoTT <> :::x_'*' not
+R8467:8471 Lib.HoTT <> :::x_'*' not
+R8466:8466 Lib.HoTT <> p:214 var
+R8471:8471 Lib.HoTT <> u:216 var
+R8476:8477 Lib.HoTT <> :::x_'*' not
+R8483:8488 Lib.HoTT <> :::x_'*' not
+R8479:8481 Lib.HoTT <> :::x_'@'_x not
+R8478:8478 Lib.HoTT <> p:214 var
+R8482:8482 Lib.HoTT <> q:215 var
+R8488:8488 Lib.HoTT <> u:216 var
+prf 8547:8558 <> transport_ap
+binder 8561:8561 <> A:217
+binder 8563:8563 <> B:218
+R8577:8580 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8576:8576 Lib.HoTT <> B:218 var
+binder 8573:8573 <> P:219
+R8593:8593 Lib.HoTT <> A:217 var
+binder 8588:8588 <> x:220
+binder 8590:8590 <> y:221
+R8601:8604 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8600:8600 Lib.HoTT <> A:217 var
+R8605:8605 Lib.HoTT <> B:218 var
+binder 8597:8597 <> f:222
+R8613:8615 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8612:8612 Lib.HoTT <> x:220 var
+R8616:8616 Lib.HoTT <> y:221 var
+binder 8609:8609 <> p:223
+R8623:8623 Lib.HoTT <> P:219 var
+R8626:8626 Lib.HoTT <> f:222 var
+R8628:8628 Lib.HoTT <> x:220 var
+binder 8620:8620 <> u:224
+R8662:8664 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8636:8644 Lib.HoTT <> transport def
+R8661:8661 Lib.HoTT <> u:224 var
+R8659:8659 Lib.HoTT <> p:223 var
+R8653:8655 Lib.HoTT <> :::x_'$'_x not
+R8652:8652 Lib.HoTT <> P:219 var
+R8656:8656 Lib.HoTT <> f:222 var
+R8665:8673 Lib.HoTT <> transport def
+R8684:8684 Lib.HoTT <> u:224 var
+R8676:8677 Lib.HoTT <> ap def
+R8681:8681 Lib.HoTT <> p:223 var
+R8679:8679 Lib.HoTT <> f:222 var
+prf 8740:8752 <> transport_fun
+binder 8755:8755 <> A:225
+R8771:8774 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8770:8770 Lib.HoTT <> A:225 var
+binder 8765:8765 <> P:226
+binder 8767:8767 <> Q:227
+R8787:8787 Lib.HoTT <> A:225 var
+binder 8782:8782 <> x:228
+binder 8784:8784 <> y:229
+binder 8801:8801 <> x:230
+R8807:8810 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8804:8804 Lib.HoTT <> P:226 var
+R8806:8806 Lib.HoTT <> x:230 var
+R8811:8811 Lib.HoTT <> Q:227 var
+R8813:8813 Lib.HoTT <> x:230 var
+binder 8791:8791 <> f:231
+R8821:8823 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8820:8820 Lib.HoTT <> x:228 var
+R8824:8824 Lib.HoTT <> y:229 var
+binder 8817:8817 <> p:232
+R8833:8833 Lib.HoTT <> P:226 var
+R8835:8835 Lib.HoTT <> x:228 var
+binder 8830:8830 <> u:233
+R8868:8870 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8840:8848 Lib.HoTT <> transport def
+R8862:8862 Lib.HoTT <> f:231 var
+R8866:8866 Lib.HoTT <> u:233 var
+R8864:8864 Lib.HoTT <> x:228 var
+R8859:8859 Lib.HoTT <> p:232 var
+R8856:8856 Lib.HoTT <> Q:227 var
+R8871:8871 Lib.HoTT <> f:231 var
+R8876:8884 Lib.HoTT <> transport def
+R8897:8897 Lib.HoTT <> u:233 var
+R8895:8895 Lib.HoTT <> p:232 var
+R8892:8892 Lib.HoTT <> P:226 var
+R8873:8873 Lib.HoTT <> y:229 var
+prf 8955:8965 <> dep_pair_eq
+binder 8977:8977 <> A:234
+R8991:8994 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8990:8990 Lib.HoTT <> A:234 var
+binder 8987:8987 <> P:235
+R9007:9007 Lib.HoTT <> A:234 var
+binder 9002:9002 <> x:236
+binder 9004:9004 <> y:237
+R9014:9014 Lib.HoTT <> P:235 var
+R9016:9016 Lib.HoTT <> x:236 var
+binder 9011:9011 <> p:238
+R9023:9023 Lib.HoTT <> P:235 var
+R9025:9025 Lib.HoTT <> y:237 var
+binder 9020:9020 <> q:239
+R9058:9061 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9043:9045 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9031:9036 Coq.Init.Specif <> existT constr
+R9042:9042 Lib.HoTT <> p:238 var
+R9040:9040 Lib.HoTT <> x:236 var
+R9038:9038 Lib.HoTT <> P:235 var
+R9046:9051 Coq.Init.Specif <> existT constr
+R9057:9057 Lib.HoTT <> q:239 var
+R9055:9055 Lib.HoTT <> y:237 var
+R9053:9053 Lib.HoTT <> P:235 var
+R9062:9068 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R9080:9081 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R9076:9078 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9075:9075 Lib.HoTT <> x:236 var
+R9079:9079 Lib.HoTT <> y:237 var
+binder 9069:9072 <> path:240
+R9098:9100 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9082:9090 Lib.HoTT <> transport def
+R9097:9097 Lib.HoTT <> p:238 var
+R9092:9095 Lib.HoTT <> path:240 var
+R9101:9101 Lib.HoTT <> q:239 var
+R9157:9163 Coq.Init.Logic <> eq_refl constr
+R9157:9163 Coq.Init.Logic <> eq_refl constr
+prf 9194:9208 <> dep_pair_eq_inv
+binder 9220:9220 <> A:241
+R9234:9237 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9233:9233 Lib.HoTT <> A:241 var
+binder 9230:9230 <> P:242
+R9250:9250 Lib.HoTT <> A:241 var
+binder 9245:9245 <> x:243
+binder 9247:9247 <> y:244
+R9257:9257 Lib.HoTT <> P:242 var
+R9259:9259 Lib.HoTT <> x:243 var
+binder 9254:9254 <> p:245
+R9266:9266 Lib.HoTT <> P:242 var
+R9268:9268 Lib.HoTT <> y:244 var
+binder 9263:9263 <> q:246
+R9275:9275 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9310:9314 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9276:9282 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R9291:9292 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R9287:9289 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9286:9286 Lib.HoTT <> x:243 var
+R9290:9290 Lib.HoTT <> y:244 var
+binder 9283:9283 <> e:247
+R9306:9308 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9293:9301 Lib.HoTT <> transport def
+R9305:9305 Lib.HoTT <> p:245 var
+R9303:9303 Lib.HoTT <> e:247 var
+R9309:9309 Lib.HoTT <> q:246 var
+R9327:9329 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9315:9320 Coq.Init.Specif <> existT constr
+R9326:9326 Lib.HoTT <> p:245 var
+R9324:9324 Lib.HoTT <> x:243 var
+R9322:9322 Lib.HoTT <> P:242 var
+R9330:9335 Coq.Init.Specif <> existT constr
+R9341:9341 Lib.HoTT <> q:246 var
+R9339:9339 Lib.HoTT <> y:244 var
+R9337:9337 Lib.HoTT <> P:242 var
+def 9421:9435 <> pointwise_paths
+binder 9438:9438 <> A:248
+binder 9440:9440 <> B:249
+R9458:9461 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9457:9457 Lib.HoTT <> A:248 var
+R9462:9462 Lib.HoTT <> B:249 var
+binder 9451:9451 <> f:250
+binder 9453:9453 <> g:251
+binder 9477:9477 <> x:252
+R9483:9485 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9480:9480 Lib.HoTT <> f:250 var
+R9482:9482 Lib.HoTT <> x:252 var
+R9486:9486 Lib.HoTT <> g:251 var
+R9488:9488 Lib.HoTT <> x:252 var
+R9514:9528 Lib.HoTT <> pointwise_paths def
+not 9501:9501 <> :::x_'=='_x
+rec 9558:9564 <> IsEquiv
+proj 9599:9607 <> equiv_inv
+proj 9622:9628 <> eisretr
+proj 9658:9664 <> eissect
+proj 9694:9699 <> eisadj
+binder 9567:9567 <> A:253
+binder 9569:9569 <> B:254
+R9585:9588 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9584:9584 Lib.HoTT <> A:253 var
+R9589:9589 Lib.HoTT <> B:254 var
+binder 9580:9580 <> f:255
+R9612:9615 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9611:9611 Lib.HoTT <> B:254 var
+R9616:9616 Lib.HoTT <> A:253 var
+R9632:9632 Lib.HoTT <> :::x_'=='_x not
+R9646:9650 Lib.HoTT <> :::x_'=='_x not
+R9634:9636 Lib.HoTT <> :::x_'$'_x not
+R9633:9633 Lib.HoTT <> f:255 var
+R9637:9645 Lib.HoTT <> equiv_inv:257 meth
+R9651:9652 Lib.HoTT <> id def
+R9668:9668 Lib.HoTT <> :::x_'=='_x not
+R9682:9686 Lib.HoTT <> :::x_'=='_x not
+R9678:9680 Lib.HoTT <> :::x_'$'_x not
+R9669:9677 Lib.HoTT <> equiv_inv:257 meth
+R9681:9681 Lib.HoTT <> f:255 var
+R9687:9688 Lib.HoTT <> id def
+R9714:9714 Lib.HoTT <> A:253 var
+binder 9710:9710 <> x:260
+R9730:9732 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9717:9723 Lib.HoTT <> eisretr:258 meth
+R9726:9726 Lib.HoTT <> f:255 var
+R9728:9728 Lib.HoTT <> x:260 var
+R9733:9734 Lib.HoTT <> ap def
+R9739:9745 Lib.HoTT <> eissect:259 meth
+R9747:9747 Lib.HoTT <> x:260 var
+R9736:9736 Lib.HoTT <> f:255 var
+R9766:9772 Lib.HoTT <> IsEquiv class
+R9766:9772 Lib.HoTT <> IsEquiv class
+rec 9788:9795 <> IsEquiv'
+proj 9830:9840 <> equiv_inv_A
+proj 9855:9865 <> equiv_inv_B
+proj 9880:9889 <> equiv_id_A
+proj 9919:9928 <> equiv_id_B
+binder 9798:9798 <> A:262
+binder 9800:9800 <> B:263
+R9816:9819 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9815:9815 Lib.HoTT <> A:262 var
+R9820:9820 Lib.HoTT <> B:263 var
+binder 9811:9811 <> f:264
+R9845:9848 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9844:9844 Lib.HoTT <> B:263 var
+R9849:9849 Lib.HoTT <> A:262 var
+R9870:9873 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9869:9869 Lib.HoTT <> B:263 var
+R9874:9874 Lib.HoTT <> A:262 var
+R9908:9911 Lib.HoTT <> :::x_'=='_x not
+R9894:9896 Lib.HoTT <> :::x_'$'_x not
+R9893:9893 Lib.HoTT <> f:264 var
+R9897:9907 Lib.HoTT <> equiv_inv_A:266 meth
+R9912:9913 Lib.HoTT <> id def
+R9947:9950 Lib.HoTT <> :::x_'=='_x not
+R9943:9945 Lib.HoTT <> :::x_'$'_x not
+R9932:9942 Lib.HoTT <> equiv_inv_B:267 meth
+R9946:9946 Lib.HoTT <> f:264 var
+R9951:9952 Lib.HoTT <> id def
+ind 9966:9974 <> IsEquiv''
+constr 10008:10018 <> contr_equiv
+rec 9966:9974 <> IsEquiv''
+proj 10008:10018 <> contr_equiv
+binder 9977:9977 <> A:270
+binder 9979:9979 <> B:271
+R9995:9998 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R9994:9994 Lib.HoTT <> A:270 var
+R9999:9999 Lib.HoTT <> B:271 var
+binder 9990:9990 <> f:272
+R10032:10032 Lib.HoTT <> B:271 var
+binder 10029:10029 <> y:274
+R10035:10041 Lib.HoTT <> isContr class
+R10043:10049 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R10051:10052 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+binder 10050:10050 <> x:275
+R10056:10058 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10053:10053 Lib.HoTT <> f:272 var
+R10055:10055 Lib.HoTT <> x:275 var
+R10059:10059 Lib.HoTT <> y:274 var
+prf 10073:10082 <> equiv_same
+binder 10085:10085 <> A:277
+binder 10087:10087 <> B:278
+R10101:10104 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10100:10100 Lib.HoTT <> A:277 var
+R10105:10105 Lib.HoTT <> B:278 var
+binder 10097:10097 <> f:279
+R10110:10116 Lib.HoTT <> IsEquiv class
+R10118:10118 Lib.HoTT <> A:277 var
+R10120:10120 Lib.HoTT <> B:278 var
+R10122:10122 Lib.HoTT <> f:279 var
+binder 10110:10122 <> H:280
+R10127:10134 Lib.HoTT <> IsEquiv' class
+R10136:10136 Lib.HoTT <> f:279 var
+prf 10216:10226 <> equiv_same'
+binder 10229:10229 <> A:281
+binder 10231:10231 <> B:282
+R10245:10248 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10244:10244 Lib.HoTT <> A:281 var
+R10249:10249 Lib.HoTT <> B:282 var
+binder 10241:10241 <> f:283
+R10254:10261 Lib.HoTT <> IsEquiv' class
+R10263:10263 Lib.HoTT <> A:281 var
+R10265:10265 Lib.HoTT <> B:282 var
+R10267:10267 Lib.HoTT <> f:283 var
+binder 10254:10267 <> H:284
+R10272:10278 Lib.HoTT <> IsEquiv class
+R10280:10280 Lib.HoTT <> f:283 var
+rec 10319:10323 <> Equiv
+proj 10336:10344 <> equiv_fun
+proj 10359:10371 <> equiv_isequiv
+binder 10325:10325 <> A:285
+binder 10327:10327 <> B:286
+R10349:10352 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10348:10348 Lib.HoTT <> A:285 var
+R10353:10353 Lib.HoTT <> B:286 var
+R10375:10381 Lib.HoTT <> IsEquiv class
+R10383:10391 Lib.HoTT <> equiv_fun:288 meth

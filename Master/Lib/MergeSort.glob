@@ -1,0 +1,501 @@
+DIGEST 8e655ce3a372b2d4a5ff805e28440712
+FLib.MergeSort
+R15:34 Coq.Program.Equality <> <> lib
+R52:57 Coq.Setoids.Setoid <> <> lib
+R75:88 Coq.Lists.List <> <> lib
+R128:135 Coq.Arith.PeanoNat <> <> lib
+R166:175 Lib.Sorted <> <> lib
+ind 189:190 <> BT
+constr 216:219 <> leaf
+constr 237:240 <> node
+binder 192:192 <> A:1
+R224:227 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R223:223 Lib.MergeSort <> A:1 var
+R228:229 Lib.MergeSort <> BT:2 ind
+R231:231 Lib.MergeSort <> A:1 var
+R248:251 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R244:245 Lib.MergeSort <> BT:2 ind
+R247:247 Lib.MergeSort <> A:1 var
+R256:259 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R252:253 Lib.MergeSort <> BT:2 ind
+R255:255 Lib.MergeSort <> A:1 var
+R260:261 Lib.MergeSort <> BT:2 ind
+R263:263 Lib.MergeSort <> A:1 var
+R277:280 Lib.MergeSort <> leaf constr
+R277:280 Lib.MergeSort <> leaf constr
+R297:300 Lib.MergeSort <> node constr
+R297:300 Lib.MergeSort <> node constr
+def 317:324 <> BTInsert
+binder 327:327 <> A:4
+R342:342 Lib.MergeSort <> A:4 var
+binder 338:338 <> x:5
+R353:354 Lib.MergeSort <> BT ind
+R356:356 Lib.MergeSort <> A:4 var
+binder 346:349 <> tree:6
+R370:373 Lib.MergeSort <> tree:6 var
+R384:387 Lib.MergeSort <> leaf constr
+R394:397 Lib.MergeSort <> node constr
+R408:411 Lib.MergeSort <> leaf constr
+R400:403 Lib.MergeSort <> leaf constr
+R405:405 Lib.MergeSort <> x:5 var
+R420:423 Lib.MergeSort <> node constr
+R432:435 Lib.MergeSort <> node constr
+R440:447 Lib.MergeSort <> BTInsert:7 def
+R449:449 Lib.MergeSort <> x:5 var
+def 471:476 <> BTSize
+binder 478:478 <> A:9
+R495:496 Lib.MergeSort <> BT ind
+R498:498 Lib.MergeSort <> A:9 var
+binder 488:491 <> tree:10
+R512:515 Lib.MergeSort <> tree:10 var
+R526:529 Lib.MergeSort <> leaf constr
+R542:545 Lib.MergeSort <> node constr
+R562:564 Coq.Init.Nat <> ::nat_scope:x_'+'_x not
+R554:559 Lib.MergeSort <> BTSize:11 def
+R565:570 Lib.MergeSort <> BTSize:11 def
+def 591:598 <> listToBT
+binder 600:600 <> A:13
+R614:614 Lib.MergeSort <> A:13 var
+binder 610:610 <> x:14
+R624:627 Coq.Init.Datatypes <> list ind
+R629:629 Lib.MergeSort <> A:13 var
+binder 617:620 <> list:15
+R633:634 Lib.MergeSort <> BT ind
+R636:636 Lib.MergeSort <> A:13 var
+R649:652 Lib.MergeSort <> list:15 var
+R663:665 Coq.Init.Datatypes <> nil constr
+R670:673 Lib.MergeSort <> leaf constr
+R675:675 Lib.MergeSort <> x:14 var
+R681:684 Coq.Init.Datatypes <> cons constr
+R697:704 Lib.MergeSort <> BTInsert def
+R709:716 Lib.MergeSort <> listToBT:16 def
+R706:706 Lib.MergeSort <> x:14 var
+def 744:748 <> merge
+binder 751:751 <> A:18
+R769:772 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R768:768 Lib.MergeSort <> A:18 var
+R774:777 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R773:773 Lib.MergeSort <> A:18 var
+R778:781 Coq.Init.Datatypes <> bool ind
+binder 762:764 <> ord:19
+R790:793 Coq.Init.Datatypes <> list ind
+R795:795 Lib.MergeSort <> A:18 var
+binder 785:786 <> l1:20
+R799:799 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R806:810 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R800:803 Coq.Init.Datatypes <> list ind
+R805:805 Lib.MergeSort <> A:18 var
+R811:814 Coq.Init.Datatypes <> list ind
+R816:816 Lib.MergeSort <> A:18 var
+R829:830 Lib.MergeSort <> l1:20 var
+R841:842 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R857:860 Coq.Init.Datatypes <> list ind
+R862:862 Lib.MergeSort <> A:18 var
+binder 852:853 <> l2:23
+R868:869 Lib.MergeSort <> l2:23 var
+R877:878 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R899:902 Coq.Init.Datatypes <> list ind
+R904:904 Lib.MergeSort <> A:18 var
+binder 894:895 <> l2:24
+R909:912 Coq.Init.Datatypes <> list ind
+R914:914 Lib.MergeSort <> A:18 var
+R929:930 Lib.MergeSort <> l2:24 var
+R943:944 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R949:950 Lib.MergeSort <> l1:20 var
+R960:961 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R971:973 Lib.MergeSort <> ord:19 var
+R1048:1049 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1050:1052 Lib.MergeSort <> anc:25 var
+R1005:1006 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1008:1012 Lib.MergeSort <> merge:21 def
+R1014:1016 Lib.MergeSort <> ord:19 var
+R1022:1023 Lib.MergeSort <> l2:24 var
+def 1082:1087 <> BTSort
+binder 1090:1090 <> A:27
+R1108:1111 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1107:1107 Lib.MergeSort <> A:27 var
+R1113:1116 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1112:1112 Lib.MergeSort <> A:27 var
+R1117:1120 Coq.Init.Datatypes <> bool ind
+binder 1101:1103 <> ord:28
+R1128:1129 Lib.MergeSort <> BT ind
+R1131:1131 Lib.MergeSort <> A:27 var
+binder 1124:1124 <> t:29
+R1135:1138 Coq.Init.Datatypes <> list ind
+R1140:1140 Lib.MergeSort <> A:27 var
+R1153:1153 Lib.MergeSort <> t:29 var
+R1164:1167 Lib.MergeSort <> leaf constr
+R1174:1174 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R1176:1176 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R1182:1185 Lib.MergeSort <> node constr
+R1194:1198 Lib.MergeSort <> merge def
+R1220:1225 Lib.MergeSort <> BTSort:30 def
+R1227:1229 Lib.MergeSort <> ord:28 var
+R1205:1210 Lib.MergeSort <> BTSort:30 def
+R1212:1214 Lib.MergeSort <> ord:28 var
+R1200:1202 Lib.MergeSort <> ord:28 var
+def 1254:1262 <> mergeSort
+binder 1265:1265 <> A:32
+R1282:1285 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1281:1281 Lib.MergeSort <> A:32 var
+R1287:1290 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1286:1286 Lib.MergeSort <> A:32 var
+R1291:1294 Coq.Init.Datatypes <> bool ind
+binder 1275:1277 <> ord:33
+R1301:1304 Coq.Init.Datatypes <> list ind
+R1306:1306 Lib.MergeSort <> A:32 var
+binder 1298:1298 <> l:34
+R1310:1313 Coq.Init.Datatypes <> list ind
+R1315:1315 Lib.MergeSort <> A:32 var
+R1328:1328 Lib.MergeSort <> l:34 var
+R1339:1340 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R1345:1346 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R1353:1354 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1361:1366 Lib.MergeSort <> BTSort def
+R1373:1380 Lib.MergeSort <> listToBT def
+R1368:1370 Lib.MergeSort <> ord:33 var
+def 1405:1412 <> BTToList
+binder 1414:1414 <> A:36
+R1426:1427 Lib.MergeSort <> BT ind
+R1429:1429 Lib.MergeSort <> A:36 var
+binder 1423:1423 <> t:37
+R1434:1437 Coq.Init.Datatypes <> list ind
+R1439:1439 Lib.MergeSort <> A:36 var
+R1452:1452 Lib.MergeSort <> t:37 var
+R1463:1466 Lib.MergeSort <> leaf constr
+R1473:1473 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R1475:1475 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R1481:1484 Lib.MergeSort <> node constr
+R1493:1493 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R1504:1509 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R1520:1520 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R1494:1501 Lib.MergeSort <> BTToList:38 def
+R1510:1517 Lib.MergeSort <> BTToList:38 def
+def 1555:1561 <> BTCount
+binder 1564:1564 <> A:40
+R1578:1581 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1577:1577 Lib.MergeSort <> A:40 var
+R1582:1585 Coq.Init.Datatypes <> bool ind
+binder 1574:1574 <> p:41
+R1592:1593 Lib.MergeSort <> BT ind
+R1595:1595 Lib.MergeSort <> A:40 var
+binder 1589:1589 <> t:42
+R1609:1609 Lib.MergeSort <> t:42 var
+R1620:1623 Lib.MergeSort <> leaf constr
+R1633:1633 Lib.MergeSort <> p:41 var
+R1655:1658 Lib.MergeSort <> node constr
+R1678:1680 Coq.Init.Nat <> ::nat_scope:x_'+'_x not
+R1667:1673 Lib.MergeSort <> BTCount:43 def
+R1675:1675 Lib.MergeSort <> p:41 var
+R1681:1687 Lib.MergeSort <> BTCount:43 def
+R1689:1689 Lib.MergeSort <> p:41 var
+def 1712:1728 <> BTListPermutation
+binder 1730:1730 <> A:45
+R1742:1743 Lib.MergeSort <> BT ind
+R1745:1745 Lib.MergeSort <> A:45 var
+binder 1739:1739 <> t:46
+R1751:1754 Coq.Init.Datatypes <> list ind
+R1756:1756 Lib.MergeSort <> A:45 var
+binder 1748:1748 <> l:47
+R1782:1783 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1781:1781 Lib.MergeSort <> A:45 var
+R1784:1787 Coq.Init.Datatypes <> bool ind
+binder 1778:1778 <> p:48
+R1801:1803 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1790:1796 Lib.MergeSort <> BTCount def
+R1800:1800 Lib.MergeSort <> t:46 var
+R1798:1798 Lib.MergeSort <> p:48 var
+R1804:1808 Lib.Sorted <> count def
+R1812:1812 Lib.MergeSort <> l:47 var
+R1810:1810 Lib.MergeSort <> p:48 var
+def 1827:1839 <> BTPermutation
+binder 1841:1841 <> A:49
+R1857:1858 Lib.MergeSort <> BT ind
+R1860:1860 Lib.MergeSort <> A:49 var
+binder 1850:1851 <> t1:50
+binder 1853:1854 <> t2:51
+R1886:1887 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1885:1885 Lib.MergeSort <> A:49 var
+R1888:1891 Coq.Init.Datatypes <> bool ind
+binder 1882:1882 <> p:52
+R1906:1908 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1894:1900 Lib.MergeSort <> BTCount def
+R1904:1905 Lib.MergeSort <> t1:50 var
+R1902:1902 Lib.MergeSort <> p:52 var
+R1909:1915 Lib.MergeSort <> BTCount def
+R1919:1920 Lib.MergeSort <> t2:51 var
+R1917:1917 Lib.MergeSort <> p:52 var
+prf 1930:1939 <> merge_perm
+binder 1942:1942 <> A:53
+R1956:1957 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1955:1955 Lib.MergeSort <> A:53 var
+R1958:1961 Coq.Init.Datatypes <> bool ind
+binder 1952:1952 <> p:54
+R1971:1972 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1970:1970 Lib.MergeSort <> A:53 var
+R1974:1975 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1973:1973 Lib.MergeSort <> A:53 var
+R1976:1979 Coq.Init.Datatypes <> bool ind
+binder 1965:1967 <> ord:55
+R1991:1994 Coq.Init.Datatypes <> list ind
+R1996:1996 Lib.MergeSort <> A:53 var
+binder 1983:1984 <> l1:56
+binder 1986:1987 <> l2:57
+R2026:2028 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2013:2015 Coq.Init.Nat <> ::nat_scope:x_'+'_x not
+R2003:2007 Lib.Sorted <> count def
+R2011:2012 Lib.MergeSort <> l1:56 var
+R2009:2009 Lib.MergeSort <> p:54 var
+R2016:2020 Lib.Sorted <> count def
+R2024:2025 Lib.MergeSort <> l2:57 var
+R2022:2022 Lib.MergeSort <> p:54 var
+R2029:2033 Lib.Sorted <> count def
+R2038:2042 Lib.MergeSort <> merge def
+R2051:2052 Lib.MergeSort <> l2:57 var
+R2048:2049 Lib.MergeSort <> l1:56 var
+R2044:2046 Lib.MergeSort <> ord:55 var
+R2035:2035 Lib.MergeSort <> p:54 var
+R2140:2146 Coq.Arith.PeanoNat Nat add_0_r thm
+R2140:2146 Coq.Arith.PeanoNat Nat add_0_r thm
+R2140:2146 Coq.Arith.PeanoNat Nat add_0_r thm
+R2351:2364 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2351:2364 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2351:2364 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2351:2364 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2351:2364 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2351:2364 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2351:2364 Coq.Arith.PeanoNat Nat add_succ_r thm
+prf 2421:2434 <> BTSort_is_perm
+binder 2437:2437 <> A:58
+R2452:2453 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2451:2451 Lib.MergeSort <> A:58 var
+R2455:2456 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2454:2454 Lib.MergeSort <> A:58 var
+R2457:2460 Coq.Init.Datatypes <> bool ind
+binder 2446:2448 <> ord:59
+R2468:2469 Lib.MergeSort <> BT ind
+R2471:2471 Lib.MergeSort <> A:58 var
+binder 2464:2464 <> t:60
+R2479:2480 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2478:2478 Lib.MergeSort <> A:58 var
+R2481:2484 Coq.Init.Datatypes <> bool ind
+binder 2475:2475 <> p:61
+R2502:2504 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2491:2497 Lib.MergeSort <> BTCount def
+R2501:2501 Lib.MergeSort <> t:60 var
+R2499:2499 Lib.MergeSort <> p:61 var
+R2505:2509 Lib.Sorted <> count def
+R2514:2519 Lib.MergeSort <> BTSort def
+R2525:2525 Lib.MergeSort <> t:60 var
+R2521:2523 Lib.MergeSort <> ord:59 var
+R2511:2511 Lib.MergeSort <> p:61 var
+R2606:2615 Lib.MergeSort <> merge_perm thm
+R2606:2615 Lib.MergeSort <> merge_perm thm
+R2606:2615 Lib.MergeSort <> merge_perm thm
+prf 2636:2650 <> BT_insert_count
+binder 2653:2653 <> A:62
+R2668:2669 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2667:2667 Lib.MergeSort <> A:62 var
+R2670:2673 Coq.Init.Datatypes <> bool ind
+binder 2664:2664 <> p:63
+R2681:2681 Lib.MergeSort <> A:62 var
+binder 2677:2677 <> x:64
+R2689:2690 Lib.MergeSort <> BT ind
+R2692:2692 Lib.MergeSort <> A:62 var
+binder 2685:2685 <> t:65
+R2722:2724 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2698:2704 Lib.MergeSort <> BTCount def
+R2709:2716 Lib.MergeSort <> BTInsert def
+R2720:2720 Lib.MergeSort <> t:65 var
+R2718:2718 Lib.MergeSort <> x:64 var
+R2706:2706 Lib.MergeSort <> p:63 var
+R2728:2728 Lib.MergeSort <> p:63 var
+R2730:2730 Lib.MergeSort <> x:64 var
+R2758:2764 Lib.MergeSort <> BTCount def
+R2768:2768 Lib.MergeSort <> t:65 var
+R2766:2766 Lib.MergeSort <> p:63 var
+R2737:2737 Coq.Init.Datatypes <> S constr
+R2740:2746 Lib.MergeSort <> BTCount def
+R2750:2750 Lib.MergeSort <> t:65 var
+R2748:2748 Lib.MergeSort <> p:63 var
+R2885:2894 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2885:2894 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2885:2894 Coq.Arith.PeanoNat Nat add_succ_r thm
+R2923:2930 Coq.Arith.PeanoNat Nat add_comm thm
+R2923:2930 Coq.Arith.PeanoNat Nat add_comm thm
+R2923:2930 Coq.Arith.PeanoNat Nat add_comm thm
+R2923:2930 Coq.Arith.PeanoNat Nat add_comm thm
+R2923:2930 Coq.Arith.PeanoNat Nat add_comm thm
+prf 2952:2962 <> BTSort_perm
+binder 2965:2965 <> A:66
+R2981:2982 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2980:2980 Lib.MergeSort <> A:66 var
+R2984:2985 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2983:2983 Lib.MergeSort <> A:66 var
+R2986:2989 Coq.Init.Datatypes <> bool ind
+binder 2975:2977 <> ord:67
+R2997:3000 Coq.Init.Datatypes <> list ind
+R3002:3002 Lib.MergeSort <> A:66 var
+binder 2993:2993 <> l:68
+R3009:3009 Lib.MergeSort <> A:66 var
+binder 3006:3006 <> x:69
+R3017:3027 Lib.Sorted <> permutation def
+R3037:3042 Lib.MergeSort <> BTSort def
+R3049:3056 Lib.MergeSort <> listToBT def
+R3060:3060 Lib.MergeSort <> l:68 var
+R3058:3058 Lib.MergeSort <> x:69 var
+R3044:3046 Lib.MergeSort <> ord:67 var
+R3031:3032 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3030:3030 Lib.MergeSort <> x:69 var
+R3033:3033 Lib.MergeSort <> l:68 var
+R3137:3147 Lib.Sorted <> permutation def
+R3176:3189 Lib.MergeSort <> BTSort_is_perm thm
+R3176:3189 Lib.MergeSort <> BTSort_is_perm thm
+R3176:3189 Lib.MergeSort <> BTSort_is_perm thm
+R3202:3216 Lib.MergeSort <> BT_insert_count thm
+R3202:3216 Lib.MergeSort <> BT_insert_count thm
+R3202:3216 Lib.MergeSort <> BT_insert_count thm
+R3293:3306 Lib.MergeSort <> BTSort_is_perm thm
+R3293:3306 Lib.MergeSort <> BTSort_is_perm thm
+R3293:3306 Lib.MergeSort <> BTSort_is_perm thm
+R3293:3306 Lib.MergeSort <> BTSort_is_perm thm
+R3293:3306 Lib.MergeSort <> BTSort_is_perm thm
+prf 3328:3346 <> merged_sorted_lists
+binder 3349:3349 <> A:70
+R3364:3374 Lib.Sorted <> LinearOrder class
+R3376:3376 Lib.MergeSort <> A:70 var
+binder 3360:3361 <> lo:71
+R3387:3390 Coq.Init.Datatypes <> list ind
+R3392:3392 Lib.MergeSort <> A:70 var
+binder 3380:3381 <> l1:72
+binder 3383:3384 <> l2:73
+R3408:3411 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3399:3404 Lib.Sorted <> Sorted ind
+R3406:3407 Lib.MergeSort <> l1:72 var
+R3421:3424 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3412:3417 Lib.Sorted <> Sorted ind
+R3419:3420 Lib.MergeSort <> l2:73 var
+R3425:3430 Lib.Sorted <> Sorted ind
+R3433:3437 Lib.MergeSort <> merge def
+R3446:3447 Lib.MergeSort <> l2:73 var
+R3443:3444 Lib.MergeSort <> l1:72 var
+R3439:3441 Lib.Sorted <> ord meth
+R3572:3574 Lib.Sorted <> ord meth
+R3572:3574 Lib.Sorted <> ord meth
+R3637:3650 Lib.Sorted <> ord_false_true thm
+R3637:3650 Lib.Sorted <> ord_false_true thm
+R3680:3682 Lib.Sorted <> ord meth
+R3680:3682 Lib.Sorted <> ord meth
+R3721:3723 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3713:3715 Lib.Sorted <> ord meth
+R3724:3727 Coq.Init.Datatypes <> true constr
+R3741:3745 Lib.Sorted <> trans meth
+R3721:3723 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3713:3715 Lib.Sorted <> ord meth
+R3724:3727 Coq.Init.Datatypes <> true constr
+R3741:3745 Lib.Sorted <> trans meth
+R3916:3918 Lib.Sorted <> ord meth
+R3916:3918 Lib.Sorted <> ord meth
+R3967:3980 Lib.Sorted <> ord_false_true thm
+R3967:3980 Lib.Sorted <> ord_false_true thm
+R4074:4074 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R4077:4077 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R4074:4074 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R4077:4077 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R4101:4103 Lib.Sorted <> ord meth
+R4101:4103 Lib.Sorted <> ord meth
+R4144:4146 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4136:4138 Lib.Sorted <> ord meth
+R4147:4150 Coq.Init.Datatypes <> true constr
+R4164:4168 Lib.Sorted <> trans meth
+R4144:4146 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4136:4138 Lib.Sorted <> ord meth
+R4147:4150 Coq.Init.Datatypes <> true constr
+R4164:4168 Lib.Sorted <> trans meth
+R4268:4270 Lib.Sorted <> ord meth
+R4268:4270 Lib.Sorted <> ord meth
+R4388:4401 Lib.Sorted <> ord_false_true thm
+R4388:4401 Lib.Sorted <> ord_false_true thm
+R4426:4428 Lib.Sorted <> ord meth
+R4426:4428 Lib.Sorted <> ord meth
+R4472:4475 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4479:4482 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4472:4475 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4479:4482 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4524:4526 Lib.Sorted <> ord meth
+R4524:4526 Lib.Sorted <> ord meth
+R4679:4681 Lib.Sorted <> ord meth
+R4679:4681 Lib.Sorted <> ord meth
+R4731:4744 Lib.Sorted <> ord_false_true thm
+R4731:4744 Lib.Sorted <> ord_false_true thm
+prf 4771:4778 <> BT_sorts
+binder 4781:4781 <> A:74
+R4796:4806 Lib.Sorted <> LinearOrder class
+R4808:4808 Lib.MergeSort <> A:74 var
+binder 4792:4793 <> lo:75
+R4815:4816 Lib.MergeSort <> BT ind
+R4818:4818 Lib.MergeSort <> A:74 var
+binder 4812:4812 <> t:76
+R4823:4828 Lib.Sorted <> Sorted ind
+R4831:4836 Lib.MergeSort <> BTSort def
+R4842:4842 Lib.MergeSort <> t:76 var
+R4838:4840 Lib.Sorted <> ord meth
+R4900:4918 Lib.MergeSort <> merged_sorted_lists thm
+R4900:4918 Lib.MergeSort <> merged_sorted_lists thm
+prf 4947:4965 <> mergeSort_is_sorted
+binder 4968:4968 <> A:77
+R4983:4993 Lib.Sorted <> LinearOrder class
+R4995:4995 Lib.MergeSort <> A:77 var
+binder 4979:4980 <> lo:78
+R5002:5005 Coq.Init.Datatypes <> list ind
+R5007:5007 Lib.MergeSort <> A:77 var
+binder 4999:4999 <> l:79
+R5013:5018 Lib.Sorted <> Sorted ind
+R5021:5029 Lib.MergeSort <> mergeSort def
+R5035:5035 Lib.MergeSort <> l:79 var
+R5031:5033 Lib.Sorted <> ord meth
+R5093:5100 Lib.MergeSort <> BT_sorts thm
+R5093:5100 Lib.MergeSort <> BT_sorts thm
+prf 5117:5133 <> mergeSort_is_perm
+binder 5136:5136 <> A:80
+R5151:5161 Lib.Sorted <> LinearOrder class
+R5163:5163 Lib.MergeSort <> A:80 var
+binder 5147:5148 <> lo:81
+R5170:5173 Coq.Init.Datatypes <> list ind
+R5175:5175 Lib.MergeSort <> A:80 var
+binder 5167:5167 <> l:82
+R5181:5191 Lib.Sorted <> permutation def
+R5196:5204 Lib.MergeSort <> mergeSort def
+R5210:5210 Lib.MergeSort <> l:82 var
+R5206:5208 Lib.Sorted <> ord meth
+R5193:5193 Lib.MergeSort <> l:82 var
+R5252:5262 Lib.Sorted <> permutation def
+R5304:5314 Lib.MergeSort <> BTSort_perm thm
+R5304:5314 Lib.MergeSort <> BTSort_perm thm
+prf 5331:5351 <> merge_sort_idempotent
+binder 5354:5354 <> A:83
+R5369:5379 Lib.Sorted <> LinearOrder class
+R5381:5381 Lib.MergeSort <> A:83 var
+binder 5365:5366 <> lo:84
+R5388:5391 Coq.Init.Datatypes <> list ind
+R5393:5393 Lib.MergeSort <> A:83 var
+binder 5385:5385 <> l:85
+R5399:5399 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5415:5419 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5451:5451 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5400:5408 Lib.MergeSort <> mergeSort def
+R5414:5414 Lib.MergeSort <> l:85 var
+R5410:5412 Lib.Sorted <> ord meth
+R5420:5428 Lib.MergeSort <> mergeSort def
+R5435:5443 Lib.MergeSort <> mergeSort def
+R5449:5449 Lib.MergeSort <> l:85 var
+R5445:5447 Lib.Sorted <> ord meth
+R5430:5432 Lib.Sorted <> ord meth
+R5469:5496 Lib.Sorted <> sorted_unique_representation thm
+R5469:5496 Lib.Sorted <> sorted_unique_representation thm
+R5515:5531 Lib.MergeSort <> mergeSort_is_perm thm
+R5515:5531 Lib.MergeSort <> mergeSort_is_perm thm
+R5544:5562 Lib.MergeSort <> mergeSort_is_sorted thm
+R5544:5562 Lib.MergeSort <> mergeSort_is_sorted thm
+R5575:5593 Lib.MergeSort <> mergeSort_is_sorted thm
+R5575:5593 Lib.MergeSort <> mergeSort_is_sorted thm
