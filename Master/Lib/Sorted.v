@@ -34,6 +34,9 @@ Proof.
     + rewrite H1 in H2. discriminate.
 Qed.
 
+
+
+
 Global Instance LO_is_EqDec (A: Type) `{LinearOrder A}: EqDec A.
 Proof.
   exists (fun x y => andb (ord x y) (ord y x)). intros x y. 
@@ -58,6 +61,84 @@ Definition permutation {A: Type} (a b : list A) :=
   forall p : A -> bool, count p a = count p b.
 
 
+(* Remove *)
+Fixpoint remove {A: Type} `{EqDec A} (x: A) (l: list A) :=
+match l with 
+| []     => []
+| (h::t) => if eqf x h then t else h :: remove x t
+end.
+
+Lemma remove_count_true {A: Type} `{EqDec A} (h: A) (l: list A) (p: A -> bool) :
+  In h l -> p h = true -> count p l = S (count p (remove h l)).
+Proof.
+  induction l; intros I t; cbn in *; destruct I.
+  - subst. rewrite t, eqf_refl. auto.
+  - destruct (p a) eqn:e; destruct (eqf h a) eqn:e1; [auto|..].
+    + cbn in *. rewrite e, IHl; auto.
+    + rewrite <- eqf_iff in e1. subst. rewrite t in e. discriminate.
+    + cbn in *. rewrite e, IHl; auto.
+Qed.
+
+Lemma remove_count_false {A: Type} `{EqDec A} (h: A) (l: list A) (p: A -> bool) :
+  p h = false -> count p l = count p (remove h l).
+Proof.
+  induction l; intros f; auto. cbn in *. 
+  destruct (p a) eqn:e; destruct (eqf h a) eqn:e1; [| |auto|].
+  - rewrite <- eqf_iff in e1. subst. rewrite f in e. discriminate.
+  - cbn. rewrite e. f_equal. apply IHl; auto.
+  - cbn. rewrite e, IHl; auto.
+Qed.
+
+Lemma in_count_not_O {A: Type} `{EqDec A} (l: list A) (x: A) :
+  In x l <-> count (eqf x) l <> O.
+Proof.
+  split.
+  - intros I. induction l; cbn in *; destruct I.
+    + subst. rewrite eqf_refl. auto.
+    + destruct (eqf x a) eqn: e; auto.
+  - intros C. induction l; cbn in *; [contradiction|].
+    destruct (eqf x a) eqn: e; auto. rewrite <- eqf_iff in e.
+    subst. left. auto.
+Qed.
+
+Lemma perm_in {A: Type} `{EqDec A} (l l': list A) (x: A) :
+  permutation l l' -> In x l -> In x l'.
+Proof.
+  intros perm I. rewrite in_count_not_O. rewrite in_count_not_O in I.
+  specialize (perm (eqf x)). rewrite <-perm. assumption.
+Qed.
+
+Lemma remove_perm {A: Type} `{EqDec A} (h: A) (l l': list A) :
+  permutation (h :: l) l' -> permutation l (remove h l').
+Proof.
+  unfold permutation. revert l'. induction l; intros l' perm p.
+  - assert (In h l') by (apply (perm_in [h]); auto; cbn; auto).
+    cbn. apply eq_add_S. specialize (perm p). cbn in *. destruct (p h) eqn:e.
+    + rewrite <-remove_count_true; auto.
+    + rewrite <-remove_count_false; auto.
+  - assert (In h l') by (apply (perm_in (h::a::l)); cbn; auto).
+    assert (In a l') by (apply (perm_in (h::a::l)); cbn; auto).
+    cbn. apply eq_add_S. apply eq_add_S. specialize (perm p). cbn in *.
+    destruct (p h) eqn:e.
+    + rewrite <-remove_count_true; auto.
+    + rewrite <-remove_count_false; auto.
+Qed.
+
+Lemma remove_perm' {A: Type} `{EqDec A} (h: A) (l l': list A) :
+  In h l' -> permutation l (remove h l') -> permutation (h :: l) l' .
+Proof.
+  unfold permutation. induction l; intros I perm p.
+  - cbn in *. specialize (perm p). destruct (p h) eqn: e.
+    + rewrite (remove_count_true h); auto.
+    + rewrite (remove_count_false h); auto.
+  - cbn in *. specialize (perm p). destruct (p h) eqn: e.
+    + rewrite (remove_count_true h l'); auto.
+    + rewrite (remove_count_false h l'); auto.
+Qed.
+
+
+
+(* Sorted lemmas *)
 Lemma sorted_without_head {A: Type} `{LinearOrder A} : forall l: list A, forall a: A,
   Sorted (a::l) -> Sorted l.
 Proof.

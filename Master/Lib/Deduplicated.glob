@@ -1,0 +1,603 @@
+DIGEST 7184319565e3722590445322f8b92041
+FLib.Deduplicated
+R15:20 Coq.Setoids.Setoid <> <> lib
+R38:51 Coq.Lists.List <> <> lib
+R69:72 Coq.Bool.Bool <> <> lib
+R133:135 Coq.micromega.Lia <> <> lib
+R154:162 Lib.EqDec <> <> lib
+R180:189 Lib.Sorted <> <> lib
+ind 204:215 <> Deduplicated
+constr 249:256 <> DedupNil
+constr 279:287 <> DedupCons
+binder 218:218 <> A:1
+R235:238 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R229:232 Coq.Init.Datatypes <> list ind
+R261:272 Lib.Deduplicated <> Deduplicated:2 ind
+R274:275 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R302:302 Lib.Deduplicated <> A:1 var
+binder 299:299 <> x:4
+R309:312 Coq.Init.Datatypes <> list ind
+R314:314 Lib.Deduplicated <> A:1 var
+binder 306:306 <> l:5
+R326:329 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R318:319 Coq.Init.Logic <> ::type_scope:'~'_x not
+R320:321 Coq.Lists.List <> In def
+R325:325 Lib.Deduplicated <> l:5 var
+R323:323 Lib.Deduplicated <> x:4 var
+R344:347 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R330:341 Lib.Deduplicated <> Deduplicated:2 ind
+R343:343 Lib.Deduplicated <> l:5 var
+R348:359 Lib.Deduplicated <> Deduplicated:2 ind
+R363:364 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R362:362 Lib.Deduplicated <> x:4 var
+R365:365 Lib.Deduplicated <> l:5 var
+def 379:381 <> any
+binder 384:384 <> A:6
+R399:402 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R398:398 Lib.Deduplicated <> A:6 var
+R403:406 Coq.Init.Datatypes <> bool ind
+binder 394:394 <> p:7
+R413:416 Coq.Init.Datatypes <> list ind
+R418:418 Lib.Deduplicated <> A:6 var
+binder 410:410 <> l:8
+R423:426 Coq.Init.Datatypes <> bool ind
+R439:439 Lib.Deduplicated <> l:8 var
+R450:451 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R456:460 Coq.Init.Datatypes <> false constr
+R468:469 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R480:480 Lib.Deduplicated <> p:7 var
+R499:501 Lib.Deduplicated <> any:9 def
+R503:503 Lib.Deduplicated <> p:7 var
+R489:492 Coq.Init.Datatypes <> true constr
+def 527:539 <> LDeduplicated
+binder 542:542 <> A:11
+R553:557 Lib.EqDec <> EqDec class
+R559:559 Lib.Deduplicated <> A:11 var
+binder 553:559 <> H:12
+R566:569 Coq.Init.Datatypes <> list ind
+R571:571 Lib.Deduplicated <> A:11 var
+binder 563:563 <> t:13
+R598:598 Lib.Deduplicated <> A:11 var
+binder 594:594 <> x:14
+R607:610 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R601:602 Coq.Lists.List <> In def
+R606:606 Lib.Deduplicated <> t:13 var
+R604:604 Lib.Deduplicated <> x:14 var
+R626:628 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R611:615 Lib.Sorted <> count def
+R625:625 Lib.Deduplicated <> t:13 var
+R618:620 Lib.EqDec <> eqf meth
+R622:622 Lib.Deduplicated <> x:14 var
+def 644:650 <> Elem_eq
+binder 653:653 <> A:15
+R670:673 Coq.Init.Datatypes <> list ind
+R675:675 Lib.Deduplicated <> A:15 var
+binder 663:663 <> l:16
+binder 665:666 <> l':17
+R703:706 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R702:702 Lib.Deduplicated <> A:15 var
+R707:710 Coq.Init.Datatypes <> bool ind
+binder 698:698 <> p:18
+R720:722 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R713:715 Lib.Deduplicated <> any def
+R719:719 Lib.Deduplicated <> l:16 var
+R717:717 Lib.Deduplicated <> p:18 var
+R723:725 Lib.Deduplicated <> any def
+R729:730 Lib.Deduplicated <> l':17 var
+R727:727 Lib.Deduplicated <> p:18 var
+def 745:757 <> Same_elements
+binder 760:760 <> A:19
+R777:780 Coq.Init.Datatypes <> list ind
+R782:782 Lib.Deduplicated <> A:19 var
+binder 770:770 <> l:20
+binder 772:773 <> l':21
+R809:809 Lib.Deduplicated <> A:19 var
+binder 805:805 <> x:22
+R818:822 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R812:813 Coq.Lists.List <> In def
+R817:817 Lib.Deduplicated <> l:20 var
+R815:815 Lib.Deduplicated <> x:22 var
+R823:824 Coq.Lists.List <> In def
+R828:829 Lib.Deduplicated <> l':21 var
+R826:826 Lib.Deduplicated <> x:22 var
+prf 843:855 <> any_in_eq_dec
+binder 858:858 <> A:23
+R872:876 Lib.EqDec <> EqDec class
+R878:878 Lib.Deduplicated <> A:23 var
+binder 869:869 <> E:24
+R885:888 Coq.Init.Datatypes <> list ind
+R890:890 Lib.Deduplicated <> A:23 var
+binder 882:882 <> l:25
+R897:897 Lib.Deduplicated <> A:23 var
+binder 894:894 <> x:26
+R904:910 Coq.Bool.Bool <> reflect ind
+R913:914 Coq.Lists.List <> In def
+R918:918 Lib.Deduplicated <> l:25 var
+R916:916 Lib.Deduplicated <> x:26 var
+R922:924 Lib.Deduplicated <> any def
+R934:934 Lib.Deduplicated <> l:25 var
+R927:929 Lib.EqDec <> eqf meth
+R931:931 Lib.Deduplicated <> x:26 var
+R957:959 Lib.Deduplicated <> any def
+R962:964 Lib.EqDec <> eqf meth
+R957:959 Lib.Deduplicated <> any def
+R962:964 Lib.EqDec <> eqf meth
+R1054:1064 Lib.EqDec <> eqf_leibniz meth
+R1054:1064 Lib.EqDec <> eqf_leibniz meth
+R1153:1163 Lib.EqDec <> not_eqf_iff thm
+R1153:1163 Lib.EqDec <> not_eqf_iff thm
+R1153:1163 Lib.EqDec <> not_eqf_iff thm
+R1289:1296 Lib.EqDec <> eqf_refl thm
+R1289:1296 Lib.EqDec <> eqf_refl thm
+R1289:1296 Lib.EqDec <> eqf_refl thm
+R1333:1335 Lib.EqDec <> eqf meth
+R1333:1335 Lib.EqDec <> eqf meth
+prf 1415:1431 <> any_in_eq_dec_iff
+binder 1434:1434 <> A:27
+R1448:1452 Lib.EqDec <> EqDec class
+R1454:1454 Lib.Deduplicated <> A:27 var
+binder 1445:1445 <> E:28
+R1461:1464 Coq.Init.Datatypes <> list ind
+R1466:1466 Lib.Deduplicated <> A:27 var
+binder 1458:1458 <> l:29
+R1473:1473 Lib.Deduplicated <> A:27 var
+binder 1470:1470 <> x:30
+R1487:1491 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1481:1482 Coq.Lists.List <> In def
+R1486:1486 Lib.Deduplicated <> l:29 var
+R1484:1484 Lib.Deduplicated <> x:30 var
+R1505:1507 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1492:1494 Lib.Deduplicated <> any def
+R1504:1504 Lib.Deduplicated <> l:29 var
+R1497:1499 Lib.EqDec <> eqf meth
+R1501:1501 Lib.Deduplicated <> x:30 var
+R1508:1511 Coq.Init.Datatypes <> true constr
+R1530:1540 Coq.Bool.Bool <> reflect_iff thm
+R1530:1540 Coq.Bool.Bool <> reflect_iff thm
+R1549:1561 Lib.Deduplicated <> any_in_eq_dec thm
+R1549:1561 Lib.Deduplicated <> any_in_eq_dec thm
+prf 1576:1586 <> in_any_true
+binder 1589:1589 <> A:31
+R1602:1605 Coq.Init.Datatypes <> list ind
+R1607:1607 Lib.Deduplicated <> A:31 var
+binder 1599:1599 <> l:32
+R1614:1614 Lib.Deduplicated <> A:31 var
+binder 1611:1611 <> x:33
+R1623:1626 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1622:1622 Lib.Deduplicated <> A:31 var
+R1627:1630 Coq.Init.Datatypes <> bool ind
+binder 1618:1618 <> p:34
+R1647:1650 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1640:1642 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1637:1637 Lib.Deduplicated <> p:34 var
+R1639:1639 Lib.Deduplicated <> x:33 var
+R1643:1646 Coq.Init.Datatypes <> true constr
+R1657:1660 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1651:1652 Coq.Lists.List <> In def
+R1656:1656 Lib.Deduplicated <> l:32 var
+R1654:1654 Lib.Deduplicated <> x:33 var
+R1668:1670 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1661:1663 Lib.Deduplicated <> any def
+R1667:1667 Lib.Deduplicated <> l:32 var
+R1665:1665 Lib.Deduplicated <> p:34 var
+R1671:1674 Coq.Init.Datatypes <> true constr
+prf 1820:1831 <> exist_in_any
+binder 1834:1834 <> A:35
+R1847:1850 Coq.Init.Datatypes <> list ind
+R1852:1852 Lib.Deduplicated <> A:35 var
+binder 1844:1844 <> l:36
+R1861:1864 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1860:1860 Lib.Deduplicated <> A:35 var
+R1865:1868 Coq.Init.Datatypes <> bool ind
+binder 1856:1856 <> p:37
+R1889:1892 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1882:1884 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1875:1877 Lib.Deduplicated <> any def
+R1881:1881 Lib.Deduplicated <> l:36 var
+R1879:1879 Lib.Deduplicated <> p:37 var
+R1885:1888 Coq.Init.Datatypes <> true constr
+R1893:1899 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1904:1905 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R1903:1903 Lib.Deduplicated <> A:35 var
+binder 1900:1900 <> x:38
+R1916:1919 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1909:1911 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1906:1906 Lib.Deduplicated <> p:37 var
+R1908:1908 Lib.Deduplicated <> x:38 var
+R1912:1915 Coq.Init.Datatypes <> true constr
+R1920:1921 Coq.Lists.List <> In def
+R1925:1925 Lib.Deduplicated <> l:36 var
+R1923:1923 Lib.Deduplicated <> x:38 var
+prf 2164:2176 <> forall_in_any
+binder 2179:2179 <> A:39
+R2192:2195 Coq.Init.Datatypes <> list ind
+R2197:2197 Lib.Deduplicated <> A:39 var
+binder 2189:2189 <> l:40
+R2206:2209 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2205:2205 Lib.Deduplicated <> A:39 var
+R2210:2213 Coq.Init.Datatypes <> bool ind
+binder 2201:2201 <> p:41
+R2236:2239 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2228:2230 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2221:2223 Lib.Deduplicated <> any def
+R2227:2227 Lib.Deduplicated <> l:40 var
+R2225:2225 Lib.Deduplicated <> p:41 var
+R2231:2235 Coq.Init.Datatypes <> false constr
+R2250:2250 Lib.Deduplicated <> A:39 var
+binder 2247:2247 <> x:42
+R2259:2262 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2253:2254 Coq.Lists.List <> In def
+R2258:2258 Lib.Deduplicated <> l:40 var
+R2256:2256 Lib.Deduplicated <> x:42 var
+R2266:2268 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2263:2263 Lib.Deduplicated <> p:41 var
+R2265:2265 Lib.Deduplicated <> x:42 var
+R2269:2273 Coq.Init.Datatypes <> false constr
+prf 2451:2468 <> elem_eq_for_eq_dec
+binder 2471:2471 <> A:43
+R2485:2489 Lib.EqDec <> EqDec class
+R2491:2491 Lib.Deduplicated <> A:43 var
+binder 2482:2482 <> E:44
+R2501:2504 Coq.Init.Datatypes <> list ind
+R2506:2506 Lib.Deduplicated <> A:43 var
+binder 2495:2495 <> l:45
+binder 2497:2498 <> l':46
+R2525:2529 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R2513:2519 Lib.Deduplicated <> Elem_eq def
+R2523:2524 Lib.Deduplicated <> l':46 var
+R2521:2521 Lib.Deduplicated <> l:45 var
+R2530:2542 Lib.Deduplicated <> Same_elements def
+R2546:2547 Lib.Deduplicated <> l':46 var
+R2544:2544 Lib.Deduplicated <> l:45 var
+R2566:2572 Lib.Deduplicated <> Elem_eq def
+R2575:2587 Lib.Deduplicated <> Same_elements def
+R2628:2630 Lib.EqDec <> eqf meth
+R2628:2630 Lib.EqDec <> eqf meth
+R2650:2666 Lib.Deduplicated <> any_in_eq_dec_iff thm
+R2669:2685 Lib.Deduplicated <> any_in_eq_dec_iff thm
+R2650:2666 Lib.Deduplicated <> any_in_eq_dec_iff thm
+R2650:2666 Lib.Deduplicated <> any_in_eq_dec_iff thm
+R2669:2685 Lib.Deduplicated <> any_in_eq_dec_iff thm
+R2669:2685 Lib.Deduplicated <> any_in_eq_dec_iff thm
+R2749:2751 Lib.Deduplicated <> any def
+R2776:2778 Lib.Deduplicated <> any def
+R2749:2751 Lib.Deduplicated <> any def
+R2776:2778 Lib.Deduplicated <> any def
+R2776:2778 Lib.Deduplicated <> any def
+R2816:2827 Lib.Deduplicated <> exist_in_any thm
+R2816:2827 Lib.Deduplicated <> exist_in_any thm
+R2895:2897 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2898:2902 Coq.Init.Datatypes <> false constr
+R2916:2928 Lib.Deduplicated <> forall_in_any thm
+R2895:2897 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2898:2902 Coq.Init.Datatypes <> false constr
+R2916:2928 Lib.Deduplicated <> forall_in_any thm
+R2989:3000 Lib.Deduplicated <> exist_in_any thm
+R2989:3000 Lib.Deduplicated <> exist_in_any thm
+R3072:3074 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3075:3079 Coq.Init.Datatypes <> false constr
+R3093:3105 Lib.Deduplicated <> forall_in_any thm
+R3072:3074 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3075:3079 Coq.Init.Datatypes <> false constr
+R3093:3105 Lib.Deduplicated <> forall_in_any thm
+prf 3181:3208 <> count_for_not_satisfied_pred
+binder 3211:3211 <> A:47
+R3224:3227 Coq.Init.Datatypes <> list ind
+R3229:3229 Lib.Deduplicated <> A:47 var
+binder 3221:3221 <> l:48
+R3237:3238 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3236:3236 Lib.Deduplicated <> A:47 var
+R3239:3242 Coq.Init.Datatypes <> bool ind
+binder 3233:3233 <> p:49
+R3249:3249 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3285:3289 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3261:3261 Lib.Deduplicated <> A:47 var
+binder 3257:3257 <> x:50
+R3270:3273 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3264:3265 Coq.Lists.List <> In def
+R3269:3269 Lib.Deduplicated <> l:48 var
+R3267:3267 Lib.Deduplicated <> x:50 var
+R3277:3279 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3274:3274 Lib.Deduplicated <> p:49 var
+R3276:3276 Lib.Deduplicated <> x:50 var
+R3280:3284 Coq.Init.Datatypes <> false constr
+R3299:3301 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3290:3294 Lib.Sorted <> count def
+R3298:3298 Lib.Deduplicated <> l:48 var
+R3296:3296 Lib.Deduplicated <> p:49 var
+prf 3468:3481 <> count_existing
+binder 3484:3484 <> A:51
+R3497:3500 Coq.Init.Datatypes <> list ind
+R3502:3502 Lib.Deduplicated <> A:51 var
+binder 3494:3494 <> l:52
+R3510:3511 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3509:3509 Lib.Deduplicated <> A:51 var
+R3512:3515 Coq.Init.Datatypes <> bool ind
+binder 3506:3506 <> p:53
+R3522:3522 Lib.Deduplicated <> A:51 var
+binder 3519:3519 <> x:54
+R3539:3542 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3532:3534 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3529:3529 Lib.Deduplicated <> p:53 var
+R3531:3531 Lib.Deduplicated <> x:54 var
+R3535:3538 Coq.Init.Datatypes <> true constr
+R3549:3552 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3543:3544 Coq.Lists.List <> In def
+R3548:3548 Lib.Deduplicated <> l:52 var
+R3546:3546 Lib.Deduplicated <> x:54 var
+R3562:3565 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R3553:3557 Lib.Sorted <> count def
+R3561:3561 Lib.Deduplicated <> l:52 var
+R3559:3559 Lib.Deduplicated <> p:53 var
+R3566:3566 Coq.Init.Datatypes <> O constr
+R3677:3686 Coq.Arith.PeanoNat Nat neq_succ_0 thm
+R3677:3686 Coq.Arith.PeanoNat Nat neq_succ_0 thm
+prf 3729:3738 <> dup_def_eq
+binder 3741:3741 <> A:55
+R3752:3762 Lib.Sorted <> LinearOrder class
+R3764:3764 Lib.Deduplicated <> A:55 var
+binder 3752:3764 <> H:56
+R3772:3775 Coq.Init.Datatypes <> list ind
+R3777:3777 Lib.Deduplicated <> A:55 var
+binder 3768:3768 <> l:57
+R3799:3803 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3785:3796 Lib.Deduplicated <> Deduplicated ind
+R3798:3798 Lib.Deduplicated <> l:57 var
+R3804:3816 Lib.Deduplicated <> LDeduplicated def
+R3818:3818 Lib.Deduplicated <> l:57 var
+R3837:3849 Lib.Deduplicated <> LDeduplicated def
+R3966:3973 Lib.EqDec <> eqf_refl thm
+R3976:4003 Lib.Deduplicated <> count_for_not_satisfied_pred thm
+R3966:3973 Lib.EqDec <> eqf_refl thm
+R3966:3973 Lib.EqDec <> eqf_refl thm
+R3976:4003 Lib.Deduplicated <> count_for_not_satisfied_pred thm
+R3976:4003 Lib.Deduplicated <> count_for_not_satisfied_pred thm
+R3976:4003 Lib.Deduplicated <> count_for_not_satisfied_pred thm
+R4042:4052 Lib.EqDec <> not_eqf_iff thm
+R4042:4052 Lib.EqDec <> not_eqf_iff thm
+R4042:4052 Lib.EqDec <> not_eqf_iff thm
+R4134:4137 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4134:4137 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4184:4194 Lib.EqDec <> not_eqf_iff thm
+R4184:4194 Lib.EqDec <> not_eqf_iff thm
+R4184:4194 Lib.EqDec <> not_eqf_iff thm
+R4292:4300 Coq.Init.Logic <> or_intror constr
+R4292:4300 Coq.Init.Logic <> or_intror constr
+R4339:4346 Lib.EqDec <> eqf_refl thm
+R4339:4346 Lib.EqDec <> eqf_refl thm
+R4339:4346 Lib.EqDec <> eqf_refl thm
+R4384:4387 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4369:4373 Lib.Sorted <> count def
+R4376:4378 Lib.EqDec <> eqf meth
+R4388:4388 Coq.Init.Datatypes <> O constr
+R4401:4414 Lib.Deduplicated <> count_existing thm
+R4443:4450 Lib.EqDec <> eqf_refl thm
+R4384:4387 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4369:4373 Lib.Sorted <> count def
+R4376:4378 Lib.EqDec <> eqf meth
+R4388:4388 Coq.Init.Datatypes <> O constr
+R4401:4414 Lib.Deduplicated <> count_existing thm
+R4443:4450 Lib.EqDec <> eqf_refl thm
+R4553:4561 Coq.Init.Logic <> or_intror constr
+R4553:4561 Coq.Init.Logic <> or_intror constr
+R4584:4586 Lib.EqDec <> eqf meth
+R4584:4586 Lib.EqDec <> eqf meth
+R4627:4633 Lib.EqDec <> eqf_iff thm
+R4627:4633 Lib.EqDec <> eqf_iff thm
+R4627:4633 Lib.EqDec <> eqf_iff thm
+R4677:4680 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4662:4666 Lib.Sorted <> count def
+R4669:4671 Lib.EqDec <> eqf meth
+R4681:4681 Coq.Init.Datatypes <> O constr
+R4694:4707 Lib.Deduplicated <> count_existing thm
+R4736:4743 Lib.EqDec <> eqf_refl thm
+R4677:4680 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4662:4666 Lib.Sorted <> count def
+R4669:4671 Lib.EqDec <> eqf meth
+R4681:4681 Coq.Init.Datatypes <> O constr
+R4694:4707 Lib.Deduplicated <> count_existing thm
+R4736:4743 Lib.EqDec <> eqf_refl thm
+def 4810:4817 <> perm_eqf
+binder 4820:4820 <> A:58
+R4831:4835 Lib.EqDec <> EqDec class
+R4837:4837 Lib.Deduplicated <> A:58 var
+binder 4831:4837 <> H:59
+R4847:4850 Coq.Init.Datatypes <> list ind
+R4852:4852 Lib.Deduplicated <> A:58 var
+binder 4841:4841 <> l:60
+binder 4843:4844 <> l':61
+R4871:4871 Lib.Deduplicated <> A:58 var
+binder 4868:4868 <> x:62
+R4889:4891 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4874:4878 Lib.Sorted <> count def
+R4888:4888 Lib.Deduplicated <> l:60 var
+R4881:4883 Lib.EqDec <> eqf meth
+R4885:4885 Lib.Deduplicated <> x:62 var
+R4892:4896 Lib.Sorted <> count def
+R4906:4907 Lib.Deduplicated <> l':61 var
+R4899:4901 Lib.EqDec <> eqf meth
+R4903:4903 Lib.Deduplicated <> x:62 var
+prf 4917:4928 <> perm_eqf_iff
+binder 4931:4931 <> A:63
+R4942:4946 Lib.EqDec <> EqDec class
+R4948:4948 Lib.Deduplicated <> A:63 var
+binder 4942:4948 <> H:64
+R4958:4961 Coq.Init.Datatypes <> list ind
+R4963:4963 Lib.Deduplicated <> A:63 var
+binder 4952:4952 <> l:65
+binder 4954:4955 <> l':66
+R4987:4991 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4971:4981 Lib.Sorted <> permutation def
+R4985:4986 Lib.Deduplicated <> l':66 var
+R4983:4983 Lib.Deduplicated <> l:65 var
+R4992:4999 Lib.Deduplicated <> perm_eqf def
+R5003:5004 Lib.Deduplicated <> l':66 var
+R5001:5001 Lib.Deduplicated <> l:65 var
+R5049:5051 Lib.EqDec <> eqf meth
+R5049:5051 Lib.EqDec <> eqf meth
+R5162:5169 Lib.EqDec <> eqf_refl thm
+R5162:5169 Lib.EqDec <> eqf_refl thm
+R5162:5169 Lib.EqDec <> eqf_refl thm
+R5205:5216 Lib.Sorted <> remove_perm' thm
+R5205:5216 Lib.Sorted <> remove_perm' thm
+R5205:5216 Lib.Sorted <> remove_perm' thm
+R5205:5216 Lib.Sorted <> remove_perm' thm
+R5205:5216 Lib.Sorted <> remove_perm' thm
+R5249:5262 Lib.Sorted <> in_count_not_O thm
+R5249:5262 Lib.Sorted <> in_count_not_O thm
+R5249:5262 Lib.Sorted <> in_count_not_O thm
+R5310:5317 Lib.EqDec <> eqf_refl thm
+R5310:5317 Lib.EqDec <> eqf_refl thm
+R5310:5317 Lib.EqDec <> eqf_refl thm
+R5404:5406 Lib.EqDec <> eqf meth
+R5404:5406 Lib.EqDec <> eqf meth
+R5437:5444 Coq.Init.Peano <> eq_add_S def
+R5437:5444 Coq.Init.Peano <> eq_add_S def
+R5467:5483 Lib.Sorted <> remove_count_true thm
+R5467:5483 Lib.Sorted <> remove_count_true thm
+R5467:5483 Lib.Sorted <> remove_count_true thm
+R5467:5483 Lib.Sorted <> remove_count_true thm
+R5467:5483 Lib.Sorted <> remove_count_true thm
+R5517:5523 Lib.EqDec <> eqf_iff thm
+R5517:5523 Lib.EqDec <> eqf_iff thm
+R5517:5523 Lib.EqDec <> eqf_iff thm
+R5546:5559 Lib.Sorted <> in_count_not_O thm
+R5546:5559 Lib.Sorted <> in_count_not_O thm
+R5546:5559 Lib.Sorted <> in_count_not_O thm
+R5612:5629 Lib.Sorted <> remove_count_false thm
+R5612:5629 Lib.Sorted <> remove_count_false thm
+R5612:5629 Lib.Sorted <> remove_count_false thm
+R5612:5629 Lib.Sorted <> remove_count_false thm
+prf 5653:5666 <> any_count_true
+binder 5669:5669 <> A:67
+R5682:5685 Coq.Init.Datatypes <> list ind
+R5687:5687 Lib.Deduplicated <> A:67 var
+binder 5679:5679 <> l:68
+R5695:5698 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5694:5694 Lib.Deduplicated <> A:67 var
+R5699:5702 Coq.Init.Datatypes <> bool ind
+binder 5691:5691 <> p:69
+R5709:5709 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R5724:5730 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R5745:5745 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R5719:5722 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R5710:5714 Lib.Sorted <> count def
+R5718:5718 Lib.Deduplicated <> l:68 var
+R5716:5716 Lib.Deduplicated <> p:69 var
+R5738:5740 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5731:5733 Lib.Deduplicated <> any def
+R5737:5737 Lib.Deduplicated <> l:68 var
+R5735:5735 Lib.Deduplicated <> p:69 var
+R5741:5744 Coq.Init.Datatypes <> true constr
+prf 6008:6022 <> any_count_false
+binder 6025:6025 <> A:70
+R6038:6041 Coq.Init.Datatypes <> list ind
+R6043:6043 Lib.Deduplicated <> A:70 var
+binder 6035:6035 <> l:71
+R6051:6054 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6050:6050 Lib.Deduplicated <> A:70 var
+R6055:6058 Coq.Init.Datatypes <> bool ind
+binder 6047:6047 <> p:72
+R6065:6065 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R6079:6085 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R6101:6101 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R6075:6077 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6066:6070 Lib.Sorted <> count def
+R6074:6074 Lib.Deduplicated <> l:71 var
+R6072:6072 Lib.Deduplicated <> p:72 var
+R6093:6095 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6086:6088 Lib.Deduplicated <> any def
+R6092:6092 Lib.Deduplicated <> l:71 var
+R6090:6090 Lib.Deduplicated <> p:72 var
+R6096:6100 Coq.Init.Datatypes <> false constr
+prf 6303:6319 <> unique_dedup_perm
+binder 6322:6322 <> A:73
+R6333:6343 Lib.Sorted <> LinearOrder class
+R6345:6345 Lib.Deduplicated <> A:73 var
+binder 6333:6345 <> H:74
+R6355:6358 Coq.Init.Datatypes <> list ind
+R6360:6360 Lib.Deduplicated <> A:73 var
+binder 6349:6349 <> l:75
+binder 6351:6352 <> l':76
+R6380:6383 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6368:6374 Lib.Deduplicated <> Elem_eq def
+R6378:6379 Lib.Deduplicated <> l':76 var
+R6376:6376 Lib.Deduplicated <> l:75 var
+R6398:6401 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6384:6395 Lib.Deduplicated <> Deduplicated ind
+R6397:6397 Lib.Deduplicated <> l:75 var
+R6417:6420 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6402:6413 Lib.Deduplicated <> Deduplicated ind
+R6415:6416 Lib.Deduplicated <> l':76 var
+R6421:6431 Lib.Sorted <> permutation def
+R6435:6436 Lib.Deduplicated <> l':76 var
+R6433:6433 Lib.Deduplicated <> l:75 var
+R6456:6465 Lib.Deduplicated <> dup_def_eq thm
+R6468:6477 Lib.Deduplicated <> dup_def_eq thm
+R6456:6465 Lib.Deduplicated <> dup_def_eq thm
+R6456:6465 Lib.Deduplicated <> dup_def_eq thm
+R6468:6477 Lib.Deduplicated <> dup_def_eq thm
+R6468:6477 Lib.Deduplicated <> dup_def_eq thm
+R6488:6499 Lib.Deduplicated <> perm_eqf_iff thm
+R6488:6499 Lib.Deduplicated <> perm_eqf_iff thm
+R6488:6499 Lib.Deduplicated <> perm_eqf_iff thm
+R6511:6517 Lib.Deduplicated <> Elem_eq def
+R6520:6532 Lib.Deduplicated <> LDeduplicated def
+R6572:6574 Lib.EqDec <> eqf meth
+R6572:6574 Lib.EqDec <> eqf meth
+R6591:6593 Lib.Deduplicated <> any def
+R6596:6598 Lib.EqDec <> eqf meth
+R6624:6626 Lib.Deduplicated <> any def
+R6629:6631 Lib.EqDec <> eqf meth
+R6591:6593 Lib.Deduplicated <> any def
+R6596:6598 Lib.EqDec <> eqf meth
+R6624:6626 Lib.Deduplicated <> any def
+R6629:6631 Lib.EqDec <> eqf meth
+R6624:6626 Lib.Deduplicated <> any def
+R6629:6631 Lib.EqDec <> eqf meth
+R6681:6694 Lib.Deduplicated <> any_count_true thm
+R6681:6694 Lib.Deduplicated <> any_count_true thm
+R6681:6694 Lib.Deduplicated <> any_count_true thm
+R6714:6727 Lib.Deduplicated <> any_count_true thm
+R6714:6727 Lib.Deduplicated <> any_count_true thm
+R6714:6727 Lib.Deduplicated <> any_count_true thm
+R6751:6764 Lib.Sorted <> in_count_not_O thm
+R6751:6764 Lib.Sorted <> in_count_not_O thm
+R6751:6764 Lib.Sorted <> in_count_not_O thm
+R6784:6797 Lib.Sorted <> in_count_not_O thm
+R6784:6797 Lib.Sorted <> in_count_not_O thm
+R6784:6797 Lib.Sorted <> in_count_not_O thm
+R6844:6858 Lib.Deduplicated <> any_count_false thm
+R6844:6858 Lib.Deduplicated <> any_count_false thm
+R6844:6858 Lib.Deduplicated <> any_count_false thm
+R6878:6892 Lib.Deduplicated <> any_count_false thm
+R6878:6892 Lib.Deduplicated <> any_count_false thm
+R6878:6892 Lib.Deduplicated <> any_count_false thm
+prf 6937:6956 <> deduo_sort_uniquenss
+binder 6959:6959 <> A:77
+R6970:6980 Lib.Sorted <> LinearOrder class
+R6982:6982 Lib.Deduplicated <> A:77 var
+binder 6970:6982 <> H:78
+R6992:6995 Coq.Init.Datatypes <> list ind
+R6997:6997 Lib.Deduplicated <> A:77 var
+binder 6986:6986 <> l:79
+binder 6988:6989 <> l':80
+R7014:7020 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7002:7008 Lib.Deduplicated <> Elem_eq def
+R7012:7013 Lib.Deduplicated <> l':80 var
+R7010:7010 Lib.Deduplicated <> l:79 var
+R7029:7032 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7021:7026 Lib.Sorted <> Sorted ind
+R7028:7028 Lib.Deduplicated <> l:79 var
+R7042:7045 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7033:7038 Lib.Sorted <> Sorted ind
+R7040:7041 Lib.Deduplicated <> l':80 var
+R7060:7063 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7046:7057 Lib.Deduplicated <> Deduplicated ind
+R7059:7059 Lib.Deduplicated <> l:79 var
+R7079:7082 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7064:7075 Lib.Deduplicated <> Deduplicated ind
+R7077:7078 Lib.Deduplicated <> l':80 var
+R7084:7086 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7083:7083 Lib.Deduplicated <> l:79 var
+R7087:7088 Lib.Deduplicated <> l':80 var
