@@ -2,48 +2,11 @@ Require Import Setoid.
 Require Import Coq.Lists.List.
 Require Import Coq.Program.Equality.
 Import ListNotations.
+
+Require Import Lib.LinearOrder.
 Require Import Lib.EqDec.
 
-Class LinearOrder (A: Type) := {
-  ord      : A -> A -> bool;
-  refl     : forall x: A, ord x x = true;
-  anti_sym : forall x y: A, ord x y = true -> ord y x = true -> x = y;
-  trans    : forall x y z: A, ord x y = true -> ord y z = true -> ord x z = true;
-  full     : forall x y, ord x y = true \/ ord y x = true;
-}.
 
-
-Lemma ord_false_true (A: Type) `{LinearOrder A} (y x: A) :
-  ord x y = false -> ord y x = true.
-Proof.
-  intros. destruct (full y x); auto. rewrite H0 in H1. inversion H1.
-Qed.
-
-Lemma ord_false_trans (A: Type) `{L: LinearOrder A} (z y x: A) :
-  ord y x = false -> ord z y = false -> ord z x = false.
-Proof. 
-  intros H H0. destruct (ord x z) eqn:H1.
-  - assert (x <> z).
-    + intros [=]. subst. destruct (full y z).
-      * rewrite H2 in H. inversion H.
-      * rewrite H2 in H0. inversion H0.
-    + destruct (ord z x) eqn:H3; auto. exfalso. apply H2. 
-      apply (anti_sym x z); auto.
-  - assert (ord x z = true).
-    + apply (trans x y z); apply ord_false_true; assumption.
-    + rewrite H1 in H2. discriminate.
-Qed.
-
-
-
-
-Global Instance LO_is_EqDec (A: Type) `{LinearOrder A}: EqDec A.
-Proof.
-  exists (fun x y => andb (ord x y) (ord y x)). intros x y. 
-  destruct (andb (ord x y) (ord y x)) eqn:e; constructor.
-  - rewrite Bool.andb_true_iff in e. destruct e. apply anti_sym; auto.
-  - intros E. subst. rewrite refl in e. cbn in *. inversion e.
-Defined.
 
 Inductive Sorted {A: Type} `{LinearOrder A} : list A -> Prop :=
   | SortedNil : Sorted []
@@ -139,6 +102,13 @@ Qed.
 
 
 (* Sorted lemmas *)
+Lemma count_list_concat {A: Type} (l l': list A): 
+  forall p: A-> bool, count p (l ++ l') = count p l + count p l'.
+Proof.
+  intros p. induction l; [auto|].
+  cbn. destruct (p a); rewrite IHl; auto.
+Qed.
+
 Lemma sorted_without_head {A: Type} `{LinearOrder A} : forall l: list A, forall a: A,
   Sorted (a::l) -> Sorted l.
 Proof.
@@ -153,6 +123,24 @@ Proof.
   intros l a h sort o. constructor.
   - trivial.
   - assumption.
+Qed.
+
+Lemma head_in_sorted {A: Type} `{LinearOrder A} (h: A) (l: list A) : Sorted l -> 
+  (forall x: A, In x l -> ord h x = true) -> Sorted (h::l).
+Proof.
+  intros s N. induction l; constructor; [auto|]. apply N. cbn. auto.
+Qed. 
+
+Lemma concat_sorted {A: Type} `{LinearOrder A} (h: A) (l l': list A) : Sorted l -> Sorted (h :: l') -> 
+  (forall x: A, In x l -> ord x h = true) -> Sorted (l ++ (h :: l')).
+Proof.
+  intros s1 s2 N. induction l; [auto | destruct l]; cbn.
+  + constructor; [auto | ]. apply (N a). cbn. auto.
+  + cbn in *. constructor.
+    * apply IHl.
+      -- apply (sorted_without_head _ a). assumption.
+      -- intros x I. apply N. auto.
+    * dependent destruction s1. assumption.
 Qed. 
 
 Lemma sorted_head_relation {A: Type} `{L: LinearOrder A} :

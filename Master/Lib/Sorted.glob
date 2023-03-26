@@ -1,934 +1,851 @@
-DIGEST a2d1a1fb26fcbc3b6fc009d2782fa531
+DIGEST 46ba40974e4aba39442547cd9bb59dda
 FLib.Sorted
 R15:20 Coq.Setoids.Setoid <> <> lib
 R38:51 Coq.Lists.List <> <> lib
 R69:88 Coq.Program.Equality <> <> lib
-R128:136 Lib.EqDec <> <> lib
-rec 146:156 <> LinearOrder
-proj 175:177 <> ord
-proj 204:207 <> refl
-proj 246:253 <> anti_sym
-proj 317:321 <> trans
-proj 399:402 <> full
-binder 159:159 <> A:1
-R187:190 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R186:186 Lib.Sorted <> A:1 var
-R192:195 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R191:191 Lib.Sorted <> A:1 var
-R196:199 Coq.Init.Datatypes <> bool ind
-R225:225 Lib.Sorted <> A:1 var
-binder 222:222 <> x:4
-R235:237 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R228:230 Lib.Sorted <> ord:3 meth
-R234:234 Lib.Sorted <> x:4 var
-R232:232 Lib.Sorted <> x:4 var
-R238:241 Coq.Init.Datatypes <> true constr
-R269:269 Lib.Sorted <> A:1 var
-binder 264:264 <> x:6
-binder 266:266 <> y:7
-R286:289 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R279:281 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R272:274 Lib.Sorted <> ord:3 meth
-R278:278 Lib.Sorted <> y:7 var
-R276:276 Lib.Sorted <> x:6 var
-R282:285 Coq.Init.Datatypes <> true constr
-R304:307 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R297:299 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R290:292 Lib.Sorted <> ord:3 meth
-R296:296 Lib.Sorted <> x:6 var
-R294:294 Lib.Sorted <> y:7 var
-R300:303 Coq.Init.Datatypes <> true constr
-R309:311 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R308:308 Lib.Sorted <> x:6 var
-R312:312 Lib.Sorted <> y:7 var
-R342:342 Lib.Sorted <> A:1 var
-binder 335:335 <> x:9
-binder 337:337 <> y:10
-binder 339:339 <> z:11
-R359:362 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R352:354 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R345:347 Lib.Sorted <> ord:3 meth
-R351:351 Lib.Sorted <> y:10 var
-R349:349 Lib.Sorted <> x:9 var
-R355:358 Coq.Init.Datatypes <> true constr
-R377:380 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R370:372 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R363:365 Lib.Sorted <> ord:3 meth
-R369:369 Lib.Sorted <> z:11 var
-R367:367 Lib.Sorted <> y:10 var
-R373:376 Coq.Init.Datatypes <> true constr
-R388:390 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R381:383 Lib.Sorted <> ord:3 meth
-R387:387 Lib.Sorted <> z:11 var
-R385:385 Lib.Sorted <> x:9 var
-R391:394 Coq.Init.Datatypes <> true constr
-binder 417:417 <> x:13
-binder 419:419 <> y:14
-R436:439 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
-R429:431 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R422:424 Lib.Sorted <> ord:3 meth
-R428:428 Lib.Sorted <> y:14 var
-R426:426 Lib.Sorted <> x:13 var
-R432:435 Coq.Init.Datatypes <> true constr
-R447:449 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R440:442 Lib.Sorted <> ord:3 meth
-R446:446 Lib.Sorted <> x:13 var
-R444:444 Lib.Sorted <> y:14 var
-R450:453 Coq.Init.Datatypes <> true constr
-prf 467:480 <> ord_false_true
-binder 483:483 <> A:16
-R494:504 Lib.Sorted <> LinearOrder class
-R506:506 Lib.Sorted <> A:16 var
-binder 494:506 <> H:17
-R515:515 Lib.Sorted <> A:16 var
-binder 510:510 <> y:18
-binder 512:512 <> x:19
-R537:540 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R529:531 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R522:524 Lib.Sorted <> ord meth
-R528:528 Lib.Sorted <> y:18 var
-R526:526 Lib.Sorted <> x:19 var
-R532:536 Coq.Init.Datatypes <> false constr
-R548:550 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R541:543 Lib.Sorted <> ord meth
-R547:547 Lib.Sorted <> x:19 var
-R545:545 Lib.Sorted <> y:18 var
-R551:554 Coq.Init.Datatypes <> true constr
-R584:587 Lib.Sorted <> full meth
-R584:587 Lib.Sorted <> full meth
-prf 645:659 <> ord_false_trans
-binder 662:662 <> A:20
-R676:686 Lib.Sorted <> LinearOrder class
-R688:688 Lib.Sorted <> A:20 var
-binder 673:673 <> L:21
-R699:699 Lib.Sorted <> A:20 var
-binder 692:692 <> z:22
-binder 694:694 <> y:23
-binder 696:696 <> x:24
-R721:724 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R713:715 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R706:708 Lib.Sorted <> ord meth
-R712:712 Lib.Sorted <> x:24 var
-R710:710 Lib.Sorted <> y:23 var
-R716:720 Coq.Init.Datatypes <> false constr
-R740:743 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R732:734 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R725:727 Lib.Sorted <> ord meth
-R731:731 Lib.Sorted <> y:23 var
-R729:729 Lib.Sorted <> z:22 var
-R735:739 Coq.Init.Datatypes <> false constr
-R751:753 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R744:746 Lib.Sorted <> ord meth
-R750:750 Lib.Sorted <> x:24 var
-R748:748 Lib.Sorted <> z:22 var
-R754:758 Coq.Init.Datatypes <> false constr
-R794:796 Lib.Sorted <> ord meth
-R794:796 Lib.Sorted <> ord meth
-R824:827 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R824:827 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R867:870 Lib.Sorted <> full meth
-R867:870 Lib.Sorted <> full meth
-R972:974 Lib.Sorted <> ord meth
-R972:974 Lib.Sorted <> ord meth
-R1028:1035 Lib.Sorted <> anti_sym meth
-R1028:1035 Lib.Sorted <> anti_sym meth
-R1068:1070 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R1061:1063 Lib.Sorted <> ord meth
-R1071:1074 Coq.Init.Datatypes <> true constr
-R1068:1070 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R1061:1063 Lib.Sorted <> ord meth
-R1071:1074 Coq.Init.Datatypes <> true constr
-R1091:1095 Lib.Sorted <> trans meth
-R1111:1124 Lib.Sorted <> ord_false_true thm
-R1091:1095 Lib.Sorted <> trans meth
-R1111:1124 Lib.Sorted <> ord_false_true thm
-R1111:1124 Lib.Sorted <> ord_false_true thm
-inst 1202:1212 <> LO_is_EqDec
-binder 1215:1215 <> A:25
-R1226:1236 Lib.Sorted <> LinearOrder class
-R1238:1238 Lib.Sorted <> A:25 var
-binder 1226:1238 <> H:26
-R1242:1246 Lib.EqDec <> EqDec class
-R1248:1248 Lib.Sorted <> A:25 var
-binder 1272:1272 <> x:27
-binder 1274:1274 <> y:28
-R1279:1282 Coq.Init.Datatypes <> andb def
-R1295:1297 Lib.Sorted <> ord meth
-R1301:1301 Lib.Sorted <> x:27 var
-R1299:1299 Lib.Sorted <> y:28 var
-R1285:1287 Lib.Sorted <> ord meth
-R1291:1291 Lib.Sorted <> y:28 var
-R1289:1289 Lib.Sorted <> x:27 var
-binder 1272:1272 <> x:29
-binder 1274:1274 <> y:30
-R1279:1282 Coq.Init.Datatypes <> andb def
-R1295:1297 Lib.Sorted <> ord meth
-R1301:1301 Lib.Sorted <> x:29 var
-R1299:1299 Lib.Sorted <> y:30 var
-R1285:1287 Lib.Sorted <> ord meth
-R1291:1291 Lib.Sorted <> y:30 var
-R1289:1289 Lib.Sorted <> x:29 var
-R1331:1334 Coq.Init.Datatypes <> andb def
-R1347:1349 Lib.Sorted <> ord meth
-R1337:1339 Lib.Sorted <> ord meth
-R1331:1334 Coq.Init.Datatypes <> andb def
-R1347:1349 Lib.Sorted <> ord meth
-R1337:1339 Lib.Sorted <> ord meth
-R1389:1406 Coq.Bool.Bool <> andb_true_iff thm
-R1389:1406 Coq.Bool.Bool <> andb_true_iff thm
-R1389:1406 Coq.Bool.Bool <> andb_true_iff thm
-R1432:1439 Lib.Sorted <> anti_sym meth
-R1432:1439 Lib.Sorted <> anti_sym meth
-R1477:1480 Lib.Sorted <> refl meth
-R1477:1480 Lib.Sorted <> refl meth
-R1477:1480 Lib.Sorted <> refl meth
-ind 1531:1536 <> Sorted
-constr 1589:1597 <> SortedNil
-constr 1615:1624 <> SortedSing
-constr 1656:1665 <> SortedCons
-binder 1539:1539 <> A:31
-R1550:1560 Lib.Sorted <> LinearOrder class
-R1562:1562 Lib.Sorted <> A:31 var
-binder 1550:1562 <> H:32
-R1573:1576 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1567:1570 Coq.Init.Datatypes <> list ind
-R1601:1606 Lib.Sorted <> Sorted:33 ind
-R1608:1609 Coq.Lists.List ListNotations ::list_scope:'['_']' not
-R1638:1638 Lib.Sorted <> A:31 var
-binder 1635:1635 <> h:35
-R1641:1646 Lib.Sorted <> Sorted:33 ind
-R1648:1648 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R1650:1650 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R1649:1649 Lib.Sorted <> h:35 var
-R1683:1683 Lib.Sorted <> A:31 var
-binder 1676:1676 <> h:36
-binder 1678:1679 <> h':37
-R1696:1699 Coq.Init.Datatypes <> list ind
-R1701:1701 Lib.Sorted <> A:31 var
-binder 1693:1693 <> t:38
-R1726:1729 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1710:1715 Lib.Sorted <> Sorted:33 ind
-R1720:1723 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R1718:1719 Lib.Sorted <> h':37 var
-R1724:1724 Lib.Sorted <> t:38 var
-R1745:1748 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1738:1740 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R1730:1732 Lib.Sorted <> ord meth
-R1736:1737 Lib.Sorted <> h':37 var
-R1734:1734 Lib.Sorted <> h:36 var
-R1741:1744 Coq.Init.Datatypes <> true constr
-R1749:1754 Lib.Sorted <> Sorted:33 ind
-R1758:1761 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R1757:1757 Lib.Sorted <> h:36 var
-R1764:1767 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R1762:1763 Lib.Sorted <> h':37 var
-R1768:1768 Lib.Sorted <> t:38 var
-def 1782:1786 <> count
-binder 1789:1789 <> A:39
-R1803:1806 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1802:1802 Lib.Sorted <> A:39 var
-R1807:1810 Coq.Init.Datatypes <> bool ind
-binder 1799:1799 <> p:40
-R1817:1820 Coq.Init.Datatypes <> list ind
-R1822:1822 Lib.Sorted <> A:39 var
-binder 1814:1814 <> l:41
-R1826:1828 Coq.Init.Datatypes <> nat ind
-R1841:1841 Lib.Sorted <> l:41 var
-R1852:1854 Coq.Init.Datatypes <> nil constr
-R1859:1859 Coq.Init.Datatypes <> O constr
-R1865:1868 Coq.Init.Datatypes <> cons constr
-R1880:1880 Lib.Sorted <> p:40 var
-R1908:1912 Lib.Sorted <> count:42 def
-R1914:1914 Lib.Sorted <> p:40 var
-R1889:1889 Coq.Init.Datatypes <> S constr
-R1892:1896 Lib.Sorted <> count:42 def
-R1898:1898 Lib.Sorted <> p:40 var
-def 1937:1947 <> permutation
-binder 1950:1950 <> A:44
-R1966:1969 Coq.Init.Datatypes <> list ind
-R1971:1971 Lib.Sorted <> A:44 var
-binder 1960:1960 <> a:45
-binder 1962:1962 <> b:46
-R1991:1994 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1990:1990 Lib.Sorted <> A:44 var
-R1995:1998 Coq.Init.Datatypes <> bool ind
-binder 1986:1986 <> p:47
-R2010:2012 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2001:2005 Lib.Sorted <> count def
-R2009:2009 Lib.Sorted <> a:45 var
-R2007:2007 Lib.Sorted <> p:47 var
-R2013:2017 Lib.Sorted <> count def
-R2021:2021 Lib.Sorted <> b:46 var
-R2019:2019 Lib.Sorted <> p:47 var
-def 2048:2053 <> remove
-binder 2056:2056 <> A:48
-R2067:2071 Lib.EqDec <> EqDec class
-R2073:2073 Lib.Sorted <> A:48 var
-binder 2067:2073 <> H:49
-R2080:2080 Lib.Sorted <> A:48 var
-binder 2077:2077 <> x:50
-R2087:2090 Coq.Init.Datatypes <> list ind
-R2092:2092 Lib.Sorted <> A:48 var
-binder 2084:2084 <> l:51
-R2104:2104 Lib.Sorted <> l:51 var
-R2114:2115 Coq.Lists.List ListNotations ::list_scope:'['_']' not
-R2124:2125 Coq.Lists.List ListNotations ::list_scope:'['_']' not
-R2131:2132 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R2142:2144 Lib.EqDec <> eqf meth
-R2146:2146 Lib.Sorted <> x:50 var
-R2163:2166 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R2167:2172 Lib.Sorted <> remove:52 def
-R2174:2174 Lib.Sorted <> x:50 var
-prf 2190:2206 <> remove_count_true
-binder 2209:2209 <> A:54
-R2220:2224 Lib.EqDec <> EqDec class
-R2226:2226 Lib.Sorted <> A:54 var
-binder 2220:2226 <> H:55
-R2233:2233 Lib.Sorted <> A:54 var
-binder 2230:2230 <> h:56
-R2240:2243 Coq.Init.Datatypes <> list ind
-R2245:2245 Lib.Sorted <> A:54 var
-binder 2237:2237 <> l:57
-R2253:2256 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R2252:2252 Lib.Sorted <> A:54 var
-R2257:2260 Coq.Init.Datatypes <> bool ind
-binder 2249:2249 <> p:58
-R2273:2276 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R2267:2268 Coq.Lists.List <> In def
-R2272:2272 Lib.Sorted <> l:57 var
-R2270:2270 Lib.Sorted <> h:56 var
-R2287:2290 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R2280:2282 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2277:2277 Lib.Sorted <> p:58 var
-R2279:2279 Lib.Sorted <> h:56 var
-R2283:2286 Coq.Init.Datatypes <> true constr
-R2300:2302 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2291:2295 Lib.Sorted <> count def
-R2299:2299 Lib.Sorted <> l:57 var
-R2297:2297 Lib.Sorted <> p:58 var
-R2303:2303 Coq.Init.Datatypes <> S constr
-R2306:2310 Lib.Sorted <> count def
-R2315:2320 Lib.Sorted <> remove def
-R2324:2324 Lib.Sorted <> l:57 var
-R2322:2322 Lib.Sorted <> h:56 var
-R2312:2312 Lib.Sorted <> p:58 var
-R2407:2414 Lib.EqDec <> eqf_refl thm
-R2407:2414 Lib.EqDec <> eqf_refl thm
-R2407:2414 Lib.EqDec <> eqf_refl thm
-R2459:2461 Lib.EqDec <> eqf meth
-R2459:2461 Lib.EqDec <> eqf meth
-R2459:2461 Lib.EqDec <> eqf meth
-R2542:2548 Lib.EqDec <> eqf_iff thm
-R2542:2548 Lib.EqDec <> eqf_iff thm
-R2542:2548 Lib.EqDec <> eqf_iff thm
-prf 2644:2661 <> remove_count_false
-binder 2664:2664 <> A:59
-R2675:2679 Lib.EqDec <> EqDec class
-R2681:2681 Lib.Sorted <> A:59 var
-binder 2675:2681 <> H:60
-R2688:2688 Lib.Sorted <> A:59 var
-binder 2685:2685 <> h:61
-R2695:2698 Coq.Init.Datatypes <> list ind
-R2700:2700 Lib.Sorted <> A:59 var
-binder 2692:2692 <> l:62
-R2708:2711 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R2707:2707 Lib.Sorted <> A:59 var
-R2712:2715 Coq.Init.Datatypes <> bool ind
-binder 2704:2704 <> p:63
-R2733:2736 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R2725:2727 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2722:2722 Lib.Sorted <> p:63 var
-R2724:2724 Lib.Sorted <> h:61 var
-R2728:2732 Coq.Init.Datatypes <> false constr
-R2746:2748 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2737:2741 Lib.Sorted <> count def
-R2745:2745 Lib.Sorted <> l:62 var
-R2743:2743 Lib.Sorted <> p:63 var
-R2749:2753 Lib.Sorted <> count def
-R2758:2763 Lib.Sorted <> remove def
-R2767:2767 Lib.Sorted <> l:62 var
-R2765:2765 Lib.Sorted <> h:61 var
-R2755:2755 Lib.Sorted <> p:63 var
-R2854:2856 Lib.EqDec <> eqf meth
-R2854:2856 Lib.EqDec <> eqf meth
-R2854:2856 Lib.EqDec <> eqf meth
-R2898:2904 Lib.EqDec <> eqf_iff thm
-R2898:2904 Lib.EqDec <> eqf_iff thm
-R2898:2904 Lib.EqDec <> eqf_iff thm
-prf 3039:3052 <> in_count_not_O
-binder 3055:3055 <> A:64
-R3066:3070 Lib.EqDec <> EqDec class
-R3072:3072 Lib.Sorted <> A:64 var
-binder 3066:3072 <> H:65
-R3079:3082 Coq.Init.Datatypes <> list ind
-R3084:3084 Lib.Sorted <> A:64 var
-binder 3076:3076 <> l:66
-R3091:3091 Lib.Sorted <> A:64 var
-binder 3088:3088 <> x:67
-R3104:3108 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
-R3098:3099 Coq.Lists.List <> In def
-R3103:3103 Lib.Sorted <> l:66 var
-R3101:3101 Lib.Sorted <> x:67 var
-R3124:3127 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R3109:3113 Lib.Sorted <> count def
-R3123:3123 Lib.Sorted <> l:66 var
-R3116:3118 Lib.EqDec <> eqf meth
-R3120:3120 Lib.Sorted <> x:67 var
-R3128:3128 Coq.Init.Datatypes <> O constr
-R3217:3224 Lib.EqDec <> eqf_refl thm
-R3217:3224 Lib.EqDec <> eqf_refl thm
-R3217:3224 Lib.EqDec <> eqf_refl thm
-R3249:3251 Lib.EqDec <> eqf meth
-R3249:3251 Lib.EqDec <> eqf meth
-R3341:3343 Lib.EqDec <> eqf meth
-R3341:3343 Lib.EqDec <> eqf meth
-R3375:3381 Lib.EqDec <> eqf_iff thm
-R3375:3381 Lib.EqDec <> eqf_iff thm
-R3375:3381 Lib.EqDec <> eqf_iff thm
-prf 3424:3430 <> perm_in
-binder 3433:3433 <> A:68
-R3444:3448 Lib.EqDec <> EqDec class
-R3450:3450 Lib.Sorted <> A:68 var
-binder 3444:3450 <> H:69
-R3460:3463 Coq.Init.Datatypes <> list ind
-R3465:3465 Lib.Sorted <> A:68 var
-binder 3454:3454 <> l:70
-binder 3456:3457 <> l':71
-R3472:3472 Lib.Sorted <> A:68 var
-binder 3469:3469 <> x:72
-R3495:3498 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R3479:3489 Lib.Sorted <> permutation def
-R3493:3494 Lib.Sorted <> l':71 var
-R3491:3491 Lib.Sorted <> l:70 var
-R3505:3508 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R3499:3500 Coq.Lists.List <> In def
-R3504:3504 Lib.Sorted <> l:70 var
-R3502:3502 Lib.Sorted <> x:72 var
-R3509:3510 Coq.Lists.List <> In def
-R3514:3515 Lib.Sorted <> l':71 var
-R3512:3512 Lib.Sorted <> x:72 var
-R3550:3563 Lib.Sorted <> in_count_not_O thm
-R3550:3563 Lib.Sorted <> in_count_not_O thm
-R3550:3563 Lib.Sorted <> in_count_not_O thm
-R3574:3587 Lib.Sorted <> in_count_not_O thm
-R3574:3587 Lib.Sorted <> in_count_not_O thm
-R3574:3587 Lib.Sorted <> in_count_not_O thm
-R3615:3617 Lib.EqDec <> eqf meth
-R3615:3617 Lib.EqDec <> eqf meth
-prf 3664:3674 <> remove_perm
-binder 3677:3677 <> A:73
-R3688:3692 Lib.EqDec <> EqDec class
-R3694:3694 Lib.Sorted <> A:73 var
-binder 3688:3694 <> H:74
-R3701:3701 Lib.Sorted <> A:73 var
-binder 3698:3698 <> h:75
-R3711:3714 Coq.Init.Datatypes <> list ind
-R3716:3716 Lib.Sorted <> A:73 var
-binder 3705:3705 <> l:76
-binder 3707:3708 <> l':77
-R3746:3749 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R3723:3733 Lib.Sorted <> permutation def
-R3744:3745 Lib.Sorted <> l':77 var
-R3737:3740 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R3736:3736 Lib.Sorted <> h:75 var
-R3741:3741 Lib.Sorted <> l:76 var
-R3750:3760 Lib.Sorted <> permutation def
-R3765:3770 Lib.Sorted <> remove def
-R3774:3775 Lib.Sorted <> l':77 var
-R3772:3772 Lib.Sorted <> h:75 var
-R3762:3762 Lib.Sorted <> l:76 var
-R3795:3805 Lib.Sorted <> permutation def
-R3862:3863 Coq.Lists.List <> In def
-R3882:3888 Lib.Sorted <> perm_in thm
-R3890:3890 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R3892:3892 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R3862:3863 Coq.Lists.List <> In def
-R3882:3888 Lib.Sorted <> perm_in thm
-R3890:3890 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R3892:3892 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R3929:3936 Coq.Init.Peano <> eq_add_S def
-R3929:3936 Coq.Init.Peano <> eq_add_S def
-R4008:4024 Lib.Sorted <> remove_count_true thm
-R4008:4024 Lib.Sorted <> remove_count_true thm
-R4008:4024 Lib.Sorted <> remove_count_true thm
-R4008:4024 Lib.Sorted <> remove_count_true thm
-R4008:4024 Lib.Sorted <> remove_count_true thm
-R4049:4066 Lib.Sorted <> remove_count_false thm
-R4049:4066 Lib.Sorted <> remove_count_false thm
-R4049:4066 Lib.Sorted <> remove_count_false thm
-R4049:4066 Lib.Sorted <> remove_count_false thm
-R4087:4088 Coq.Lists.List <> In def
-R4107:4113 Lib.Sorted <> perm_in thm
-R4117:4118 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4120:4121 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4087:4088 Coq.Lists.List <> In def
-R4107:4113 Lib.Sorted <> perm_in thm
-R4117:4118 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4120:4121 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4151:4152 Coq.Lists.List <> In def
-R4171:4177 Lib.Sorted <> perm_in thm
-R4181:4182 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4184:4185 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4151:4152 Coq.Lists.List <> In def
-R4171:4177 Lib.Sorted <> perm_in thm
-R4181:4182 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4184:4185 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4218:4225 Coq.Init.Peano <> eq_add_S def
-R4218:4225 Coq.Init.Peano <> eq_add_S def
-R4234:4241 Coq.Init.Peano <> eq_add_S def
-R4234:4241 Coq.Init.Peano <> eq_add_S def
-R4317:4333 Lib.Sorted <> remove_count_true thm
-R4317:4333 Lib.Sorted <> remove_count_true thm
-R4317:4333 Lib.Sorted <> remove_count_true thm
-R4317:4333 Lib.Sorted <> remove_count_true thm
-R4317:4333 Lib.Sorted <> remove_count_true thm
-R4358:4375 Lib.Sorted <> remove_count_false thm
-R4358:4375 Lib.Sorted <> remove_count_false thm
-R4358:4375 Lib.Sorted <> remove_count_false thm
-R4358:4375 Lib.Sorted <> remove_count_false thm
-prf 4396:4407 <> remove_perm'
-binder 4410:4410 <> A:78
-R4421:4425 Lib.EqDec <> EqDec class
-R4427:4427 Lib.Sorted <> A:78 var
-binder 4421:4427 <> H:79
-R4434:4434 Lib.Sorted <> A:78 var
-binder 4431:4431 <> h:80
-R4444:4447 Coq.Init.Datatypes <> list ind
-R4449:4449 Lib.Sorted <> A:78 var
-binder 4438:4438 <> l:81
-binder 4440:4441 <> l':82
-R4463:4466 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4456:4457 Coq.Lists.List <> In def
-R4461:4462 Lib.Sorted <> l':82 var
-R4459:4459 Lib.Sorted <> h:80 var
-R4494:4497 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4467:4477 Lib.Sorted <> permutation def
-R4482:4487 Lib.Sorted <> remove def
-R4491:4492 Lib.Sorted <> l':82 var
-R4489:4489 Lib.Sorted <> h:80 var
-R4479:4479 Lib.Sorted <> l:81 var
-R4498:4508 Lib.Sorted <> permutation def
-R4519:4520 Lib.Sorted <> l':82 var
-R4512:4515 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R4511:4511 Lib.Sorted <> h:80 var
-R4516:4516 Lib.Sorted <> l:81 var
-R4540:4550 Lib.Sorted <> permutation def
-R4656:4672 Lib.Sorted <> remove_count_true thm
-R4656:4672 Lib.Sorted <> remove_count_true thm
-R4656:4672 Lib.Sorted <> remove_count_true thm
-R4656:4672 Lib.Sorted <> remove_count_true thm
-R4656:4672 Lib.Sorted <> remove_count_true thm
-R4699:4716 Lib.Sorted <> remove_count_false thm
-R4699:4716 Lib.Sorted <> remove_count_false thm
-R4699:4716 Lib.Sorted <> remove_count_false thm
-R4699:4716 Lib.Sorted <> remove_count_false thm
-R4801:4817 Lib.Sorted <> remove_count_true thm
-R4801:4817 Lib.Sorted <> remove_count_true thm
-R4801:4817 Lib.Sorted <> remove_count_true thm
-R4801:4817 Lib.Sorted <> remove_count_true thm
-R4801:4817 Lib.Sorted <> remove_count_true thm
-R4847:4864 Lib.Sorted <> remove_count_false thm
-R4847:4864 Lib.Sorted <> remove_count_false thm
-R4847:4864 Lib.Sorted <> remove_count_false thm
-R4847:4864 Lib.Sorted <> remove_count_false thm
-prf 4913:4931 <> sorted_without_head
-binder 4934:4934 <> A:83
-R4945:4955 Lib.Sorted <> LinearOrder class
-R4957:4957 Lib.Sorted <> A:83 var
-binder 4945:4957 <> H:84
-R4972:4975 Coq.Init.Datatypes <> list ind
-R4977:4977 Lib.Sorted <> A:83 var
-binder 4969:4969 <> l:85
-R4990:4990 Lib.Sorted <> A:83 var
-binder 4987:4987 <> a:86
-R5008:5011 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R4995:5000 Lib.Sorted <> Sorted ind
-R5004:5005 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R5003:5003 Lib.Sorted <> a:86 var
-R5006:5006 Lib.Sorted <> l:85 var
-R5012:5017 Lib.Sorted <> Sorted ind
-R5019:5019 Lib.Sorted <> l:85 var
-prf 5152:5167 <> sorted_with_head
-binder 5170:5170 <> A:87
-R5181:5191 Lib.Sorted <> LinearOrder class
-R5193:5193 Lib.Sorted <> A:87 var
-binder 5181:5193 <> H:88
-R5208:5211 Coq.Init.Datatypes <> list ind
-R5213:5213 Lib.Sorted <> A:87 var
-binder 5205:5205 <> l:89
-R5228:5228 Lib.Sorted <> A:87 var
-binder 5223:5223 <> a:90
-binder 5225:5225 <> h:91
-R5246:5249 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R5233:5238 Lib.Sorted <> Sorted ind
-R5242:5243 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R5241:5241 Lib.Sorted <> h:91 var
-R5244:5244 Lib.Sorted <> l:89 var
-R5264:5267 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R5257:5259 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R5250:5252 Lib.Sorted <> ord meth
-R5256:5256 Lib.Sorted <> h:91 var
-R5254:5254 Lib.Sorted <> a:90 var
-R5260:5263 Coq.Init.Datatypes <> true constr
-R5268:5273 Lib.Sorted <> Sorted ind
-R5277:5278 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R5276:5276 Lib.Sorted <> a:90 var
-R5280:5281 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R5279:5279 Lib.Sorted <> h:91 var
-R5282:5282 Lib.Sorted <> l:89 var
-prf 5371:5390 <> sorted_head_relation
-binder 5393:5393 <> A:92
-R5407:5417 Lib.Sorted <> LinearOrder class
-R5419:5419 Lib.Sorted <> A:92 var
-binder 5404:5404 <> L:93
-R5436:5439 Coq.Init.Datatypes <> list ind
-R5441:5441 Lib.Sorted <> A:92 var
-binder 5433:5433 <> l:94
-R5454:5454 Lib.Sorted <> A:92 var
-binder 5451:5451 <> h:95
-R5470:5473 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R5457:5462 Lib.Sorted <> Sorted ind
-R5466:5467 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R5465:5465 Lib.Sorted <> h:95 var
-R5468:5468 Lib.Sorted <> l:94 var
-R5484:5484 Lib.Sorted <> A:92 var
-binder 5481:5481 <> x:96
-R5500:5505 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R5487:5488 Coq.Lists.List <> In def
-R5494:5497 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R5493:5493 Lib.Sorted <> h:95 var
-R5498:5498 Lib.Sorted <> l:94 var
-R5490:5490 Lib.Sorted <> x:96 var
-R5513:5515 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R5506:5508 Lib.Sorted <> ord meth
-R5512:5512 Lib.Sorted <> x:96 var
-R5510:5510 Lib.Sorted <> h:95 var
-R5516:5519 Coq.Init.Datatypes <> true constr
-R5618:5621 Lib.Sorted <> refl meth
-R5618:5621 Lib.Sorted <> refl meth
-R5690:5693 Lib.Sorted <> refl meth
-R5690:5693 Lib.Sorted <> refl meth
-R5717:5719 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R5710:5712 Lib.Sorted <> ord meth
-R5720:5723 Coq.Init.Datatypes <> true constr
-R5717:5719 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R5710:5712 Lib.Sorted <> ord meth
-R5720:5723 Coq.Init.Datatypes <> true constr
-R5763:5781 Lib.Sorted <> sorted_without_head thm
-R5763:5781 Lib.Sorted <> sorted_without_head thm
-R5896:5900 Lib.Sorted <> trans meth
-R5896:5900 Lib.Sorted <> trans meth
-prf 5936:5943 <> perm_sym
-binder 5946:5946 <> A:97
-R5970:5973 Coq.Init.Datatypes <> list ind
-R5975:5975 Lib.Sorted <> A:97 var
-binder 5964:5964 <> l:98
-binder 5966:5967 <> l':99
-R5994:5998 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
-R5978:5988 Lib.Sorted <> permutation def
-R5992:5993 Lib.Sorted <> l':99 var
-R5990:5990 Lib.Sorted <> l:98 var
-R5999:6009 Lib.Sorted <> permutation def
-R6014:6014 Lib.Sorted <> l:98 var
-R6011:6012 Lib.Sorted <> l':99 var
-R6046:6056 Lib.Sorted <> permutation def
-prf 6115:6124 <> perm_trans
-binder 6127:6127 <> A:100
-R6152:6155 Coq.Init.Datatypes <> list ind
-R6157:6157 Lib.Sorted <> A:100 var
-binder 6145:6145 <> x:101
-binder 6147:6147 <> y:102
-binder 6149:6149 <> z:103
-R6178:6181 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6163:6173 Lib.Sorted <> permutation def
-R6177:6177 Lib.Sorted <> y:102 var
-R6175:6175 Lib.Sorted <> x:101 var
-R6197:6200 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6182:6192 Lib.Sorted <> permutation def
-R6196:6196 Lib.Sorted <> z:103 var
-R6194:6194 Lib.Sorted <> y:102 var
-R6201:6211 Lib.Sorted <> permutation def
-R6215:6215 Lib.Sorted <> z:103 var
-R6213:6213 Lib.Sorted <> x:101 var
-R6253:6263 Lib.Sorted <> permutation def
-R6333:6337 Lib.Sorted <> count def
-R6333:6337 Lib.Sorted <> count def
-prf 6369:6385 <> perm_without_head
-binder 6388:6388 <> A:104
-R6412:6415 Coq.Init.Datatypes <> list ind
-R6417:6417 Lib.Sorted <> A:104 var
-binder 6406:6406 <> l:105
-binder 6408:6409 <> l':106
-R6430:6430 Lib.Sorted <> A:104 var
-binder 6427:6427 <> a:107
-R6469:6472 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6435:6445 Lib.Sorted <> permutation def
-R6459:6462 Coq.Init.Datatypes <> cons constr
-R6466:6467 Lib.Sorted <> l':106 var
-R6464:6464 Lib.Sorted <> a:107 var
-R6448:6451 Coq.Init.Datatypes <> cons constr
-R6455:6455 Lib.Sorted <> l:105 var
-R6453:6453 Lib.Sorted <> a:107 var
-R6473:6483 Lib.Sorted <> permutation def
-R6487:6488 Lib.Sorted <> l':106 var
-R6485:6485 Lib.Sorted <> l:105 var
-R6526:6536 Lib.Sorted <> permutation def
-prf 6664:6677 <> perm_with_head
-binder 6680:6680 <> A:108
-R6704:6707 Coq.Init.Datatypes <> list ind
-R6709:6709 Lib.Sorted <> A:108 var
-binder 6698:6698 <> l:109
-binder 6700:6701 <> l':110
-R6722:6722 Lib.Sorted <> A:108 var
-binder 6719:6719 <> a:111
-R6743:6746 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R6727:6737 Lib.Sorted <> permutation def
-R6741:6742 Lib.Sorted <> l':110 var
-R6739:6739 Lib.Sorted <> l:109 var
-R6747:6757 Lib.Sorted <> permutation def
-R6768:6769 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R6767:6767 Lib.Sorted <> a:111 var
-R6770:6771 Lib.Sorted <> l':110 var
-R6761:6762 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R6760:6760 Lib.Sorted <> a:111 var
-R6763:6763 Lib.Sorted <> l:109 var
-R6811:6821 Lib.Sorted <> permutation def
-prf 6940:6955 <> perm_for_element
-binder 6958:6958 <> A:112
-R6982:6985 Coq.Init.Datatypes <> list ind
-R6987:6987 Lib.Sorted <> A:112 var
-binder 6976:6976 <> l:113
-binder 6978:6979 <> l':114
-R7000:7000 Lib.Sorted <> A:112 var
-binder 6997:6997 <> x:115
-R7021:7024 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R7005:7015 Lib.Sorted <> permutation def
-R7019:7020 Lib.Sorted <> l':114 var
-R7017:7017 Lib.Sorted <> l:113 var
-R7032:7035 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R7025:7026 Coq.Lists.List <> In def
-R7030:7031 Lib.Sorted <> l':114 var
-R7028:7028 Lib.Sorted <> x:115 var
-R7036:7037 Coq.Lists.List <> In def
-R7041:7041 Lib.Sorted <> l:113 var
-R7039:7039 Lib.Sorted <> x:115 var
-R7060:7070 Lib.Sorted <> permutation def
-binder 7189:7189 <> x:116
-R7194:7197 Coq.Init.Datatypes <> true constr
-binder 7189:7189 <> x:117
-R7194:7197 Coq.Init.Datatypes <> true constr
-prf 7342:7355 <> singleton_perm
-binder 7358:7358 <> A:118
-R7372:7382 Lib.Sorted <> LinearOrder class
-R7384:7384 Lib.Sorted <> A:118 var
-binder 7369:7369 <> L:119
-R7393:7393 Lib.Sorted <> A:118 var
-binder 7388:7388 <> x:120
-binder 7390:7390 <> y:121
-R7406:7410 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
-R7402:7404 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R7401:7401 Lib.Sorted <> x:120 var
-R7405:7405 Lib.Sorted <> y:121 var
-R7411:7421 Lib.Sorted <> permutation def
-R7427:7427 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R7429:7429 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R7428:7428 Lib.Sorted <> y:121 var
-R7423:7423 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R7425:7425 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
-R7424:7424 Lib.Sorted <> x:120 var
-R7506:7508 Lib.EqDec <> eqf meth
-R7506:7508 Lib.EqDec <> eqf meth
-R7541:7548 Lib.EqDec <> eqf_refl thm
-R7541:7548 Lib.EqDec <> eqf_refl thm
-R7541:7548 Lib.EqDec <> eqf_refl thm
-R7573:7575 Lib.EqDec <> eqf meth
-R7573:7575 Lib.EqDec <> eqf meth
-R7606:7612 Lib.EqDec <> eqf_iff thm
-R7606:7612 Lib.EqDec <> eqf_iff thm
-R7606:7612 Lib.EqDec <> eqf_iff thm
-prf 7660:7670 <> week_eqf_in
-binder 7673:7673 <> A:122
-R7687:7691 Lib.EqDec <> EqDec class
-R7693:7693 Lib.Sorted <> A:122 var
-binder 7684:7684 <> L:123
-R7710:7710 Lib.Sorted <> A:122 var
-binder 7707:7707 <> x:124
-R7723:7726 Coq.Init.Datatypes <> list ind
-R7728:7728 Lib.Sorted <> A:122 var
-binder 7720:7720 <> l:125
-R7737:7741 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
-R7731:7732 Coq.Lists.List <> In def
-R7736:7736 Lib.Sorted <> l:125 var
-R7734:7734 Lib.Sorted <> x:124 var
-R7757:7760 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R7742:7746 Lib.Sorted <> count def
-R7756:7756 Lib.Sorted <> l:125 var
-R7749:7751 Lib.EqDec <> eqf meth
-R7753:7753 Lib.Sorted <> x:124 var
-R7761:7761 Coq.Init.Datatypes <> O constr
-R7871:7873 Lib.EqDec <> eqf meth
-R7871:7873 Lib.EqDec <> eqf meth
-R7902:7924 Coq.Arith.PeanoNat Nat neq_succ_0 thm
-R7902:7924 Coq.Arith.PeanoNat Nat neq_succ_0 thm
-R7979:7986 Lib.EqDec <> eqf_refl thm
-R7979:7986 Lib.EqDec <> eqf_refl thm
-R7979:7986 Lib.EqDec <> eqf_refl thm
-R8095:8097 Lib.EqDec <> eqf meth
-R8095:8097 Lib.EqDec <> eqf meth
-R8132:8138 Lib.EqDec <> eqf_iff thm
-R8132:8138 Lib.EqDec <> eqf_iff thm
-R8149:8155 Lib.EqDec <> eqf_sym thm
-R8149:8155 Lib.EqDec <> eqf_sym thm
-R8149:8155 Lib.EqDec <> eqf_sym thm
-prf 8249:8260 <> weak_perm_in
-binder 8263:8263 <> A:126
-R8277:8281 Lib.EqDec <> EqDec class
-R8283:8283 Lib.Sorted <> A:126 var
-binder 8274:8274 <> L:127
-R8301:8304 Coq.Init.Datatypes <> list ind
-R8306:8306 Lib.Sorted <> A:126 var
-binder 8295:8295 <> l:128
-binder 8297:8298 <> l':129
-R8319:8319 Lib.Sorted <> A:126 var
-binder 8316:8316 <> x:130
-R8342:8345 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8326:8336 Lib.Sorted <> permutation def
-R8340:8341 Lib.Sorted <> l':129 var
-R8338:8338 Lib.Sorted <> l:128 var
-R8353:8356 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8346:8347 Coq.Lists.List <> In def
-R8351:8352 Lib.Sorted <> l':129 var
-R8349:8349 Lib.Sorted <> x:130 var
-R8357:8358 Coq.Lists.List <> In def
-R8362:8362 Lib.Sorted <> l:128 var
-R8360:8360 Lib.Sorted <> x:130 var
-R8381:8391 Lib.Sorted <> permutation def
-R8434:8436 Lib.EqDec <> eqf meth
-R8434:8436 Lib.EqDec <> eqf meth
-R8464:8467 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R8448:8452 Lib.Sorted <> count def
-R8455:8457 Lib.EqDec <> eqf meth
-R8468:8468 Coq.Init.Datatypes <> O constr
-R8464:8467 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R8448:8452 Lib.Sorted <> count def
-R8455:8457 Lib.EqDec <> eqf meth
-R8468:8468 Coq.Init.Datatypes <> O constr
-R8517:8527 Lib.Sorted <> week_eqf_in thm
-R8517:8527 Lib.Sorted <> week_eqf_in thm
-R8517:8527 Lib.Sorted <> week_eqf_in thm
-R8552:8562 Lib.Sorted <> week_eqf_in thm
-R8552:8562 Lib.Sorted <> week_eqf_in thm
-prf 8589:8602 <> sorted_head_eq
-binder 8605:8605 <> A:131
-R8619:8629 Lib.Sorted <> LinearOrder class
-R8631:8631 Lib.Sorted <> A:131 var
-binder 8616:8616 <> L:132
-R8649:8652 Coq.Init.Datatypes <> list ind
-R8654:8654 Lib.Sorted <> A:131 var
-binder 8643:8643 <> l:133
-binder 8645:8646 <> l':134
-R8670:8670 Lib.Sorted <> A:131 var
-binder 8664:8664 <> a:135
-binder 8666:8667 <> a':136
-R8707:8710 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8676:8686 Lib.Sorted <> permutation def
-R8700:8703 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8698:8699 Lib.Sorted <> a':136 var
-R8704:8705 Lib.Sorted <> l':134 var
-R8690:8693 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8689:8689 Lib.Sorted <> a:135 var
-R8694:8694 Lib.Sorted <> l:133 var
-R8726:8729 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8711:8716 Lib.Sorted <> Sorted ind
-R8720:8723 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8719:8719 Lib.Sorted <> a:135 var
-R8724:8724 Lib.Sorted <> l:133 var
-R8747:8750 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R8730:8735 Lib.Sorted <> Sorted ind
-R8740:8743 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8738:8739 Lib.Sorted <> a':136 var
-R8744:8745 Lib.Sorted <> l':134 var
+R129:143 Lib.LinearOrder <> <> lib
+R161:169 Lib.EqDec <> <> lib
+ind 185:190 <> Sorted
+constr 243:251 <> SortedNil
+constr 269:278 <> SortedSing
+constr 310:319 <> SortedCons
+binder 193:193 <> A:1
+R204:214 Lib.LinearOrder <> LinearOrder class
+R216:216 Lib.Sorted <> A:1 var
+binder 204:216 <> H:2
+R227:230 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R221:224 Coq.Init.Datatypes <> list ind
+R255:260 Lib.Sorted <> Sorted:3 ind
+R262:263 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R292:292 Lib.Sorted <> A:1 var
+binder 289:289 <> h:5
+R295:300 Lib.Sorted <> Sorted:3 ind
+R302:302 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R304:304 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R303:303 Lib.Sorted <> h:5 var
+R337:337 Lib.Sorted <> A:1 var
+binder 330:330 <> h:6
+binder 332:333 <> h':7
+R350:353 Coq.Init.Datatypes <> list ind
+R355:355 Lib.Sorted <> A:1 var
+binder 347:347 <> t:8
+R380:383 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R364:369 Lib.Sorted <> Sorted:3 ind
+R374:377 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R372:373 Lib.Sorted <> h':7 var
+R378:378 Lib.Sorted <> t:8 var
+R399:402 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R392:394 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R384:386 Lib.LinearOrder <> ord meth
+R390:391 Lib.Sorted <> h':7 var
+R388:388 Lib.Sorted <> h:6 var
+R395:398 Coq.Init.Datatypes <> true constr
+R403:408 Lib.Sorted <> Sorted:3 ind
+R412:415 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R411:411 Lib.Sorted <> h:6 var
+R418:421 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R416:417 Lib.Sorted <> h':7 var
+R422:422 Lib.Sorted <> t:8 var
+def 436:440 <> count
+binder 443:443 <> A:9
+R457:460 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R456:456 Lib.Sorted <> A:9 var
+R461:464 Coq.Init.Datatypes <> bool ind
+binder 453:453 <> p:10
+R471:474 Coq.Init.Datatypes <> list ind
+R476:476 Lib.Sorted <> A:9 var
+binder 468:468 <> l:11
+R480:482 Coq.Init.Datatypes <> nat ind
+R495:495 Lib.Sorted <> l:11 var
+R506:508 Coq.Init.Datatypes <> nil constr
+R513:513 Coq.Init.Datatypes <> O constr
+R519:522 Coq.Init.Datatypes <> cons constr
+R534:534 Lib.Sorted <> p:10 var
+R562:566 Lib.Sorted <> count:12 def
+R568:568 Lib.Sorted <> p:10 var
+R543:543 Coq.Init.Datatypes <> S constr
+R546:550 Lib.Sorted <> count:12 def
+R552:552 Lib.Sorted <> p:10 var
+def 591:601 <> permutation
+binder 604:604 <> A:14
+R620:623 Coq.Init.Datatypes <> list ind
+R625:625 Lib.Sorted <> A:14 var
+binder 614:614 <> a:15
+binder 616:616 <> b:16
+R645:648 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R644:644 Lib.Sorted <> A:14 var
+R649:652 Coq.Init.Datatypes <> bool ind
+binder 640:640 <> p:17
+R664:666 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R655:659 Lib.Sorted <> count def
+R663:663 Lib.Sorted <> a:15 var
+R661:661 Lib.Sorted <> p:17 var
+R667:671 Lib.Sorted <> count def
+R675:675 Lib.Sorted <> b:16 var
+R673:673 Lib.Sorted <> p:17 var
+def 702:707 <> remove
+binder 710:710 <> A:18
+R721:725 Lib.EqDec <> EqDec class
+R727:727 Lib.Sorted <> A:18 var
+binder 721:727 <> H:19
+R734:734 Lib.Sorted <> A:18 var
+binder 731:731 <> x:20
+R741:744 Coq.Init.Datatypes <> list ind
+R746:746 Lib.Sorted <> A:18 var
+binder 738:738 <> l:21
+R758:758 Lib.Sorted <> l:21 var
+R768:769 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R778:779 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R785:786 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R796:798 Lib.EqDec <> eqf meth
+R800:800 Lib.Sorted <> x:20 var
+R817:820 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R821:826 Lib.Sorted <> remove:22 def
+R828:828 Lib.Sorted <> x:20 var
+prf 844:860 <> remove_count_true
+binder 863:863 <> A:24
+R874:878 Lib.EqDec <> EqDec class
+R880:880 Lib.Sorted <> A:24 var
+binder 874:880 <> H:25
+R887:887 Lib.Sorted <> A:24 var
+binder 884:884 <> h:26
+R894:897 Coq.Init.Datatypes <> list ind
+R899:899 Lib.Sorted <> A:24 var
+binder 891:891 <> l:27
+R907:910 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R906:906 Lib.Sorted <> A:24 var
+R911:914 Coq.Init.Datatypes <> bool ind
+binder 903:903 <> p:28
+R927:930 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R921:922 Coq.Lists.List <> In def
+R926:926 Lib.Sorted <> l:27 var
+R924:924 Lib.Sorted <> h:26 var
+R941:944 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R934:936 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R931:931 Lib.Sorted <> p:28 var
+R933:933 Lib.Sorted <> h:26 var
+R937:940 Coq.Init.Datatypes <> true constr
+R954:956 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R945:949 Lib.Sorted <> count def
+R953:953 Lib.Sorted <> l:27 var
+R951:951 Lib.Sorted <> p:28 var
+R957:957 Coq.Init.Datatypes <> S constr
+R960:964 Lib.Sorted <> count def
+R969:974 Lib.Sorted <> remove def
+R978:978 Lib.Sorted <> l:27 var
+R976:976 Lib.Sorted <> h:26 var
+R966:966 Lib.Sorted <> p:28 var
+R1061:1068 Lib.EqDec <> eqf_refl thm
+R1061:1068 Lib.EqDec <> eqf_refl thm
+R1061:1068 Lib.EqDec <> eqf_refl thm
+R1113:1115 Lib.EqDec <> eqf meth
+R1113:1115 Lib.EqDec <> eqf meth
+R1113:1115 Lib.EqDec <> eqf meth
+R1196:1202 Lib.EqDec <> eqf_iff thm
+R1196:1202 Lib.EqDec <> eqf_iff thm
+R1196:1202 Lib.EqDec <> eqf_iff thm
+prf 1298:1315 <> remove_count_false
+binder 1318:1318 <> A:29
+R1329:1333 Lib.EqDec <> EqDec class
+R1335:1335 Lib.Sorted <> A:29 var
+binder 1329:1335 <> H:30
+R1342:1342 Lib.Sorted <> A:29 var
+binder 1339:1339 <> h:31
+R1349:1352 Coq.Init.Datatypes <> list ind
+R1354:1354 Lib.Sorted <> A:29 var
+binder 1346:1346 <> l:32
+R1362:1365 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1361:1361 Lib.Sorted <> A:29 var
+R1366:1369 Coq.Init.Datatypes <> bool ind
+binder 1358:1358 <> p:33
+R1387:1390 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1379:1381 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1376:1376 Lib.Sorted <> p:33 var
+R1378:1378 Lib.Sorted <> h:31 var
+R1382:1386 Coq.Init.Datatypes <> false constr
+R1400:1402 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1391:1395 Lib.Sorted <> count def
+R1399:1399 Lib.Sorted <> l:32 var
+R1397:1397 Lib.Sorted <> p:33 var
+R1403:1407 Lib.Sorted <> count def
+R1412:1417 Lib.Sorted <> remove def
+R1421:1421 Lib.Sorted <> l:32 var
+R1419:1419 Lib.Sorted <> h:31 var
+R1409:1409 Lib.Sorted <> p:33 var
+R1508:1510 Lib.EqDec <> eqf meth
+R1508:1510 Lib.EqDec <> eqf meth
+R1508:1510 Lib.EqDec <> eqf meth
+R1552:1558 Lib.EqDec <> eqf_iff thm
+R1552:1558 Lib.EqDec <> eqf_iff thm
+R1552:1558 Lib.EqDec <> eqf_iff thm
+prf 1693:1706 <> in_count_not_O
+binder 1709:1709 <> A:34
+R1720:1724 Lib.EqDec <> EqDec class
+R1726:1726 Lib.Sorted <> A:34 var
+binder 1720:1726 <> H:35
+R1733:1736 Coq.Init.Datatypes <> list ind
+R1738:1738 Lib.Sorted <> A:34 var
+binder 1730:1730 <> l:36
+R1745:1745 Lib.Sorted <> A:34 var
+binder 1742:1742 <> x:37
+R1758:1762 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1752:1753 Coq.Lists.List <> In def
+R1757:1757 Lib.Sorted <> l:36 var
+R1755:1755 Lib.Sorted <> x:37 var
+R1778:1781 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R1763:1767 Lib.Sorted <> count def
+R1777:1777 Lib.Sorted <> l:36 var
+R1770:1772 Lib.EqDec <> eqf meth
+R1774:1774 Lib.Sorted <> x:37 var
+R1782:1782 Coq.Init.Datatypes <> O constr
+R1871:1878 Lib.EqDec <> eqf_refl thm
+R1871:1878 Lib.EqDec <> eqf_refl thm
+R1871:1878 Lib.EqDec <> eqf_refl thm
+R1903:1905 Lib.EqDec <> eqf meth
+R1903:1905 Lib.EqDec <> eqf meth
+R1995:1997 Lib.EqDec <> eqf meth
+R1995:1997 Lib.EqDec <> eqf meth
+R2029:2035 Lib.EqDec <> eqf_iff thm
+R2029:2035 Lib.EqDec <> eqf_iff thm
+R2029:2035 Lib.EqDec <> eqf_iff thm
+prf 2078:2084 <> perm_in
+binder 2087:2087 <> A:38
+R2098:2102 Lib.EqDec <> EqDec class
+R2104:2104 Lib.Sorted <> A:38 var
+binder 2098:2104 <> H:39
+R2114:2117 Coq.Init.Datatypes <> list ind
+R2119:2119 Lib.Sorted <> A:38 var
+binder 2108:2108 <> l:40
+binder 2110:2111 <> l':41
+R2126:2126 Lib.Sorted <> A:38 var
+binder 2123:2123 <> x:42
+R2149:2152 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2133:2143 Lib.Sorted <> permutation def
+R2147:2148 Lib.Sorted <> l':41 var
+R2145:2145 Lib.Sorted <> l:40 var
+R2159:2162 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2153:2154 Coq.Lists.List <> In def
+R2158:2158 Lib.Sorted <> l:40 var
+R2156:2156 Lib.Sorted <> x:42 var
+R2163:2164 Coq.Lists.List <> In def
+R2168:2169 Lib.Sorted <> l':41 var
+R2166:2166 Lib.Sorted <> x:42 var
+R2204:2217 Lib.Sorted <> in_count_not_O thm
+R2204:2217 Lib.Sorted <> in_count_not_O thm
+R2204:2217 Lib.Sorted <> in_count_not_O thm
+R2228:2241 Lib.Sorted <> in_count_not_O thm
+R2228:2241 Lib.Sorted <> in_count_not_O thm
+R2228:2241 Lib.Sorted <> in_count_not_O thm
+R2269:2271 Lib.EqDec <> eqf meth
+R2269:2271 Lib.EqDec <> eqf meth
+prf 2318:2328 <> remove_perm
+binder 2331:2331 <> A:43
+R2342:2346 Lib.EqDec <> EqDec class
+R2348:2348 Lib.Sorted <> A:43 var
+binder 2342:2348 <> H:44
+R2355:2355 Lib.Sorted <> A:43 var
+binder 2352:2352 <> h:45
+R2365:2368 Coq.Init.Datatypes <> list ind
+R2370:2370 Lib.Sorted <> A:43 var
+binder 2359:2359 <> l:46
+binder 2361:2362 <> l':47
+R2400:2403 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2377:2387 Lib.Sorted <> permutation def
+R2398:2399 Lib.Sorted <> l':47 var
+R2391:2394 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2390:2390 Lib.Sorted <> h:45 var
+R2395:2395 Lib.Sorted <> l:46 var
+R2404:2414 Lib.Sorted <> permutation def
+R2419:2424 Lib.Sorted <> remove def
+R2428:2429 Lib.Sorted <> l':47 var
+R2426:2426 Lib.Sorted <> h:45 var
+R2416:2416 Lib.Sorted <> l:46 var
+R2449:2459 Lib.Sorted <> permutation def
+R2516:2517 Coq.Lists.List <> In def
+R2536:2542 Lib.Sorted <> perm_in thm
+R2544:2544 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R2546:2546 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R2516:2517 Coq.Lists.List <> In def
+R2536:2542 Lib.Sorted <> perm_in thm
+R2544:2544 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R2546:2546 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R2583:2590 Coq.Init.Peano <> eq_add_S def
+R2583:2590 Coq.Init.Peano <> eq_add_S def
+R2662:2678 Lib.Sorted <> remove_count_true thm
+R2662:2678 Lib.Sorted <> remove_count_true thm
+R2662:2678 Lib.Sorted <> remove_count_true thm
+R2662:2678 Lib.Sorted <> remove_count_true thm
+R2662:2678 Lib.Sorted <> remove_count_true thm
+R2703:2720 Lib.Sorted <> remove_count_false thm
+R2703:2720 Lib.Sorted <> remove_count_false thm
+R2703:2720 Lib.Sorted <> remove_count_false thm
+R2703:2720 Lib.Sorted <> remove_count_false thm
+R2741:2742 Coq.Lists.List <> In def
+R2761:2767 Lib.Sorted <> perm_in thm
+R2771:2772 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2774:2775 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2741:2742 Coq.Lists.List <> In def
+R2761:2767 Lib.Sorted <> perm_in thm
+R2771:2772 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2774:2775 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2805:2806 Coq.Lists.List <> In def
+R2825:2831 Lib.Sorted <> perm_in thm
+R2835:2836 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2838:2839 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2805:2806 Coq.Lists.List <> In def
+R2825:2831 Lib.Sorted <> perm_in thm
+R2835:2836 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2838:2839 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2872:2879 Coq.Init.Peano <> eq_add_S def
+R2872:2879 Coq.Init.Peano <> eq_add_S def
+R2888:2895 Coq.Init.Peano <> eq_add_S def
+R2888:2895 Coq.Init.Peano <> eq_add_S def
+R2971:2987 Lib.Sorted <> remove_count_true thm
+R2971:2987 Lib.Sorted <> remove_count_true thm
+R2971:2987 Lib.Sorted <> remove_count_true thm
+R2971:2987 Lib.Sorted <> remove_count_true thm
+R2971:2987 Lib.Sorted <> remove_count_true thm
+R3012:3029 Lib.Sorted <> remove_count_false thm
+R3012:3029 Lib.Sorted <> remove_count_false thm
+R3012:3029 Lib.Sorted <> remove_count_false thm
+R3012:3029 Lib.Sorted <> remove_count_false thm
+prf 3050:3061 <> remove_perm'
+binder 3064:3064 <> A:48
+R3075:3079 Lib.EqDec <> EqDec class
+R3081:3081 Lib.Sorted <> A:48 var
+binder 3075:3081 <> H:49
+R3088:3088 Lib.Sorted <> A:48 var
+binder 3085:3085 <> h:50
+R3098:3101 Coq.Init.Datatypes <> list ind
+R3103:3103 Lib.Sorted <> A:48 var
+binder 3092:3092 <> l:51
+binder 3094:3095 <> l':52
+R3117:3120 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3110:3111 Coq.Lists.List <> In def
+R3115:3116 Lib.Sorted <> l':52 var
+R3113:3113 Lib.Sorted <> h:50 var
+R3148:3151 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3121:3131 Lib.Sorted <> permutation def
+R3136:3141 Lib.Sorted <> remove def
+R3145:3146 Lib.Sorted <> l':52 var
+R3143:3143 Lib.Sorted <> h:50 var
+R3133:3133 Lib.Sorted <> l:51 var
+R3152:3162 Lib.Sorted <> permutation def
+R3173:3174 Lib.Sorted <> l':52 var
+R3166:3169 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3165:3165 Lib.Sorted <> h:50 var
+R3170:3170 Lib.Sorted <> l:51 var
+R3194:3204 Lib.Sorted <> permutation def
+R3310:3326 Lib.Sorted <> remove_count_true thm
+R3310:3326 Lib.Sorted <> remove_count_true thm
+R3310:3326 Lib.Sorted <> remove_count_true thm
+R3310:3326 Lib.Sorted <> remove_count_true thm
+R3310:3326 Lib.Sorted <> remove_count_true thm
+R3353:3370 Lib.Sorted <> remove_count_false thm
+R3353:3370 Lib.Sorted <> remove_count_false thm
+R3353:3370 Lib.Sorted <> remove_count_false thm
+R3353:3370 Lib.Sorted <> remove_count_false thm
+R3455:3471 Lib.Sorted <> remove_count_true thm
+R3455:3471 Lib.Sorted <> remove_count_true thm
+R3455:3471 Lib.Sorted <> remove_count_true thm
+R3455:3471 Lib.Sorted <> remove_count_true thm
+R3455:3471 Lib.Sorted <> remove_count_true thm
+R3501:3518 Lib.Sorted <> remove_count_false thm
+R3501:3518 Lib.Sorted <> remove_count_false thm
+R3501:3518 Lib.Sorted <> remove_count_false thm
+R3501:3518 Lib.Sorted <> remove_count_false thm
+prf 3567:3583 <> count_list_concat
+binder 3586:3586 <> A:53
+R3602:3605 Coq.Init.Datatypes <> list ind
+R3607:3607 Lib.Sorted <> A:53 var
+binder 3596:3596 <> l:54
+binder 3598:3599 <> l':55
+R3625:3627 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3624:3624 Lib.Sorted <> A:53 var
+R3628:3631 Coq.Init.Datatypes <> bool ind
+binder 3621:3621 <> p:56
+R3651:3653 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3634:3638 Lib.Sorted <> count def
+R3644:3647 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R3643:3643 Lib.Sorted <> l:54 var
+R3648:3649 Lib.Sorted <> l':55 var
+R3640:3640 Lib.Sorted <> p:56 var
+R3663:3665 Coq.Init.Peano <> ::nat_scope:x_'+'_x not
+R3654:3658 Lib.Sorted <> count def
+R3662:3662 Lib.Sorted <> l:54 var
+R3660:3660 Lib.Sorted <> p:56 var
+R3666:3670 Lib.Sorted <> count def
+R3674:3675 Lib.Sorted <> l':55 var
+R3672:3672 Lib.Sorted <> p:56 var
+prf 3773:3791 <> sorted_without_head
+binder 3794:3794 <> A:57
+R3805:3815 Lib.LinearOrder <> LinearOrder class
+R3817:3817 Lib.Sorted <> A:57 var
+binder 3805:3817 <> H:58
+R3832:3835 Coq.Init.Datatypes <> list ind
+R3837:3837 Lib.Sorted <> A:57 var
+binder 3829:3829 <> l:59
+R3850:3850 Lib.Sorted <> A:57 var
+binder 3847:3847 <> a:60
+R3868:3871 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3855:3860 Lib.Sorted <> Sorted ind
+R3864:3865 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R3863:3863 Lib.Sorted <> a:60 var
+R3866:3866 Lib.Sorted <> l:59 var
+R3872:3877 Lib.Sorted <> Sorted ind
+R3879:3879 Lib.Sorted <> l:59 var
+prf 4012:4027 <> sorted_with_head
+binder 4030:4030 <> A:61
+R4041:4051 Lib.LinearOrder <> LinearOrder class
+R4053:4053 Lib.Sorted <> A:61 var
+binder 4041:4053 <> H:62
+R4068:4071 Coq.Init.Datatypes <> list ind
+R4073:4073 Lib.Sorted <> A:61 var
+binder 4065:4065 <> l:63
+R4088:4088 Lib.Sorted <> A:61 var
+binder 4083:4083 <> a:64
+binder 4085:4085 <> h:65
+R4106:4109 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4093:4098 Lib.Sorted <> Sorted ind
+R4102:4103 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4101:4101 Lib.Sorted <> h:65 var
+R4104:4104 Lib.Sorted <> l:63 var
+R4124:4127 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4117:4119 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4110:4112 Lib.LinearOrder <> ord meth
+R4116:4116 Lib.Sorted <> h:65 var
+R4114:4114 Lib.Sorted <> a:64 var
+R4120:4123 Coq.Init.Datatypes <> true constr
+R4128:4133 Lib.Sorted <> Sorted ind
+R4137:4138 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4136:4136 Lib.Sorted <> a:64 var
+R4140:4141 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4139:4139 Lib.Sorted <> h:65 var
+R4142:4142 Lib.Sorted <> l:63 var
+prf 4230:4243 <> head_in_sorted
+binder 4246:4246 <> A:66
+R4257:4267 Lib.LinearOrder <> LinearOrder class
+R4269:4269 Lib.Sorted <> A:66 var
+binder 4257:4269 <> H:67
+R4276:4276 Lib.Sorted <> A:66 var
+binder 4273:4273 <> h:68
+R4283:4286 Coq.Init.Datatypes <> list ind
+R4288:4288 Lib.Sorted <> A:66 var
+binder 4280:4280 <> l:69
+R4301:4307 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4293:4298 Lib.Sorted <> Sorted ind
+R4300:4300 Lib.Sorted <> l:69 var
+R4308:4308 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4346:4350 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4319:4319 Lib.Sorted <> A:66 var
+binder 4316:4316 <> x:70
+R4328:4331 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4322:4323 Coq.Lists.List <> In def
+R4327:4327 Lib.Sorted <> l:69 var
+R4325:4325 Lib.Sorted <> x:70 var
+R4339:4341 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4332:4334 Lib.LinearOrder <> ord meth
+R4338:4338 Lib.Sorted <> x:70 var
+R4336:4336 Lib.Sorted <> h:68 var
+R4342:4345 Coq.Init.Datatypes <> true constr
+R4351:4356 Lib.Sorted <> Sorted ind
+R4360:4361 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4359:4359 Lib.Sorted <> h:68 var
+R4362:4362 Lib.Sorted <> l:69 var
+prf 4455:4467 <> concat_sorted
+binder 4470:4470 <> A:71
+R4481:4491 Lib.LinearOrder <> LinearOrder class
+R4493:4493 Lib.Sorted <> A:71 var
+binder 4481:4493 <> H:72
+R4500:4500 Lib.Sorted <> A:71 var
+binder 4497:4497 <> h:73
+R4510:4513 Coq.Init.Datatypes <> list ind
+R4515:4515 Lib.Sorted <> A:71 var
+binder 4504:4504 <> l:74
+binder 4506:4507 <> l':75
+R4528:4531 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4520:4525 Lib.Sorted <> Sorted ind
+R4527:4527 Lib.Sorted <> l:74 var
+R4548:4554 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4532:4537 Lib.Sorted <> Sorted ind
+R4541:4544 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4540:4540 Lib.Sorted <> h:73 var
+R4545:4546 Lib.Sorted <> l':75 var
+R4555:4555 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4593:4597 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4566:4566 Lib.Sorted <> A:71 var
+binder 4563:4563 <> x:76
+R4575:4578 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4569:4570 Coq.Lists.List <> In def
+R4574:4574 Lib.Sorted <> l:74 var
+R4572:4572 Lib.Sorted <> x:76 var
+R4586:4588 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4579:4581 Lib.LinearOrder <> ord meth
+R4585:4585 Lib.Sorted <> h:73 var
+R4583:4583 Lib.Sorted <> x:76 var
+R4589:4592 Coq.Init.Datatypes <> true constr
+R4598:4603 Lib.Sorted <> Sorted ind
+R4607:4611 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R4619:4619 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R4606:4606 Lib.Sorted <> l:74 var
+R4613:4616 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R4612:4612 Lib.Sorted <> h:73 var
+R4617:4618 Lib.Sorted <> l':75 var
+R4799:4817 Lib.Sorted <> sorted_without_head thm
+R4799:4817 Lib.Sorted <> sorted_without_head thm
+prf 4930:4949 <> sorted_head_relation
+binder 4952:4952 <> A:77
+R4966:4976 Lib.LinearOrder <> LinearOrder class
+R4978:4978 Lib.Sorted <> A:77 var
+binder 4963:4963 <> L:78
+R4995:4998 Coq.Init.Datatypes <> list ind
+R5000:5000 Lib.Sorted <> A:77 var
+binder 4992:4992 <> l:79
+R5013:5013 Lib.Sorted <> A:77 var
+binder 5010:5010 <> h:80
+R5029:5032 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5016:5021 Lib.Sorted <> Sorted ind
+R5025:5026 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R5024:5024 Lib.Sorted <> h:80 var
+R5027:5027 Lib.Sorted <> l:79 var
+R5043:5043 Lib.Sorted <> A:77 var
+binder 5040:5040 <> x:81
+R5059:5064 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5046:5047 Coq.Lists.List <> In def
+R5053:5056 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R5052:5052 Lib.Sorted <> h:80 var
+R5057:5057 Lib.Sorted <> l:79 var
+R5049:5049 Lib.Sorted <> x:81 var
+R5072:5074 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5065:5067 Lib.LinearOrder <> ord meth
+R5071:5071 Lib.Sorted <> x:81 var
+R5069:5069 Lib.Sorted <> h:80 var
+R5075:5078 Coq.Init.Datatypes <> true constr
+R5177:5180 Lib.LinearOrder <> refl meth
+R5177:5180 Lib.LinearOrder <> refl meth
+R5249:5252 Lib.LinearOrder <> refl meth
+R5249:5252 Lib.LinearOrder <> refl meth
+R5276:5278 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5269:5271 Lib.LinearOrder <> ord meth
+R5279:5282 Coq.Init.Datatypes <> true constr
+R5276:5278 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5269:5271 Lib.LinearOrder <> ord meth
+R5279:5282 Coq.Init.Datatypes <> true constr
+R5322:5340 Lib.Sorted <> sorted_without_head thm
+R5322:5340 Lib.Sorted <> sorted_without_head thm
+R5455:5459 Lib.LinearOrder <> trans meth
+R5455:5459 Lib.LinearOrder <> trans meth
+prf 5495:5502 <> perm_sym
+binder 5505:5505 <> A:82
+R5529:5532 Coq.Init.Datatypes <> list ind
+R5534:5534 Lib.Sorted <> A:82 var
+binder 5523:5523 <> l:83
+binder 5525:5526 <> l':84
+R5553:5557 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R5537:5547 Lib.Sorted <> permutation def
+R5551:5552 Lib.Sorted <> l':84 var
+R5549:5549 Lib.Sorted <> l:83 var
+R5558:5568 Lib.Sorted <> permutation def
+R5573:5573 Lib.Sorted <> l:83 var
+R5570:5571 Lib.Sorted <> l':84 var
+R5605:5615 Lib.Sorted <> permutation def
+prf 5674:5683 <> perm_trans
+binder 5686:5686 <> A:85
+R5711:5714 Coq.Init.Datatypes <> list ind
+R5716:5716 Lib.Sorted <> A:85 var
+binder 5704:5704 <> x:86
+binder 5706:5706 <> y:87
+binder 5708:5708 <> z:88
+R5737:5740 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5722:5732 Lib.Sorted <> permutation def
+R5736:5736 Lib.Sorted <> y:87 var
+R5734:5734 Lib.Sorted <> x:86 var
+R5756:5759 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5741:5751 Lib.Sorted <> permutation def
+R5755:5755 Lib.Sorted <> z:88 var
+R5753:5753 Lib.Sorted <> y:87 var
+R5760:5770 Lib.Sorted <> permutation def
+R5774:5774 Lib.Sorted <> z:88 var
+R5772:5772 Lib.Sorted <> x:86 var
+R5812:5822 Lib.Sorted <> permutation def
+R5892:5896 Lib.Sorted <> count def
+R5892:5896 Lib.Sorted <> count def
+prf 5928:5944 <> perm_without_head
+binder 5947:5947 <> A:89
+R5971:5974 Coq.Init.Datatypes <> list ind
+R5976:5976 Lib.Sorted <> A:89 var
+binder 5965:5965 <> l:90
+binder 5967:5968 <> l':91
+R5989:5989 Lib.Sorted <> A:89 var
+binder 5986:5986 <> a:92
+R6028:6031 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5994:6004 Lib.Sorted <> permutation def
+R6018:6021 Coq.Init.Datatypes <> cons constr
+R6025:6026 Lib.Sorted <> l':91 var
+R6023:6023 Lib.Sorted <> a:92 var
+R6007:6010 Coq.Init.Datatypes <> cons constr
+R6014:6014 Lib.Sorted <> l:90 var
+R6012:6012 Lib.Sorted <> a:92 var
+R6032:6042 Lib.Sorted <> permutation def
+R6046:6047 Lib.Sorted <> l':91 var
+R6044:6044 Lib.Sorted <> l:90 var
+R6085:6095 Lib.Sorted <> permutation def
+prf 6223:6236 <> perm_with_head
+binder 6239:6239 <> A:93
+R6263:6266 Coq.Init.Datatypes <> list ind
+R6268:6268 Lib.Sorted <> A:93 var
+binder 6257:6257 <> l:94
+binder 6259:6260 <> l':95
+R6281:6281 Lib.Sorted <> A:93 var
+binder 6278:6278 <> a:96
+R6302:6305 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6286:6296 Lib.Sorted <> permutation def
+R6300:6301 Lib.Sorted <> l':95 var
+R6298:6298 Lib.Sorted <> l:94 var
+R6306:6316 Lib.Sorted <> permutation def
+R6327:6328 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R6326:6326 Lib.Sorted <> a:96 var
+R6329:6330 Lib.Sorted <> l':95 var
+R6320:6321 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R6319:6319 Lib.Sorted <> a:96 var
+R6322:6322 Lib.Sorted <> l:94 var
+R6370:6380 Lib.Sorted <> permutation def
+prf 6499:6514 <> perm_for_element
+binder 6517:6517 <> A:97
+R6541:6544 Coq.Init.Datatypes <> list ind
+R6546:6546 Lib.Sorted <> A:97 var
+binder 6535:6535 <> l:98
+binder 6537:6538 <> l':99
+R6559:6559 Lib.Sorted <> A:97 var
+binder 6556:6556 <> x:100
+R6580:6583 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6564:6574 Lib.Sorted <> permutation def
+R6578:6579 Lib.Sorted <> l':99 var
+R6576:6576 Lib.Sorted <> l:98 var
+R6591:6594 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6584:6585 Coq.Lists.List <> In def
+R6589:6590 Lib.Sorted <> l':99 var
+R6587:6587 Lib.Sorted <> x:100 var
+R6595:6596 Coq.Lists.List <> In def
+R6600:6600 Lib.Sorted <> l:98 var
+R6598:6598 Lib.Sorted <> x:100 var
+R6619:6629 Lib.Sorted <> permutation def
+binder 6748:6748 <> x:101
+R6753:6756 Coq.Init.Datatypes <> true constr
+binder 6748:6748 <> x:102
+R6753:6756 Coq.Init.Datatypes <> true constr
+prf 6901:6914 <> singleton_perm
+binder 6917:6917 <> A:103
+R6931:6941 Lib.LinearOrder <> LinearOrder class
+R6943:6943 Lib.Sorted <> A:103 var
+binder 6928:6928 <> L:104
+R6952:6952 Lib.Sorted <> A:103 var
+binder 6947:6947 <> x:105
+binder 6949:6949 <> y:106
+R6965:6969 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R6961:6963 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R6960:6960 Lib.Sorted <> x:105 var
+R6964:6964 Lib.Sorted <> y:106 var
+R6970:6980 Lib.Sorted <> permutation def
+R6986:6986 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R6988:6988 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R6987:6987 Lib.Sorted <> y:106 var
+R6982:6982 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R6984:6984 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R6983:6983 Lib.Sorted <> x:105 var
+R7065:7067 Lib.EqDec <> eqf meth
+R7065:7067 Lib.EqDec <> eqf meth
+R7100:7107 Lib.EqDec <> eqf_refl thm
+R7100:7107 Lib.EqDec <> eqf_refl thm
+R7100:7107 Lib.EqDec <> eqf_refl thm
+R7132:7134 Lib.EqDec <> eqf meth
+R7132:7134 Lib.EqDec <> eqf meth
+R7165:7171 Lib.EqDec <> eqf_iff thm
+R7165:7171 Lib.EqDec <> eqf_iff thm
+R7165:7171 Lib.EqDec <> eqf_iff thm
+prf 7219:7229 <> week_eqf_in
+binder 7232:7232 <> A:107
+R7246:7250 Lib.EqDec <> EqDec class
+R7252:7252 Lib.Sorted <> A:107 var
+binder 7243:7243 <> L:108
+R7269:7269 Lib.Sorted <> A:107 var
+binder 7266:7266 <> x:109
+R7282:7285 Coq.Init.Datatypes <> list ind
+R7287:7287 Lib.Sorted <> A:107 var
+binder 7279:7279 <> l:110
+R7296:7300 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R7290:7291 Coq.Lists.List <> In def
+R7295:7295 Lib.Sorted <> l:110 var
+R7293:7293 Lib.Sorted <> x:109 var
+R7316:7319 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R7301:7305 Lib.Sorted <> count def
+R7315:7315 Lib.Sorted <> l:110 var
+R7308:7310 Lib.EqDec <> eqf meth
+R7312:7312 Lib.Sorted <> x:109 var
+R7320:7320 Coq.Init.Datatypes <> O constr
+R7430:7432 Lib.EqDec <> eqf meth
+R7430:7432 Lib.EqDec <> eqf meth
+R7461:7483 Coq.Arith.PeanoNat Nat neq_succ_0 thm
+R7461:7483 Coq.Arith.PeanoNat Nat neq_succ_0 thm
+R7538:7545 Lib.EqDec <> eqf_refl thm
+R7538:7545 Lib.EqDec <> eqf_refl thm
+R7538:7545 Lib.EqDec <> eqf_refl thm
+R7654:7656 Lib.EqDec <> eqf meth
+R7654:7656 Lib.EqDec <> eqf meth
+R7691:7697 Lib.EqDec <> eqf_iff thm
+R7691:7697 Lib.EqDec <> eqf_iff thm
+R7708:7714 Lib.EqDec <> eqf_sym thm
+R7708:7714 Lib.EqDec <> eqf_sym thm
+R7708:7714 Lib.EqDec <> eqf_sym thm
+prf 7808:7819 <> weak_perm_in
+binder 7822:7822 <> A:111
+R7836:7840 Lib.EqDec <> EqDec class
+R7842:7842 Lib.Sorted <> A:111 var
+binder 7833:7833 <> L:112
+R7860:7863 Coq.Init.Datatypes <> list ind
+R7865:7865 Lib.Sorted <> A:111 var
+binder 7854:7854 <> l:113
+binder 7856:7857 <> l':114
+R7878:7878 Lib.Sorted <> A:111 var
+binder 7875:7875 <> x:115
+R7901:7904 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7885:7895 Lib.Sorted <> permutation def
+R7899:7900 Lib.Sorted <> l':114 var
+R7897:7897 Lib.Sorted <> l:113 var
+R7912:7915 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7905:7906 Coq.Lists.List <> In def
+R7910:7911 Lib.Sorted <> l':114 var
+R7908:7908 Lib.Sorted <> x:115 var
+R7916:7917 Coq.Lists.List <> In def
+R7921:7921 Lib.Sorted <> l:113 var
+R7919:7919 Lib.Sorted <> x:115 var
+R7940:7950 Lib.Sorted <> permutation def
+R7993:7995 Lib.EqDec <> eqf meth
+R7993:7995 Lib.EqDec <> eqf meth
+R8023:8026 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R8007:8011 Lib.Sorted <> count def
+R8014:8016 Lib.EqDec <> eqf meth
+R8027:8027 Coq.Init.Datatypes <> O constr
+R8023:8026 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R8007:8011 Lib.Sorted <> count def
+R8014:8016 Lib.EqDec <> eqf meth
+R8027:8027 Coq.Init.Datatypes <> O constr
+R8076:8086 Lib.Sorted <> week_eqf_in thm
+R8076:8086 Lib.Sorted <> week_eqf_in thm
+R8076:8086 Lib.Sorted <> week_eqf_in thm
+R8111:8121 Lib.Sorted <> week_eqf_in thm
+R8111:8121 Lib.Sorted <> week_eqf_in thm
+prf 8148:8161 <> sorted_head_eq
+binder 8164:8164 <> A:116
+R8178:8188 Lib.LinearOrder <> LinearOrder class
+R8190:8190 Lib.Sorted <> A:116 var
+binder 8175:8175 <> L:117
+R8208:8211 Coq.Init.Datatypes <> list ind
+R8213:8213 Lib.Sorted <> A:116 var
+binder 8202:8202 <> l:118
+binder 8204:8205 <> l':119
+R8229:8229 Lib.Sorted <> A:116 var
+binder 8223:8223 <> a:120
+binder 8225:8226 <> a':121
+R8266:8269 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8235:8245 Lib.Sorted <> permutation def
+R8259:8262 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8257:8258 Lib.Sorted <> a':121 var
+R8263:8264 Lib.Sorted <> l':119 var
+R8249:8252 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8248:8248 Lib.Sorted <> a:120 var
+R8253:8253 Lib.Sorted <> l:118 var
+R8285:8288 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8270:8275 Lib.Sorted <> Sorted ind
+R8279:8282 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8278:8278 Lib.Sorted <> a:120 var
+R8283:8283 Lib.Sorted <> l:118 var
+R8306:8309 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8289:8294 Lib.Sorted <> Sorted ind
+R8299:8302 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8297:8298 Lib.Sorted <> a':121 var
+R8303:8304 Lib.Sorted <> l':119 var
+R8311:8313 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8310:8310 Lib.Sorted <> a:120 var
+R8314:8315 Lib.Sorted <> a':121 var
+R8368:8371 Lib.LinearOrder <> full meth
+R8368:8371 Lib.LinearOrder <> full meth
+R8392:8393 Coq.Lists.List <> In def
+R8400:8401 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8392:8393 Coq.Lists.List <> In def
+R8400:8401 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8421:8432 Lib.Sorted <> weak_perm_in thm
+R8445:8448 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8437:8438 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8466:8473 Lib.Sorted <> perm_sym thm
+R8421:8432 Lib.Sorted <> weak_perm_in thm
+R8445:8448 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8437:8438 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8466:8473 Lib.Sorted <> perm_sym thm
+R8466:8473 Lib.Sorted <> perm_sym thm
+R8534:8536 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8526:8528 Lib.LinearOrder <> ord meth
+R8537:8540 Coq.Init.Datatypes <> true constr
+R8554:8573 Lib.Sorted <> sorted_head_relation thm
+R8534:8536 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8526:8528 Lib.LinearOrder <> ord meth
+R8537:8540 Coq.Init.Datatypes <> true constr
+R8554:8573 Lib.Sorted <> sorted_head_relation thm
+R8602:8609 Lib.LinearOrder <> anti_sym meth
+R8602:8609 Lib.LinearOrder <> anti_sym meth
+R8630:8631 Coq.Lists.List <> In def
+R8638:8639 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8630:8631 Coq.Lists.List <> In def
+R8638:8639 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8658:8669 Lib.Sorted <> weak_perm_in thm
+R8681:8684 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8673:8674 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8658:8669 Lib.Sorted <> weak_perm_in thm
+R8681:8684 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R8673:8674 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
 R8752:8754 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R8751:8751 Lib.Sorted <> a:135 var
-R8755:8756 Lib.Sorted <> a':136 var
-R8809:8812 Lib.Sorted <> full meth
-R8809:8812 Lib.Sorted <> full meth
-R8833:8834 Coq.Lists.List <> In def
-R8841:8842 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8833:8834 Coq.Lists.List <> In def
-R8841:8842 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8862:8873 Lib.Sorted <> weak_perm_in thm
-R8886:8889 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8878:8879 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8907:8914 Lib.Sorted <> perm_sym thm
-R8862:8873 Lib.Sorted <> weak_perm_in thm
-R8886:8889 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8878:8879 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R8907:8914 Lib.Sorted <> perm_sym thm
-R8907:8914 Lib.Sorted <> perm_sym thm
-R8975:8977 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R8967:8969 Lib.Sorted <> ord meth
-R8978:8981 Coq.Init.Datatypes <> true constr
-R8995:9014 Lib.Sorted <> sorted_head_relation thm
-R8975:8977 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R8967:8969 Lib.Sorted <> ord meth
-R8978:8981 Coq.Init.Datatypes <> true constr
-R8995:9014 Lib.Sorted <> sorted_head_relation thm
-R9043:9050 Lib.Sorted <> anti_sym meth
-R9043:9050 Lib.Sorted <> anti_sym meth
-R9071:9072 Coq.Lists.List <> In def
-R9079:9080 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R9071:9072 Coq.Lists.List <> In def
-R9079:9080 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R9099:9110 Lib.Sorted <> weak_perm_in thm
-R9122:9125 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R9114:9115 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R9099:9110 Lib.Sorted <> weak_perm_in thm
-R9122:9125 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R9114:9115 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R9193:9195 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9185:9187 Lib.Sorted <> ord meth
-R9196:9199 Coq.Init.Datatypes <> true constr
-R9213:9232 Lib.Sorted <> sorted_head_relation thm
-R9193:9195 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9185:9187 Lib.Sorted <> ord meth
-R9196:9199 Coq.Init.Datatypes <> true constr
-R9213:9232 Lib.Sorted <> sorted_head_relation thm
-R9259:9266 Lib.Sorted <> anti_sym meth
-R9259:9266 Lib.Sorted <> anti_sym meth
-prf 9303:9330 <> sorted_unique_representation
-binder 9333:9333 <> A:137
-R9347:9357 Lib.Sorted <> LinearOrder class
-R9359:9359 Lib.Sorted <> A:137 var
-binder 9344:9344 <> L:138
-R9379:9382 Coq.Init.Datatypes <> list ind
-R9384:9384 Lib.Sorted <> A:137 var
-binder 9373:9373 <> l:139
-binder 9375:9376 <> l':140
-R9403:9406 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9387:9397 Lib.Sorted <> permutation def
-R9401:9402 Lib.Sorted <> l':140 var
-R9399:9399 Lib.Sorted <> l:139 var
-R9415:9418 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9407:9412 Lib.Sorted <> Sorted ind
-R9414:9414 Lib.Sorted <> l:139 var
-R9428:9431 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R9419:9424 Lib.Sorted <> Sorted ind
-R9426:9427 Lib.Sorted <> l':140 var
-R9433:9435 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9432:9432 Lib.Sorted <> l:139 var
-R9436:9437 Lib.Sorted <> l':140 var
-R9549:9552 Coq.Init.Datatypes <> true constr
-R9549:9552 Coq.Init.Datatypes <> true constr
-R9634:9637 Coq.Init.Datatypes <> true constr
-R9634:9637 Coq.Init.Datatypes <> true constr
-R9684:9686 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9702:9715 Lib.Sorted <> sorted_head_eq thm
-R9684:9686 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R9702:9715 Lib.Sorted <> sorted_head_eq thm
-R9779:9795 Lib.Sorted <> perm_without_head thm
-R9779:9795 Lib.Sorted <> perm_without_head thm
-R9827:9845 Lib.Sorted <> sorted_without_head thm
-R9827:9845 Lib.Sorted <> sorted_without_head thm
-R9875:9893 Lib.Sorted <> sorted_without_head thm
-R9875:9893 Lib.Sorted <> sorted_without_head thm
+R8744:8746 Lib.LinearOrder <> ord meth
+R8755:8758 Coq.Init.Datatypes <> true constr
+R8772:8791 Lib.Sorted <> sorted_head_relation thm
+R8752:8754 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8744:8746 Lib.LinearOrder <> ord meth
+R8755:8758 Coq.Init.Datatypes <> true constr
+R8772:8791 Lib.Sorted <> sorted_head_relation thm
+R8818:8825 Lib.LinearOrder <> anti_sym meth
+R8818:8825 Lib.LinearOrder <> anti_sym meth
+prf 8862:8889 <> sorted_unique_representation
+binder 8892:8892 <> A:122
+R8906:8916 Lib.LinearOrder <> LinearOrder class
+R8918:8918 Lib.Sorted <> A:122 var
+binder 8903:8903 <> L:123
+R8938:8941 Coq.Init.Datatypes <> list ind
+R8943:8943 Lib.Sorted <> A:122 var
+binder 8932:8932 <> l:124
+binder 8934:8935 <> l':125
+R8962:8965 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8946:8956 Lib.Sorted <> permutation def
+R8960:8961 Lib.Sorted <> l':125 var
+R8958:8958 Lib.Sorted <> l:124 var
+R8974:8977 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8966:8971 Lib.Sorted <> Sorted ind
+R8973:8973 Lib.Sorted <> l:124 var
+R8987:8990 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8978:8983 Lib.Sorted <> Sorted ind
+R8985:8986 Lib.Sorted <> l':125 var
+R8992:8994 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8991:8991 Lib.Sorted <> l:124 var
+R8995:8996 Lib.Sorted <> l':125 var
+R9108:9111 Coq.Init.Datatypes <> true constr
+R9108:9111 Coq.Init.Datatypes <> true constr
+R9193:9196 Coq.Init.Datatypes <> true constr
+R9193:9196 Coq.Init.Datatypes <> true constr
+R9243:9245 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9261:9274 Lib.Sorted <> sorted_head_eq thm
+R9243:9245 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R9261:9274 Lib.Sorted <> sorted_head_eq thm
+R9338:9354 Lib.Sorted <> perm_without_head thm
+R9338:9354 Lib.Sorted <> perm_without_head thm
+R9386:9404 Lib.Sorted <> sorted_without_head thm
+R9386:9404 Lib.Sorted <> sorted_without_head thm
+R9434:9452 Lib.Sorted <> sorted_without_head thm
+R9434:9452 Lib.Sorted <> sorted_without_head thm

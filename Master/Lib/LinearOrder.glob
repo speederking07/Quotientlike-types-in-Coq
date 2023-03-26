@@ -1,0 +1,456 @@
+DIGEST 694838a901aaaa8839f176dbc38a2d04
+FLib.LinearOrder
+R15:20 Coq.Setoids.Setoid <> <> lib
+R38:51 Coq.Lists.List <> <> lib
+R69:88 Coq.Program.Equality <> <> lib
+R128:136 Lib.EqDec <> <> lib
+rec 146:156 <> LinearOrder
+proj 175:177 <> ord
+proj 204:207 <> refl
+proj 246:253 <> anti_sym
+proj 317:321 <> trans
+proj 399:402 <> full
+binder 159:159 <> A:1
+R187:190 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R186:186 Lib.LinearOrder <> A:1 var
+R192:195 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R191:191 Lib.LinearOrder <> A:1 var
+R196:199 Coq.Init.Datatypes <> bool ind
+R225:225 Lib.LinearOrder <> A:1 var
+binder 222:222 <> x:4
+R235:237 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R228:230 Lib.LinearOrder <> ord:3 meth
+R234:234 Lib.LinearOrder <> x:4 var
+R232:232 Lib.LinearOrder <> x:4 var
+R238:241 Coq.Init.Datatypes <> true constr
+R269:269 Lib.LinearOrder <> A:1 var
+binder 264:264 <> x:6
+binder 266:266 <> y:7
+R286:289 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R279:281 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R272:274 Lib.LinearOrder <> ord:3 meth
+R278:278 Lib.LinearOrder <> y:7 var
+R276:276 Lib.LinearOrder <> x:6 var
+R282:285 Coq.Init.Datatypes <> true constr
+R304:307 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R297:299 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R290:292 Lib.LinearOrder <> ord:3 meth
+R296:296 Lib.LinearOrder <> x:6 var
+R294:294 Lib.LinearOrder <> y:7 var
+R300:303 Coq.Init.Datatypes <> true constr
+R309:311 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R308:308 Lib.LinearOrder <> x:6 var
+R312:312 Lib.LinearOrder <> y:7 var
+R342:342 Lib.LinearOrder <> A:1 var
+binder 335:335 <> x:9
+binder 337:337 <> y:10
+binder 339:339 <> z:11
+R359:362 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R352:354 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R345:347 Lib.LinearOrder <> ord:3 meth
+R351:351 Lib.LinearOrder <> y:10 var
+R349:349 Lib.LinearOrder <> x:9 var
+R355:358 Coq.Init.Datatypes <> true constr
+R377:380 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R370:372 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R363:365 Lib.LinearOrder <> ord:3 meth
+R369:369 Lib.LinearOrder <> z:11 var
+R367:367 Lib.LinearOrder <> y:10 var
+R373:376 Coq.Init.Datatypes <> true constr
+R388:390 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R381:383 Lib.LinearOrder <> ord:3 meth
+R387:387 Lib.LinearOrder <> z:11 var
+R385:385 Lib.LinearOrder <> x:9 var
+R391:394 Coq.Init.Datatypes <> true constr
+binder 417:417 <> x:13
+binder 419:419 <> y:14
+R436:439 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R429:431 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R422:424 Lib.LinearOrder <> ord:3 meth
+R428:428 Lib.LinearOrder <> y:14 var
+R426:426 Lib.LinearOrder <> x:13 var
+R432:435 Coq.Init.Datatypes <> true constr
+R447:449 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R440:442 Lib.LinearOrder <> ord:3 meth
+R446:446 Lib.LinearOrder <> x:13 var
+R444:444 Lib.LinearOrder <> y:14 var
+R450:453 Coq.Init.Datatypes <> true constr
+prf 467:480 <> ord_false_true
+binder 483:483 <> A:16
+R494:504 Lib.LinearOrder <> LinearOrder class
+R506:506 Lib.LinearOrder <> A:16 var
+binder 494:506 <> H:17
+R515:515 Lib.LinearOrder <> A:16 var
+binder 510:510 <> y:18
+binder 512:512 <> x:19
+R537:540 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R529:531 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R522:524 Lib.LinearOrder <> ord meth
+R528:528 Lib.LinearOrder <> y:18 var
+R526:526 Lib.LinearOrder <> x:19 var
+R532:536 Coq.Init.Datatypes <> false constr
+R548:550 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R541:543 Lib.LinearOrder <> ord meth
+R547:547 Lib.LinearOrder <> x:19 var
+R545:545 Lib.LinearOrder <> y:18 var
+R551:554 Coq.Init.Datatypes <> true constr
+R584:587 Lib.LinearOrder <> full meth
+R584:587 Lib.LinearOrder <> full meth
+prf 645:659 <> ord_false_trans
+binder 662:662 <> A:20
+R676:686 Lib.LinearOrder <> LinearOrder class
+R688:688 Lib.LinearOrder <> A:20 var
+binder 673:673 <> L:21
+R699:699 Lib.LinearOrder <> A:20 var
+binder 692:692 <> z:22
+binder 694:694 <> y:23
+binder 696:696 <> x:24
+R721:724 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R713:715 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R706:708 Lib.LinearOrder <> ord meth
+R712:712 Lib.LinearOrder <> x:24 var
+R710:710 Lib.LinearOrder <> y:23 var
+R716:720 Coq.Init.Datatypes <> false constr
+R740:743 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R732:734 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R725:727 Lib.LinearOrder <> ord meth
+R731:731 Lib.LinearOrder <> y:23 var
+R729:729 Lib.LinearOrder <> z:22 var
+R735:739 Coq.Init.Datatypes <> false constr
+R751:753 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R744:746 Lib.LinearOrder <> ord meth
+R750:750 Lib.LinearOrder <> x:24 var
+R748:748 Lib.LinearOrder <> z:22 var
+R754:758 Coq.Init.Datatypes <> false constr
+R794:796 Lib.LinearOrder <> ord meth
+R794:796 Lib.LinearOrder <> ord meth
+R824:827 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R824:827 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R867:870 Lib.LinearOrder <> full meth
+R867:870 Lib.LinearOrder <> full meth
+R972:974 Lib.LinearOrder <> ord meth
+R972:974 Lib.LinearOrder <> ord meth
+R1028:1035 Lib.LinearOrder <> anti_sym meth
+R1028:1035 Lib.LinearOrder <> anti_sym meth
+R1068:1070 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1061:1063 Lib.LinearOrder <> ord meth
+R1071:1074 Coq.Init.Datatypes <> true constr
+R1068:1070 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1061:1063 Lib.LinearOrder <> ord meth
+R1071:1074 Coq.Init.Datatypes <> true constr
+R1091:1095 Lib.LinearOrder <> trans meth
+R1111:1124 Lib.LinearOrder <> ord_false_true thm
+R1091:1095 Lib.LinearOrder <> trans meth
+R1111:1124 Lib.LinearOrder <> ord_false_true thm
+R1111:1124 Lib.LinearOrder <> ord_false_true thm
+prf 1189:1196 <> not_full
+binder 1199:1199 <> A:25
+R1210:1220 Lib.LinearOrder <> LinearOrder class
+R1222:1222 Lib.LinearOrder <> A:25 var
+binder 1210:1222 <> H:26
+R1231:1231 Lib.LinearOrder <> A:25 var
+binder 1226:1226 <> x:27
+binder 1228:1228 <> y:28
+R1236:1238 Coq.Init.Logic <> ::type_scope:'~'_x not
+R1273:1273 Coq.Init.Logic <> ::type_scope:'~'_x not
+R1254:1257 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1246:1248 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1239:1241 Lib.LinearOrder <> ord meth
+R1245:1245 Lib.LinearOrder <> y:28 var
+R1243:1243 Lib.LinearOrder <> x:27 var
+R1249:1253 Coq.Init.Datatypes <> false constr
+R1265:1267 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1258:1260 Lib.LinearOrder <> ord meth
+R1264:1264 Lib.LinearOrder <> x:27 var
+R1262:1262 Lib.LinearOrder <> y:28 var
+R1268:1272 Coq.Init.Datatypes <> false constr
+R1311:1314 Lib.LinearOrder <> full meth
+R1311:1314 Lib.LinearOrder <> full meth
+def 1409:1412 <> comp
+binder 1415:1415 <> A:29
+R1426:1436 Lib.LinearOrder <> LinearOrder class
+R1438:1438 Lib.LinearOrder <> A:29 var
+binder 1426:1438 <> H:30
+R1447:1447 Lib.LinearOrder <> A:29 var
+binder 1442:1442 <> x:31
+binder 1444:1444 <> y:32
+R1452:1461 Coq.Init.Datatypes <> comparison ind
+R1472:1474 Lib.LinearOrder <> ord meth
+R1478:1478 Lib.LinearOrder <> y:32 var
+R1476:1476 Lib.LinearOrder <> x:31 var
+R1519:1520 Coq.Init.Datatypes <> Gt constr
+R1489:1491 Lib.LinearOrder <> ord meth
+R1495:1495 Lib.LinearOrder <> x:31 var
+R1493:1493 Lib.LinearOrder <> y:32 var
+R1510:1511 Coq.Init.Datatypes <> Lt constr
+R1502:1503 Coq.Init.Datatypes <> Eq constr
+prf 1530:1536 <> comp_eq
+binder 1539:1539 <> A:33
+R1550:1560 Lib.LinearOrder <> LinearOrder class
+R1562:1562 Lib.LinearOrder <> A:33 var
+binder 1550:1562 <> H:34
+R1571:1571 Lib.LinearOrder <> A:33 var
+binder 1566:1566 <> x:35
+binder 1568:1568 <> y:36
+R1589:1593 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1584:1586 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1576:1579 Lib.LinearOrder <> comp def
+R1583:1583 Lib.LinearOrder <> y:36 var
+R1581:1581 Lib.LinearOrder <> x:35 var
+R1587:1588 Coq.Init.Datatypes <> Eq constr
+R1595:1597 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1594:1594 Lib.LinearOrder <> x:35 var
+R1598:1598 Lib.LinearOrder <> y:36 var
+R1628:1631 Lib.LinearOrder <> comp def
+R1653:1655 Lib.LinearOrder <> ord meth
+R1680:1682 Lib.LinearOrder <> ord meth
+R1653:1655 Lib.LinearOrder <> ord meth
+R1680:1682 Lib.LinearOrder <> ord meth
+R1680:1682 Lib.LinearOrder <> ord meth
+R1742:1749 Lib.LinearOrder <> anti_sym meth
+R1742:1749 Lib.LinearOrder <> anti_sym meth
+R1780:1787 Lib.LinearOrder <> not_full thm
+R1780:1787 Lib.LinearOrder <> not_full thm
+R1830:1833 Lib.LinearOrder <> comp def
+R1844:1847 Lib.LinearOrder <> refl meth
+R1844:1847 Lib.LinearOrder <> refl meth
+R1844:1847 Lib.LinearOrder <> refl meth
+prf 1868:1874 <> comp_lt
+binder 1877:1877 <> A:37
+R1888:1898 Lib.LinearOrder <> LinearOrder class
+R1900:1900 Lib.LinearOrder <> A:37 var
+binder 1888:1900 <> H:38
+R1909:1909 Lib.LinearOrder <> A:37 var
+binder 1904:1904 <> x:39
+binder 1906:1906 <> y:40
+R1930:1934 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R1925:1927 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1917:1920 Lib.LinearOrder <> comp def
+R1924:1924 Lib.LinearOrder <> y:40 var
+R1922:1922 Lib.LinearOrder <> x:39 var
+R1928:1929 Coq.Init.Datatypes <> Lt constr
+R1949:1952 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R1942:1944 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1935:1937 Lib.LinearOrder <> ord meth
+R1941:1941 Lib.LinearOrder <> y:40 var
+R1939:1939 Lib.LinearOrder <> x:39 var
+R1945:1948 Coq.Init.Datatypes <> true constr
+R1960:1962 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1953:1955 Lib.LinearOrder <> ord meth
+R1959:1959 Lib.LinearOrder <> x:39 var
+R1957:1957 Lib.LinearOrder <> y:40 var
+R1963:1967 Coq.Init.Datatypes <> false constr
+R1985:1988 Lib.LinearOrder <> comp def
+R2021:2023 Lib.LinearOrder <> ord meth
+R2048:2050 Lib.LinearOrder <> ord meth
+R2021:2023 Lib.LinearOrder <> ord meth
+R2048:2050 Lib.LinearOrder <> ord meth
+R2048:2050 Lib.LinearOrder <> ord meth
+prf 2174:2180 <> comp_gt
+binder 2183:2183 <> A:41
+R2194:2204 Lib.LinearOrder <> LinearOrder class
+R2206:2206 Lib.LinearOrder <> A:41 var
+binder 2194:2206 <> H:42
+R2215:2215 Lib.LinearOrder <> A:41 var
+binder 2210:2210 <> x:43
+binder 2212:2212 <> y:44
+R2236:2240 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R2231:2233 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2223:2226 Lib.LinearOrder <> comp def
+R2230:2230 Lib.LinearOrder <> y:44 var
+R2228:2228 Lib.LinearOrder <> x:43 var
+R2234:2235 Coq.Init.Datatypes <> Gt constr
+R2256:2259 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R2248:2250 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2241:2243 Lib.LinearOrder <> ord meth
+R2247:2247 Lib.LinearOrder <> y:44 var
+R2245:2245 Lib.LinearOrder <> x:43 var
+R2251:2255 Coq.Init.Datatypes <> false constr
+R2267:2269 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2260:2262 Lib.LinearOrder <> ord meth
+R2266:2266 Lib.LinearOrder <> x:43 var
+R2264:2264 Lib.LinearOrder <> y:44 var
+R2270:2273 Coq.Init.Datatypes <> true constr
+R2292:2295 Lib.LinearOrder <> comp def
+R2328:2330 Lib.LinearOrder <> ord meth
+R2355:2357 Lib.LinearOrder <> ord meth
+R2328:2330 Lib.LinearOrder <> ord meth
+R2355:2357 Lib.LinearOrder <> ord meth
+R2355:2357 Lib.LinearOrder <> ord meth
+R2435:2442 Lib.LinearOrder <> not_full thm
+R2435:2442 Lib.LinearOrder <> not_full thm
+def 2526:2533 <> comp_inv
+R2539:2548 Coq.Init.Datatypes <> comparison ind
+binder 2536:2536 <> c:45
+R2553:2562 Coq.Init.Datatypes <> comparison ind
+R2573:2573 Lib.LinearOrder <> c:45 var
+R2583:2584 Coq.Init.Datatypes <> Lt constr
+R2589:2590 Coq.Init.Datatypes <> Gt constr
+R2594:2595 Coq.Init.Datatypes <> Eq constr
+R2600:2601 Coq.Init.Datatypes <> Eq constr
+R2605:2606 Coq.Init.Datatypes <> Gt constr
+R2611:2612 Coq.Init.Datatypes <> Lt constr
+prf 2626:2637 <> comp_inv_def
+binder 2640:2640 <> A:47
+R2651:2661 Lib.LinearOrder <> LinearOrder class
+R2663:2663 Lib.LinearOrder <> A:47 var
+binder 2651:2663 <> H:48
+R2672:2672 Lib.LinearOrder <> A:47 var
+binder 2667:2667 <> x:49
+binder 2669:2669 <> y:50
+R2686:2688 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2678:2681 Lib.LinearOrder <> comp def
+R2685:2685 Lib.LinearOrder <> x:49 var
+R2683:2683 Lib.LinearOrder <> y:50 var
+R2689:2696 Lib.LinearOrder <> comp_inv def
+R2699:2702 Lib.LinearOrder <> comp def
+R2706:2706 Lib.LinearOrder <> y:50 var
+R2704:2704 Lib.LinearOrder <> x:49 var
+R2726:2729 Lib.LinearOrder <> comp def
+R2742:2744 Lib.LinearOrder <> ord meth
+R2769:2771 Lib.LinearOrder <> ord meth
+R2742:2744 Lib.LinearOrder <> ord meth
+R2769:2771 Lib.LinearOrder <> ord meth
+R2769:2771 Lib.LinearOrder <> ord meth
+R2836:2843 Lib.LinearOrder <> not_full thm
+R2836:2843 Lib.LinearOrder <> not_full thm
+prf 2882:2893 <> comp_inv_iff
+binder 2896:2896 <> A:51
+R2907:2917 Lib.LinearOrder <> LinearOrder class
+R2919:2919 Lib.LinearOrder <> A:51 var
+binder 2907:2919 <> H:52
+R2928:2928 Lib.LinearOrder <> A:51 var
+binder 2923:2923 <> x:53
+binder 2925:2925 <> y:54
+R2935:2944 Coq.Init.Datatypes <> comparison ind
+binder 2932:2932 <> c:55
+R2962:2966 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R2958:2960 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2950:2953 Lib.LinearOrder <> comp def
+R2957:2957 Lib.LinearOrder <> x:53 var
+R2955:2955 Lib.LinearOrder <> y:54 var
+R2961:2961 Lib.LinearOrder <> c:55 var
+R2975:2977 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2967:2970 Lib.LinearOrder <> comp def
+R2974:2974 Lib.LinearOrder <> y:54 var
+R2972:2972 Lib.LinearOrder <> x:53 var
+R2978:2985 Lib.LinearOrder <> comp_inv def
+R2987:2987 Lib.LinearOrder <> c:55 var
+R3007:3018 Lib.LinearOrder <> comp_inv_def thm
+R3007:3018 Lib.LinearOrder <> comp_inv_def thm
+R3007:3018 Lib.LinearOrder <> comp_inv_def thm
+R3061:3064 Lib.LinearOrder <> comp def
+R3061:3064 Lib.LinearOrder <> comp def
+R3061:3064 Lib.LinearOrder <> comp def
+R3061:3064 Lib.LinearOrder <> comp def
+R3061:3064 Lib.LinearOrder <> comp def
+R3061:3064 Lib.LinearOrder <> comp def
+R3061:3064 Lib.LinearOrder <> comp def
+inst 3125:3135 <> LO_is_EqDec
+binder 3138:3138 <> A:56
+R3149:3159 Lib.LinearOrder <> LinearOrder class
+R3161:3161 Lib.LinearOrder <> A:56 var
+binder 3149:3161 <> H:57
+R3165:3169 Lib.EqDec <> EqDec class
+R3171:3171 Lib.LinearOrder <> A:56 var
+binder 3195:3195 <> x:58
+binder 3197:3197 <> y:59
+R3202:3205 Coq.Init.Datatypes <> andb def
+R3218:3220 Lib.LinearOrder <> ord meth
+R3224:3224 Lib.LinearOrder <> x:58 var
+R3222:3222 Lib.LinearOrder <> y:59 var
+R3208:3210 Lib.LinearOrder <> ord meth
+R3214:3214 Lib.LinearOrder <> y:59 var
+R3212:3212 Lib.LinearOrder <> x:58 var
+binder 3195:3195 <> x:60
+binder 3197:3197 <> y:61
+R3202:3205 Coq.Init.Datatypes <> andb def
+R3218:3220 Lib.LinearOrder <> ord meth
+R3224:3224 Lib.LinearOrder <> x:60 var
+R3222:3222 Lib.LinearOrder <> y:61 var
+R3208:3210 Lib.LinearOrder <> ord meth
+R3214:3214 Lib.LinearOrder <> y:61 var
+R3212:3212 Lib.LinearOrder <> x:60 var
+R3254:3257 Coq.Init.Datatypes <> andb def
+R3270:3272 Lib.LinearOrder <> ord meth
+R3260:3262 Lib.LinearOrder <> ord meth
+R3254:3257 Coq.Init.Datatypes <> andb def
+R3270:3272 Lib.LinearOrder <> ord meth
+R3260:3262 Lib.LinearOrder <> ord meth
+R3312:3329 Coq.Bool.Bool <> andb_true_iff thm
+R3312:3329 Coq.Bool.Bool <> andb_true_iff thm
+R3312:3329 Coq.Bool.Bool <> andb_true_iff thm
+R3355:3362 Lib.LinearOrder <> anti_sym meth
+R3355:3362 Lib.LinearOrder <> anti_sym meth
+R3400:3403 Lib.LinearOrder <> refl meth
+R3400:3403 Lib.LinearOrder <> refl meth
+R3400:3403 Lib.LinearOrder <> refl meth
+prf 3446:3460 <> eqf_comp_not_eq
+binder 3463:3463 <> A:62
+R3474:3484 Lib.LinearOrder <> LinearOrder class
+R3486:3486 Lib.LinearOrder <> A:62 var
+binder 3474:3486 <> H:63
+R3495:3495 Lib.LinearOrder <> A:62 var
+binder 3490:3490 <> x:64
+binder 3492:3492 <> y:65
+R3514:3518 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3508:3511 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R3500:3503 Lib.LinearOrder <> comp def
+R3507:3507 Lib.LinearOrder <> y:65 var
+R3505:3505 Lib.LinearOrder <> x:64 var
+R3512:3513 Coq.Init.Datatypes <> Eq constr
+R3526:3528 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3519:3521 Lib.EqDec <> eqf meth
+R3525:3525 Lib.LinearOrder <> y:65 var
+R3523:3523 Lib.LinearOrder <> x:64 var
+R3529:3533 Coq.Init.Datatypes <> false constr
+R3553:3559 Lib.LinearOrder <> comp_eq thm
+R3553:3559 Lib.LinearOrder <> comp_eq thm
+R3553:3559 Lib.LinearOrder <> comp_eq thm
+R3570:3580 Lib.EqDec <> not_eqf_iff thm
+R3570:3580 Lib.EqDec <> not_eqf_iff thm
+R3570:3580 Lib.EqDec <> not_eqf_iff thm
+prf 3609:3614 <> eqf_lt
+binder 3616:3616 <> A:66
+R3627:3637 Lib.LinearOrder <> LinearOrder class
+R3639:3639 Lib.LinearOrder <> A:66 var
+binder 3627:3639 <> H:67
+R3648:3648 Lib.LinearOrder <> A:66 var
+binder 3643:3643 <> x:68
+binder 3645:3645 <> y:69
+R3666:3669 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3661:3663 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3653:3656 Lib.LinearOrder <> comp def
+R3660:3660 Lib.LinearOrder <> y:69 var
+R3658:3658 Lib.LinearOrder <> x:68 var
+R3664:3665 Coq.Init.Datatypes <> Lt constr
+R3677:3679 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3670:3672 Lib.EqDec <> eqf meth
+R3676:3676 Lib.LinearOrder <> y:69 var
+R3674:3674 Lib.LinearOrder <> x:68 var
+R3680:3684 Coq.Init.Datatypes <> false constr
+R3715:3729 Lib.LinearOrder <> eqf_comp_not_eq thm
+R3715:3729 Lib.LinearOrder <> eqf_comp_not_eq thm
+R3715:3729 Lib.LinearOrder <> eqf_comp_not_eq thm
+prf 3786:3791 <> eqf_gt
+binder 3793:3793 <> A:70
+R3804:3814 Lib.LinearOrder <> LinearOrder class
+R3816:3816 Lib.LinearOrder <> A:70 var
+binder 3804:3816 <> H:71
+R3825:3825 Lib.LinearOrder <> A:70 var
+binder 3820:3820 <> x:72
+binder 3822:3822 <> y:73
+R3843:3846 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3838:3840 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3830:3833 Lib.LinearOrder <> comp def
+R3837:3837 Lib.LinearOrder <> y:73 var
+R3835:3835 Lib.LinearOrder <> x:72 var
+R3841:3842 Coq.Init.Datatypes <> Gt constr
+R3854:3856 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3847:3849 Lib.EqDec <> eqf meth
+R3853:3853 Lib.LinearOrder <> y:73 var
+R3851:3851 Lib.LinearOrder <> x:72 var
+R3857:3861 Coq.Init.Datatypes <> false constr
+R3892:3906 Lib.LinearOrder <> eqf_comp_not_eq thm
+R3892:3906 Lib.LinearOrder <> eqf_comp_not_eq thm
+R3892:3906 Lib.LinearOrder <> eqf_comp_not_eq thm

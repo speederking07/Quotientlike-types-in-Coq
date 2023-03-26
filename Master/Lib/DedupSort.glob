@@ -1,0 +1,776 @@
+DIGEST 00e0d78869d9983725c1407abf88a08d
+FLib.DedupSort
+R15:20 Coq.Setoids.Setoid <> <> lib
+R38:51 Coq.Lists.List <> <> lib
+R69:72 Coq.Bool.Bool <> <> lib
+R90:109 Coq.Program.Equality <> <> lib
+R171:186 Lib.Deduplicated <> <> lib
+R204:213 Lib.Sorted <> <> lib
+R231:239 Lib.EqDec <> <> lib
+R257:271 Lib.LinearOrder <> <> lib
+ind 285:289 <> BTree
+constr 313:316 <> leaf
+constr 330:333 <> node
+binder 292:292 <> A:1
+R320:324 Lib.DedupSort <> BTree:2 ind
+R326:326 Lib.DedupSort <> A:1 var
+R338:341 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R337:337 Lib.DedupSort <> A:1 var
+R349:352 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R342:346 Lib.DedupSort <> BTree:2 ind
+R348:348 Lib.DedupSort <> A:1 var
+R360:363 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R353:357 Lib.DedupSort <> BTree:2 ind
+R359:359 Lib.DedupSort <> A:1 var
+R364:368 Lib.DedupSort <> BTree:2 ind
+R370:370 Lib.DedupSort <> A:1 var
+R384:387 Lib.DedupSort <> leaf constr
+R384:387 Lib.DedupSort <> leaf constr
+R404:407 Lib.DedupSort <> node constr
+R404:407 Lib.DedupSort <> node constr
+def 432:439 <> treeComp
+binder 442:442 <> A:4
+R453:463 Lib.LinearOrder <> LinearOrder class
+R465:465 Lib.DedupSort <> A:4 var
+binder 453:465 <> H:5
+R472:472 Lib.DedupSort <> A:4 var
+binder 469:469 <> x:6
+R479:483 Lib.DedupSort <> BTree ind
+R485:485 Lib.DedupSort <> A:4 var
+binder 476:476 <> t:7
+R490:495 Coq.Init.Datatypes <> option ind
+R497:506 Coq.Init.Datatypes <> comparison ind
+R517:517 Lib.DedupSort <> t:7 var
+R526:529 Lib.DedupSort <> leaf constr
+R534:537 Coq.Init.Datatypes <> None constr
+R541:544 Lib.DedupSort <> node constr
+R556:559 Coq.Init.Datatypes <> Some constr
+R562:565 Lib.LinearOrder <> comp def
+R567:567 Lib.DedupSort <> x:6 var
+def 587:594 <> add_tree
+binder 597:597 <> A:9
+R608:618 Lib.LinearOrder <> LinearOrder class
+R620:620 Lib.DedupSort <> A:9 var
+binder 608:620 <> H:10
+R627:627 Lib.DedupSort <> A:9 var
+binder 624:624 <> x:11
+R635:639 Lib.DedupSort <> BTree ind
+R641:641 Lib.DedupSort <> A:9 var
+binder 631:631 <> t:12
+R646:650 Lib.DedupSort <> BTree ind
+R652:652 Lib.DedupSort <> A:9 var
+R663:663 Lib.DedupSort <> t:12 var
+R672:675 Lib.DedupSort <> leaf constr
+R680:683 Lib.DedupSort <> node constr
+R692:695 Lib.DedupSort <> leaf constr
+R687:690 Lib.DedupSort <> leaf constr
+R685:685 Lib.DedupSort <> x:11 var
+R699:702 Lib.DedupSort <> node constr
+R719:722 Lib.LinearOrder <> comp def
+R724:724 Lib.DedupSort <> x:11 var
+R751:752 Coq.Init.Datatypes <> Lt constr
+R757:760 Lib.DedupSort <> node constr
+R765:772 Lib.DedupSort <> add_tree:13 def
+R774:774 Lib.DedupSort <> x:11 var
+R799:800 Coq.Init.Datatypes <> Eq constr
+R805:808 Lib.DedupSort <> node constr
+R834:835 Coq.Init.Datatypes <> Gt constr
+R840:843 Lib.DedupSort <> node constr
+R850:857 Lib.DedupSort <> add_tree:13 def
+R859:859 Lib.DedupSort <> x:11 var
+def 899:905 <> to_tree
+binder 908:908 <> A:15
+R919:929 Lib.LinearOrder <> LinearOrder class
+R931:931 Lib.DedupSort <> A:15 var
+binder 919:931 <> H:16
+R939:942 Coq.Init.Datatypes <> list ind
+R944:944 Lib.DedupSort <> A:15 var
+binder 935:935 <> l:17
+R949:953 Lib.DedupSort <> BTree ind
+R955:955 Lib.DedupSort <> A:15 var
+R969:969 Lib.DedupSort <> l:17 var
+R980:981 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R991:994 Lib.DedupSort <> leaf constr
+R1002:1003 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1011:1018 Lib.DedupSort <> add_tree def
+R1023:1029 Lib.DedupSort <> to_tree:18 def
+def 1052:1058 <> to_list
+binder 1061:1061 <> A:20
+R1075:1079 Lib.DedupSort <> BTree ind
+R1081:1081 Lib.DedupSort <> A:20 var
+binder 1071:1071 <> l:21
+R1086:1089 Coq.Init.Datatypes <> list ind
+R1091:1091 Lib.DedupSort <> A:20 var
+R1105:1105 Lib.DedupSort <> l:21 var
+R1116:1119 Lib.DedupSort <> leaf constr
+R1130:1131 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R1137:1140 Lib.DedupSort <> node constr
+R1160:1163 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R1151:1157 Lib.DedupSort <> to_list:22 def
+R1159:1159 Lib.DedupSort <> l:21 var
+R1167:1170 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R1164:1164 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R1166:1166 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R1171:1177 Lib.DedupSort <> to_list:22 def
+def 1198:1203 <> TCount
+binder 1206:1206 <> A:24
+R1219:1222 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1218:1218 Lib.DedupSort <> A:24 var
+R1223:1226 Coq.Init.Datatypes <> bool ind
+binder 1215:1215 <> p:25
+R1232:1236 Lib.DedupSort <> BTree ind
+R1238:1238 Lib.DedupSort <> A:24 var
+binder 1229:1229 <> t:26
+R1243:1245 Coq.Init.Datatypes <> nat ind
+R1258:1258 Lib.DedupSort <> t:26 var
+R1269:1272 Lib.DedupSort <> leaf constr
+R1283:1286 Lib.DedupSort <> node constr
+R1301:1301 Lib.DedupSort <> p:25 var
+R1354:1356 Coq.Init.Nat <> ::nat_scope:x_'+'_x not
+R1344:1349 Lib.DedupSort <> TCount:27 def
+R1351:1351 Lib.DedupSort <> p:25 var
+R1357:1362 Lib.DedupSort <> TCount:27 def
+R1364:1364 Lib.DedupSort <> p:25 var
+R1311:1311 Coq.Init.Datatypes <> S constr
+R1324:1326 Coq.Init.Nat <> ::nat_scope:x_'+'_x not
+R1314:1319 Lib.DedupSort <> TCount:27 def
+R1321:1321 Lib.DedupSort <> p:25 var
+R1327:1332 Lib.DedupSort <> TCount:27 def
+R1334:1334 Lib.DedupSort <> p:25 var
+def 1385:1388 <> TAny
+binder 1391:1391 <> A:29
+R1404:1407 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1403:1403 Lib.DedupSort <> A:29 var
+R1408:1411 Coq.Init.Datatypes <> bool ind
+binder 1400:1400 <> p:30
+R1417:1421 Lib.DedupSort <> BTree ind
+R1423:1423 Lib.DedupSort <> A:29 var
+binder 1414:1414 <> t:31
+R1428:1431 Coq.Init.Datatypes <> bool ind
+R1444:1444 Lib.DedupSort <> t:31 var
+R1455:1458 Lib.DedupSort <> leaf constr
+R1463:1467 Coq.Init.Datatypes <> false constr
+R1473:1476 Lib.DedupSort <> node constr
+R1502:1505 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R1490:1493 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R1487:1487 Lib.DedupSort <> p:30 var
+R1494:1497 Lib.DedupSort <> TAny:32 def
+R1499:1499 Lib.DedupSort <> p:30 var
+R1506:1509 Lib.DedupSort <> TAny:32 def
+R1511:1511 Lib.DedupSort <> p:30 var
+def 1535:1554 <> BTreeListPermutation
+binder 1557:1557 <> A:34
+R1570:1574 Lib.DedupSort <> BTree ind
+R1576:1576 Lib.DedupSort <> A:34 var
+binder 1567:1567 <> t:35
+R1583:1586 Coq.Init.Datatypes <> list ind
+R1588:1588 Lib.DedupSort <> A:34 var
+binder 1580:1580 <> l:36
+R1614:1615 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1613:1613 Lib.DedupSort <> A:34 var
+R1616:1619 Coq.Init.Datatypes <> bool ind
+binder 1610:1610 <> p:37
+R1632:1634 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1622:1627 Lib.DedupSort <> TCount def
+R1631:1631 Lib.DedupSort <> t:35 var
+R1629:1629 Lib.DedupSort <> p:37 var
+R1635:1639 Lib.Sorted <> count def
+R1643:1643 Lib.DedupSort <> l:36 var
+R1641:1641 Lib.DedupSort <> p:37 var
+def 1658:1673 <> BTreePermutation
+binder 1676:1676 <> A:38
+R1693:1697 Lib.DedupSort <> BTree ind
+R1699:1699 Lib.DedupSort <> A:38 var
+binder 1686:1687 <> t1:39
+binder 1689:1690 <> t2:40
+R1725:1726 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1724:1724 Lib.DedupSort <> A:38 var
+R1727:1730 Coq.Init.Datatypes <> bool ind
+binder 1721:1721 <> p:41
+R1744:1746 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1733:1738 Lib.DedupSort <> TCount def
+R1742:1743 Lib.DedupSort <> t1:39 var
+R1740:1740 Lib.DedupSort <> p:41 var
+R1747:1752 Lib.DedupSort <> TCount def
+R1756:1757 Lib.DedupSort <> t2:40 var
+R1754:1754 Lib.DedupSort <> p:41 var
+def 1772:1783 <> BTreeElem_eq
+binder 1786:1786 <> A:42
+R1803:1807 Lib.DedupSort <> BTree ind
+R1809:1809 Lib.DedupSort <> A:42 var
+binder 1796:1796 <> l:43
+binder 1798:1799 <> l':44
+R1837:1840 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1836:1836 Lib.DedupSort <> A:42 var
+R1841:1844 Coq.Init.Datatypes <> bool ind
+binder 1832:1832 <> p:45
+R1855:1857 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1847:1850 Lib.DedupSort <> TAny def
+R1854:1854 Lib.DedupSort <> l:43 var
+R1852:1852 Lib.DedupSort <> p:45 var
+R1858:1861 Lib.DedupSort <> TAny def
+R1865:1866 Lib.DedupSort <> l':44 var
+R1863:1863 Lib.DedupSort <> p:45 var
+def 1881:1896 <> BTreeListElem_eq
+binder 1899:1899 <> A:46
+R1912:1916 Lib.DedupSort <> BTree ind
+R1918:1918 Lib.DedupSort <> A:46 var
+binder 1909:1909 <> t:47
+R1925:1928 Coq.Init.Datatypes <> list ind
+R1930:1930 Lib.DedupSort <> A:46 var
+binder 1922:1922 <> l:48
+R1957:1960 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1956:1956 Lib.DedupSort <> A:46 var
+R1961:1964 Coq.Init.Datatypes <> bool ind
+binder 1952:1952 <> p:49
+R1975:1977 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1967:1970 Lib.DedupSort <> TAny def
+R1974:1974 Lib.DedupSort <> t:47 var
+R1972:1972 Lib.DedupSort <> p:49 var
+R1978:1980 Lib.Deduplicated <> any def
+R1984:1984 Lib.DedupSort <> l:48 var
+R1982:1982 Lib.DedupSort <> p:49 var
+def 1999:2007 <> dedupSort
+binder 2010:2010 <> A:50
+R2021:2031 Lib.LinearOrder <> LinearOrder class
+R2033:2033 Lib.DedupSort <> A:50 var
+binder 2021:2033 <> H:51
+R2041:2044 Coq.Init.Datatypes <> list ind
+R2046:2046 Lib.DedupSort <> A:50 var
+binder 2037:2037 <> l:52
+R2051:2054 Coq.Init.Datatypes <> list ind
+R2056:2056 Lib.DedupSort <> A:50 var
+R2063:2069 Lib.DedupSort <> to_list def
+R2072:2078 Lib.DedupSort <> to_tree def
+R2080:2080 Lib.DedupSort <> l:52 var
+prf 2097:2108 <> to_list_perm
+binder 2111:2111 <> A:53
+R2124:2128 Lib.DedupSort <> BTree ind
+R2130:2130 Lib.DedupSort <> A:53 var
+binder 2121:2121 <> t:54
+R2135:2154 Lib.DedupSort <> BTreeListPermutation def
+R2159:2165 Lib.DedupSort <> to_list def
+R2167:2167 Lib.DedupSort <> t:54 var
+R2156:2156 Lib.DedupSort <> t:54 var
+R2227:2243 Lib.Sorted <> count_list_concat thm
+R2227:2243 Lib.Sorted <> count_list_concat thm
+R2227:2243 Lib.Sorted <> count_list_concat thm
+R2279:2287 Coq.Init.Peano <> plus_n_Sm thm
+R2279:2287 Coq.Init.Peano <> plus_n_Sm thm
+R2279:2287 Coq.Init.Peano <> plus_n_Sm thm
+prf 2364:2380 <> same_count_TCount
+binder 2383:2383 <> A:55
+R2396:2400 Lib.DedupSort <> BTree ind
+R2402:2402 Lib.DedupSort <> A:55 var
+binder 2393:2393 <> t:56
+R2418:2420 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2417:2417 Lib.DedupSort <> A:55 var
+R2421:2424 Coq.Init.Datatypes <> bool ind
+binder 2414:2414 <> p:57
+R2439:2441 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2429:2434 Lib.DedupSort <> TCount def
+R2438:2438 Lib.DedupSort <> t:56 var
+R2436:2436 Lib.DedupSort <> p:57 var
+R2442:2446 Lib.Sorted <> count def
+R2451:2457 Lib.DedupSort <> to_list def
+R2459:2459 Lib.DedupSort <> t:56 var
+R2448:2448 Lib.DedupSort <> p:57 var
+R2478:2489 Lib.DedupSort <> to_list_perm thm
+R2478:2489 Lib.DedupSort <> to_list_perm thm
+def 2507:2509 <> TIn
+binder 2512:2512 <> A:58
+R2525:2525 Lib.DedupSort <> A:58 var
+binder 2522:2522 <> x:59
+R2532:2536 Lib.DedupSort <> BTree ind
+R2538:2538 Lib.DedupSort <> A:58 var
+binder 2529:2529 <> t:60
+R2557:2557 Lib.DedupSort <> t:60 var
+R2567:2570 Lib.DedupSort <> leaf constr
+R2575:2579 Coq.Init.Logic <> False ind
+R2583:2586 Lib.DedupSort <> node constr
+R2602:2605 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R2598:2600 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2601:2601 Lib.DedupSort <> x:59 var
+R2613:2616 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R2606:2608 Lib.DedupSort <> TIn:61 def
+R2610:2610 Lib.DedupSort <> x:59 var
+R2617:2619 Lib.DedupSort <> TIn:61 def
+R2621:2621 Lib.DedupSort <> x:59 var
+ind 2641:2650 <> NormalTree
+constr 2702:2709 <> NormLeaf
+constr 2731:2738 <> NormNode
+binder 2653:2653 <> A:63
+R2664:2674 Lib.LinearOrder <> LinearOrder class
+R2676:2676 Lib.DedupSort <> A:63 var
+binder 2664:2676 <> H:64
+R2688:2691 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2681:2685 Lib.DedupSort <> BTree ind
+R2713:2722 Lib.DedupSort <> NormalTree:65 ind
+R2724:2727 Lib.DedupSort <> leaf constr
+R2753:2753 Lib.DedupSort <> A:63 var
+binder 2750:2750 <> x:67
+R2762:2766 Lib.DedupSort <> BTree ind
+R2768:2768 Lib.DedupSort <> A:63 var
+binder 2757:2757 <> l:68
+binder 2759:2759 <> r:69
+R2784:2787 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2772:2781 Lib.DedupSort <> NormalTree:65 ind
+R2783:2783 Lib.DedupSort <> l:68 var
+R2800:2805 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2788:2797 Lib.DedupSort <> NormalTree:65 ind
+R2799:2799 Lib.DedupSort <> r:69 var
+R2806:2806 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2844:2848 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2817:2817 Lib.DedupSort <> A:63 var
+binder 2814:2814 <> y:70
+R2827:2830 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2820:2822 Lib.DedupSort <> TIn def
+R2826:2826 Lib.DedupSort <> l:68 var
+R2824:2824 Lib.DedupSort <> y:70 var
+R2839:2841 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2831:2834 Lib.LinearOrder <> comp def
+R2838:2838 Lib.DedupSort <> x:67 var
+R2836:2836 Lib.DedupSort <> y:70 var
+R2842:2843 Coq.Init.Datatypes <> Lt constr
+R2849:2849 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2887:2893 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2860:2860 Lib.DedupSort <> A:63 var
+binder 2857:2857 <> y:71
+R2870:2873 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2863:2865 Lib.DedupSort <> TIn def
+R2869:2869 Lib.DedupSort <> r:69 var
+R2867:2867 Lib.DedupSort <> y:71 var
+R2882:2884 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2874:2877 Lib.LinearOrder <> comp def
+R2881:2881 Lib.DedupSort <> x:67 var
+R2879:2879 Lib.DedupSort <> y:71 var
+R2885:2886 Coq.Init.Datatypes <> Gt constr
+R2894:2903 Lib.DedupSort <> NormalTree:65 ind
+R2906:2909 Lib.DedupSort <> node constr
+R2915:2915 Lib.DedupSort <> r:69 var
+R2913:2913 Lib.DedupSort <> l:68 var
+R2911:2911 Lib.DedupSort <> x:67 var
+def 2931:2943 <> TDeduplicated
+binder 2946:2946 <> A:72
+R2957:2961 Lib.EqDec <> EqDec class
+R2963:2963 Lib.DedupSort <> A:72 var
+binder 2957:2963 <> H:73
+R2970:2974 Lib.DedupSort <> BTree ind
+R2976:2976 Lib.DedupSort <> A:72 var
+binder 2967:2967 <> t:74
+R3003:3003 Lib.DedupSort <> A:72 var
+binder 2999:2999 <> x:75
+R3013:3016 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3006:3008 Lib.DedupSort <> TIn def
+R3012:3012 Lib.DedupSort <> t:74 var
+R3010:3010 Lib.DedupSort <> x:75 var
+R3033:3035 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3017:3022 Lib.DedupSort <> TCount def
+R3032:3032 Lib.DedupSort <> t:74 var
+R3025:3027 Lib.EqDec <> eqf meth
+R3029:3029 Lib.DedupSort <> x:75 var
+prf 3047:3056 <> in_to_list
+binder 3059:3059 <> A:76
+R3072:3072 Lib.DedupSort <> A:76 var
+binder 3069:3069 <> x:77
+R3079:3083 Lib.DedupSort <> BTree ind
+R3085:3085 Lib.DedupSort <> A:76 var
+binder 3076:3076 <> t:78
+R3109:3113 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3093:3094 Coq.Lists.List <> In def
+R3099:3105 Lib.DedupSort <> to_list def
+R3107:3107 Lib.DedupSort <> t:78 var
+R3096:3096 Lib.DedupSort <> x:77 var
+R3114:3116 Lib.DedupSort <> TIn def
+R3120:3120 Lib.DedupSort <> t:78 var
+R3118:3118 Lib.DedupSort <> x:77 var
+R3191:3200 Coq.Lists.List <> in_app_iff thm
+R3191:3200 Coq.Lists.List <> in_app_iff thm
+R3191:3200 Coq.Lists.List <> in_app_iff thm
+R3410:3419 Coq.Lists.List <> in_app_iff thm
+R3410:3419 Coq.Lists.List <> in_app_iff thm
+R3410:3419 Coq.Lists.List <> in_app_iff thm
+prf 3584:3598 <> add_dont_remove
+binder 3601:3601 <> A:79
+R3612:3622 Lib.LinearOrder <> LinearOrder class
+R3624:3624 Lib.DedupSort <> A:79 var
+binder 3612:3624 <> H:80
+R3632:3636 Lib.DedupSort <> BTree ind
+R3638:3638 Lib.DedupSort <> A:79 var
+binder 3628:3628 <> t:81
+R3645:3645 Lib.DedupSort <> A:79 var
+binder 3642:3642 <> v:82
+R3659:3662 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3652:3654 Lib.DedupSort <> TIn def
+R3658:3658 Lib.DedupSort <> t:81 var
+R3656:3656 Lib.DedupSort <> v:82 var
+R3673:3673 Lib.DedupSort <> A:79 var
+binder 3670:3670 <> n:83
+R3676:3678 Lib.DedupSort <> TIn def
+R3683:3690 Lib.DedupSort <> add_tree def
+R3694:3694 Lib.DedupSort <> t:81 var
+R3692:3692 Lib.DedupSort <> n:83 var
+R3680:3680 Lib.DedupSort <> v:82 var
+R3769:3772 Lib.LinearOrder <> comp def
+R3769:3772 Lib.LinearOrder <> comp def
+prf 3909:3915 <> TIn_add
+binder 3918:3918 <> A:84
+R3929:3939 Lib.LinearOrder <> LinearOrder class
+R3941:3941 Lib.DedupSort <> A:84 var
+binder 3929:3941 <> H:85
+R3948:3948 Lib.DedupSort <> A:84 var
+binder 3945:3945 <> n:86
+R3956:3960 Lib.DedupSort <> BTree ind
+R3962:3962 Lib.DedupSort <> A:84 var
+binder 3952:3952 <> t:87
+R3969:3969 Lib.DedupSort <> A:84 var
+binder 3966:3966 <> v:88
+R3997:4001 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3977:3979 Lib.DedupSort <> TIn def
+R3984:3991 Lib.DedupSort <> add_tree def
+R3995:3995 Lib.DedupSort <> t:87 var
+R3993:3993 Lib.DedupSort <> n:86 var
+R3981:3981 Lib.DedupSort <> v:88 var
+R4007:4010 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R4003:4005 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4002:4002 Lib.DedupSort <> n:86 var
+R4006:4006 Lib.DedupSort <> v:88 var
+R4011:4013 Lib.DedupSort <> TIn def
+R4017:4017 Lib.DedupSort <> t:87 var
+R4015:4015 Lib.DedupSort <> v:88 var
+R4174:4177 Lib.LinearOrder <> comp def
+R4174:4177 Lib.LinearOrder <> comp def
+R4207:4213 Lib.LinearOrder <> comp_eq thm
+R4207:4213 Lib.LinearOrder <> comp_eq thm
+R4207:4213 Lib.LinearOrder <> comp_eq thm
+R4516:4519 Lib.LinearOrder <> comp def
+R4516:4519 Lib.LinearOrder <> comp def
+R4587:4593 Lib.LinearOrder <> comp_eq thm
+R4587:4593 Lib.LinearOrder <> comp_eq thm
+R4608:4622 Lib.DedupSort <> add_dont_remove thm
+R4608:4622 Lib.DedupSort <> add_dont_remove thm
+prf 4651:4670 <> add_preserves_normal
+binder 4673:4673 <> A:89
+R4684:4694 Lib.LinearOrder <> LinearOrder class
+R4696:4696 Lib.DedupSort <> A:89 var
+binder 4684:4696 <> H:90
+R4703:4703 Lib.DedupSort <> A:89 var
+binder 4700:4700 <> n:91
+R4711:4715 Lib.DedupSort <> BTree ind
+R4717:4717 Lib.DedupSort <> A:89 var
+binder 4707:4707 <> t:92
+R4737:4740 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4725:4734 Lib.DedupSort <> NormalTree ind
+R4736:4736 Lib.DedupSort <> t:92 var
+R4741:4750 Lib.DedupSort <> NormalTree ind
+R4753:4760 Lib.DedupSort <> add_tree def
+R4764:4764 Lib.DedupSort <> t:92 var
+R4762:4762 Lib.DedupSort <> n:91 var
+R4915:4918 Lib.LinearOrder <> comp def
+R4915:4918 Lib.LinearOrder <> comp def
+R5008:5014 Lib.DedupSort <> TIn_add thm
+R5008:5014 Lib.DedupSort <> TIn_add thm
+R5008:5014 Lib.DedupSort <> TIn_add thm
+R5092:5098 Lib.DedupSort <> TIn_add thm
+R5092:5098 Lib.DedupSort <> TIn_add thm
+R5092:5098 Lib.DedupSort <> TIn_add thm
+prf 5143:5171 <> TCount_for_not_satisfied_pred
+binder 5174:5174 <> A:93
+R5188:5192 Lib.DedupSort <> BTree ind
+R5194:5194 Lib.DedupSort <> A:93 var
+binder 5184:5184 <> t:94
+R5202:5205 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5201:5201 Lib.DedupSort <> A:93 var
+R5206:5209 Coq.Init.Datatypes <> bool ind
+binder 5198:5198 <> p:95
+R5216:5216 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5251:5255 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5226:5226 Lib.DedupSort <> A:93 var
+binder 5224:5224 <> x:96
+R5236:5239 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5229:5231 Lib.DedupSort <> TIn def
+R5235:5235 Lib.DedupSort <> t:94 var
+R5233:5233 Lib.DedupSort <> x:96 var
+R5243:5245 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5240:5240 Lib.DedupSort <> p:95 var
+R5242:5242 Lib.DedupSort <> x:96 var
+R5246:5250 Coq.Init.Datatypes <> false constr
+R5266:5268 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5256:5261 Lib.DedupSort <> TCount def
+R5265:5265 Lib.DedupSort <> t:94 var
+R5263:5263 Lib.DedupSort <> p:95 var
+prf 5406:5427 <> normal_is_deduplicated
+binder 5430:5430 <> A:97
+R5441:5451 Lib.LinearOrder <> LinearOrder class
+R5453:5453 Lib.DedupSort <> A:97 var
+binder 5441:5453 <> H:98
+R5460:5464 Lib.DedupSort <> BTree ind
+R5466:5466 Lib.DedupSort <> A:97 var
+binder 5457:5457 <> t:99
+R5486:5489 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5474:5483 Lib.DedupSort <> NormalTree ind
+R5485:5485 Lib.DedupSort <> t:99 var
+R5490:5502 Lib.DedupSort <> TDeduplicated def
+R5504:5504 Lib.DedupSort <> t:99 var
+R5635:5642 Lib.EqDec <> eqf_refl thm
+R5645:5673 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5676:5704 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5635:5642 Lib.EqDec <> eqf_refl thm
+R5635:5642 Lib.EqDec <> eqf_refl thm
+R5645:5673 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5645:5673 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5645:5673 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5676:5704 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5676:5704 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5676:5704 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R5762:5776 Lib.LinearOrder <> eqf_comp_not_eq thm
+R5779:5790 Lib.LinearOrder <> comp_inv_iff thm
+R5762:5776 Lib.LinearOrder <> eqf_comp_not_eq thm
+R5762:5776 Lib.LinearOrder <> eqf_comp_not_eq thm
+R5779:5790 Lib.LinearOrder <> comp_inv_iff thm
+R5779:5790 Lib.LinearOrder <> comp_inv_iff thm
+R5871:5885 Lib.LinearOrder <> eqf_comp_not_eq thm
+R5888:5899 Lib.LinearOrder <> comp_inv_iff thm
+R5871:5885 Lib.LinearOrder <> eqf_comp_not_eq thm
+R5871:5885 Lib.LinearOrder <> eqf_comp_not_eq thm
+R5888:5899 Lib.LinearOrder <> comp_inv_iff thm
+R5888:5899 Lib.LinearOrder <> comp_inv_iff thm
+R5945:5948 Lib.LinearOrder <> comp def
+R5945:5948 Lib.LinearOrder <> comp def
+R6047:6052 Lib.LinearOrder <> eqf_lt thm
+R6061:6089 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6047:6052 Lib.LinearOrder <> eqf_lt thm
+R6047:6052 Lib.LinearOrder <> eqf_lt thm
+R6047:6052 Lib.LinearOrder <> eqf_lt thm
+R6061:6089 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6061:6089 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6061:6089 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6127:6141 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6144:6150 Lib.LinearOrder <> comp_eq thm
+R6127:6141 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6127:6141 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6144:6150 Lib.LinearOrder <> comp_eq thm
+R6144:6150 Lib.LinearOrder <> comp_eq thm
+R6258:6263 Lib.LinearOrder <> eqf_lt thm
+R6272:6300 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6258:6263 Lib.LinearOrder <> eqf_lt thm
+R6258:6263 Lib.LinearOrder <> eqf_lt thm
+R6258:6263 Lib.LinearOrder <> eqf_lt thm
+R6272:6300 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6272:6300 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6272:6300 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6338:6352 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6355:6361 Lib.LinearOrder <> comp_eq thm
+R6338:6352 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6338:6352 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6355:6361 Lib.LinearOrder <> comp_eq thm
+R6355:6361 Lib.LinearOrder <> comp_eq thm
+R6476:6479 Lib.LinearOrder <> comp def
+R6476:6479 Lib.LinearOrder <> comp def
+R6578:6583 Lib.LinearOrder <> eqf_lt thm
+R6592:6620 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6578:6583 Lib.LinearOrder <> eqf_lt thm
+R6578:6583 Lib.LinearOrder <> eqf_lt thm
+R6578:6583 Lib.LinearOrder <> eqf_lt thm
+R6592:6620 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6592:6620 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6592:6620 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6658:6672 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6675:6681 Lib.LinearOrder <> comp_eq thm
+R6658:6672 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6658:6672 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6675:6681 Lib.LinearOrder <> comp_eq thm
+R6675:6681 Lib.LinearOrder <> comp_eq thm
+R6809:6814 Lib.LinearOrder <> eqf_gt thm
+R6823:6851 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6809:6814 Lib.LinearOrder <> eqf_gt thm
+R6809:6814 Lib.LinearOrder <> eqf_gt thm
+R6809:6814 Lib.LinearOrder <> eqf_gt thm
+R6823:6851 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6823:6851 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6823:6851 Lib.DedupSort <> TCount_for_not_satisfied_pred thm
+R6889:6903 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6906:6912 Lib.LinearOrder <> comp_eq thm
+R6889:6903 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6889:6903 Lib.LinearOrder <> eqf_comp_not_eq thm
+R6906:6912 Lib.LinearOrder <> comp_eq thm
+R6906:6912 Lib.LinearOrder <> comp_eq thm
+prf 7005:7018 <> to_tree_normal
+binder 7021:7021 <> A:100
+R7032:7042 Lib.LinearOrder <> LinearOrder class
+R7044:7044 Lib.DedupSort <> A:100 var
+binder 7032:7044 <> H:101
+R7051:7054 Coq.Init.Datatypes <> list ind
+R7056:7056 Lib.DedupSort <> A:100 var
+binder 7048:7048 <> l:102
+R7061:7070 Lib.DedupSort <> NormalTree ind
+R7073:7079 Lib.DedupSort <> to_tree def
+R7081:7081 Lib.DedupSort <> l:102 var
+R7134:7153 Lib.DedupSort <> add_preserves_normal thm
+R7134:7153 Lib.DedupSort <> add_preserves_normal thm
+prf 7182:7194 <> to_tree_dedup
+binder 7197:7197 <> A:103
+R7208:7218 Lib.LinearOrder <> LinearOrder class
+R7220:7220 Lib.DedupSort <> A:103 var
+binder 7208:7220 <> H:104
+R7227:7230 Coq.Init.Datatypes <> list ind
+R7232:7232 Lib.DedupSort <> A:103 var
+binder 7224:7224 <> l:105
+R7237:7249 Lib.DedupSort <> TDeduplicated def
+R7252:7258 Lib.DedupSort <> to_tree def
+R7260:7260 Lib.DedupSort <> l:105 var
+R7279:7300 Lib.DedupSort <> normal_is_deduplicated thm
+R7279:7300 Lib.DedupSort <> normal_is_deduplicated thm
+R7309:7322 Lib.DedupSort <> to_tree_normal thm
+R7309:7322 Lib.DedupSort <> to_tree_normal thm
+prf 7339:7353 <> dedup_dedupSort
+binder 7356:7356 <> A:106
+R7367:7377 Lib.LinearOrder <> LinearOrder class
+R7379:7379 Lib.DedupSort <> A:106 var
+binder 7367:7379 <> H:107
+R7387:7390 Coq.Init.Datatypes <> list ind
+R7392:7392 Lib.DedupSort <> A:106 var
+binder 7383:7383 <> l:108
+R7397:7408 Lib.Deduplicated <> Deduplicated ind
+R7411:7419 Lib.DedupSort <> dedupSort def
+R7421:7421 Lib.DedupSort <> l:108 var
+R7442:7451 Lib.Deduplicated <> dup_def_eq thm
+R7442:7451 Lib.Deduplicated <> dup_def_eq thm
+R7442:7451 Lib.Deduplicated <> dup_def_eq thm
+R7461:7469 Lib.DedupSort <> dedupSort def
+R7472:7488 Lib.Deduplicated <> CountDeduplicated def
+R7514:7530 Lib.DedupSort <> same_count_TCount thm
+R7514:7530 Lib.DedupSort <> same_count_TCount thm
+R7514:7530 Lib.DedupSort <> same_count_TCount thm
+R7543:7552 Lib.DedupSort <> in_to_list thm
+R7543:7552 Lib.DedupSort <> in_to_list thm
+R7543:7552 Lib.DedupSort <> in_to_list thm
+R7566:7578 Lib.DedupSort <> to_tree_dedup thm
+R7566:7578 Lib.DedupSort <> to_tree_dedup thm
+prf 7622:7642 <> normal_to_list_sorted
+binder 7645:7645 <> A:109
+R7656:7666 Lib.LinearOrder <> LinearOrder class
+R7668:7668 Lib.DedupSort <> A:109 var
+binder 7656:7668 <> H:110
+R7675:7679 Lib.DedupSort <> BTree ind
+R7681:7681 Lib.DedupSort <> A:109 var
+binder 7672:7672 <> t:111
+R7698:7701 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7686:7695 Lib.DedupSort <> NormalTree ind
+R7697:7697 Lib.DedupSort <> t:111 var
+R7702:7707 Lib.Sorted <> Sorted ind
+R7710:7716 Lib.DedupSort <> to_list def
+R7718:7718 Lib.DedupSort <> t:111 var
+R7783:7795 Lib.Sorted <> concat_sorted thm
+R7783:7795 Lib.Sorted <> concat_sorted thm
+R7816:7829 Lib.Sorted <> head_in_sorted thm
+R7816:7829 Lib.Sorted <> head_in_sorted thm
+R7859:7865 Lib.LinearOrder <> comp_gt thm
+R7859:7865 Lib.LinearOrder <> comp_gt thm
+R7884:7893 Lib.DedupSort <> in_to_list thm
+R7884:7893 Lib.DedupSort <> in_to_list thm
+R7926:7932 Lib.LinearOrder <> comp_lt thm
+R7926:7932 Lib.LinearOrder <> comp_lt thm
+R7951:7960 Lib.DedupSort <> in_to_list thm
+R7951:7960 Lib.DedupSort <> in_to_list thm
+prf 7983:7998 <> sorted_dedupSort
+binder 8001:8001 <> A:112
+R8012:8022 Lib.LinearOrder <> LinearOrder class
+R8024:8024 Lib.DedupSort <> A:112 var
+binder 8012:8024 <> H:113
+R8032:8035 Coq.Init.Datatypes <> list ind
+R8037:8037 Lib.DedupSort <> A:112 var
+binder 8028:8028 <> l:114
+R8042:8047 Lib.Sorted <> Sorted ind
+R8050:8058 Lib.DedupSort <> dedupSort def
+R8060:8060 Lib.DedupSort <> l:114 var
+R8079:8099 Lib.DedupSort <> normal_to_list_sorted thm
+R8079:8099 Lib.DedupSort <> normal_to_list_sorted thm
+R8108:8121 Lib.DedupSort <> to_tree_normal thm
+R8108:8121 Lib.DedupSort <> to_tree_normal thm
+prf 8160:8170 <> to_list_any
+binder 8173:8173 <> A:115
+R8186:8190 Lib.DedupSort <> BTree ind
+R8192:8192 Lib.DedupSort <> A:115 var
+binder 8183:8183 <> t:116
+R8197:8212 Lib.DedupSort <> BTreeListElem_eq def
+R8217:8223 Lib.DedupSort <> to_list def
+R8225:8225 Lib.DedupSort <> t:116 var
+R8214:8214 Lib.DedupSort <> t:116 var
+R8285:8294 Lib.Deduplicated <> any_concat thm
+R8285:8294 Lib.Deduplicated <> any_concat thm
+R8285:8294 Lib.Deduplicated <> any_concat thm
+R8341:8348 Coq.Bool.Bool <> orb_comm thm
+R8341:8348 Coq.Bool.Bool <> orb_comm thm
+R8341:8348 Coq.Bool.Bool <> orb_comm thm
+prf 8406:8417 <> add_tree_any
+binder 8420:8420 <> A:117
+R8431:8441 Lib.LinearOrder <> LinearOrder class
+R8443:8443 Lib.DedupSort <> A:117 var
+binder 8431:8443 <> H:118
+R8450:8450 Lib.DedupSort <> A:117 var
+binder 8447:8447 <> x:119
+R8457:8461 Lib.DedupSort <> BTree ind
+R8463:8463 Lib.DedupSort <> A:117 var
+binder 8454:8454 <> t:120
+R8471:8474 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8470:8470 Lib.DedupSort <> A:117 var
+R8475:8478 Coq.Init.Datatypes <> bool ind
+binder 8467:8467 <> p:121
+R8505:8508 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8539:8539 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8484:8487 Lib.DedupSort <> TAny def
+R8492:8499 Lib.DedupSort <> add_tree def
+R8503:8503 Lib.DedupSort <> t:120 var
+R8501:8501 Lib.DedupSort <> x:119 var
+R8489:8489 Lib.DedupSort <> p:121 var
+R8512:8512 Lib.DedupSort <> p:121 var
+R8514:8514 Lib.DedupSort <> x:119 var
+R8531:8534 Lib.DedupSort <> TAny def
+R8538:8538 Lib.DedupSort <> t:120 var
+R8536:8536 Lib.DedupSort <> p:121 var
+R8521:8524 Coq.Init.Datatypes <> true constr
+R8606:8609 Lib.LinearOrder <> comp def
+R8606:8609 Lib.LinearOrder <> comp def
+R8640:8646 Lib.LinearOrder <> comp_eq thm
+R8640:8646 Lib.LinearOrder <> comp_eq thm
+R8640:8646 Lib.LinearOrder <> comp_eq thm
+R8811:8821 Coq.Bool.Bool <> orb_false_l thm
+R8824:8831 Coq.Bool.Bool <> orb_comm thm
+R8811:8821 Coq.Bool.Bool <> orb_false_l thm
+R8811:8821 Coq.Bool.Bool <> orb_false_l thm
+R8824:8831 Coq.Bool.Bool <> orb_comm thm
+R8824:8831 Coq.Bool.Bool <> orb_comm thm
+prf 8852:8862 <> to_tree_any
+binder 8865:8865 <> A:122
+R8876:8886 Lib.LinearOrder <> LinearOrder class
+R8888:8888 Lib.DedupSort <> A:122 var
+binder 8876:8888 <> H:123
+R8895:8898 Coq.Init.Datatypes <> list ind
+R8900:8900 Lib.DedupSort <> A:122 var
+binder 8892:8892 <> l:124
+R8905:8920 Lib.DedupSort <> BTreeListElem_eq def
+R8934:8934 Lib.DedupSort <> l:124 var
+R8923:8929 Lib.DedupSort <> to_tree def
+R8931:8931 Lib.DedupSort <> l:124 var
+R8993:9004 Lib.DedupSort <> add_tree_any thm
+R8993:9004 Lib.DedupSort <> add_tree_any thm
+R8993:9004 Lib.DedupSort <> add_tree_any thm
+prf 9032:9054 <> same_elements_dedupSort
+binder 9057:9057 <> A:125
+R9068:9078 Lib.LinearOrder <> LinearOrder class
+R9080:9080 Lib.DedupSort <> A:125 var
+binder 9068:9080 <> H:126
+R9088:9091 Coq.Init.Datatypes <> list ind
+R9093:9093 Lib.DedupSort <> A:125 var
+binder 9084:9084 <> l:127
+R9101:9107 Lib.Deduplicated <> Elem_eq def
+R9112:9120 Lib.DedupSort <> dedupSort def
+R9122:9122 Lib.DedupSort <> l:127 var
+R9109:9109 Lib.DedupSort <> l:127 var
+R9142:9150 Lib.DedupSort <> dedupSort def
+R9173:9183 Lib.DedupSort <> to_list_any thm
+R9173:9183 Lib.DedupSort <> to_list_any thm
+R9173:9183 Lib.DedupSort <> to_list_any thm
+R9202:9212 Lib.DedupSort <> to_tree_any thm
+R9202:9212 Lib.DedupSort <> to_tree_any thm

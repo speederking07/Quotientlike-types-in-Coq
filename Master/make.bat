@@ -1,7 +1,11 @@
-ECHO OFF
+coqc Lib/Normalization.v
+coqc Lib/Algebra.v
 coqc Lib/EqDec.v
+coqc Lib/LinearOrder.v
 coqc Lib/HoTT.v
-coqc Lib/MergeSort.v
 coqc Lib/Sorted.v
-coqc Lib/Deduplicated.v
+coqc Lib/MergeSort.v
 coqc Extras/Permutations.v
+coqc Extras/Streicher.v
+coqc Lib/Deduplicated.v
+coqc Lib/DedupSort.v

@@ -1,5 +1,7 @@
 Require Import Bool.
 Require Import Setoid.
+Require Import Coq.Lists.List.
+Import ListNotations.
 
 Class EqDec (A : Type) := { 
   eqf : A -> A -> bool ;
@@ -35,3 +37,25 @@ Proof.
     + inversion e.
     + split; intro H; assumption. 
 Qed.
+
+Fixpoint list_eq {A: Type} `{EqDec A} (l l': list A) : bool :=
+match l, l' with
+| []      , []         => true
+| (h :: t), (h' :: t') => if eqf h h' then list_eq t t' else false
+| _       , _          => false
+end.
+
+Global Instance EqDec_for_list (A: Type) `{EqDec A}: EqDec (list A).
+Proof.
+  exists list_eq. intros x y. destruct (list_eq x y) eqn:e.
+  - constructor. revert e. revert y. induction x; intros y e.
+    + destruct y; [auto|]. cbn in e. inversion e.
+    + destruct y; cbn in *; [inversion e|]. destruct (eqf a a0) eqn:eq; [|inversion e].
+      rewrite <-eqf_iff in eq. subst. f_equal. apply IHx; auto.
+  - constructor. revert e. revert y. induction x; intros y e e'; subst.
+    + cbn in e. inversion e.
+    + cbn in *. rewrite eqf_refl in e. apply (IHx x); auto.
+Defined.
+    
+
+

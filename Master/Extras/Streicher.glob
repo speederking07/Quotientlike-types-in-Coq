@@ -1,0 +1,285 @@
+DIGEST 8d9c1f22694803c7a18efe84dc32fc6a
+FExtras.Streicher
+ind 88:93 <> eq_dep
+constr 175:186 <> eq_dep_intro
+binder 96:96 <> U:1
+R112:115 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R111:111 Extras.Streicher <> U:1 var
+binder 107:107 <> P:2
+R127:127 Extras.Streicher <> U:1 var
+binder 123:123 <> p:3
+R135:135 Extras.Streicher <> P:2 var
+R137:137 Extras.Streicher <> p:3 var
+binder 131:131 <> x:4
+binder 149:149 <> q:5
+R159:162 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R158:158 Extras.Streicher <> q:5 var
+R190:195 Extras.Streicher <> eq_dep:6 ind
+R207:207 Extras.Streicher <> x:4 var
+R205:205 Extras.Streicher <> p:3 var
+R203:203 Extras.Streicher <> x:4 var
+R201:201 Extras.Streicher <> p:3 var
+R199:199 Extras.Streicher <> P:2 var
+R197:197 Extras.Streicher <> U:1 var
+ind 221:227 <> eq_dep1
+constr 296:308 <> eq_dep1_intro
+binder 230:230 <> U:8
+R246:249 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R245:245 Extras.Streicher <> U:8 var
+binder 241:241 <> P:9
+R259:259 Extras.Streicher <> U:8 var
+binder 257:257 <> p:10
+R265:265 Extras.Streicher <> P:9 var
+R267:267 Extras.Streicher <> p:10 var
+binder 263:263 <> x:11
+R273:273 Extras.Streicher <> U:8 var
+binder 271:271 <> q:12
+R279:279 Extras.Streicher <> P:9 var
+R281:281 Extras.Streicher <> q:12 var
+binder 277:277 <> y:13
+R322:324 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R321:321 Extras.Streicher <> q:12 var
+R325:325 Extras.Streicher <> p:10 var
+binder 319:319 <> h:16
+R349:352 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R329:331 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R328:328 Extras.Streicher <> x:11 var
+R332:338 Coq.Init.Logic <> eq_rect scheme
+R348:348 Extras.Streicher <> h:16 var
+R346:346 Extras.Streicher <> p:10 var
+R344:344 Extras.Streicher <> y:13 var
+R342:342 Extras.Streicher <> P:9 var
+R340:340 Extras.Streicher <> q:12 var
+R353:359 Extras.Streicher <> eq_dep1:14 ind
+R371:371 Extras.Streicher <> y:13 var
+R369:369 Extras.Streicher <> q:12 var
+R367:367 Extras.Streicher <> x:11 var
+R365:365 Extras.Streicher <> p:10 var
+R363:363 Extras.Streicher <> P:9 var
+R361:361 Extras.Streicher <> U:8 var
+prf 382:392 <> eq_dep_dep1
+binder 406:406 <> U:17
+R422:425 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R421:421 Extras.Streicher <> U:17 var
+binder 417:417 <> P:18
+R437:437 Extras.Streicher <> U:17 var
+binder 433:433 <> p:19
+binder 435:435 <> q:20
+R443:443 Extras.Streicher <> P:18 var
+R445:445 Extras.Streicher <> p:19 var
+binder 441:441 <> x:21
+R451:451 Extras.Streicher <> P:18 var
+R453:453 Extras.Streicher <> q:20 var
+binder 449:449 <> y:22
+R475:478 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R457:462 Extras.Streicher <> eq_dep ind
+R464:464 Extras.Streicher <> U:17 var
+R466:466 Extras.Streicher <> P:18 var
+R468:468 Extras.Streicher <> p:19 var
+R470:470 Extras.Streicher <> x:21 var
+R472:472 Extras.Streicher <> q:20 var
+R474:474 Extras.Streicher <> y:22 var
+R479:485 Extras.Streicher <> eq_dep1 ind
+R487:487 Extras.Streicher <> U:17 var
+R489:489 Extras.Streicher <> P:18 var
+R491:491 Extras.Streicher <> p:19 var
+R493:493 Extras.Streicher <> x:21 var
+R495:495 Extras.Streicher <> q:20 var
+R497:497 Extras.Streicher <> y:22 var
+R528:540 Extras.Streicher <> eq_dep1_intro constr
+R554:560 Coq.Init.Logic <> eq_refl constr
+R528:540 Extras.Streicher <> eq_dep1_intro constr
+R554:560 Coq.Init.Logic <> eq_refl constr
+def 600:609 <> Eq_rect_eq
+binder 624:624 <> U:23
+R636:636 Extras.Streicher <> U:23 var
+binder 634:634 <> p:24
+R643:646 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R642:642 Extras.Streicher <> U:23 var
+binder 640:640 <> P:25
+R656:656 Extras.Streicher <> P:25 var
+R658:658 Extras.Streicher <> p:24 var
+binder 654:654 <> x:26
+R665:667 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R664:664 Extras.Streicher <> p:24 var
+R668:668 Extras.Streicher <> p:24 var
+binder 662:662 <> h:27
+R673:675 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R672:672 Extras.Streicher <> x:26 var
+R676:682 Coq.Init.Logic <> eq_rect scheme
+R692:692 Extras.Streicher <> h:27 var
+R690:690 Extras.Streicher <> p:24 var
+R688:688 Extras.Streicher <> x:26 var
+R686:686 Extras.Streicher <> P:25 var
+R684:684 Extras.Streicher <> p:24 var
+def 707:715 <> Eq_dep_eq
+binder 730:730 <> U:28
+R743:744 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R742:742 Extras.Streicher <> U:28 var
+binder 740:740 <> P:29
+R754:754 Extras.Streicher <> U:28 var
+binder 752:752 <> p:30
+R762:762 Extras.Streicher <> P:29 var
+R764:764 Extras.Streicher <> p:30 var
+binder 758:758 <> x:31
+binder 760:760 <> y:32
+R786:789 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R768:773 Extras.Streicher <> eq_dep ind
+R775:775 Extras.Streicher <> U:28 var
+R777:777 Extras.Streicher <> P:29 var
+R779:779 Extras.Streicher <> p:30 var
+R781:781 Extras.Streicher <> x:31 var
+R783:783 Extras.Streicher <> p:30 var
+R785:785 Extras.Streicher <> y:32 var
+R791:793 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R790:790 Extras.Streicher <> x:31 var
+R794:794 Extras.Streicher <> y:32 var
+def 809:815 <> SigT_eq
+binder 830:830 <> U:33
+R843:844 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R842:842 Extras.Streicher <> U:33 var
+binder 840:840 <> P:34
+R854:854 Extras.Streicher <> U:33 var
+binder 852:852 <> p:35
+R862:862 Extras.Streicher <> P:34 var
+R864:864 Extras.Streicher <> p:35 var
+binder 858:858 <> x:36
+binder 860:860 <> y:37
+R895:898 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R880:882 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R868:873 Coq.Init.Specif <> existT constr
+R879:879 Extras.Streicher <> x:36 var
+R877:877 Extras.Streicher <> p:35 var
+R875:875 Extras.Streicher <> P:34 var
+R883:888 Coq.Init.Specif <> existT constr
+R894:894 Extras.Streicher <> y:37 var
+R892:892 Extras.Streicher <> p:35 var
+R890:890 Extras.Streicher <> P:34 var
+R900:902 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R899:899 Extras.Streicher <> x:36 var
+R903:903 Extras.Streicher <> y:37 var
+def 918:920 <> UIP
+binder 935:935 <> U:38
+R949:949 Extras.Streicher <> U:38 var
+binder 945:945 <> x:39
+binder 947:947 <> y:40
+R960:962 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R959:959 Extras.Streicher <> x:39 var
+R963:963 Extras.Streicher <> y:40 var
+binder 953:954 <> p1:41
+binder 956:957 <> p2:42
+R969:971 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R967:968 Extras.Streicher <> p1:41 var
+R972:973 Extras.Streicher <> p2:42 var
+def 988:998 <> Streicher_K
+binder 1013:1013 <> U:43
+R1025:1025 Extras.Streicher <> U:43 var
+binder 1023:1023 <> x:44
+R1036:1039 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1032:1034 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1031:1031 Extras.Streicher <> x:44 var
+R1035:1035 Extras.Streicher <> x:44 var
+binder 1029:1029 <> P:45
+R1063:1066 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1047:1047 Extras.Streicher <> P:45 var
+R1050:1059 Coq.Init.Logic <> refl_equal syndef
+R1061:1061 Extras.Streicher <> x:44 var
+R1077:1079 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1076:1076 Extras.Streicher <> x:44 var
+R1080:1080 Extras.Streicher <> x:44 var
+binder 1074:1074 <> p:46
+R1083:1083 Extras.Streicher <> P:45 var
+R1085:1085 Extras.Streicher <> p:46 var
+prf 1096:1106 <> SigT_eq_dep
+binder 1118:1118 <> U:47
+R1132:1135 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1131:1131 Extras.Streicher <> U:47 var
+binder 1128:1128 <> P:48
+R1147:1147 Extras.Streicher <> U:47 var
+binder 1143:1143 <> p:49
+binder 1145:1145 <> q:50
+R1153:1153 Extras.Streicher <> P:48 var
+R1155:1155 Extras.Streicher <> p:49 var
+binder 1151:1151 <> x:51
+R1161:1161 Extras.Streicher <> P:48 var
+R1163:1163 Extras.Streicher <> q:50 var
+binder 1159:1159 <> y:52
+R1196:1199 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1181:1183 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1169:1174 Coq.Init.Specif <> existT constr
+R1180:1180 Extras.Streicher <> x:51 var
+R1178:1178 Extras.Streicher <> p:49 var
+R1176:1176 Extras.Streicher <> P:48 var
+R1184:1189 Coq.Init.Specif <> existT constr
+R1195:1195 Extras.Streicher <> y:52 var
+R1193:1193 Extras.Streicher <> q:50 var
+R1191:1191 Extras.Streicher <> P:48 var
+R1200:1205 Extras.Streicher <> eq_dep ind
+R1207:1207 Extras.Streicher <> U:47 var
+R1209:1209 Extras.Streicher <> P:48 var
+R1211:1211 Extras.Streicher <> p:49 var
+R1213:1213 Extras.Streicher <> x:51 var
+R1215:1215 Extras.Streicher <> q:50 var
+R1217:1217 Extras.Streicher <> y:52 var
+R1268:1279 Extras.Streicher <> eq_dep_intro constr
+R1268:1279 Extras.Streicher <> eq_dep_intro constr
+prf 1294:1304 <> Eq_deo_sigT
+binder 1316:1316 <> U:53
+R1328:1331 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1327:1327 Extras.Streicher <> U:53 var
+binder 1325:1325 <> P:54
+R1343:1343 Extras.Streicher <> U:53 var
+binder 1339:1339 <> p:55
+binder 1341:1341 <> q:56
+R1349:1349 Extras.Streicher <> P:54 var
+R1351:1351 Extras.Streicher <> p:55 var
+binder 1347:1347 <> x:57
+R1357:1357 Extras.Streicher <> P:54 var
+R1359:1359 Extras.Streicher <> q:56 var
+binder 1355:1355 <> y:58
+R1383:1386 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1365:1370 Extras.Streicher <> eq_dep ind
+R1372:1372 Extras.Streicher <> U:53 var
+R1374:1374 Extras.Streicher <> P:54 var
+R1376:1376 Extras.Streicher <> p:55 var
+R1378:1378 Extras.Streicher <> x:57 var
+R1380:1380 Extras.Streicher <> q:56 var
+R1382:1382 Extras.Streicher <> y:58 var
+R1399:1401 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1387:1392 Coq.Init.Specif <> existT constr
+R1398:1398 Extras.Streicher <> x:57 var
+R1396:1396 Extras.Streicher <> p:55 var
+R1394:1394 Extras.Streicher <> P:54 var
+R1402:1407 Coq.Init.Specif <> existT constr
+R1413:1413 Extras.Streicher <> y:58 var
+R1411:1411 Extras.Streicher <> q:56 var
+R1409:1409 Extras.Streicher <> P:54 var
+prf 1463:1479 <> Eq_dep_eq_SigT_eq
+R1492:1495 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1483:1491 Extras.Streicher <> Eq_dep_eq def
+R1496:1502 Extras.Streicher <> SigT_eq def
+R1569:1579 Extras.Streicher <> SigT_eq_dep thm
+R1569:1579 Extras.Streicher <> SigT_eq_dep thm
+prf 1606:1620 <> SigT_eq_eq__UIP
+R1631:1634 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1624:1630 Extras.Streicher <> SigT_eq def
+R1635:1637 Extras.Streicher <> UIP def
+prf 1755:1769 <> UIP_Streicher_K
+R1776:1779 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1773:1775 Extras.Streicher <> UIP def
+R1780:1790 Extras.Streicher <> Streicher_K def
+R1831:1833 Extras.Streicher <> UIP def
+R1863:1869 Coq.Init.Logic <> eq_refl constr
+R1863:1869 Coq.Init.Logic <> eq_refl constr
+prf 1897:1918 <> Streicher_K_Eq_rect_eq
+R1933:1936 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1922:1932 Extras.Streicher <> Streicher_K def
+R1937:1946 Extras.Streicher <> Eq_rect_eq def
+prf 2031:2050 <> Eq_rect_eq_Eq_dep_eq
+R2064:2067 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2054:2063 Extras.Streicher <> Eq_rect_eq def
+R2068:2076 Extras.Streicher <> Eq_dep_eq def
+R2132:2138 Extras.Streicher <> eq_dep1 ind
+R2163:2173 Extras.Streicher <> eq_dep_dep1 thm
+R2132:2138 Extras.Streicher <> eq_dep1 ind
+R2163:2173 Extras.Streicher <> eq_dep_dep1 thm

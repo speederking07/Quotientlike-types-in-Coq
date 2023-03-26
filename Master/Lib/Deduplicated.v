@@ -6,7 +6,9 @@ Import PeanoNat.Nat.
 Require Import Lia.
 
 Require Import Lib.EqDec.
+Require Import Lib.LinearOrder.
 Require Import Lib.Sorted.
+Require Import Extras.Permutations.
 
 
 Inductive Deduplicated {A: Type} : list A -> Prop :=
@@ -19,7 +21,7 @@ Fixpoint any {A: Type} (p : A -> bool) (l: list A) : bool :=
   | (x::l') => if p x then true else any p l'
   end.
 
-Definition LDeduplicated {A: Type} `{EqDec A} (t: list A) : Prop := 
+Definition CountDeduplicated {A: Type} `{EqDec A} (t: list A) : Prop := 
   forall x : A, In x t -> count (eqf x) t = 1.
 
 Definition Elem_eq {A: Type} (l l' : list A) : Prop := 
@@ -29,6 +31,16 @@ Definition Same_elements {A: Type} (l l' : list A) : Prop :=
   forall x : A, In x l <-> In x l'.
 
 
+Lemma Elem_eq_sym {A: Type} (l l' : list A) : Elem_eq l l' <-> Elem_eq l' l.
+Proof.
+  split; intros H p; symmetry; auto.
+Qed.
+
+Lemma Elem_eq_trans {A: Type} (y x z : list A) : 
+  Elem_eq x y -> Elem_eq y z -> Elem_eq x z.
+Proof.
+  intros H H' p. rewrite H. auto.
+Qed.
 
 Theorem any_in_eq_dec (A: Type) `{E: EqDec A} (l: list A) (x: A) :
   reflect (In x l) (any (eqf x) l).
@@ -94,7 +106,12 @@ Proof.
     + destruct (exist_in_any A l' p) as (x & (P & H0)); auto.
       rewrite <- H in H0. assert (p x = false) by (apply (forall_in_any _ l); auto).
       rewrite P in H1. auto.
-Qed. 
+Qed.
+
+Lemma any_concat {A: Type} (l l': list A) (p: A -> bool): any p (l ++ l') = any p l || any p l'.
+Proof.
+  induction l; auto. cbn. destruct (p a); auto.
+Qed.
 
 
 (* Uniquness *) 
@@ -117,9 +134,9 @@ Proof.
 Qed.
 
 Theorem dup_def_eq {A: Type} `{LinearOrder A} (l : list A) : 
-  Deduplicated l <-> LDeduplicated l.
+  Deduplicated l <-> CountDeduplicated l.
 Proof.
-  unfold LDeduplicated. split.
+  unfold CountDeduplicated. split.
   - intros D x I. induction D; cbn in I; [inversion I|].
     destruct I.
     + subst. cbn [count]. rewrite eqf_refl, count_for_not_satisfied_pred; auto. 
@@ -138,25 +155,6 @@ Proof.
       exfalso. apply H0. inversion D; auto.
 Qed.
 
-
-
-Definition perm_eqf {A: Type} `{EqDec A} (l l': list A) := 
-  forall x: A, count (eqf x) l = count (eqf x) l'.
-
-Lemma perm_eqf_iff {A: Type} `{EqDec A} (l l': list A) : 
-  permutation l l' <-> perm_eqf l l'.
-Proof.
-  split.
-  - intros P x. apply (P (eqf x)).
-  - revert l'. induction l; intros l' E p.
-    + destruct l'; auto. specialize (E a). cbn in E. rewrite eqf_refl in E. inversion E.
-    + rewrite (remove_perm' a l l'); auto.
-      * rewrite in_count_not_O. specialize (E a). rewrite <- E. cbn. rewrite eqf_refl. auto.
-      * intros p'. apply IHl. intros x. specialize (E x). cbn in *. destruct (eqf x a) eqn:e.
-        -- apply eq_add_S. rewrite E. rewrite (remove_count_true a); auto.
-           rewrite <- eqf_iff in e. subst. rewrite in_count_not_O. rewrite <-E. auto.
-        -- rewrite E. rewrite (remove_count_false a); auto.
-Qed.
 
 Lemma any_count_true {A: Type} (l: list A) (p: A -> bool) :
   (count p l <> 0) <-> (any p l = true).
@@ -178,19 +176,22 @@ Proof.
   - induction l; auto. cbn in *. destruct (p a) eqn: e; auto; try discriminate.
 Qed.
 
+
+
 Theorem unique_dedup_perm {A: Type} `{LinearOrder A} (l l': list A) : 
   Elem_eq l l' -> Deduplicated l -> Deduplicated l' -> permutation l l'.
 Proof.
-  rewrite dup_def_eq, dup_def_eq. rewrite perm_eqf_iff.
-  unfold Elem_eq, LDeduplicated. intros eq d1 d2 x.
+  rewrite dup_def_eq, dup_def_eq. rewrite <-PredPerm_is_perm, pred_elem_prem_equiv.
+  unfold Elem_eq, CountDeduplicated. intros eq d1 d2 x.
   specialize (eq (eqf x)). destruct (any (eqf x) l) eqn:I1; destruct (any (eqf x) l') eqn:I2; try discriminate.
   - rewrite <- any_count_true in I1. rewrite <- any_count_true in I2.
     rewrite <- in_count_not_O in I1. rewrite <- in_count_not_O in I2. rewrite d1, d2; auto. 
   - rewrite <- any_count_false in I1. rewrite <- any_count_false in I2. rewrite I1, I2. auto.
 Qed.
 
-Theorem deduo_sort_uniquenss {A: Type} `{LinearOrder A} (l l': list A) : Elem_eq l l' -> 
+Theorem dedupsorted_unique_representation {A: Type} `{LinearOrder A} (l l': list A) : Elem_eq l l' -> 
   Sorted l -> Sorted l' -> Deduplicated l -> Deduplicated l' -> l = l'.
 Proof.
-  intros e_eq s1 s2 d1 d2. apply unique_sorted; auto. apply unique_dedup_perm; auto.
+  intros e_eq s1 s2 d1 d2. apply sorted_unique_representation; auto. apply unique_dedup_perm; auto.
 Qed.
+

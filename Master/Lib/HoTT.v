@@ -1,4 +1,5 @@
 Require Import Setoid.
+Require Import Lib.EqDec.
 
 Inductive Empty : Type := .
 
@@ -27,11 +28,6 @@ Class isHProp (P : Type) :=
 
 Class isHSet (X : Type) := 
   hSet : forall (x y : X) (p q : x = y), p = q.
-
-Class EqDec (A : Type) := { 
-  eqf : A -> A -> bool ;
-  eqf_leibniz : forall x y, eqf x y = true <-> x = y
-}.
 
 (*   _ : forall x y, reflect (x = y) (eqf x y)
 Require Import Bool.
@@ -98,10 +94,9 @@ Qed.
 
 Theorem eqDec_pathdec : forall A: Type, EqDec A -> DecidableEq A.
 Proof.
-  intros A H x y. destruct H. case_eq (eqf0 x y).
-  - intro H1. left. apply (eqf_leibniz0 x y). assumption.
-  - intro H1. right. intro H2. rewrite <- (eqf_leibniz0 x y) in H2. rewrite H1 in H2.
-    discriminate.
+  intros A H x y. destruct (eqf x y) eqn: e.
+  - left. apply eqf_iff. auto.
+  - right. intros f. subst. rewrite eqf_refl in e. inversion e.
 Qed.
 
 Definition isLeft {A B: Type} (x : A + B): bool :=
@@ -113,13 +108,9 @@ Definition isLeft {A B: Type} (x : A + B): bool :=
 Theorem pathdec_eqDec : forall A: Type, DecidableEq A -> EqDec A.
 Proof.
   intros A H. unfold DecidableEq in H. exists (fun x y => isLeft (H x y)).
-  intros x y. split.
-  - case_eq (H x y); intros p H1.
-    + intros _. assumption.
-    + cbn. intro H2. discriminate.
-  - intro H1. subst. case_eq (H y y); intros p H1.
-    + cbn. reflexivity.
-    + contradiction.
+  intros x y. destruct (isLeft (H x y)) eqn:e; constructor.
+  - destruct (H x y); cbn in *; [auto | inversion e].
+  - intros E. subst. destruct (H y y); cbn in *; [inversion e | auto].
 Qed.
 
 Theorem dec_eq_hset : forall A: Type, EqDec A -> isHSet A.

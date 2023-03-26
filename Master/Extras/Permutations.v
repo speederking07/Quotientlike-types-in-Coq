@@ -3,19 +3,12 @@ Require Import Coq.Program.Equality.
 Require Import Coq.Lists.List.
 Import ListNotations.
 
-Class EqDec (A : Type) := { 
-  eqf : A -> A -> bool ;
-  eqf_leibniz : forall x y: A, eqf x y = true <-> x = y
-}.
-
-Fixpoint count {A : Type} (p: A -> bool) (l: list A) : nat :=
-match l with
-| []        => 0
-| (x :: l') => if p x then S (count p l') else count p l'
-end.
+Require Import Lib.Sorted.
+Require Import Lib.EqDec.
+Require Import Lib.LinearOrder.
 
 Definition PredPerm {A : Type} `{EqDec A} (l l' : list A) :=
-  forall p, count p l = count p l'.
+  forall p : A -> bool, count p l = count p l'.
 
 Definition ElemPerm {A : Type} `{EqDec A} (l l' : list A) :=
   forall x: A, count (eqf x) l = count (eqf x) l'.
@@ -28,17 +21,16 @@ Inductive DefPerm {A : Type} : list A -> list A -> Prop :=
 
 
 
+Lemma PredPerm_is_perm {A: Type} `{LinearOrder A} (l l': list A) : PredPerm l l' <-> permutation l l'.
+Proof.
+  unfold PredPerm, permutation. split; intros P p; apply P; auto.
+Qed.
 
 Fixpoint remove {A: Type} `{EqDec A} (x: A) (l: list A) :=
 match l with 
 | []     => []
 | (h::t) => if eqf x h then t else h :: remove x t
 end.
-
-Lemma eqf_refl (A: Type) `{EqDec A} (x: A) : eqf x x = true.
-Proof.
-  rewrite eqf_leibniz. auto.
-Qed.
 
 Lemma remove_count_true {A: Type} `{EqDec A} (h: A) (l: list A) (p: A -> bool) :
   In h l -> p h = true -> count p l = S (count p (remove h l)).
@@ -49,7 +41,7 @@ Proof.
     + subst. rewrite t. rewrite eqf_refl. auto.
     + destruct (p a) eqn:e; destruct (eqf h a) eqn:e1; auto.
       * cbn in *. rewrite e. rewrite IHl; auto.
-      * rewrite eqf_leibniz in e1. subst. rewrite t in e. discriminate.
+      * rewrite <- eqf_iff in e1. subst. rewrite t in e. discriminate.
       * cbn in *. rewrite e. apply IHl; auto.
 Qed.
 
@@ -58,7 +50,7 @@ Lemma remove_count_false {A: Type} `{EqDec A} (h: A) (l: list A) (p: A -> bool) 
 Proof.
   induction l; intros f; auto. cbn in *. 
   destruct (p a) eqn:e; destruct (eqf h a) eqn:e1; auto.
-  - rewrite eqf_leibniz in e1. subst. rewrite f in e. discriminate.
+  - rewrite <- eqf_iff in e1. subst. rewrite f in e. discriminate.
   - cbn. rewrite e. f_equal. apply IHl; auto.
   - cbn. rewrite e. apply IHl; auto.
 Qed.
@@ -74,7 +66,7 @@ Proof.
       * destruct (eqf x a) eqn: e; auto.
   - intros C. induction l.
     + cbn in C. contradiction.
-    + cbn in *. destruct (eqf x a) eqn: e; auto. rewrite eqf_leibniz in e.
+    + cbn in *. destruct (eqf x a) eqn: e; auto. rewrite <- eqf_iff in e.
       subst. left. auto.
 Qed. 
 
@@ -126,7 +118,7 @@ Proof.
       * rewrite in_count_not_O. specialize (E a). rewrite <- E. cbn. rewrite eqf_refl. auto.
       * intros p'. apply IHl. intros x. specialize (E x). cbn in *. destruct (eqf x a) eqn:e.
         -- apply eq_add_S. rewrite E. rewrite (remove_count_true a); auto.
-           rewrite eqf_leibniz in e. subst. rewrite in_count_not_O. rewrite <- E. auto.
+           rewrite <- eqf_iff in e. subst. rewrite in_count_not_O. rewrite <- E. auto.
         -- rewrite E. rewrite (remove_count_false a); auto.
 Qed.
 
@@ -150,7 +142,7 @@ Proof.
   intros I. induction l; cbn in *; destruct I.
   - subst. rewrite eqf_refl. constructor. apply def_perm_relf.
   - destruct (eqf h a) eqn:e.
-    + rewrite eqf_leibniz in e. subst. constructor. apply def_perm_relf.
+    + rewrite <- eqf_iff in e. subst. constructor. apply def_perm_relf.
     + apply (perm_trans (h :: a :: remove h l) (a :: h :: remove h l) (a :: l));
       constructor. apply IHl. assumption.
 Qed.
@@ -161,7 +153,7 @@ Proof.
   intros I H. destruct l'.
   - cbn in I. destruct I.
   - cbn in *. destruct (eqf h a) eqn:e.
-    + rewrite eqf_leibniz in e. subst. constructor. assumption.
+    + rewrite <- eqf_iff in e. subst. constructor. assumption.
     + apply (perm_trans (h :: l) (a :: h :: remove h l') (a :: l')).
       * apply (perm_trans (h :: l) (h :: a :: remove h l') (a :: h :: remove h l'));
         constructor. assumption.
