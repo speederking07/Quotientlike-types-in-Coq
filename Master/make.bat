@@ -9,3 +9,4 @@ coqc Extras/Permutations.v
 coqc Extras/Streicher.v
 coqc Lib/Deduplicated.v
 coqc Lib/DedupSort.v
+coqc Integer.v

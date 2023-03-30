@@ -387,7 +387,12 @@ Qed.
 
 Theorem equiv_same' (A B: Type) (f: A -> B) `{IsEquiv' A B f} : IsEquiv f.
 Proof.
-  assert (f $ (equiv_inv_A $ f $ equiv_inv_B) == id). 
+  unshelve esplit.
+  - exact (equiv_inv_B $ f $ equiv_inv_A).
+  - intros x. unfold dot. pose (equiv_id_B (equiv_inv_A x)).  unfold dot in *.
+rewrite e. unfold id. rewrite (eisretr .
+  intros x. cbn.
+  rewrite (eissect).
 Abort.
 
 Record qinv {A B: Type} (f: A -> B) := {

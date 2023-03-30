@@ -1,0 +1,86 @@
+% Opcje klasy 'iithesis' opisane sa w komentarzach w pliku klasy. Za ich pomoca
+% ustawia sie przede wszystkim jezyk oraz rodzaj (lic/inz/mgr) pracy.
+\documentclass[shortabstract, mgr]{iithesis}
+
+\usepackage[utf8]{inputenc}
+
+%%%%% DANE DO STRONY TYTUĹOWEJ
+% Niezaleznie od jezyka pracy wybranego w opcjach klasy, tytul i streszczenie
+% pracy nalezy podac zarowno w jezyku polskim, jak i angielskim.
+% Pamietaj o madrym (zgodnym z logicznym rozbiorem zdania oraz estetyka) recznym
+% zlamaniu wierszy w temacie pracy, zwlaszcza tego w jezyku pracy. Uzyj do tego
+% polecenia \fmlinebreak.
+\polishtitle    {Funkcje normalizujące dla typów ilorazowych w Coqu}
+\englishtitle   {Canonizing functions for quotints types in Coq}
+\polishabstract {\ldots}
+\englishabstract{\ldots}
+% w pracach wielu autorow nazwiska mozna oddzielic poleceniem \and
+\author         {Marek Bauer}
+% w przypadku kilku promotorow, lub koniecznosci podania ich afiliacji, linie
+% w ponizszym poleceniu mozna zlamac poleceniem \fmlinebreak
+\advisor        {dr Małgorzata Biernacka}
+%\date          {}                     % Data zlozenia pracy
+% Dane do oswiadczenia o autorskim wykonaniu
+%\transcriptnum {}                     % Numer indeksu
+%\advisorgen    {dr. Jana Kowalskiego} % Nazwisko promotora w dopelniaczu
+%%%%%
+
+%%%%% WLASNE DODATKOWE PAKIETY
+\usepackage{amsfonts} 
+\usepackage{minted}
+\usepackage{polski}
+\usepackage{graphicx}
+\usepackage{MnSymbol}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{float}
+\usepackage[headheight=18pt, top=25mm, bottom=25mm, left=25mm, right=25mm]{geometry}
+\usetikzlibrary{positioning}
+\graphicspath{ {./img/} }
+\usemintedstyle{tango}
+\usepackage{newfloat}
+
+%%%%% WĹASNE DEFINICJE I POLECENIA
+\DeclareFloatingEnvironment[
+    fileext=los,
+    listname={Kod źródłowy},
+    name=Kod źródłowy,
+    placement=!tbhp,
+    within=section,
+]{code}
+
+%\theoremstyle{definition} \newtheorem{definition}{Definition}[chapter]
+%\theoremstyle{remark} \newtheorem{remark}[definition]{Observation}
+%\theoremstyle{plain} \newtheorem{theorem}[definition]{Theorem}
+%\theoremstyle{plain} \newtheorem{lemma}[definition]{Lemma}
+%\renewcommand \qedsymbol {\ensuremath{\square}}
+% ...
+%%%%%
+
+\begin{document}
+
+%%%%% POCZÄTEK ZASADNICZEGO TEKSTU PRACY
+
+    \chapter{Definicja problemu}
+	\input{chapter1}
+	
+	\chapter{Pod-typowanie jako namiastka typów ilorazowych}
+	\input{chapter2}
+
+    \chapter{Typów ilorazowe z wykorzystujące pod-typowania}
+	\input{chapter3}
+
+    \chapter{Typy ilorazowe jako ślad funkcji normalizującej}
+	\input{chapter4}
+
+    \chapter{Funkcje jako typy ilorazowe}
+	\input{chapter5}
+
+    \chapter{Typy ilorazowe w wybranych językach}
+	\input{chapter6}
+
+%%%%% BIBLIOGRAFIA
+	\bibliographystyle{plabbrv}
+	\bibliography{thebibliography}
+
+\end{document}

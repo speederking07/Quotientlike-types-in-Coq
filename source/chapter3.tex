@@ -1,0 +1,202 @@
+W poprzedni rozdziale poznaliśmy czym jest pod-typowanie, oraz w jaki sposób możemy je wykorzystać w implementacji typów którymi możemy się posługiwać prawie jak typami ilorazowymi. W tym natomiast poznamy jakie typy ilorazowe możemy zaimplementować w ten sposób. Skupimy się tutaj na typach z uniwersum zerowego, w związku z tym będziemy pracować z domyślną równością oraz w uniwersum \mintinline{coq}{Prop}.
+\section{Pary nieuporządkowane}
+Wcześniej wspomnieliśmy, że nie da się zdefiniować pary nieuporządkowanej dla dowolnego typu bazowego, gdyż nie wiadomo który element powinien być pierwszy. jako ciekawostka homotopicznej teorii typów taką parę można zdefiniować jako:
+\begin{equation}
+    \sum_{(X:\Textrm{Type})}\sum_{(H:\|X\simeq \mathsf{bool}\|)}A^X
+\end{equation}
+Natomiast taka definicja również nie jest możliwa do zaimplementowania w Coqu z względu na brak obcięcia oraz na brak możliwości rozbijania dowodów z \mintinline{coq}{SProp} w uniwersum \mintinline{coq}{Type}. Organicznym się zatem jedynie do typów bazowych z rozstrzygalnym pełnym porządkiem na nich \ref{FullOrd}, słaba asymetria jest potrzebna do udowodnienia unikalności, a pełność do zbudowania pary dla każdych dwóch elementów.
+\begin{code}
+\begin{minted}{coq}
+Class FullOrd (A: Type) := {
+  ord  : A -> A -> bool;
+  asym : forall x y: A, ord x y = true -> x = y;
+  full : forall x y: A, ord x y = true \/ ord y x = true;
+}.
+\end{minted}
+\caption{Definicja rozstrzygalnego pełnego porządku dla typu A w Coqu.}
+\label{FullOrd}
+\end{code}
+Takie pary zdefiniujemy jak trójka elementów: pierwszy element pray, drugi element pary, oraz dowód dobrego posortowania \ref{UPair}.
+\begin{code}
+\begin{minted}{coq}
+Record UPair (A: Type) `{FullOrd A} := {
+  first  : A;
+  second : A;
+  sorted : ord first second = true;
+}.
+\end{minted}
+\caption{Definicja pary nieuporządkowanej w Coqu.}
+\label{UPair}
+\end{code}
+\subsection{Relacja równoważności}
+Będziemy chcieli utożsamić ze sobą takie pary które zawierają takie same dwa elementy, a więc są w relacji \mintinline{coq}{sim} \ref{upair_sim}.
+\begin{code}
+\begin{minted}{coq}
+Definition contains {A: Type} `{FullOrd A} (x y: A) (p: UPair A) :=
+  (first p = x /\ second p = y) \/ (first p = y /\ second p = x).
+
+Definition sim {A: Type} `{FullOrd A} (p q: UPair A) :=
+  forall x y: A, contains x y p <-> contains x y q. 
+\end{minted}
+\caption{Relacja równoważności par nieuporządkowanych.}
+\label{upair_sim}
+\end{code}
+\subsection{Dowód jednoznaczności reprezentacji}
+Mając te definicje możemy w łatwy sposób udowodnić iż rzeczywiście jeśli dwie pary nieuporządkowane zawierają takie same elementy to są sobie równe w Coqu. Oczywiście będziemy musieli tu skorzystać z dowodu \mintinline{coq}{bool_is_hset}, ale wiedząc że \mintinline{coq}{bool} w trywialny sposób ma rozstrzygalną równość oraz wiedzę z poprzedniego rozdziału, w łatwy sposób można udowodnić, że żyje on rzeczywiście w uniwersum HSet.
+\begin{code}
+\begin{minted}{coq}
+Theorem UPair_uniq (A: Type) `{FullOrd A} (p q : UPair A) (x y : A) :
+  contains x y p -> contains x y q -> p = q.
+Proof.
+  intros c1 c2. case_eq (ord x y); intro o;
+  destruct p, q; unfold contains in *; cbn in *; 
+  destruct c1, c2, H0, H1; subst; 
+  try assert (x = y) by (apply asym; assumption);
+  subst; try f_equal; try apply bool_is_hset.
+Qed.
+\end{minted}
+\caption{Dowód, że pary uporządkowane zawierające te same elementy są tą samą parą.}
+\label{UPair_uniq}
+\end{code}
+Można by sądzić iż wymaganie istnienia rozstrzygalnego pełnego porządku na typie bazowym znacząco ogranicza użyteczność takiej konstrukcji. Oczywiście nie będzie można zdefiniować pary dowolnych funkcji, lecz w praktycznych zastosowaniach programistycznych obiekty są reprezentowane za pomocą ciągów bitów, na których w prosty sposób można zdefiniować rozstrzygalny pełny porządek.
+
+
+\section{Muti-zbiory skończone}
+Kolejnym klasycznym przykładem typu ilorazowego, których chcielibyśmy mieć w Coqu jest multi-zbiór skończony. Jest to struktura danych która może przechowywać wiele tych samych elementów, natomiast kolejności nie ma w niej znaczenia. Można o nich myśleć jako nieuporządkowanych listach. Tak jak one są również monadami. Mogą one zostać wykorzystane na przykład do sprawdzenie czy różne procesy produkują takie same elementy. Podobnie jak w przypadku pary nieuporządkowanej, tu również będziemy będziemy musieli dodać pewnie ograniczenia na typ bazowy w postaci rozstrzygalnego porządku liniowego \ref{LinearOrder}. 
+\begin{code}
+\begin{minted}{coq}
+Class LinearOrder {A: Type} := {
+  ord      : A -> A -> bool;
+  anti_sym : forall x y: A, ord x y = true -> ord y x = true -> x = y;
+  trans    : forall x y z: A, ord x y = true -> ord y z = true -> ord x z = true;
+  full     : forall x y: A, ord x y = true \/ ord y x = true;
+}.
+\end{minted}
+\caption{Definicja rozstrzygalnego porządku liniowego dla typu A w Coqu.}
+\label{LinearOrder}
+\end{code}
+\subsection{Relacja równoważności}
+Chcemy aby równoważne sobie zbiory miały takie same elementy. Inaczej aby mówiąc dwa multi-zbiory były sobie równoważne muszą być swoimi własnymi permutacjami. Postulujemy w tym miejscu użycie nieco sprytniejszej definicji permutacji, która jest równoważna dla typów z rozstrzygalną równością \ref{permutation}. Nie wymaga ona definiowana wszystkich praw permutacji, które później mogą być trudne w użyciu, natomiast opiera się na idei iż dwie listy które są permutacjami muszą zawierać takie same elementy z dokładnością do ich ilości. A takie sformułowanie jest równoważne temu, że dla każdego predykatu liczba elementów na obu listach jest taka sama (w szczególności dla predykatu bycia jakimś konkretnym elementem typu). Jedyny problem z tą definicją jest fakt iż nie działa ona dla typów z nierozstrzygalna równością, ale rozstrzygalny linowy porządek implikuje rozstrzygalną równość na typie. Dowód równoważności tych definicji można znaleźć w permutations.v. 
+\begin{code}
+\begin{minted}{coq}
+Fixpoint count {A: Type} (p: A -> bool) (l: list A): nat :=
+  match l with
+  | nil => O
+  | cons h t => if p h then S (count p t) else count p t
+  end.
+
+Definition permutation {A: Type} (a b : list A) :=
+  forall p : A -> bool, count p a = count p b.
+\end{minted}
+\caption{Definicja permutacji dla list z rozstrzygalną równością.}
+\label{permutation}
+\end{code}
+\subsection{Funkcja normalizująca}
+Nie trudno zgadnąć jaka funkcja, jaką idempotentną funkcję możemy użyć do wyznaczenia postaci normalnej dla list, takiej że wszystkie permutacje są rzutowane na tą samą listę. Oczywistym wyborem na taką funkcję jest oczywiście funkcja sortująca. Postuluję tutaj użycie funkcji sortującej wykorzystującą drzewo, które przechowuje elementy tylko w liściach \ref{mergeSort}. To podejście pozwala nam na łatwe dzielenie listy na dwie równe części, a sama sortowanie przez scalania łatwo zaimplementować w funkcyjnym języku programowania. Oczywiście dowolna inna funkcja sortująca zadziałałaby równie dobrze.
+\begin{code}
+\begin{minted}{coq}
+Inductive BT(A : Type) : Type :=
+  | leaf : A -> (BT A)
+  | node : (BT A)->(BT A)->(BT A).
+
+Fixpoint BTInsert{A : Type}(x : A)(tree : BT A) :=
+  match tree with
+  | leaf y => node (leaf x)(leaf y)
+  | node l r => node r (BTInsert x l)
+  end.
+
+Fixpoint listToBT{A : Type}(x : A)(list : list A): BT A :=
+  match list with
+  | nil => leaf x
+  | cons y list' => BTInsert x (listToBT y list')
+  end.
+
+Fixpoint merge{A : Type}(ord : A -> A -> bool)(l1 : list A): (list A) -> list A :=
+  match l1 with
+  | [] => fun (l2 : list A) => l2
+  | h1::t1 => fix anc (l2 : list A) : list A :=
+    match l2 with
+    | [] => l1
+    | h2::t2 => if ord h1 h2 
+                then h1::(merge ord t1) l2
+                else h2::anc t2
+    end
+  end.
+
+Fixpoint BTSort {A : Type}(ord : A -> A -> bool)(t : BT A): list A :=
+  match t with
+  | leaf x => [x]
+  | node l r => merge ord (BTSort ord l) (BTSort ord r)
+  end. 
+
+Definition mergeSort{A: Type}(ord : A -> A -> bool)(l: list A): list A :=
+  match l with
+  | [] => []
+  | x::l' => BTSort ord (listToBT x l')
+  end.
+\end{minted}
+\caption{Sortowanie przez scalanie z wykorzystaniem drzewa przechowującym wartości w liściach.}
+\label{mergeSort}
+\end{code}
+\subsection{Dowód jednoznaczności reprezentacji}
+Każda funkcja sortująca musi spełniać dwa kryteria. Po pierwsze wynik jej działania musi być listą posortowaną, a po drugie wynik musi być permutacją listy wejściowej. Drugie kryterium sprawia że sortownie nie utożsami ze sobą list które nie były ze sobą w relacji permutacji. Pierwsze kryterium gwarantuje nam natomiast impotencję sortowania, gdyż jak wiemy, sortowanie nie zmienia już posortowanej listy. Dowód tego faktu jak i tego, że zaprezentowana powyżej funkcja \mintinline{coq}{mergeSort} \ref{mergeSort} rzeczywiście sortuje można znaleźć w dodatku sorted\_lists.v.
+
+\section{Zbiory skończone}
+Kolejną użytecznym typem ilorazowym są zbiory skończone. Różnią się one od zdefiniowanych powyżej multi-zbiorów tym, że każdy element znajduje się na nich co najwyżej raz. A więc dodanie elementu do zbioru który już się w nim znajduje daje identyczny zbiór jak przed tą operacją. Podobnie jak w przypadku multi-zbiorów tu również będziemy wymagać aby typ bazowy miał porządek liniowy \ref{LinearOrder}. 
+\subsection{Relacja równoważności}
+W przypadku zbiorów chcemy utożsami ze sobą listy które zawierają takie same elementy, nie patrząc na ich liczbę. Możemy zatem nieco zmodyfikować definicję permutacji ze multi-zbiorów tak, żeby rozróżniała jedynie czy wynik jest zerowy czy nie \ref{Elem_eq}. Wystarczy zatem zamienić funkcję zliczającą na funkcje która sprawdza czy na liście istnieje element spełniający predykat.
+\begin{code}
+\begin{minted}{coq}
+Fixpoint any {A: Type} (p : A -> bool) (l: list A) : bool :=
+  match l with
+  | [] => false
+  | (x::l') => if p x then true else any p l'
+  end.
+
+Definition Elem_eq {A: Type} (l l' : list A) : Prop := 
+  forall p : A -> bool, any p l = any p l'.
+\end{minted}
+\caption{Definicja relacji zawierania tych samych elementów przez dwie listy w Coq.}
+\label{Elem_eq}
+\end{code}
+\subsection{Funkcja normalizująca}
+W przypadku zbiorów do normalizacji listy będziemy potrzebować funkcji pseudo sortującej, która usuwa kolejne wystąpienia tego samego elementu. Podobnie jak w przypadku sortowania tu również zalecamy użycie funkcji opartej na drzewie, natomiast tym razem na klasycznym drzewie binarnym.
+Funkcja \mintinline{coq}{DSort} \ref{} działa poprzez wkładanie kolejnych elementów do drzewa binarnego, pomijając element jeśli taki znajduje się już w drzewie, a na końcu spłaszcza drzewo i tworzony z niego listę. 
+\begin{code}
+\begin{minted}{coq}
+Inductive tree (A: Type) : Type :=
+| leaf : tree A
+| node : A -> tree A -> tree A -> tree A.
+
+Definition comp {A: Type} `{LinearOrder A} (x y: A) := 
+  if ord x y then (if ord y x then Eq else Gt) else Lt.
+
+Fixpoint add_tree {A: Type} `{LinearOrder A} (x: A) (t : tree A) : tree A :=
+match t with
+| leaf => node x leaf leaf
+| node v l r => match comp x v with
+                | Lt => node v (add_tree x l) r
+                | Eq => node v l r
+                | Gt => node v l (add_tree x r)
+                end
+end.
+
+Fixpoint to_tree {A: Type} `{LinearOrder A} (l : list A) : tree A := 
+  match l with
+  | []      => leaf
+  | (x::l') => add_tree x (to_tree l')
+  end.
+
+Fixpoint to_list {A: Type} (l : tree A) : list A := 
+  match l with
+  | leaf       => []
+  | node x l r => to_list l ++ [x] ++ to_list r
+  end.
+
+Definition DSort {A: Type} `{LinearOrder A} (l : list A) : list A := to_list (to_tree l).
+\end{minted}
+\caption{Definicja funkcji sortująco deduplikującej w Coq.}
+\label{DSort}
+\end{code}
+\subsection{Dowód jednoznaczności reprezentacji}
+Podobnie jak w przypadku sortowania każda funkcja sortująco deduplikująca powinna spełniać dwa kryteria. Po pierwsze wynik takiej funckji powinnien być listą która nie zawiera powtarzających się elementów a po drugie elementy te są posortowane zgodnie z porządkiem liniowym. Wiemy, że dwie zdeduplikowane listy, które zawierają takie same elementy są swoimi permutacjami. Dodatkowo wiemy, że dla każdej permutacji listy istnieje dokładnie jedna taka która jest posortowana zgodnie z porządkiem liniowym. Wynika z tego że funkcja sortująco deduplikująca jest idempotentna. Po drugie lista wejściowa i wyjściowa powinna być w relacji zawierania tych samych elementów, co sprawia że listy zawiarające różne elementy nie zostaną ze sobą utożsamione. Dowód faktu, że nasza funkcja \mintinline{coq}{DSort} \ref{DSort} spełnia kryteria funkcji sortująco deduplikującej możemy znaleźć w dodatku Deduplicated.v.

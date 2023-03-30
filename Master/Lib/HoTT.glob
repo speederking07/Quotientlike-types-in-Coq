@@ -1,4 +1,4 @@
-DIGEST e366096ac7923f80df852cd32f99ae34
+DIGEST 452446204b036b3ab56c346aa8ec7e85
 FLib.HoTT
 R15:20 Coq.Setoids.Setoid <> <> lib
 R38:46 Lib.EqDec <> <> lib
@@ -1099,75 +1099,165 @@ R9936:9936 Lib.HoTT <> f:273 var
 binder 9924:9936 <> H:274
 R9941:9948 Lib.HoTT <> IsEquiv' class
 R9950:9950 Lib.HoTT <> f:273 var
-prf 10030:10040 <> equiv_same'
-binder 10043:10043 <> A:275
-binder 10045:10045 <> B:276
-R10059:10062 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10058:10058 Lib.HoTT <> A:275 var
-R10063:10063 Lib.HoTT <> B:276 var
-binder 10055:10055 <> f:277
-R10068:10075 Lib.HoTT <> IsEquiv' class
-R10077:10077 Lib.HoTT <> A:275 var
+prf 10028:10045 <> homotopy_rewrite_l
+binder 10048:10048 <> A:275
+binder 10050:10050 <> B:276
+binder 10052:10052 <> C:277
+R10068:10071 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10067:10067 Lib.HoTT <> A:275 var
+R10072:10072 Lib.HoTT <> B:276 var
+binder 10062:10062 <> f:278
+binder 10064:10064 <> g:279
+R10080:10083 Coq.Init.Logic <> ::type_scope:x_'->'_x not
 R10079:10079 Lib.HoTT <> B:276 var
-R10081:10081 Lib.HoTT <> f:277 var
-binder 10068:10081 <> H:278
-R10086:10092 Lib.HoTT <> IsEquiv class
-R10094:10094 Lib.HoTT <> f:277 var
-R10149:10152 Lib.HoTT <> :::x_'=='_x not
-R10115:10118 Lib.HoTT <> :::x_'$'_x not
-R10148:10148 Lib.HoTT <> :::x_'$'_x not
-R10134:10136 Lib.HoTT <> :::x_'$'_x not
-R10130:10132 Lib.HoTT <> :::x_'$'_x not
-R10119:10129 Lib.HoTT <> equiv_inv_A meth
-R10137:10147 Lib.HoTT <> equiv_inv_B meth
-R10153:10154 Lib.HoTT <> id def
-R10149:10152 Lib.HoTT <> :::x_'=='_x not
-R10115:10118 Lib.HoTT <> :::x_'$'_x not
-R10148:10148 Lib.HoTT <> :::x_'$'_x not
-R10134:10136 Lib.HoTT <> :::x_'$'_x not
-R10130:10132 Lib.HoTT <> :::x_'$'_x not
-R10119:10129 Lib.HoTT <> equiv_inv_A meth
-R10137:10147 Lib.HoTT <> equiv_inv_B meth
-R10153:10154 Lib.HoTT <> id def
-rec 10173:10176 <> qinv
-proj 10209:10209 <> g
-proj 10222:10226 <> inv_l
-proj 10244:10248 <> inv_r
-binder 10179:10179 <> A:279
-binder 10181:10181 <> B:280
-R10195:10198 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10194:10194 Lib.HoTT <> A:279 var
-R10199:10199 Lib.HoTT <> B:280 var
-binder 10191:10191 <> f:281
-R10213:10216 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10212:10212 Lib.HoTT <> B:280 var
-R10217:10217 Lib.HoTT <> A:279 var
-R10234:10237 Lib.HoTT <> :::x_'=='_x not
-R10230:10232 Lib.HoTT <> :::x_'$'_x not
-R10229:10229 Lib.HoTT <> g:283 meth
-R10233:10233 Lib.HoTT <> f:281 var
-R10238:10239 Lib.HoTT <> id def
-R10256:10259 Lib.HoTT <> :::x_'=='_x not
-R10252:10254 Lib.HoTT <> :::x_'$'_x not
-R10251:10251 Lib.HoTT <> f:281 var
-R10255:10255 Lib.HoTT <> g:283 meth
-R10260:10261 Lib.HoTT <> id def
-prf 10276:10278 <> bad
-binder 10281:10281 <> A:286
-binder 10283:10283 <> B:287
-R10297:10300 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10296:10296 Lib.HoTT <> A:286 var
-R10301:10301 Lib.HoTT <> B:287 var
-binder 10293:10293 <> f:288
-R10312:10316 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10344:10344 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R10306:10309 Lib.HoTT <> qinv rec
-R10311:10311 Lib.HoTT <> f:288 var
-R10323:10325 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R10317:10320 Lib.HoTT <> qinv rec
-R10322:10322 Lib.HoTT <> f:288 var
-R10336:10336 Lib.HoTT <> A:286 var
-binder 10333:10333 <> x:289
-R10340:10342 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R10339:10339 Lib.HoTT <> x:289 var
-R10343:10343 Lib.HoTT <> x:289 var
+R10084:10084 Lib.HoTT <> C:277 var
+binder 10076:10076 <> h:280
+R10091:10091 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10098:10102 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10093:10096 Lib.HoTT <> :::x_'=='_x not
+R10092:10092 Lib.HoTT <> f:278 var
+R10097:10097 Lib.HoTT <> g:279 var
+R10103:10103 Lib.HoTT <> :::x_'=='_x not
+R10109:10114 Lib.HoTT <> :::x_'=='_x not
+R10120:10120 Lib.HoTT <> :::x_'=='_x not
+R10105:10107 Lib.HoTT <> :::x_'$'_x not
+R10104:10104 Lib.HoTT <> h:280 var
+R10108:10108 Lib.HoTT <> f:278 var
+R10116:10118 Lib.HoTT <> :::x_'$'_x not
+R10115:10115 Lib.HoTT <> h:280 var
+R10119:10119 Lib.HoTT <> g:279 var
+R10139:10153 Lib.HoTT <> pointwise_paths def
+R10156:10158 Lib.HoTT <> dot def
+prf 10202:10219 <> homotopy_rewrite_r
+binder 10222:10222 <> A:281
+binder 10224:10224 <> B:282
+binder 10226:10226 <> C:283
+R10240:10243 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10239:10239 Lib.HoTT <> A:281 var
+R10244:10244 Lib.HoTT <> B:282 var
+binder 10236:10236 <> f:284
+R10254:10257 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10253:10253 Lib.HoTT <> B:282 var
+R10258:10258 Lib.HoTT <> C:283 var
+binder 10248:10248 <> g:285
+binder 10250:10250 <> h:286
+R10265:10265 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10272:10276 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10267:10270 Lib.HoTT <> :::x_'=='_x not
+R10266:10266 Lib.HoTT <> g:285 var
+R10271:10271 Lib.HoTT <> h:286 var
+R10277:10277 Lib.HoTT <> :::x_'=='_x not
+R10283:10288 Lib.HoTT <> :::x_'=='_x not
+R10294:10294 Lib.HoTT <> :::x_'=='_x not
+R10279:10281 Lib.HoTT <> :::x_'$'_x not
+R10278:10278 Lib.HoTT <> g:285 var
+R10282:10282 Lib.HoTT <> f:284 var
+R10290:10292 Lib.HoTT <> :::x_'$'_x not
+R10289:10289 Lib.HoTT <> h:286 var
+R10293:10293 Lib.HoTT <> f:284 var
+R10313:10327 Lib.HoTT <> pointwise_paths def
+R10330:10332 Lib.HoTT <> dot def
+prf 10376:10384 <> dot_assoc
+binder 10387:10387 <> A:287
+binder 10389:10389 <> B:288
+binder 10391:10391 <> C:289
+binder 10393:10393 <> D:290
+R10407:10409 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10406:10406 Lib.HoTT <> A:287 var
+R10410:10410 Lib.HoTT <> B:288 var
+binder 10403:10403 <> h:291
+R10418:10421 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10417:10417 Lib.HoTT <> B:288 var
+R10422:10422 Lib.HoTT <> C:289 var
+binder 10414:10414 <> g:292
+R10430:10433 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10429:10429 Lib.HoTT <> C:289 var
+R10434:10434 Lib.HoTT <> D:290 var
+binder 10426:10426 <> f:293
+R10453:10456 Lib.HoTT <> :::x_'=='_x not
+R10442:10442 Lib.HoTT <> :::x_'$'_x not
+R10448:10451 Lib.HoTT <> :::x_'$'_x not
+R10444:10446 Lib.HoTT <> :::x_'$'_x not
+R10443:10443 Lib.HoTT <> f:293 var
+R10447:10447 Lib.HoTT <> g:292 var
+R10452:10452 Lib.HoTT <> h:291 var
+R10458:10461 Lib.HoTT <> :::x_'$'_x not
+R10467:10467 Lib.HoTT <> :::x_'$'_x not
+R10457:10457 Lib.HoTT <> f:293 var
+R10463:10465 Lib.HoTT <> :::x_'$'_x not
+R10462:10462 Lib.HoTT <> g:292 var
+R10466:10466 Lib.HoTT <> h:291 var
+R10486:10500 Lib.HoTT <> pointwise_paths def
+R10503:10505 Lib.HoTT <> dot def
+prf 10529:10539 <> equiv_same'
+binder 10542:10542 <> A:294
+binder 10544:10544 <> B:295
+R10558:10561 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10557:10557 Lib.HoTT <> A:294 var
+R10562:10562 Lib.HoTT <> B:295 var
+binder 10554:10554 <> f:296
+R10567:10574 Lib.HoTT <> IsEquiv' class
+R10576:10576 Lib.HoTT <> A:294 var
+R10578:10578 Lib.HoTT <> B:295 var
+R10580:10580 Lib.HoTT <> f:296 var
+binder 10567:10580 <> H:297
+R10585:10591 Lib.HoTT <> IsEquiv class
+R10593:10593 Lib.HoTT <> f:296 var
+R10648:10651 Lib.HoTT <> :::x_'=='_x not
+R10614:10617 Lib.HoTT <> :::x_'$'_x not
+R10647:10647 Lib.HoTT <> :::x_'$'_x not
+R10633:10635 Lib.HoTT <> :::x_'$'_x not
+R10629:10631 Lib.HoTT <> :::x_'$'_x not
+R10618:10628 Lib.HoTT <> equiv_inv_A meth
+R10636:10646 Lib.HoTT <> equiv_inv_B meth
+R10652:10653 Lib.HoTT <> id def
+R10648:10651 Lib.HoTT <> :::x_'=='_x not
+R10614:10617 Lib.HoTT <> :::x_'$'_x not
+R10647:10647 Lib.HoTT <> :::x_'$'_x not
+R10633:10635 Lib.HoTT <> :::x_'$'_x not
+R10629:10631 Lib.HoTT <> :::x_'$'_x not
+R10618:10628 Lib.HoTT <> equiv_inv_A meth
+R10636:10646 Lib.HoTT <> equiv_inv_B meth
+R10652:10653 Lib.HoTT <> id def
+rec 10673:10676 <> qinv
+proj 10709:10709 <> g
+proj 10722:10726 <> inv_l
+proj 10744:10748 <> inv_r
+binder 10679:10679 <> A:298
+binder 10681:10681 <> B:299
+R10695:10698 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10694:10694 Lib.HoTT <> A:298 var
+R10699:10699 Lib.HoTT <> B:299 var
+binder 10691:10691 <> f:300
+R10713:10716 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10712:10712 Lib.HoTT <> B:299 var
+R10717:10717 Lib.HoTT <> A:298 var
+R10734:10737 Lib.HoTT <> :::x_'=='_x not
+R10730:10732 Lib.HoTT <> :::x_'$'_x not
+R10729:10729 Lib.HoTT <> g:302 meth
+R10733:10733 Lib.HoTT <> f:300 var
+R10738:10739 Lib.HoTT <> id def
+R10756:10759 Lib.HoTT <> :::x_'=='_x not
+R10752:10754 Lib.HoTT <> :::x_'$'_x not
+R10751:10751 Lib.HoTT <> f:300 var
+R10755:10755 Lib.HoTT <> g:302 meth
+R10760:10761 Lib.HoTT <> id def
+prf 10776:10778 <> bad
+binder 10781:10781 <> A:305
+binder 10783:10783 <> B:306
+R10797:10800 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10796:10796 Lib.HoTT <> A:305 var
+R10801:10801 Lib.HoTT <> B:306 var
+binder 10793:10793 <> f:307
+R10812:10816 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10844:10844 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10806:10809 Lib.HoTT <> qinv rec
+R10811:10811 Lib.HoTT <> f:307 var
+R10823:10825 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10817:10820 Lib.HoTT <> qinv rec
+R10822:10822 Lib.HoTT <> f:307 var
+R10836:10836 Lib.HoTT <> A:305 var
+binder 10833:10833 <> x:308
+R10840:10842 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R10839:10839 Lib.HoTT <> x:308 var
+R10843:10843 Lib.HoTT <> x:308 var

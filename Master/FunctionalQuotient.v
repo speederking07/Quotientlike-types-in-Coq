@@ -30,7 +30,13 @@ match l with
 | (h :: l') => set_add h (list_to_set l')
 end.
 
-Theorem list_to_set_correct {A: Type} `{FunExt} `{EqDec A} (l: list A) :
+Theorem double_set_complement {A: Type} `{FunExt} `{EqDec A} (s: set A) :
+  s = set_complement (set_complement s).
+Proof.
+  unfold set_complement. apply H. intros x. destruct (s x); auto.
+Qed.
+
+Theorem list_to_set_correct {A: Type} `{EqDec A} (l: list A) :
   forall x: A, reflect (In x l) (list_to_set l x).
 Proof.
   intros x. destruct (list_to_set l x) eqn:e; constructor.

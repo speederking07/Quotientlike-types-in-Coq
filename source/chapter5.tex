@@ -1,0 +1,73 @@
+W tym rozdziale zostanie przedstawione w jaki sposób możemy wykorzystać typ funkcji do zdefiniowania pewnych typów ilorazowych. Niestety przestawione poniżej przykłady tworzą więcej problemów niż rozwiązują, w związku z tym są praktycznie bezużyteczne w realnych aplikacjach, nie mniej jednak stanowią ciekawy przykład niekonwencjonalnego podejścia do problemu. Dlatego zostały zamieszczone w tym krótkim rozdziale.
+\section{Jak funkcje utożsamiają elementy}
+Na początku pracy wspomnieliśmy, iż nie można zdefiniować typu zbiorów oraz multi-zbiorów na dowolnego typu bazowego. Jest to prawda w przypadku typów induktywnych, w których kolejność konstruktorów ma znaczenie, możemy natomiast wykorzystać wbudowany w praktycznie każdy język programowania typ funkcji. Naturalnie, aby móc w rozsądny sposób rozumować o równościach na funkcjach będziemy musieli zapostulować aksjomat ekstensjonalności funkcji\ref{FunExt}, nie wprowadza on sprzeczności do systemu Coqa, zatem możemy go bezpiecznie dodać np z biblioteki standardowej.
+\begin{code}
+\begin{minted}{coq}
+Definition FunExt := forall (A B: Type) (f g: A -> B),
+    (forall x: A, f x = g x) -> f = g.
+\end{minted}
+\caption{Aksjomat ekstensjonalności funkcji w Coqu.}
+\label{FunExt}
+\end{code}
+Po jego dodaniu funkcje "zapominają" swój wbudowany algorytm na potrzeby sprawdzania równości i dwie funkcje dające dla całej przestrzeni argumentów te same wyniki będą sobie równe. Możemy wykorzystać tą właściwość do "zapomnienia" kolejności elementów bez powoływania się na porządek liniowy. 
+\section{Definicja zbioru i multi-zbioru}
+Mając już ten koncept w głowie możemy możemy przejść do zdefiniowania typu zbioru \ref{set}, jako funkcji rozstrzygającej czy element nalezy do zbioru.
+\begin{code}
+\begin{minted}{coq}
+Definition set (A: Type) : Type := A -> bool.
+\end{minted}
+\caption{Typ zbioru w Coqu.}
+\label{set}
+\end{code}
+W przeciwieństwie do innych definicji zbiorów przedstawionych w tej pracy zbiory przedstawione powyżej mogą być potencjalne nieskończone, dla typów które mają nieskończenie wiele elementów. Pozwala nam to na bardziej elastyczne definicje, jednak kosztem obliczalności podstawowych operacji. Jednym z takich operacji jest np sprawdzenie czy zbiór nie jest pusty. Ta operacja w ogólności jest oczywiście nieobliczalna. Możemy w łatwy sposób zdefiniować zbiór liczby rekurencyjnych wywołań (paliwa) potrzebnych aby dany algorytm zakończył obliczenia. Gdybyśmy mogli sprawdzić czy taki zbiór jest pusty czy nie moglibyśmy rozstrzygnąć czy algorytm kiedyś terminuje, czy nie. Z problemu stopu wiemy jednak, że jest to problem nie rozstrzygalny. W oczywisty sposób inne operacie takie jak sprawdzenie, czy dwa zbiory są sobie równe będą również nierozstrzygalne, z tego samego powodu. 
+
+Multi-zbiór możemy zdefiniować w bardzo podobny sposób\ref{mset} jak zbiór zamieniając jedynie typ dwuelementowy \mintinline{coq}{bool} na typ liczb naturalnych \mintinline{coq}{nat}. 
+\begin{code}
+\begin{minted}{coq}
+Definition mset (A: Type) : Type := A -> nat.
+\end{minted}
+\caption{Typ multi-zbioru w Coqu.}
+\label{mset}
+\end{code}
+Taka implementacja wspiera jedynie takie mulit zbiory, które mają skończoną liczbę każdego z elementów. Można jednak zamieniać liczby naturalne na liczby co-naturalne, aby pozbyć się tego ograniczenia. Podobnie jak w przypadku zbiorów tu również występuje problem z rozstrzyganiem niepustości.
+\section{Rekurencyjne operacje na zbiorach}
+Wykazaliśmy, że podstawowe operacje takie jak sprawdzenie niepustości czy równość nie jest rekurencyjna na potencjalnie nieskończonych zbiorach i multi-zbiorach. Podobnie sprawa się ma do operacji mapowania zbioru, gdy istniała taka rekurencyjna funkcja moglibyśmy dokonać mapowania na typ jednoelementowy wszystkich elementów zbioru i w ten sposób rozstrzygnąć jego niepustość. Zatem zdefiniowane przez nas zbiory nie są ani funktorami ani monadami w obliczalny sposób. Możemy natomiast zdefiniować parę użytecznych funkcji. Sprawdzenie czy dany element należy do zbioru jest trywialne, gdyż sam zbiór jest taką funkcją. Możemy zdefiniować funkcje filtrującą dla zbiorów \ref{set_filter}.
+\begin{code}
+\begin{minted}{coq}
+Definition set_filter {A: Type} (p: A-> bool) (s: set A) : set A :=
+  fun x: A => if p x then s x else false.
+\end{minted}
+\caption{Funckja filtrująca dla zbiorów w Coqu.}
+\label{set_filter}
+\end{code}
+Działa ona w sposób leniwy, zatem potencjalna nieskończoność zbioru jej nie przeszkadza. W podobny sposób można zdefiniować sumę, przekrój oraz dopełnienie \ref{set_union}.
+\begin{code}
+\begin{minted}{coq}
+Definition set_union {A: Type} (s s': set A) : set A :=
+  fun x: A => (s x) || (s' x).
+
+Definition set_intersection {A: Type} (s s': set A) : set A :=
+  fun x: A => (s x) && (s' x).
+
+Definition set_complement {A: Type} (s: set A) : set A :=
+  fun x: A => negb (s x).
+\end{minted}
+\caption{Definicja sumy, przekroju oraz dopełniania dla zbiorów w Coqu.}
+\label{set_union}
+\end{code}
+Wykorzystują one osobne sprawdzenie na jednym i drugim zbiorze, a następnie łącza wyniki za pomocą operatorów na typie \mintinline{coq}{bool}. Bardzo podobnie można je również zaimplementować na mulit-zbiorach używając odpowiednio sumy oraz minimum. Operacja dopełniania nie jest oczywiście zdefiniowania dla multi-zbiorów. Wadą tych leniwych obliczeń jest rosnąca złożoność sprawdzania przynależności do zbioru z każdym kolejnym przekrojem i sumą. Operacje doda elementu do zbioru da się zdefiniować w rekurencyjny sposób, niestety wymaga ona od typu bazowego posiadania zdefiniowanej rozstrzygalnej równości. 
+\begin{code}
+\begin{minted}{coq}
+Definition set_add {A: Type} `{EqDec A} (a: A) (s: set A)  : set A :=
+  fun x: A => if eqf x a then true else s x.
+
+Fixpoint list_to_set {A: Type} `{EqDec A} (l: list A) : set A :=
+match l with
+| []        => fun _ => false
+| (h :: l') => set_add h (list_to_set l')
+end.
+\end{minted}
+\caption{Definicja dodawania elementu do zbioru oraz konwersji listy do zbioru w Coqu.}
+\label{set_union}
+\end{code}
+Jeśli takową mamy możemy ją zdefiniować poprzez przyrównanie czy element odpytywany element to ten który dodajemy i jeśli tak to powinniśmy zwrócić \mintinline{coq}{true}. Wykorzystując tą funkcję można zdefiniować tworzenie zbioru z listy elementów. Podobnie dla multi-zbiorów, lecz zamieniając zwracanie \mintinline{coq}{true} na nakładanie następnika. Dowody poprawności zdefiniowanych powyżej funkcji można znaleźć w dodatku $FunctionalQuotient.v$.

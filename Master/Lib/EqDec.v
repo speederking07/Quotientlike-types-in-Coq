@@ -1,6 +1,7 @@
 Require Import Bool.
 Require Import Setoid.
 Require Import Coq.Lists.List.
+Import PeanoNat.Nat.
 Import ListNotations.
 
 Class EqDec (A : Type) := { 
@@ -56,6 +57,12 @@ Proof.
     + cbn in e. inversion e.
     + cbn in *. rewrite eqf_refl in e. apply (IHx x); auto.
 Defined.
-    
+
+Global Instance EqDec_for_nat : EqDec nat.
+Proof.
+  exists (fun x y => x =? y). intros x y. destruct (x =? y) eqn:e.
+  - constructor. apply eqb_eq. auto.
+  - constructor. apply eqb_neq. auto.
+Defined.
 
 

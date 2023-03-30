@@ -1,155 +1,175 @@
-DIGEST 2d19705e69df850036c14a03d79ad9e6
+DIGEST bb74d5d38c50fe240a49af165ea9976e
 FLib.EqDec
 R15:18 Coq.Bool.Bool <> <> lib
 R36:41 Coq.Setoids.Setoid <> <> lib
 R59:72 Coq.Lists.List <> <> lib
-rec 104:108 <> EqDec
-proj 129:131 <> eqf
-proj 154:164 <> eqf_leibniz
-binder 111:111 <> A:1
-R136:139 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R135:135 Lib.EqDec <> A:1 var
-R141:144 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R140:140 Lib.EqDec <> A:1 var
-R145:148 Coq.Init.Datatypes <> bool ind
-R180:180 Lib.EqDec <> A:1 var
-binder 175:175 <> x:4
-binder 177:177 <> y:5
-R183:189 Coq.Bool.Bool <> reflect ind
-R193:195 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R192:192 Lib.EqDec <> x:4 var
-R196:196 Lib.EqDec <> y:5 var
-R200:202 Lib.EqDec <> eqf:3 meth
-R206:206 Lib.EqDec <> y:5 var
-R204:204 Lib.EqDec <> x:4 var
-prf 219:226 <> eqf_refl
-binder 238:238 <> A:7
-R249:253 Lib.EqDec <> EqDec class
-R255:255 Lib.EqDec <> A:7 var
-binder 249:255 <> H:8
-R269:269 Lib.EqDec <> A:7 var
-binder 266:266 <> x:9
-R279:281 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R272:274 Lib.EqDec <> eqf meth
-R278:278 Lib.EqDec <> x:9 var
-R276:276 Lib.EqDec <> x:9 var
-R282:285 Coq.Init.Datatypes <> true constr
-R326:336 Lib.EqDec <> eqf_leibniz meth
-R326:336 Lib.EqDec <> eqf_leibniz meth
-prf 408:414 <> eqf_iff
-binder 426:426 <> A:10
-R437:441 Lib.EqDec <> EqDec class
-R443:443 Lib.EqDec <> A:10 var
-binder 437:443 <> H:11
-R459:459 Lib.EqDec <> A:10 var
-binder 454:454 <> x:12
-binder 456:456 <> y:13
-R467:471 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
-R463:465 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R462:462 Lib.EqDec <> x:12 var
-R466:466 Lib.EqDec <> y:13 var
-R479:481 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R472:474 Lib.EqDec <> eqf meth
-R478:478 Lib.EqDec <> y:13 var
-R476:476 Lib.EqDec <> x:12 var
-R482:485 Coq.Init.Datatypes <> true constr
-R524:534 Coq.Bool.Bool <> reflect_iff thm
-R524:534 Coq.Bool.Bool <> reflect_iff thm
-R543:553 Lib.EqDec <> eqf_leibniz meth
-R543:553 Lib.EqDec <> eqf_leibniz meth
-prf 568:574 <> eqf_sym
-binder 586:586 <> A:14
-R597:601 Lib.EqDec <> EqDec class
-R603:603 Lib.EqDec <> A:14 var
-binder 597:603 <> H:15
-R619:619 Lib.EqDec <> A:14 var
-binder 614:614 <> x:16
-binder 616:616 <> y:17
-R629:631 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R622:624 Lib.EqDec <> eqf meth
-R628:628 Lib.EqDec <> y:17 var
-R626:626 Lib.EqDec <> x:16 var
-R632:634 Lib.EqDec <> eqf meth
-R638:638 Lib.EqDec <> x:16 var
-R636:636 Lib.EqDec <> y:17 var
-R681:683 Lib.EqDec <> eqf meth
-R708:710 Lib.EqDec <> eqf meth
-R681:683 Lib.EqDec <> eqf meth
-R708:710 Lib.EqDec <> eqf meth
-R708:710 Lib.EqDec <> eqf meth
-R746:752 Lib.EqDec <> eqf_iff thm
-R746:752 Lib.EqDec <> eqf_iff thm
-R746:752 Lib.EqDec <> eqf_iff thm
-R776:783 Lib.EqDec <> eqf_refl thm
-R776:783 Lib.EqDec <> eqf_refl thm
-R776:783 Lib.EqDec <> eqf_refl thm
-R821:827 Lib.EqDec <> eqf_iff thm
-R821:827 Lib.EqDec <> eqf_iff thm
-R821:827 Lib.EqDec <> eqf_iff thm
-R851:858 Lib.EqDec <> eqf_refl thm
-R851:858 Lib.EqDec <> eqf_refl thm
-R851:858 Lib.EqDec <> eqf_refl thm
-prf 893:903 <> not_eqf_iff
-binder 915:915 <> A:18
-R926:930 Lib.EqDec <> EqDec class
-R932:932 Lib.EqDec <> A:18 var
-binder 926:932 <> H:19
-R948:948 Lib.EqDec <> A:18 var
-binder 943:943 <> x:20
-binder 945:945 <> y:21
-R957:961 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
-R952:955 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
-R951:951 Lib.EqDec <> x:20 var
-R956:956 Lib.EqDec <> y:21 var
-R969:971 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R962:964 Lib.EqDec <> eqf meth
-R968:968 Lib.EqDec <> y:21 var
-R966:966 Lib.EqDec <> x:20 var
-R972:976 Coq.Init.Datatypes <> false constr
-R1018:1020 Lib.EqDec <> eqf meth
-R1018:1020 Lib.EqDec <> eqf meth
-R1051:1061 Lib.EqDec <> eqf_leibniz meth
-R1051:1061 Lib.EqDec <> eqf_leibniz meth
-R1169:1179 Lib.EqDec <> eqf_leibniz meth
-R1169:1179 Lib.EqDec <> eqf_leibniz meth
-def 1256:1262 <> list_eq
-binder 1265:1265 <> A:22
-R1276:1280 Lib.EqDec <> EqDec class
-R1282:1282 Lib.EqDec <> A:22 var
-binder 1276:1282 <> H:23
-R1292:1295 Coq.Init.Datatypes <> list ind
-R1297:1297 Lib.EqDec <> A:22 var
-binder 1286:1286 <> l:24
-binder 1288:1289 <> l':25
-R1302:1305 Coq.Init.Datatypes <> bool ind
-R1319:1320 Lib.EqDec <> l':25 var
-R1316:1316 Lib.EqDec <> l:24 var
-R1329:1330 Coq.Lists.List ListNotations ::list_scope:'['_']' not
-R1339:1340 Coq.Lists.List ListNotations ::list_scope:'['_']' not
-R1353:1356 Coq.Init.Datatypes <> true constr
-R1362:1365 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R1373:1376 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
-R1387:1389 Lib.EqDec <> eqf meth
-R1419:1423 Coq.Init.Datatypes <> false constr
-R1401:1407 Lib.EqDec <> list_eq:26 def
-R1451:1455 Coq.Init.Datatypes <> false constr
-inst 1479:1492 <> EqDec_for_list
-binder 1495:1495 <> A:29
-R1506:1510 Lib.EqDec <> EqDec class
-R1512:1512 Lib.EqDec <> A:29 var
-binder 1506:1512 <> H:30
-R1516:1520 Lib.EqDec <> EqDec class
-R1523:1526 Coq.Init.Datatypes <> list ind
-R1528:1528 Lib.EqDec <> A:29 var
-R1548:1554 Lib.EqDec <> list_eq def
-R1548:1554 Lib.EqDec <> list_eq def
-R1579:1585 Lib.EqDec <> list_eq def
-R1579:1585 Lib.EqDec <> list_eq def
-R1765:1767 Lib.EqDec <> eqf meth
-R1765:1767 Lib.EqDec <> eqf meth
-R1815:1821 Lib.EqDec <> eqf_iff thm
-R1815:1821 Lib.EqDec <> eqf_iff thm
-R1815:1821 Lib.EqDec <> eqf_iff thm
-R1988:1995 Lib.EqDec <> eqf_refl thm
-R1988:1995 Lib.EqDec <> eqf_refl thm
-R1988:1995 Lib.EqDec <> eqf_refl thm
+rec 125:129 <> EqDec
+proj 150:152 <> eqf
+proj 175:185 <> eqf_leibniz
+binder 132:132 <> A:1
+R157:160 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R156:156 Lib.EqDec <> A:1 var
+R162:165 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R161:161 Lib.EqDec <> A:1 var
+R166:169 Coq.Init.Datatypes <> bool ind
+R201:201 Lib.EqDec <> A:1 var
+binder 196:196 <> x:4
+binder 198:198 <> y:5
+R204:210 Coq.Bool.Bool <> reflect ind
+R214:216 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R213:213 Lib.EqDec <> x:4 var
+R217:217 Lib.EqDec <> y:5 var
+R221:223 Lib.EqDec <> eqf:3 meth
+R227:227 Lib.EqDec <> y:5 var
+R225:225 Lib.EqDec <> x:4 var
+prf 240:247 <> eqf_refl
+binder 259:259 <> A:7
+R270:274 Lib.EqDec <> EqDec class
+R276:276 Lib.EqDec <> A:7 var
+binder 270:276 <> H:8
+R290:290 Lib.EqDec <> A:7 var
+binder 287:287 <> x:9
+R300:302 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R293:295 Lib.EqDec <> eqf meth
+R299:299 Lib.EqDec <> x:9 var
+R297:297 Lib.EqDec <> x:9 var
+R303:306 Coq.Init.Datatypes <> true constr
+R347:357 Lib.EqDec <> eqf_leibniz meth
+R347:357 Lib.EqDec <> eqf_leibniz meth
+prf 429:435 <> eqf_iff
+binder 447:447 <> A:10
+R458:462 Lib.EqDec <> EqDec class
+R464:464 Lib.EqDec <> A:10 var
+binder 458:464 <> H:11
+R480:480 Lib.EqDec <> A:10 var
+binder 475:475 <> x:12
+binder 477:477 <> y:13
+R488:492 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R484:486 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R483:483 Lib.EqDec <> x:12 var
+R487:487 Lib.EqDec <> y:13 var
+R500:502 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R493:495 Lib.EqDec <> eqf meth
+R499:499 Lib.EqDec <> y:13 var
+R497:497 Lib.EqDec <> x:12 var
+R503:506 Coq.Init.Datatypes <> true constr
+R545:555 Coq.Bool.Bool <> reflect_iff thm
+R545:555 Coq.Bool.Bool <> reflect_iff thm
+R564:574 Lib.EqDec <> eqf_leibniz meth
+R564:574 Lib.EqDec <> eqf_leibniz meth
+prf 589:595 <> eqf_sym
+binder 607:607 <> A:14
+R618:622 Lib.EqDec <> EqDec class
+R624:624 Lib.EqDec <> A:14 var
+binder 618:624 <> H:15
+R640:640 Lib.EqDec <> A:14 var
+binder 635:635 <> x:16
+binder 637:637 <> y:17
+R650:652 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R643:645 Lib.EqDec <> eqf meth
+R649:649 Lib.EqDec <> y:17 var
+R647:647 Lib.EqDec <> x:16 var
+R653:655 Lib.EqDec <> eqf meth
+R659:659 Lib.EqDec <> x:16 var
+R657:657 Lib.EqDec <> y:17 var
+R702:704 Lib.EqDec <> eqf meth
+R729:731 Lib.EqDec <> eqf meth
+R702:704 Lib.EqDec <> eqf meth
+R729:731 Lib.EqDec <> eqf meth
+R729:731 Lib.EqDec <> eqf meth
+R767:773 Lib.EqDec <> eqf_iff thm
+R767:773 Lib.EqDec <> eqf_iff thm
+R767:773 Lib.EqDec <> eqf_iff thm
+R797:804 Lib.EqDec <> eqf_refl thm
+R797:804 Lib.EqDec <> eqf_refl thm
+R797:804 Lib.EqDec <> eqf_refl thm
+R842:848 Lib.EqDec <> eqf_iff thm
+R842:848 Lib.EqDec <> eqf_iff thm
+R842:848 Lib.EqDec <> eqf_iff thm
+R872:879 Lib.EqDec <> eqf_refl thm
+R872:879 Lib.EqDec <> eqf_refl thm
+R872:879 Lib.EqDec <> eqf_refl thm
+prf 914:924 <> not_eqf_iff
+binder 936:936 <> A:18
+R947:951 Lib.EqDec <> EqDec class
+R953:953 Lib.EqDec <> A:18 var
+binder 947:953 <> H:19
+R969:969 Lib.EqDec <> A:18 var
+binder 964:964 <> x:20
+binder 966:966 <> y:21
+R978:982 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R973:976 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R972:972 Lib.EqDec <> x:20 var
+R977:977 Lib.EqDec <> y:21 var
+R990:992 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R983:985 Lib.EqDec <> eqf meth
+R989:989 Lib.EqDec <> y:21 var
+R987:987 Lib.EqDec <> x:20 var
+R993:997 Coq.Init.Datatypes <> false constr
+R1039:1041 Lib.EqDec <> eqf meth
+R1039:1041 Lib.EqDec <> eqf meth
+R1072:1082 Lib.EqDec <> eqf_leibniz meth
+R1072:1082 Lib.EqDec <> eqf_leibniz meth
+R1190:1200 Lib.EqDec <> eqf_leibniz meth
+R1190:1200 Lib.EqDec <> eqf_leibniz meth
+def 1277:1283 <> list_eq
+binder 1286:1286 <> A:22
+R1297:1301 Lib.EqDec <> EqDec class
+R1303:1303 Lib.EqDec <> A:22 var
+binder 1297:1303 <> H:23
+R1313:1316 Coq.Init.Datatypes <> list ind
+R1318:1318 Lib.EqDec <> A:22 var
+binder 1307:1307 <> l:24
+binder 1309:1310 <> l':25
+R1323:1326 Coq.Init.Datatypes <> bool ind
+R1340:1341 Lib.EqDec <> l':25 var
+R1337:1337 Lib.EqDec <> l:24 var
+R1350:1351 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R1360:1361 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R1374:1377 Coq.Init.Datatypes <> true constr
+R1383:1386 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1387:1387 Coq.Arith.PeanoNat Nat t def
+R1394:1397 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1408:1410 Lib.EqDec <> eqf meth
+R1440:1444 Coq.Init.Datatypes <> false constr
+R1422:1428 Lib.EqDec <> list_eq:26 def
+R1472:1476 Coq.Init.Datatypes <> false constr
+inst 1500:1513 <> EqDec_for_list
+binder 1516:1516 <> A:29
+R1527:1531 Lib.EqDec <> EqDec class
+R1533:1533 Lib.EqDec <> A:29 var
+binder 1527:1533 <> H:30
+R1537:1541 Lib.EqDec <> EqDec class
+R1544:1547 Coq.Init.Datatypes <> list ind
+R1549:1549 Lib.EqDec <> A:29 var
+R1569:1575 Lib.EqDec <> list_eq def
+R1569:1575 Lib.EqDec <> list_eq def
+R1600:1606 Lib.EqDec <> list_eq def
+R1600:1606 Lib.EqDec <> list_eq def
+R1786:1788 Lib.EqDec <> eqf meth
+R1786:1788 Lib.EqDec <> eqf meth
+R1836:1842 Lib.EqDec <> eqf_iff thm
+R1836:1842 Lib.EqDec <> eqf_iff thm
+R1836:1842 Lib.EqDec <> eqf_iff thm
+R2009:2016 Lib.EqDec <> eqf_refl thm
+R2009:2016 Lib.EqDec <> eqf_refl thm
+R2009:2016 Lib.EqDec <> eqf_refl thm
+inst 2071:2083 <> EqDec_for_nat
+R2087:2091 Lib.EqDec <> EqDec class
+R2093:2095 Coq.Init.Datatypes <> nat ind
+binder 2119:2119 <> x:31
+binder 2121:2121 <> y:32
+R2127:2130 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R2126:2126 Lib.EqDec <> x:31 var
+R2131:2131 Lib.EqDec <> y:32 var
+binder 2119:2119 <> x:33
+binder 2121:2121 <> y:34
+R2127:2130 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R2126:2126 Lib.EqDec <> x:33 var
+R2131:2131 Lib.EqDec <> y:34 var
+R2158:2161 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R2158:2161 Coq.Init.Nat <> ::nat_scope:x_'=?'_x not
+R2195:2200 Coq.Arith.PeanoNat Nat eqb_eq thm
+R2195:2200 Coq.Arith.PeanoNat Nat eqb_eq thm
+R2232:2238 Coq.Arith.PeanoNat Nat eqb_neq thm
+R2232:2238 Coq.Arith.PeanoNat Nat eqb_neq thm

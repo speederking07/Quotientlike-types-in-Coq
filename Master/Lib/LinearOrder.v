@@ -96,6 +96,12 @@ Proof.
   cbn in *; auto; inversion O.
 Qed.
 
+Lemma comp_inv_sym (c c': comparison):
+  c = comp_inv c' -> comp_inv c = c'.
+Proof.
+  intros H. destruct c, c'; auto; cbn in *; inversion H.
+Qed.
+
 Global Instance LO_is_EqDec (A: Type) `{LinearOrder A}: EqDec A.
 Proof.
   exists (fun x y => andb (ord x y) (ord y x)). intros x y. 
