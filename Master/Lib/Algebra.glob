@@ -1,4 +1,4 @@
-DIGEST 6be3ea4c9407140cbc811d848c455cb8
+DIGEST c4197534f32bfedcd63dfa84a8d02474
 FLib.Algebra
 R15:20 Coq.Setoids.Setoid <> <> lib
 constr 50:57 <> GroupDef
@@ -251,204 +251,278 @@ R1434:1436 Lib.Algebra <> inv meth
 R1401:1421 Lib.Algebra <> group_equation_r_simp thm
 R1434:1436 Lib.Algebra <> inv meth
 R1401:1421 Lib.Algebra <> group_equation_r_simp thm
-prf 1460:1471 <> group_op_inv
-binder 1474:1474 <> A:44
-R1485:1489 Lib.Algebra <> Group class
-R1491:1491 Lib.Algebra <> A:44 var
-binder 1485:1491 <> H:45
-R1500:1500 Lib.Algebra <> A:44 var
-binder 1495:1495 <> x:46
-binder 1497:1497 <> y:47
-R1517:1519 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R1505:1507 Lib.Algebra <> inv meth
-R1510:1511 Lib.Algebra <> op meth
-R1515:1515 Lib.Algebra <> y:47 var
-R1513:1513 Lib.Algebra <> x:46 var
-R1520:1521 Lib.Algebra <> op meth
-R1532:1534 Lib.Algebra <> inv meth
-R1536:1536 Lib.Algebra <> x:46 var
-R1524:1526 Lib.Algebra <> inv meth
-R1528:1528 Lib.Algebra <> y:47 var
-R1556:1558 Lib.Algebra <> sub def
-R1567:1587 Lib.Algebra <> group_equation_l_simp thm
-R1567:1587 Lib.Algebra <> group_equation_l_simp thm
-R1618:1625 Lib.Algebra <> op_assoc meth
-R1628:1635 Lib.Algebra <> r_op_inv meth
-R1638:1644 Lib.Algebra <> l_op_id meth
-R1618:1625 Lib.Algebra <> op_assoc meth
-R1618:1625 Lib.Algebra <> op_assoc meth
-R1628:1635 Lib.Algebra <> r_op_inv meth
-R1628:1635 Lib.Algebra <> r_op_inv meth
-R1638:1644 Lib.Algebra <> l_op_id meth
-R1638:1644 Lib.Algebra <> l_op_id meth
-R1655:1675 Lib.Algebra <> group_equation_l_simp thm
-R1655:1675 Lib.Algebra <> group_equation_l_simp thm
-R1702:1709 Lib.Algebra <> r_op_inv meth
-R1715:1722 Lib.Algebra <> op_assoc meth
-R1725:1732 Lib.Algebra <> r_op_inv meth
-R1702:1709 Lib.Algebra <> r_op_inv meth
-R1702:1709 Lib.Algebra <> r_op_inv meth
-R1715:1722 Lib.Algebra <> op_assoc meth
-R1715:1722 Lib.Algebra <> op_assoc meth
-R1725:1732 Lib.Algebra <> r_op_inv meth
-R1725:1732 Lib.Algebra <> r_op_inv meth
-constr 1788:1795 <> FieldDef
-rec 1757:1761 <> Field
-proj 1801:1803 <> one
-proj 1818:1820 <> mul
-proj 1845:1851 <> mul_inv
-proj 1867:1873 <> op_comm
-proj 1913:1920 <> mul_comm
-proj 1961:1968 <> l_mul_id
-proj 2003:2010 <> r_mul_id
-proj 2045:2053 <> l_mul_inv
-proj 2097:2105 <> r_mul_inv
-proj 2149:2157 <> mul_assoc
-proj 2215:2219 <> distr
-binder 1764:1764 <> A:48
-R1776:1780 Lib.Algebra <> Group class
-R1782:1782 Lib.Algebra <> A:48 var
-binder 1776:1782 <> H:49
-R1813:1813 Lib.Algebra <> A:48 var
-R1831:1834 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1830:1830 Lib.Algebra <> A:48 var
-R1836:1839 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1835:1835 Lib.Algebra <> A:48 var
-R1840:1840 Lib.Algebra <> A:48 var
-R1858:1861 Coq.Init.Logic <> ::type_scope:x_'->'_x not
-R1857:1857 Lib.Algebra <> A:48 var
-R1862:1862 Lib.Algebra <> A:48 var
-R1891:1891 Lib.Algebra <> A:48 var
-binder 1886:1886 <> x:54
-binder 1888:1888 <> y:55
-R1900:1902 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R1894:1895 Lib.Algebra <> op meth
-R1899:1899 Lib.Algebra <> y:55 var
-R1897:1897 Lib.Algebra <> x:54 var
-R1903:1904 Lib.Algebra <> op meth
-R1908:1908 Lib.Algebra <> x:54 var
-R1906:1906 Lib.Algebra <> y:55 var
-R1937:1937 Lib.Algebra <> A:48 var
-binder 1932:1932 <> x:57
-binder 1934:1934 <> y:58
-R1947:1949 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R1940:1942 Lib.Algebra <> mul:52 meth
-R1946:1946 Lib.Algebra <> y:58 var
-R1944:1944 Lib.Algebra <> x:57 var
-R1950:1952 Lib.Algebra <> mul:52 meth
-R1956:1956 Lib.Algebra <> x:57 var
-R1954:1954 Lib.Algebra <> y:58 var
-R1983:1983 Lib.Algebra <> A:48 var
-binder 1980:1980 <> x:60
-R1995:1997 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R1986:1988 Lib.Algebra <> mul:52 meth
-R1994:1994 Lib.Algebra <> x:60 var
-R1990:1992 Lib.Algebra <> one:51 meth
-R1998:1998 Lib.Algebra <> x:60 var
-R2025:2025 Lib.Algebra <> A:48 var
-binder 2022:2022 <> x:62
-R2037:2039 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2028:2030 Lib.Algebra <> mul:52 meth
-R2034:2036 Lib.Algebra <> one:51 meth
-R2032:2032 Lib.Algebra <> x:62 var
-R2040:2040 Lib.Algebra <> x:62 var
-R2067:2067 Lib.Algebra <> A:48 var
-binder 2064:2064 <> x:64
-R2087:2089 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2070:2072 Lib.Algebra <> mul:52 meth
-R2086:2086 Lib.Algebra <> x:64 var
-R2075:2081 Lib.Algebra <> mul_inv:53 meth
-R2083:2083 Lib.Algebra <> x:64 var
-R2090:2092 Lib.Algebra <> one:51 meth
-R2119:2119 Lib.Algebra <> A:48 var
-binder 2116:2116 <> x:66
-R2139:2141 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2122:2124 Lib.Algebra <> mul:52 meth
-R2129:2135 Lib.Algebra <> mul_inv:53 meth
-R2137:2137 Lib.Algebra <> x:66 var
-R2126:2126 Lib.Algebra <> x:66 var
-R2142:2144 Lib.Algebra <> one:51 meth
-R2175:2175 Lib.Algebra <> A:48 var
-binder 2168:2168 <> x:68
-binder 2170:2170 <> y:69
-binder 2172:2172 <> z:70
-R2193:2195 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2178:2180 Lib.Algebra <> mul:52 meth
-R2192:2192 Lib.Algebra <> z:70 var
-R2183:2185 Lib.Algebra <> mul:52 meth
-R2189:2189 Lib.Algebra <> y:69 var
-R2187:2187 Lib.Algebra <> x:68 var
-R2196:2198 Lib.Algebra <> mul:52 meth
-R2203:2205 Lib.Algebra <> mul:52 meth
-R2209:2209 Lib.Algebra <> z:70 var
-R2207:2207 Lib.Algebra <> y:69 var
-R2200:2200 Lib.Algebra <> x:68 var
-R2241:2241 Lib.Algebra <> A:48 var
-binder 2234:2234 <> x:72
-binder 2236:2236 <> y:73
-binder 2238:2238 <> z:74
-R2258:2260 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2244:2246 Lib.Algebra <> mul:52 meth
-R2251:2252 Lib.Algebra <> op meth
-R2256:2256 Lib.Algebra <> z:74 var
-R2254:2254 Lib.Algebra <> y:73 var
-R2248:2248 Lib.Algebra <> x:72 var
-R2261:2262 Lib.Algebra <> op meth
-R2275:2277 Lib.Algebra <> mul:52 meth
-R2281:2281 Lib.Algebra <> z:74 var
-R2279:2279 Lib.Algebra <> x:72 var
-R2265:2267 Lib.Algebra <> mul:52 meth
-R2271:2271 Lib.Algebra <> y:73 var
-R2269:2269 Lib.Algebra <> x:72 var
-prf 2295:2310 <> field_zero_mul_l
-binder 2313:2313 <> A:76
-R2324:2328 Lib.Algebra <> Field class
-R2330:2330 Lib.Algebra <> A:76 var
-binder 2324:2330 <> H0:78
-R2337:2337 Lib.Algebra <> A:76 var
-binder 2334:2334 <> x:79
-R2352:2354 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2342:2344 Lib.Algebra <> mul meth
-R2348:2351 Lib.Algebra <> zero meth
-R2346:2346 Lib.Algebra <> x:79 var
-R2355:2358 Lib.Algebra <> zero meth
-R2382:2384 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2378:2381 Lib.Algebra <> zero meth
-R2385:2386 Lib.Algebra <> op meth
-R2411:2413 Lib.Algebra <> inv meth
-R2389:2391 Lib.Algebra <> mul meth
-R2396:2397 Lib.Algebra <> op meth
-R2404:2406 Lib.Algebra <> one meth
-R2399:2402 Lib.Algebra <> zero meth
-R2382:2384 Coq.Init.Logic <> ::type_scope:x_'='_x not
-R2378:2381 Lib.Algebra <> zero meth
-R2385:2386 Lib.Algebra <> op meth
-R2411:2413 Lib.Algebra <> inv meth
-R2389:2391 Lib.Algebra <> mul meth
-R2396:2397 Lib.Algebra <> op meth
-R2404:2406 Lib.Algebra <> one meth
-R2399:2402 Lib.Algebra <> zero meth
-R2434:2440 Lib.Algebra <> l_op_id meth
-R2443:2450 Lib.Algebra <> r_mul_id meth
-R2453:2460 Lib.Algebra <> r_op_inv meth
-R2434:2440 Lib.Algebra <> l_op_id meth
-R2434:2440 Lib.Algebra <> l_op_id meth
-R2443:2450 Lib.Algebra <> r_mul_id meth
-R2443:2450 Lib.Algebra <> r_mul_id meth
-R2453:2460 Lib.Algebra <> r_op_inv meth
-R2453:2460 Lib.Algebra <> r_op_inv meth
-R2501:2505 Lib.Algebra <> distr meth
-R2508:2515 Lib.Algebra <> r_mul_id meth
-R2518:2525 Lib.Algebra <> op_assoc meth
-R2528:2535 Lib.Algebra <> r_op_inv meth
-R2538:2544 Lib.Algebra <> r_op_id meth
-R2501:2505 Lib.Algebra <> distr meth
-R2501:2505 Lib.Algebra <> distr meth
-R2508:2515 Lib.Algebra <> r_mul_id meth
-R2508:2515 Lib.Algebra <> r_mul_id meth
-R2518:2525 Lib.Algebra <> op_assoc meth
-R2518:2525 Lib.Algebra <> op_assoc meth
-R2528:2535 Lib.Algebra <> r_op_inv meth
-R2528:2535 Lib.Algebra <> r_op_inv meth
-R2538:2544 Lib.Algebra <> r_op_id meth
-R2538:2544 Lib.Algebra <> r_op_id meth
+prf 1460:1474 <> add_is_non_zero
+binder 1477:1477 <> A:44
+R1488:1492 Lib.Algebra <> Group class
+R1494:1494 Lib.Algebra <> A:44 var
+binder 1488:1494 <> H:45
+R1504:1504 Lib.Algebra <> A:44 var
+binder 1498:1498 <> x:46
+binder 1500:1500 <> y:47
+R1518:1521 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1510:1513 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R1509:1509 Lib.Algebra <> x:46 var
+R1514:1517 Lib.Algebra <> zero meth
+R1528:1531 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R1522:1523 Lib.Algebra <> op meth
+R1527:1527 Lib.Algebra <> y:47 var
+R1525:1525 Lib.Algebra <> x:46 var
+R1532:1532 Lib.Algebra <> y:47 var
+R1607:1608 Lib.Algebra <> op meth
+R1613:1615 Lib.Algebra <> inv meth
+R1574:1594 Lib.Algebra <> group_equation_r_simp thm
+R1607:1608 Lib.Algebra <> op meth
+R1613:1615 Lib.Algebra <> inv meth
+R1574:1594 Lib.Algebra <> group_equation_r_simp thm
+R1635:1642 Lib.Algebra <> op_assoc meth
+R1649:1656 Lib.Algebra <> r_op_inv meth
+R1659:1665 Lib.Algebra <> l_op_id meth
+R1635:1642 Lib.Algebra <> op_assoc meth
+R1635:1642 Lib.Algebra <> op_assoc meth
+R1649:1656 Lib.Algebra <> r_op_inv meth
+R1649:1656 Lib.Algebra <> r_op_inv meth
+R1659:1665 Lib.Algebra <> l_op_id meth
+R1659:1665 Lib.Algebra <> l_op_id meth
+prf 1686:1697 <> group_op_inv
+binder 1700:1700 <> A:48
+R1711:1715 Lib.Algebra <> Group class
+R1717:1717 Lib.Algebra <> A:48 var
+binder 1711:1717 <> H:49
+R1726:1726 Lib.Algebra <> A:48 var
+binder 1721:1721 <> x:50
+binder 1723:1723 <> y:51
+R1743:1745 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1731:1733 Lib.Algebra <> inv meth
+R1736:1737 Lib.Algebra <> op meth
+R1741:1741 Lib.Algebra <> y:51 var
+R1739:1739 Lib.Algebra <> x:50 var
+R1746:1747 Lib.Algebra <> op meth
+R1758:1760 Lib.Algebra <> inv meth
+R1762:1762 Lib.Algebra <> x:50 var
+R1750:1752 Lib.Algebra <> inv meth
+R1754:1754 Lib.Algebra <> y:51 var
+R1782:1784 Lib.Algebra <> sub def
+R1793:1813 Lib.Algebra <> group_equation_l_simp thm
+R1793:1813 Lib.Algebra <> group_equation_l_simp thm
+R1844:1851 Lib.Algebra <> op_assoc meth
+R1854:1861 Lib.Algebra <> r_op_inv meth
+R1864:1870 Lib.Algebra <> l_op_id meth
+R1844:1851 Lib.Algebra <> op_assoc meth
+R1844:1851 Lib.Algebra <> op_assoc meth
+R1854:1861 Lib.Algebra <> r_op_inv meth
+R1854:1861 Lib.Algebra <> r_op_inv meth
+R1864:1870 Lib.Algebra <> l_op_id meth
+R1864:1870 Lib.Algebra <> l_op_id meth
+R1881:1901 Lib.Algebra <> group_equation_l_simp thm
+R1881:1901 Lib.Algebra <> group_equation_l_simp thm
+R1928:1935 Lib.Algebra <> r_op_inv meth
+R1941:1948 Lib.Algebra <> op_assoc meth
+R1951:1958 Lib.Algebra <> r_op_inv meth
+R1928:1935 Lib.Algebra <> r_op_inv meth
+R1928:1935 Lib.Algebra <> r_op_inv meth
+R1941:1948 Lib.Algebra <> op_assoc meth
+R1941:1948 Lib.Algebra <> op_assoc meth
+R1951:1958 Lib.Algebra <> r_op_inv meth
+R1951:1958 Lib.Algebra <> r_op_inv meth
+prf 1981:1993 <> group_inv_inv
+binder 1996:1996 <> A:52
+R2007:2011 Lib.Algebra <> Group class
+R2013:2013 Lib.Algebra <> A:52 var
+binder 2007:2013 <> H:53
+R2020:2020 Lib.Algebra <> A:52 var
+binder 2017:2017 <> x:54
+R2036:2038 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2025:2027 Lib.Algebra <> inv meth
+R2030:2032 Lib.Algebra <> inv meth
+R2034:2034 Lib.Algebra <> x:54 var
+R2039:2039 Lib.Algebra <> x:54 var
+R2063:2069 Lib.Algebra <> r_op_id meth
+R2072:2074 Lib.Algebra <> inv meth
+R2077:2079 Lib.Algebra <> inv meth
+R2091:2098 Lib.Algebra <> l_op_inv meth
+R2108:2115 Lib.Algebra <> op_assoc meth
+R2119:2126 Lib.Algebra <> l_op_inv meth
+R2129:2135 Lib.Algebra <> l_op_id meth
+R2063:2069 Lib.Algebra <> r_op_id meth
+R2072:2074 Lib.Algebra <> inv meth
+R2077:2079 Lib.Algebra <> inv meth
+R2063:2069 Lib.Algebra <> r_op_id meth
+R2072:2074 Lib.Algebra <> inv meth
+R2077:2079 Lib.Algebra <> inv meth
+R2091:2098 Lib.Algebra <> l_op_inv meth
+R2091:2098 Lib.Algebra <> l_op_inv meth
+R2108:2115 Lib.Algebra <> op_assoc meth
+R2108:2115 Lib.Algebra <> op_assoc meth
+R2119:2126 Lib.Algebra <> l_op_inv meth
+R2119:2126 Lib.Algebra <> l_op_inv meth
+R2129:2135 Lib.Algebra <> l_op_id meth
+R2129:2135 Lib.Algebra <> l_op_id meth
+inst 2176:2188 <> Unit_is_Group
+R2192:2196 Lib.Algebra <> Group class
+R2198:2201 Coq.Init.Datatypes <> unit ind
+R2259:2261 Lib.Algebra <> inv meth
+R2229:2230 Lib.Algebra <> op meth
+R2210:2213 Lib.Algebra <> zero meth
+R2223:2224 Coq.Init.Datatypes <> tt constr
+R2253:2254 Coq.Init.Datatypes <> tt constr
+R2281:2282 Coq.Init.Datatypes <> tt constr
+constr 2419:2426 <> FieldDef
+rec 2388:2392 <> Field
+proj 2432:2434 <> one
+proj 2449:2451 <> mul
+proj 2476:2482 <> mul_inv
+proj 2498:2504 <> op_comm
+proj 2544:2551 <> mul_comm
+proj 2592:2599 <> l_mul_id
+proj 2634:2641 <> r_mul_id
+proj 2676:2684 <> l_mul_inv
+proj 2728:2736 <> r_mul_inv
+proj 2780:2788 <> mul_assoc
+proj 2846:2850 <> distr
+binder 2395:2395 <> A:55
+R2407:2411 Lib.Algebra <> Group class
+R2413:2413 Lib.Algebra <> A:55 var
+binder 2407:2413 <> H:56
+R2444:2444 Lib.Algebra <> A:55 var
+R2462:2465 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2461:2461 Lib.Algebra <> A:55 var
+R2467:2470 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2466:2466 Lib.Algebra <> A:55 var
+R2471:2471 Lib.Algebra <> A:55 var
+R2489:2492 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2488:2488 Lib.Algebra <> A:55 var
+R2493:2493 Lib.Algebra <> A:55 var
+R2522:2522 Lib.Algebra <> A:55 var
+binder 2517:2517 <> x:61
+binder 2519:2519 <> y:62
+R2531:2533 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2525:2526 Lib.Algebra <> op meth
+R2530:2530 Lib.Algebra <> y:62 var
+R2528:2528 Lib.Algebra <> x:61 var
+R2534:2535 Lib.Algebra <> op meth
+R2539:2539 Lib.Algebra <> x:61 var
+R2537:2537 Lib.Algebra <> y:62 var
+R2568:2568 Lib.Algebra <> A:55 var
+binder 2563:2563 <> x:64
+binder 2565:2565 <> y:65
+R2578:2580 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2571:2573 Lib.Algebra <> mul:59 meth
+R2577:2577 Lib.Algebra <> y:65 var
+R2575:2575 Lib.Algebra <> x:64 var
+R2581:2583 Lib.Algebra <> mul:59 meth
+R2587:2587 Lib.Algebra <> x:64 var
+R2585:2585 Lib.Algebra <> y:65 var
+R2614:2614 Lib.Algebra <> A:55 var
+binder 2611:2611 <> x:67
+R2626:2628 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2617:2619 Lib.Algebra <> mul:59 meth
+R2625:2625 Lib.Algebra <> x:67 var
+R2621:2623 Lib.Algebra <> one:58 meth
+R2629:2629 Lib.Algebra <> x:67 var
+R2656:2656 Lib.Algebra <> A:55 var
+binder 2653:2653 <> x:69
+R2668:2670 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2659:2661 Lib.Algebra <> mul:59 meth
+R2665:2667 Lib.Algebra <> one:58 meth
+R2663:2663 Lib.Algebra <> x:69 var
+R2671:2671 Lib.Algebra <> x:69 var
+R2698:2698 Lib.Algebra <> A:55 var
+binder 2695:2695 <> x:71
+R2718:2720 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2701:2703 Lib.Algebra <> mul:59 meth
+R2717:2717 Lib.Algebra <> x:71 var
+R2706:2712 Lib.Algebra <> mul_inv:60 meth
+R2714:2714 Lib.Algebra <> x:71 var
+R2721:2723 Lib.Algebra <> one:58 meth
+R2750:2750 Lib.Algebra <> A:55 var
+binder 2747:2747 <> x:73
+R2770:2772 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2753:2755 Lib.Algebra <> mul:59 meth
+R2760:2766 Lib.Algebra <> mul_inv:60 meth
+R2768:2768 Lib.Algebra <> x:73 var
+R2757:2757 Lib.Algebra <> x:73 var
+R2773:2775 Lib.Algebra <> one:58 meth
+R2806:2806 Lib.Algebra <> A:55 var
+binder 2799:2799 <> x:75
+binder 2801:2801 <> y:76
+binder 2803:2803 <> z:77
+R2824:2826 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2809:2811 Lib.Algebra <> mul:59 meth
+R2823:2823 Lib.Algebra <> z:77 var
+R2814:2816 Lib.Algebra <> mul:59 meth
+R2820:2820 Lib.Algebra <> y:76 var
+R2818:2818 Lib.Algebra <> x:75 var
+R2827:2829 Lib.Algebra <> mul:59 meth
+R2834:2836 Lib.Algebra <> mul:59 meth
+R2840:2840 Lib.Algebra <> z:77 var
+R2838:2838 Lib.Algebra <> y:76 var
+R2831:2831 Lib.Algebra <> x:75 var
+R2872:2872 Lib.Algebra <> A:55 var
+binder 2865:2865 <> x:79
+binder 2867:2867 <> y:80
+binder 2869:2869 <> z:81
+R2889:2891 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2875:2877 Lib.Algebra <> mul:59 meth
+R2882:2883 Lib.Algebra <> op meth
+R2887:2887 Lib.Algebra <> z:81 var
+R2885:2885 Lib.Algebra <> y:80 var
+R2879:2879 Lib.Algebra <> x:79 var
+R2892:2893 Lib.Algebra <> op meth
+R2906:2908 Lib.Algebra <> mul:59 meth
+R2912:2912 Lib.Algebra <> z:81 var
+R2910:2910 Lib.Algebra <> x:79 var
+R2896:2898 Lib.Algebra <> mul:59 meth
+R2902:2902 Lib.Algebra <> y:80 var
+R2900:2900 Lib.Algebra <> x:79 var
+prf 2926:2941 <> field_zero_mul_l
+binder 2944:2944 <> A:83
+R2955:2959 Lib.Algebra <> Field class
+R2961:2961 Lib.Algebra <> A:83 var
+binder 2955:2961 <> H0:85
+R2968:2968 Lib.Algebra <> A:83 var
+binder 2965:2965 <> x:86
+R2983:2985 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R2973:2975 Lib.Algebra <> mul meth
+R2979:2982 Lib.Algebra <> zero meth
+R2977:2977 Lib.Algebra <> x:86 var
+R2986:2989 Lib.Algebra <> zero meth
+R3013:3015 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3009:3012 Lib.Algebra <> zero meth
+R3016:3017 Lib.Algebra <> op meth
+R3042:3044 Lib.Algebra <> inv meth
+R3020:3022 Lib.Algebra <> mul meth
+R3027:3028 Lib.Algebra <> op meth
+R3035:3037 Lib.Algebra <> one meth
+R3030:3033 Lib.Algebra <> zero meth
+R3013:3015 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3009:3012 Lib.Algebra <> zero meth
+R3016:3017 Lib.Algebra <> op meth
+R3042:3044 Lib.Algebra <> inv meth
+R3020:3022 Lib.Algebra <> mul meth
+R3027:3028 Lib.Algebra <> op meth
+R3035:3037 Lib.Algebra <> one meth
+R3030:3033 Lib.Algebra <> zero meth
+R3065:3071 Lib.Algebra <> l_op_id meth
+R3074:3081 Lib.Algebra <> r_mul_id meth
+R3084:3091 Lib.Algebra <> r_op_inv meth
+R3065:3071 Lib.Algebra <> l_op_id meth
+R3065:3071 Lib.Algebra <> l_op_id meth
+R3074:3081 Lib.Algebra <> r_mul_id meth
+R3074:3081 Lib.Algebra <> r_mul_id meth
+R3084:3091 Lib.Algebra <> r_op_inv meth
+R3084:3091 Lib.Algebra <> r_op_inv meth
+R3132:3136 Lib.Algebra <> distr meth
+R3139:3146 Lib.Algebra <> r_mul_id meth
+R3149:3156 Lib.Algebra <> op_assoc meth
+R3159:3166 Lib.Algebra <> r_op_inv meth
+R3169:3175 Lib.Algebra <> r_op_id meth
+R3132:3136 Lib.Algebra <> distr meth
+R3132:3136 Lib.Algebra <> distr meth
+R3139:3146 Lib.Algebra <> r_mul_id meth
+R3139:3146 Lib.Algebra <> r_mul_id meth
+R3149:3156 Lib.Algebra <> op_assoc meth
+R3149:3156 Lib.Algebra <> op_assoc meth
+R3159:3166 Lib.Algebra <> r_op_inv meth
+R3159:3166 Lib.Algebra <> r_op_inv meth
+R3169:3175 Lib.Algebra <> r_op_id meth
+R3169:3175 Lib.Algebra <> r_op_id meth

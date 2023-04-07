@@ -1,8 +1,8 @@
-coqc Lib/Normalization.v
 coqc Lib/Algebra.v
 coqc Lib/EqDec.v
 coqc Lib/LinearOrder.v
 coqc Lib/HoTT.v
+coqc Lib/Normalization.v
 coqc Lib/Sorted.v
 coqc Lib/MergeSort.v
 coqc Extras/Permutations.v
@@ -10,3 +10,13 @@ coqc Extras/Streicher.v
 coqc Lib/Deduplicated.v
 coqc Lib/DedupSort.v
 coqc Integer.v
+coqc FreeGroup.v
+coqc Qplus.v
+coqc DifferentialLists.v
+coqc ExoticInteger.v
+coqc FiniteMultiSet.v
+coqc FiniteSet.v
+coqc FunctionalQuotient.v
+coqc Extras/FreeGroupMonad.v
+coqc Extras/IntegerNormalization.v
+coqc Extras/FullQ.v

@@ -1,0 +1,2984 @@
+DIGEST a0c4a8a089ef3dee78f2708e3c5c5535
+FFreeGroup
+R15:34 Coq.Program.Equality <> <> lib
+R52:64 Coq.Bool.Bool <> <> lib
+R82:95 Coq.Lists.List <> <> lib
+R113:122 Coq.Logic.StrictProp <> <> lib
+R163:173 Lib.Algebra <> <> lib
+R191:207 Lib.Normalization <> <> lib
+R225:233 Lib.EqDec <> <> lib
+rec 244:250 <> EqGroup
+binder 253:253 <> A:1
+R268:272 Lib.EqDec <> EqDec class
+R274:274 FreeGroup <> A:1 var
+binder 265:265 <> E:2
+R282:286 Lib.Algebra <> Group class
+R288:288 FreeGroup <> A:1 var
+binder 279:279 <> G:3
+inst 315:325 <> EqGroup_def
+binder 328:328 <> A:5
+R342:346 Lib.EqDec <> EqDec class
+R348:348 FreeGroup <> A:5 var
+binder 339:339 <> E:6
+R356:360 Lib.Algebra <> Group class
+R362:362 FreeGroup <> A:5 var
+binder 353:353 <> G:7
+R367:373 FreeGroup <> EqGroup class
+R375:375 FreeGroup <> A:5 var
+def 402:415 <> CanonFreeGroup
+binder 418:418 <> A:8
+R429:435 FreeGroup <> EqGroup class
+R437:437 FreeGroup <> A:8 var
+binder 429:437 <> H:11
+R443:446 Coq.Init.Datatypes <> list ind
+R453:453 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R449:452 Coq.Init.Datatypes <> bool ind
+R454:454 FreeGroup <> A:8 var
+def 468:476 <> normalize
+binder 479:479 <> A:12
+R490:496 FreeGroup <> EqGroup class
+R498:498 FreeGroup <> A:12 var
+binder 490:498 <> H:15
+R505:518 FreeGroup <> CanonFreeGroup def
+R520:520 FreeGroup <> A:12 var
+binder 502:502 <> x:16
+R532:532 FreeGroup <> x:16 var
+R541:542 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R547:548 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R558:561 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R552:552 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R554:555 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R557:557 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R579:587 FreeGroup <> normalize:17 def
+R603:604 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R609:609 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R616:616 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R610:610 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R612:613 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R615:615 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R632:635 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R624:624 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R627:628 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R631:631 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R646:649 Coq.Init.Datatypes <> andb def
+R663:666 Coq.Init.Datatypes <> xorb def
+R652:654 Lib.EqDec <> eqf meth
+R744:747 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R738:738 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R740:741 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R743:743 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R756:759 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R748:748 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R751:752 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R755:755 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+ind 788:797 <> Normalized
+constr 854:857 <> NNil
+constr 879:884 <> NSingl
+constr 937:941 <> NCons
+binder 800:800 <> A:19
+R811:817 FreeGroup <> EqGroup class
+R819:819 FreeGroup <> A:19 var
+binder 811:819 <> H:22
+R840:843 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R824:837 FreeGroup <> CanonFreeGroup def
+R863:872 FreeGroup <> Normalized:23 ind
+R874:875 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R900:903 Coq.Init.Datatypes <> bool ind
+binder 896:896 <> b:25
+R911:911 FreeGroup <> A:19 var
+binder 907:907 <> v:26
+R915:924 FreeGroup <> Normalized:23 ind
+R926:926 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R933:933 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R927:927 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R929:930 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R932:932 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R928:928 FreeGroup <> b:25 var
+R931:931 FreeGroup <> v:26 var
+R960:963 Coq.Init.Datatypes <> bool ind
+binder 954:954 <> b:27
+binder 956:957 <> b':28
+R974:974 FreeGroup <> A:19 var
+binder 967:967 <> v:29
+binder 969:970 <> v':30
+R981:994 FreeGroup <> CanonFreeGroup def
+R996:996 FreeGroup <> A:19 var
+binder 978:978 <> x:31
+R1030:1033 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1020:1023 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1014:1017 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R1013:1013 FreeGroup <> v:29 var
+R1018:1019 FreeGroup <> v':30 var
+R1025:1027 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1024:1024 FreeGroup <> b:27 var
+R1028:1029 FreeGroup <> b':28 var
+R1060:1075 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1034:1043 FreeGroup <> Normalized:23 ind
+R1054:1057 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1046:1046 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1049:1050 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1053:1053 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1047:1048 FreeGroup <> b':28 var
+R1051:1052 FreeGroup <> v':30 var
+R1058:1058 FreeGroup <> x:31 var
+R1076:1085 FreeGroup <> Normalized:23 ind
+R1094:1097 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1088:1088 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1090:1091 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1093:1093 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1089:1089 FreeGroup <> b:27 var
+R1092:1092 FreeGroup <> v:29 var
+R1106:1109 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1098:1098 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1101:1102 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1105:1105 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1099:1100 FreeGroup <> b':28 var
+R1103:1104 FreeGroup <> v':30 var
+R1110:1110 FreeGroup <> x:31 var
+ind 1127:1141 <> NEQuotFreeGroup
+constr 1171:1175 <> Singl
+constr 1213:1218 <> Switch
+constr 1298:1301 <> Stay
+binder 1144:1144 <> A:32
+R1155:1161 FreeGroup <> EqGroup class
+R1163:1163 FreeGroup <> A:32 var
+binder 1155:1163 <> H:35
+R1184:1187 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1180:1183 Coq.Init.Datatypes <> bool ind
+R1189:1192 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1188:1188 FreeGroup <> A:32 var
+R1193:1207 FreeGroup <> NEQuotFreeGroup:36 ind
+R1209:1209 FreeGroup <> A:32 var
+R1232:1232 FreeGroup <> A:32 var
+binder 1229:1229 <> x:38
+R1253:1256 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1235:1240 Coq.Logic.StrictProp <> Squash ind
+R1244:1247 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R1243:1243 FreeGroup <> x:38 var
+R1248:1251 Lib.Algebra <> zero meth
+R1274:1277 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1257:1271 FreeGroup <> NEQuotFreeGroup:36 ind
+R1273:1273 FreeGroup <> A:32 var
+R1278:1292 FreeGroup <> NEQuotFreeGroup:36 ind
+R1294:1294 FreeGroup <> A:32 var
+R1308:1311 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1307:1307 FreeGroup <> A:32 var
+R1329:1332 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R1312:1326 FreeGroup <> NEQuotFreeGroup:36 ind
+R1328:1328 FreeGroup <> A:32 var
+R1333:1347 FreeGroup <> NEQuotFreeGroup:36 ind
+R1349:1349 FreeGroup <> A:32 var
+R1363:1368 FreeGroup <> Switch constr
+R1363:1368 FreeGroup <> Switch constr
+R1391:1394 FreeGroup <> Stay constr
+R1391:1394 FreeGroup <> Stay constr
+R1417:1421 FreeGroup <> Singl constr
+R1417:1421 FreeGroup <> Singl constr
+def 1446:1458 <> QuotFreeGroup
+binder 1461:1461 <> A:39
+R1472:1478 FreeGroup <> EqGroup class
+R1480:1480 FreeGroup <> A:39 var
+binder 1472:1480 <> H:42
+R1486:1491 Coq.Init.Datatypes <> option ind
+R1494:1508 FreeGroup <> NEQuotFreeGroup ind
+R1510:1510 FreeGroup <> A:39 var
+R1521:1527 Coq.Bool.Bool <> reflect ind
+def 1540:1547 <> to_quot'
+binder 1550:1550 <> A:43
+R1561:1567 FreeGroup <> EqGroup class
+R1569:1569 FreeGroup <> A:43 var
+binder 1561:1569 <> H:46
+R1577:1580 Coq.Init.Datatypes <> bool ind
+binder 1573:1573 <> b:47
+R1587:1587 FreeGroup <> A:43 var
+binder 1584:1584 <> v:48
+R1594:1607 FreeGroup <> CanonFreeGroup def
+R1609:1609 FreeGroup <> A:43 var
+binder 1591:1591 <> x:49
+R1614:1628 FreeGroup <> NEQuotFreeGroup ind
+R1630:1630 FreeGroup <> A:43 var
+R1641:1641 FreeGroup <> x:49 var
+R1651:1652 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R1669:1673 FreeGroup <> Singl constr
+R1677:1677 FreeGroup <> v:48 var
+R1675:1675 FreeGroup <> b:47 var
+R1689:1692 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R1681:1681 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1684:1685 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1688:1688 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1702:1704 Coq.Bool.Bool <> eqb def
+R1706:1706 FreeGroup <> b:47 var
+R1808:1818 Lib.EqDec <> eqf_leibniz meth
+R1831:1834 Lib.Algebra <> zero meth
+R1821:1823 Lib.Algebra <> sub def
+R1825:1825 FreeGroup <> v:48 var
+R1870:1877 Coq.Bool.Bool <> ReflectF constr
+R1886:1891 FreeGroup <> Switch constr
+R1916:1923 FreeGroup <> to_quot':50 def
+R1905:1910 Coq.Logic.StrictProp <> squash constr
+R1894:1896 Lib.Algebra <> sub def
+R1898:1898 FreeGroup <> v:48 var
+R1971:1975 FreeGroup <> Singl constr
+R1979:1979 FreeGroup <> v:48 var
+R1977:1977 FreeGroup <> b:47 var
+R1739:1742 FreeGroup <> Stay constr
+R1756:1763 FreeGroup <> to_quot':50 def
+R1745:1747 Lib.Algebra <> sub def
+R1749:1749 FreeGroup <> v:48 var
+def 2044:2050 <> to_quot
+binder 2053:2053 <> A:52
+R2064:2070 FreeGroup <> EqGroup class
+R2072:2072 FreeGroup <> A:52 var
+binder 2064:2072 <> H:55
+R2079:2092 FreeGroup <> CanonFreeGroup def
+R2094:2094 FreeGroup <> A:52 var
+binder 2076:2076 <> x:56
+R2099:2111 FreeGroup <> QuotFreeGroup def
+R2113:2113 FreeGroup <> A:52 var
+R2124:2124 FreeGroup <> x:56 var
+R2133:2134 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R2139:2142 Coq.Init.Datatypes <> None constr
+R2152:2155 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2146:2146 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2148:2149 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2151:2151 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2162:2165 Coq.Init.Datatypes <> Some constr
+R2168:2175 FreeGroup <> to_quot' def
+def 2202:2212 <> all_to_quot
+binder 2215:2215 <> A:58
+R2226:2232 FreeGroup <> EqGroup class
+R2234:2234 FreeGroup <> A:58 var
+binder 2226:2234 <> H:61
+R2241:2254 FreeGroup <> CanonFreeGroup def
+R2256:2256 FreeGroup <> A:58 var
+binder 2238:2238 <> x:62
+R2261:2273 FreeGroup <> QuotFreeGroup def
+R2275:2275 FreeGroup <> A:58 var
+R2280:2286 FreeGroup <> to_quot def
+R2289:2297 FreeGroup <> normalize def
+R2299:2299 FreeGroup <> x:62 var
+def 2313:2321 <> to_canon'
+binder 2324:2324 <> A:63
+R2335:2341 FreeGroup <> EqGroup class
+R2343:2343 FreeGroup <> A:63 var
+binder 2335:2343 <> H:66
+R2350:2364 FreeGroup <> NEQuotFreeGroup ind
+R2366:2366 FreeGroup <> A:63 var
+binder 2347:2347 <> x:67
+R2379:2381 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R2375:2377 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R2371:2374 Coq.Init.Datatypes <> bool ind
+R2378:2378 FreeGroup <> A:63 var
+R2382:2385 Coq.Init.Datatypes <> list ind
+R2392:2392 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R2388:2391 Coq.Init.Datatypes <> bool ind
+R2393:2393 FreeGroup <> A:63 var
+R2405:2405 FreeGroup <> x:67 var
+R2415:2419 FreeGroup <> Singl constr
+R2432:2432 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2439:2440 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2443:2443 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2433:2433 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2435:2436 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2438:2438 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2441:2442 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R2447:2450 FreeGroup <> Stay constr
+R2470:2478 FreeGroup <> to_canon':68 def
+R2509:2509 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2517:2518 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2520:2520 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2510:2510 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2512:2513 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2516:2516 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2526:2526 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2539:2540 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2553:2553 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2527:2527 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2529:2530 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2538:2538 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2531:2532 Lib.Algebra <> op meth
+R2548:2551 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2541:2541 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2543:2544 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2547:2547 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2580:2585 FreeGroup <> Switch constr
+R2603:2611 FreeGroup <> to_canon':68 def
+R2642:2642 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2650:2651 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2653:2653 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2643:2643 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2645:2646 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2649:2649 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2659:2659 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2677:2678 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2691:2691 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2660:2660 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2667:2668 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2676:2676 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2661:2664 Coq.Init.Datatypes <> negb def
+R2669:2670 Lib.Algebra <> op meth
+R2686:2689 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2679:2679 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2681:2682 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R2685:2685 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+def 2733:2740 <> to_canon
+binder 2743:2743 <> A:70
+R2754:2760 FreeGroup <> EqGroup class
+R2762:2762 FreeGroup <> A:70 var
+binder 2754:2762 <> H:73
+R2769:2781 FreeGroup <> QuotFreeGroup def
+R2783:2783 FreeGroup <> A:70 var
+binder 2766:2766 <> x:74
+R2788:2801 FreeGroup <> CanonFreeGroup def
+R2803:2803 FreeGroup <> A:70 var
+R2814:2814 FreeGroup <> x:74 var
+R2823:2826 Coq.Init.Datatypes <> None constr
+R2831:2832 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R2836:2839 Coq.Init.Datatypes <> Some constr
+R2861:2869 FreeGroup <> to_canon' def
+binder 2852:2852 <> h:76
+binder 2855:2855 <> t:77
+R2878:2881 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R2877:2877 FreeGroup <> h:76 var
+R2882:2882 FreeGroup <> t:77 var
+prf 2920:2934 <> squash_not_refl
+binder 2937:2937 <> A:78
+R2951:2951 FreeGroup <> A:78 var
+binder 2948:2948 <> x:79
+binder 2955:2955 <> P:80
+R2981:2984 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R2966:2971 Coq.Logic.StrictProp <> Squash ind
+R2975:2978 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R2974:2974 FreeGroup <> x:79 var
+R2979:2979 FreeGroup <> x:79 var
+R2985:2985 FreeGroup <> P:80 var
+R3013:3022 Coq.Logic.StrictProp <> sEmpty_ind scheme
+R3013:3022 Coq.Logic.StrictProp <> sEmpty_ind scheme
+R3032:3042 Coq.Logic.StrictProp <> Squash_sind scheme
+R3046:3049 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R3032:3042 Coq.Logic.StrictProp <> Squash_sind scheme
+R3046:3049 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+prf 3110:3123 <> not_eqb_is_neg
+R3132:3135 Coq.Init.Datatypes <> bool ind
+binder 3126:3126 <> x:81
+binder 3128:3128 <> y:82
+R3155:3158 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3147:3149 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3140:3142 Coq.Bool.Bool <> eqb def
+R3144:3144 FreeGroup <> x:81 var
+R3146:3146 FreeGroup <> y:82 var
+R3150:3154 Coq.Init.Datatypes <> false constr
+R3160:3162 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3159:3159 FreeGroup <> x:81 var
+R3163:3166 Coq.Init.Datatypes <> negb def
+R3168:3168 FreeGroup <> y:82 var
+prf 3250:3256 <> some_eq
+binder 3259:3259 <> A:83
+R3274:3274 FreeGroup <> A:83 var
+binder 3269:3269 <> x:84
+binder 3271:3271 <> y:85
+R3294:3297 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3285:3287 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3279:3282 Coq.Init.Datatypes <> Some constr
+R3284:3284 FreeGroup <> x:84 var
+R3288:3291 Coq.Init.Datatypes <> Some constr
+R3293:3293 FreeGroup <> y:85 var
+R3299:3301 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3298:3298 FreeGroup <> x:84 var
+R3302:3302 FreeGroup <> y:85 var
+prf 3355:3365 <> eqb_not_neg
+R3374:3377 Coq.Init.Datatypes <> bool ind
+binder 3368:3368 <> x:86
+binder 3370:3370 <> y:87
+R3404:3408 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3396:3398 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3382:3384 Coq.Bool.Bool <> eqb def
+R3386:3386 FreeGroup <> x:86 var
+R3389:3392 Coq.Init.Datatypes <> negb def
+R3394:3394 FreeGroup <> y:87 var
+R3399:3403 Coq.Init.Datatypes <> false constr
+R3410:3412 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3409:3409 FreeGroup <> x:86 var
+R3413:3413 FreeGroup <> y:87 var
+prf 3535:3555 <> group_squash_non_zero
+binder 3558:3558 <> A:88
+R3569:3575 FreeGroup <> EqGroup class
+R3577:3577 FreeGroup <> A:88 var
+binder 3569:3577 <> H:91
+R3585:3585 FreeGroup <> A:88 var
+binder 3581:3581 <> x:92
+R3608:3611 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R3590:3595 Coq.Logic.StrictProp <> Squash ind
+R3599:3602 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R3598:3598 FreeGroup <> x:92 var
+R3603:3606 Lib.Algebra <> zero meth
+R3613:3616 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R3612:3612 FreeGroup <> x:92 var
+R3617:3620 Lib.Algebra <> zero meth
+R3653:3663 Lib.EqDec <> eqf_leibniz meth
+R3667:3670 Lib.Algebra <> zero meth
+R3653:3663 Lib.EqDec <> eqf_leibniz meth
+R3667:3670 Lib.Algebra <> zero meth
+R3694:3708 FreeGroup <> squash_not_refl thm
+R3710:3713 Lib.Algebra <> zero meth
+R3694:3708 FreeGroup <> squash_not_refl thm
+R3710:3713 Lib.Algebra <> zero meth
+prf 3735:3750 <> eqf_sub_not_zero
+binder 3753:3753 <> A:93
+R3764:3770 FreeGroup <> EqGroup class
+R3772:3772 FreeGroup <> A:93 var
+binder 3764:3772 <> H:96
+R3781:3781 FreeGroup <> A:93 var
+binder 3776:3776 <> x:97
+binder 3778:3778 <> y:98
+R3801:3805 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R3793:3796 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R3786:3788 Lib.Algebra <> sub def
+R3792:3792 FreeGroup <> y:98 var
+R3790:3790 FreeGroup <> x:97 var
+R3797:3800 Lib.Algebra <> zero meth
+R3813:3815 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3806:3808 Lib.EqDec <> eqf meth
+R3812:3812 FreeGroup <> y:98 var
+R3810:3810 FreeGroup <> x:97 var
+R3816:3820 Coq.Init.Datatypes <> false constr
+R3839:3841 Lib.Algebra <> sub def
+R3876:3886 Lib.EqDec <> eqf_leibniz meth
+R3876:3886 Lib.EqDec <> eqf_leibniz meth
+R3918:3925 Lib.Algebra <> r_op_inv meth
+R3918:3925 Lib.Algebra <> r_op_inv meth
+R3918:3925 Lib.Algebra <> r_op_inv meth
+R3981:3983 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3997:4009 Lib.Algebra <> sub_zero_uniq thm
+R3981:3983 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R3997:4009 Lib.Algebra <> sub_zero_uniq thm
+R4038:4045 Lib.EqDec <> eqf_refl thm
+R4038:4045 Lib.EqDec <> eqf_refl thm
+R4038:4045 Lib.EqDec <> eqf_refl thm
+prf 4080:4086 <> eqb_sym
+R4095:4098 Coq.Init.Datatypes <> bool ind
+binder 4089:4089 <> x:99
+binder 4091:4091 <> y:100
+R4110:4112 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4103:4105 Coq.Bool.Bool <> eqb def
+R4107:4107 FreeGroup <> x:99 var
+R4109:4109 FreeGroup <> y:100 var
+R4113:4115 Coq.Bool.Bool <> eqb def
+R4117:4117 FreeGroup <> y:100 var
+R4119:4119 FreeGroup <> x:99 var
+prf 4164:4175 <> eqb_both_neg
+R4181:4184 Coq.Init.Datatypes <> bool ind
+binder 4178:4178 <> x:101
+R4210:4212 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4189:4191 Coq.Bool.Bool <> eqb def
+R4194:4197 Coq.Init.Datatypes <> negb def
+R4199:4199 FreeGroup <> x:101 var
+R4203:4206 Coq.Init.Datatypes <> negb def
+R4208:4208 FreeGroup <> x:101 var
+R4213:4216 Coq.Init.Datatypes <> true constr
+prf 4258:4272 <> eqb_false_chain
+R4282:4285 Coq.Init.Datatypes <> bool ind
+binder 4275:4275 <> x:102
+binder 4277:4277 <> y:103
+binder 4279:4279 <> z:104
+R4305:4308 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4297:4299 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4290:4292 Coq.Bool.Bool <> eqb def
+R4294:4294 FreeGroup <> x:102 var
+R4296:4296 FreeGroup <> y:103 var
+R4300:4304 Coq.Init.Datatypes <> false constr
+R4324:4327 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R4316:4318 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4309:4311 Coq.Bool.Bool <> eqb def
+R4313:4313 FreeGroup <> y:103 var
+R4315:4315 FreeGroup <> z:104 var
+R4319:4323 Coq.Init.Datatypes <> false constr
+R4329:4331 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4328:4328 FreeGroup <> x:102 var
+R4332:4332 FreeGroup <> z:104 var
+prf 4417:4429 <> condition_iff
+binder 4432:4432 <> A:105
+R4443:4449 FreeGroup <> EqGroup class
+R4451:4451 FreeGroup <> A:105 var
+binder 4443:4451 <> H:108
+R4461:4464 Coq.Init.Datatypes <> bool ind
+binder 4455:4455 <> b:109
+binder 4457:4458 <> b':110
+R4474:4474 FreeGroup <> A:105 var
+binder 4468:4468 <> v:111
+binder 4470:4471 <> v':112
+R4498:4502 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4488:4491 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R4482:4485 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4481:4481 FreeGroup <> v:111 var
+R4486:4487 FreeGroup <> v':112 var
+R4493:4495 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4492:4492 FreeGroup <> b:109 var
+R4496:4497 FreeGroup <> b':110 var
+R4530:4532 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4518:4521 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R4503:4506 Coq.Init.Datatypes <> negb def
+R4509:4511 Lib.EqDec <> eqf meth
+R4515:4516 FreeGroup <> v':112 var
+R4513:4513 FreeGroup <> v:111 var
+R4522:4524 Coq.Bool.Bool <> eqb def
+R4526:4526 FreeGroup <> b:109 var
+R4528:4529 FreeGroup <> b':110 var
+R4533:4536 Coq.Init.Datatypes <> true constr
+R4585:4595 Lib.EqDec <> not_eqf_iff thm
+R4585:4595 Lib.EqDec <> not_eqf_iff thm
+R4585:4595 Lib.EqDec <> not_eqf_iff thm
+R4643:4651 Coq.Bool.Bool <> eqb_reflx thm
+R4654:4663 Coq.Bool.Bool <> orb_true_r thm
+R4643:4651 Coq.Bool.Bool <> eqb_reflx thm
+R4643:4651 Coq.Bool.Bool <> eqb_reflx thm
+R4654:4663 Coq.Bool.Bool <> orb_true_r thm
+R4654:4663 Coq.Bool.Bool <> orb_true_r thm
+R4694:4705 Coq.Bool.Bool <> orb_true_iff thm
+R4708:4720 Coq.Bool.Bool <> negb_true_iff thm
+R4694:4705 Coq.Bool.Bool <> orb_true_iff thm
+R4694:4705 Coq.Bool.Bool <> orb_true_iff thm
+R4708:4720 Coq.Bool.Bool <> negb_true_iff thm
+R4708:4720 Coq.Bool.Bool <> negb_true_iff thm
+R4762:4772 Lib.EqDec <> not_eqf_iff thm
+R4762:4772 Lib.EqDec <> not_eqf_iff thm
+R4762:4772 Lib.EqDec <> not_eqf_iff thm
+R4800:4807 Coq.Bool.Bool <> eqb_prop thm
+R4800:4807 Coq.Bool.Bool <> eqb_prop thm
+prf 4828:4841 <> condition_iff'
+binder 4844:4844 <> A:113
+R4855:4861 FreeGroup <> EqGroup class
+R4863:4863 FreeGroup <> A:113 var
+binder 4855:4863 <> H:116
+R4873:4876 Coq.Init.Datatypes <> bool ind
+binder 4867:4867 <> b:117
+binder 4869:4870 <> b':118
+R4886:4886 FreeGroup <> A:113 var
+binder 4880:4880 <> v:119
+binder 4882:4883 <> v':120
+R4910:4914 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R4900:4903 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R4894:4897 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R4893:4893 FreeGroup <> v:119 var
+R4898:4899 FreeGroup <> v':120 var
+R4905:4907 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4904:4904 FreeGroup <> b:117 var
+R4908:4909 FreeGroup <> b':118 var
+R4936:4938 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R4923:4926 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R4915:4917 Lib.EqDec <> eqf meth
+R4921:4922 FreeGroup <> v':120 var
+R4919:4919 FreeGroup <> v:119 var
+R4927:4930 Coq.Init.Datatypes <> xorb def
+R4934:4935 FreeGroup <> b':118 var
+R4932:4932 FreeGroup <> b:117 var
+R4939:4943 Coq.Init.Datatypes <> false constr
+R4992:5002 Lib.EqDec <> not_eqf_iff thm
+R4992:5002 Lib.EqDec <> not_eqf_iff thm
+R4992:5002 Lib.EqDec <> not_eqf_iff thm
+R5050:5063 Coq.Bool.Bool <> xorb_nilpotent thm
+R5066:5077 Coq.Bool.Bool <> andb_false_r thm
+R5050:5063 Coq.Bool.Bool <> xorb_nilpotent thm
+R5050:5063 Coq.Bool.Bool <> xorb_nilpotent thm
+R5066:5077 Coq.Bool.Bool <> andb_false_r thm
+R5066:5077 Coq.Bool.Bool <> andb_false_r thm
+R5108:5121 Coq.Bool.Bool <> andb_false_iff thm
+R5108:5121 Coq.Bool.Bool <> andb_false_iff thm
+R5108:5121 Coq.Bool.Bool <> andb_false_iff thm
+R5163:5173 Lib.EqDec <> not_eqf_iff thm
+R5163:5173 Lib.EqDec <> not_eqf_iff thm
+R5163:5173 Lib.EqDec <> not_eqf_iff thm
+R5201:5207 Coq.Bool.Bool <> xorb_eq thm
+R5201:5207 Coq.Bool.Bool <> xorb_eq thm
+prf 5229:5247 <> condition_false_iff
+binder 5250:5250 <> A:121
+R5261:5267 FreeGroup <> EqGroup class
+R5269:5269 FreeGroup <> A:121 var
+binder 5261:5269 <> H:124
+R5279:5282 Coq.Init.Datatypes <> bool ind
+binder 5273:5273 <> b:125
+binder 5275:5276 <> b':126
+R5292:5292 FreeGroup <> A:121 var
+binder 5286:5286 <> v:127
+binder 5288:5289 <> v':128
+R5320:5324 Coq.Init.Logic <> ::type_scope:x_'<->'_x not
+R5305:5308 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R5300:5302 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5299:5299 FreeGroup <> v:127 var
+R5303:5304 FreeGroup <> v':128 var
+R5310:5312 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5309:5309 FreeGroup <> b:125 var
+R5313:5316 Coq.Init.Datatypes <> negb def
+R5318:5319 FreeGroup <> b':126 var
+R5352:5354 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5340:5343 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R5325:5328 Coq.Init.Datatypes <> negb def
+R5331:5333 Lib.EqDec <> eqf meth
+R5337:5338 FreeGroup <> v':128 var
+R5335:5335 FreeGroup <> v:127 var
+R5344:5346 Coq.Bool.Bool <> eqb def
+R5348:5348 FreeGroup <> b:125 var
+R5350:5351 FreeGroup <> b':126 var
+R5355:5359 Coq.Init.Datatypes <> false constr
+R5408:5415 Lib.EqDec <> eqf_refl thm
+R5418:5426 Coq.Bool.Bool <> eqb_negb1 thm
+R5408:5415 Lib.EqDec <> eqf_refl thm
+R5408:5415 Lib.EqDec <> eqf_refl thm
+R5418:5426 Coq.Bool.Bool <> eqb_negb1 thm
+R5418:5426 Coq.Bool.Bool <> eqb_negb1 thm
+R5457:5469 Coq.Bool.Bool <> orb_false_iff thm
+R5472:5485 Coq.Bool.Bool <> negb_false_iff thm
+R5457:5469 Coq.Bool.Bool <> orb_false_iff thm
+R5457:5469 Coq.Bool.Bool <> orb_false_iff thm
+R5472:5485 Coq.Bool.Bool <> negb_false_iff thm
+R5472:5485 Coq.Bool.Bool <> negb_false_iff thm
+R5528:5534 Lib.EqDec <> eqf_iff thm
+R5528:5534 Lib.EqDec <> eqf_iff thm
+R5528:5534 Lib.EqDec <> eqf_iff thm
+prf 5612:5622 <> eqb_neg_izo
+R5631:5634 Coq.Init.Datatypes <> bool ind
+binder 5625:5625 <> x:129
+binder 5627:5627 <> y:130
+R5660:5662 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R5639:5641 Coq.Bool.Bool <> eqb def
+R5644:5647 Coq.Init.Datatypes <> negb def
+R5649:5649 FreeGroup <> x:129 var
+R5653:5656 Coq.Init.Datatypes <> negb def
+R5658:5658 FreeGroup <> y:130 var
+R5663:5665 Coq.Bool.Bool <> eqb def
+R5667:5667 FreeGroup <> x:129 var
+R5669:5669 FreeGroup <> y:130 var
+prf 5743:5765 <> normalized_without_head
+binder 5768:5768 <> A:131
+R5779:5785 FreeGroup <> EqGroup class
+R5787:5787 FreeGroup <> A:131 var
+binder 5779:5787 <> H:134
+R5794:5797 Coq.Init.Datatypes <> bool ind
+binder 5791:5791 <> b:135
+R5804:5804 FreeGroup <> A:131 var
+binder 5801:5801 <> v:136
+R5811:5824 FreeGroup <> CanonFreeGroup def
+R5826:5826 FreeGroup <> A:131 var
+binder 5808:5808 <> x:137
+R5857:5860 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R5833:5842 FreeGroup <> Normalized ind
+R5851:5854 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R5845:5845 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5847:5848 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5850:5850 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R5846:5846 FreeGroup <> b:135 var
+R5849:5849 FreeGroup <> v:136 var
+R5855:5855 FreeGroup <> x:137 var
+R5861:5870 FreeGroup <> Normalized ind
+R5872:5872 FreeGroup <> x:137 var
+prf 5991:6009 <> concat_normalized_l
+binder 6012:6012 <> A:138
+R6023:6029 FreeGroup <> EqGroup class
+R6031:6031 FreeGroup <> A:138 var
+binder 6023:6031 <> H:141
+R6040:6053 FreeGroup <> CanonFreeGroup def
+R6055:6055 FreeGroup <> A:138 var
+binder 6035:6035 <> x:142
+binder 6037:6037 <> y:143
+R6081:6084 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6062:6071 FreeGroup <> Normalized ind
+R6075:6078 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R6074:6074 FreeGroup <> x:142 var
+R6079:6079 FreeGroup <> y:143 var
+R6085:6094 FreeGroup <> Normalized ind
+R6096:6096 FreeGroup <> x:142 var
+prf 6283:6301 <> concat_normalized_r
+binder 6304:6304 <> A:144
+R6315:6321 FreeGroup <> EqGroup class
+R6323:6323 FreeGroup <> A:144 var
+binder 6315:6323 <> H:147
+R6332:6345 FreeGroup <> CanonFreeGroup def
+R6347:6347 FreeGroup <> A:144 var
+binder 6327:6327 <> x:148
+binder 6329:6329 <> y:149
+R6373:6376 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R6354:6363 FreeGroup <> Normalized ind
+R6367:6370 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R6366:6366 FreeGroup <> x:148 var
+R6371:6371 FreeGroup <> y:149 var
+R6377:6386 FreeGroup <> Normalized ind
+R6388:6388 FreeGroup <> y:149 var
+R6471:6483 Coq.Lists.List <> app_comm_cons thm
+R6471:6483 Coq.Lists.List <> app_comm_cons thm
+R6471:6483 Coq.Lists.List <> app_comm_cons thm
+R6505:6527 FreeGroup <> normalized_without_head thm
+R6505:6527 FreeGroup <> normalized_without_head thm
+prf 6549:6568 <> normalize_normalizes
+binder 6571:6571 <> A:150
+R6582:6588 FreeGroup <> EqGroup class
+R6590:6590 FreeGroup <> A:150 var
+binder 6582:6590 <> H:153
+R6597:6610 FreeGroup <> CanonFreeGroup def
+R6612:6612 FreeGroup <> A:150 var
+binder 6594:6594 <> x:154
+R6619:6628 FreeGroup <> Normalized ind
+R6631:6639 FreeGroup <> normalize def
+R6641:6641 FreeGroup <> x:154 var
+R6723:6731 FreeGroup <> normalize def
+R6723:6731 FreeGroup <> normalize def
+R6792:6795 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R6784:6786 Lib.EqDec <> eqf meth
+R6796:6799 Coq.Init.Datatypes <> xorb def
+R6792:6795 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R6784:6786 Lib.EqDec <> eqf meth
+R6796:6799 Coq.Init.Datatypes <> xorb def
+R6829:6851 FreeGroup <> normalized_without_head thm
+R6829:6851 FreeGroup <> normalized_without_head thm
+R6897:6910 FreeGroup <> condition_iff' thm
+R6897:6910 FreeGroup <> condition_iff' thm
+prf 6927:6956 <> normalize_is_id_for_normalized
+binder 6959:6959 <> A:155
+R6970:6976 FreeGroup <> EqGroup class
+R6978:6978 FreeGroup <> A:155 var
+binder 6970:6978 <> H:158
+R6985:6998 FreeGroup <> CanonFreeGroup def
+R7000:7000 FreeGroup <> A:155 var
+binder 6982:6982 <> x:159
+R7019:7022 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R7007:7016 FreeGroup <> Normalized ind
+R7018:7018 FreeGroup <> x:159 var
+R7034:7036 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7023:7031 FreeGroup <> normalize def
+R7033:7033 FreeGroup <> x:159 var
+R7037:7037 FreeGroup <> x:159 var
+R7099:7112 FreeGroup <> condition_iff' thm
+R7099:7112 FreeGroup <> condition_iff' thm
+R7099:7112 FreeGroup <> condition_iff' thm
+R7143:7151 FreeGroup <> normalize def
+R7143:7151 FreeGroup <> normalize def
+prf 7246:7265 <> normalize_idempotent
+binder 7268:7268 <> A:160
+R7279:7285 FreeGroup <> EqGroup class
+R7287:7287 FreeGroup <> A:160 var
+binder 7279:7287 <> H:163
+R7294:7305 Lib.Normalization <> normalzation def
+R7307:7315 FreeGroup <> normalize def
+R7353:7382 FreeGroup <> normalize_is_id_for_normalized thm
+R7353:7382 FreeGroup <> normalize_is_id_for_normalized thm
+R7393:7412 FreeGroup <> normalize_normalizes thm
+R7393:7412 FreeGroup <> normalize_normalizes thm
+prf 7466:7479 <> quot_epi_canon
+binder 7482:7482 <> A:164
+R7493:7499 FreeGroup <> EqGroup class
+R7501:7501 FreeGroup <> A:164 var
+binder 7493:7501 <> H:167
+R7508:7520 FreeGroup <> QuotFreeGroup def
+R7522:7522 FreeGroup <> A:164 var
+binder 7505:7505 <> x:168
+R7550:7552 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R7530:7536 FreeGroup <> to_quot def
+R7539:7546 FreeGroup <> to_canon def
+R7548:7548 FreeGroup <> x:168 var
+R7553:7553 FreeGroup <> x:168 var
+R7640:7648 FreeGroup <> to_canon' def
+R7640:7648 FreeGroup <> to_canon' def
+R7714:7722 Coq.Bool.Bool <> eqb_negb1 thm
+R7725:7730 Lib.Algebra <> sub_op thm
+R7714:7722 Coq.Bool.Bool <> eqb_negb1 thm
+R7714:7722 Coq.Bool.Bool <> eqb_negb1 thm
+R7725:7730 Lib.Algebra <> sub_op thm
+R7725:7730 Lib.Algebra <> sub_op thm
+R7748:7758 Lib.EqDec <> eqf_leibniz meth
+R7762:7765 Lib.Algebra <> zero meth
+R7748:7758 Lib.EqDec <> eqf_leibniz meth
+R7762:7765 Lib.Algebra <> zero meth
+R7796:7810 FreeGroup <> squash_not_refl thm
+R7812:7815 Lib.Algebra <> zero meth
+R7796:7810 FreeGroup <> squash_not_refl thm
+R7812:7815 Lib.Algebra <> zero meth
+R7833:7841 FreeGroup <> to_canon' def
+R7833:7841 FreeGroup <> to_canon' def
+R7909:7917 Coq.Bool.Bool <> eqb_reflx thm
+R7920:7925 Lib.Algebra <> sub_op thm
+R7909:7917 Coq.Bool.Bool <> eqb_reflx thm
+R7909:7917 Coq.Bool.Bool <> eqb_reflx thm
+R7920:7925 Lib.Algebra <> sub_op thm
+R7920:7925 Lib.Algebra <> sub_op thm
+prf 7942:7955 <> canon_epi_quot
+binder 7958:7958 <> A:169
+R7969:7975 FreeGroup <> EqGroup class
+R7977:7977 FreeGroup <> A:169 var
+binder 7969:7977 <> H:172
+R7984:7997 FreeGroup <> CanonFreeGroup def
+R7999:7999 FreeGroup <> A:169 var
+binder 7981:7981 <> x:173
+R8019:8022 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R8007:8016 FreeGroup <> Normalized ind
+R8018:8018 FreeGroup <> x:173 var
+R8043:8045 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8023:8030 FreeGroup <> to_canon def
+R8033:8039 FreeGroup <> to_quot def
+R8041:8041 FreeGroup <> x:173 var
+R8046:8046 FreeGroup <> x:173 var
+R8154:8156 Coq.Bool.Bool <> eqb def
+R8154:8156 Coq.Bool.Bool <> eqb def
+R8195:8203 FreeGroup <> to_canon' def
+R8206:8213 FreeGroup <> to_quot' def
+R8195:8203 FreeGroup <> to_canon' def
+R8206:8213 FreeGroup <> to_quot' def
+R8280:8285 Lib.Algebra <> op_sub thm
+R8280:8285 Lib.Algebra <> op_sub thm
+R8280:8285 Lib.Algebra <> op_sub thm
+R8333:8340 Coq.Bool.Bool <> eqb_prop thm
+R8333:8340 Coq.Bool.Bool <> eqb_prop thm
+R8359:8369 Lib.EqDec <> eqf_leibniz meth
+R8382:8385 Lib.Algebra <> zero meth
+R8372:8374 Lib.Algebra <> sub def
+R8359:8369 Lib.EqDec <> eqf_leibniz meth
+R8382:8385 Lib.Algebra <> zero meth
+R8372:8374 Lib.Algebra <> sub def
+R8406:8408 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8423:8435 Lib.Algebra <> sub_zero_uniq thm
+R8406:8408 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R8423:8435 Lib.Algebra <> sub_zero_uniq thm
+R8483:8491 FreeGroup <> to_canon' def
+R8494:8501 FreeGroup <> to_quot' def
+R8483:8491 FreeGroup <> to_canon' def
+R8494:8501 FreeGroup <> to_quot' def
+R8570:8575 Lib.Algebra <> op_sub thm
+R8570:8575 Lib.Algebra <> op_sub thm
+R8570:8575 Lib.Algebra <> op_sub thm
+R8625:8638 FreeGroup <> not_eqb_is_neg thm
+R8625:8638 FreeGroup <> not_eqb_is_neg thm
+R8660:8668 Coq.Bool.Bool <> eqb_reflx thm
+R8660:8668 Coq.Bool.Bool <> eqb_reflx thm
+R8660:8668 Coq.Bool.Bool <> eqb_reflx thm
+R8686:8694 FreeGroup <> to_canon' def
+R8697:8704 FreeGroup <> to_quot' def
+R8686:8694 FreeGroup <> to_canon' def
+R8697:8704 FreeGroup <> to_quot' def
+R8773:8778 Lib.Algebra <> op_sub thm
+R8773:8778 Lib.Algebra <> op_sub thm
+R8773:8778 Lib.Algebra <> op_sub thm
+prf 8793:8808 <> to_canon_not_nil
+binder 8811:8811 <> A:174
+R8822:8828 FreeGroup <> EqGroup class
+R8830:8830 FreeGroup <> A:174 var
+binder 8822:8830 <> H:177
+R8837:8851 FreeGroup <> NEQuotFreeGroup ind
+R8853:8853 FreeGroup <> A:174 var
+binder 8834:8834 <> x:178
+R8875:8878 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R8858:8865 FreeGroup <> to_canon def
+R8868:8871 Coq.Init.Datatypes <> Some constr
+R8873:8873 FreeGroup <> x:178 var
+R8879:8881 Coq.Init.Datatypes <> nil constr
+R8959:8967 FreeGroup <> to_canon' def
+R8959:8967 FreeGroup <> to_canon' def
+R9015:9023 FreeGroup <> to_canon' def
+R9015:9023 FreeGroup <> to_canon' def
+prf 9070:9083 <> quot_is_normal
+binder 9086:9086 <> A:179
+R9097:9103 FreeGroup <> EqGroup class
+R9105:9105 FreeGroup <> A:179 var
+binder 9097:9105 <> H:182
+R9112:9124 FreeGroup <> QuotFreeGroup def
+R9126:9126 FreeGroup <> A:179 var
+binder 9109:9109 <> x:183
+R9131:9140 FreeGroup <> Normalized ind
+R9143:9150 FreeGroup <> to_canon def
+R9152:9152 FreeGroup <> x:183 var
+R9315:9318 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R9297:9304 FreeGroup <> to_canon def
+R9307:9310 Coq.Init.Datatypes <> Some constr
+R9319:9320 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R9333:9348 FreeGroup <> to_canon_not_nil thm
+R9315:9318 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R9297:9304 FreeGroup <> to_canon def
+R9307:9310 Coq.Init.Datatypes <> Some constr
+R9319:9320 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R9333:9348 FreeGroup <> to_canon_not_nil thm
+R9406:9414 FreeGroup <> to_canon' def
+R9406:9414 FreeGroup <> to_canon' def
+R9494:9508 Lib.Algebra <> add_is_non_zero thm
+R9494:9508 Lib.Algebra <> add_is_non_zero thm
+R9517:9537 FreeGroup <> group_squash_non_zero thm
+R9517:9537 FreeGroup <> group_squash_non_zero thm
+R9562:9570 FreeGroup <> to_canon' def
+R9562:9570 FreeGroup <> to_canon' def
+R9647:9661 Lib.Algebra <> add_is_non_zero thm
+R9647:9661 Lib.Algebra <> add_is_non_zero thm
+R9674:9694 FreeGroup <> group_squash_non_zero thm
+R9674:9694 FreeGroup <> group_squash_non_zero thm
+R9795:9798 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R9777:9784 FreeGroup <> to_canon def
+R9787:9790 Coq.Init.Datatypes <> Some constr
+R9799:9800 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R9813:9828 FreeGroup <> to_canon_not_nil thm
+R9795:9798 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R9777:9784 FreeGroup <> to_canon def
+R9787:9790 Coq.Init.Datatypes <> Some constr
+R9799:9800 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R9813:9828 FreeGroup <> to_canon_not_nil thm
+R9886:9894 FreeGroup <> to_canon' def
+R9886:9894 FreeGroup <> to_canon' def
+R9995:10003 FreeGroup <> to_canon' def
+R9995:10003 FreeGroup <> to_canon' def
+def 10145:10154 <> canon_cons
+binder 10157:10157 <> A:184
+R10168:10174 FreeGroup <> EqGroup class
+R10176:10176 FreeGroup <> A:184 var
+binder 10168:10176 <> H:187
+R10183:10186 Coq.Init.Datatypes <> bool ind
+binder 10180:10180 <> b:188
+R10193:10193 FreeGroup <> A:184 var
+binder 10190:10190 <> v:189
+R10200:10213 FreeGroup <> CanonFreeGroup def
+R10215:10215 FreeGroup <> A:184 var
+binder 10197:10197 <> x:190
+R10222:10235 FreeGroup <> CanonFreeGroup def
+R10237:10237 FreeGroup <> A:184 var
+R10250:10250 FreeGroup <> x:190 var
+R10261:10262 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R10267:10267 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R10274:10274 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R10268:10268 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10270:10271 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10273:10273 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10269:10269 FreeGroup <> b:188 var
+R10272:10272 FreeGroup <> v:189 var
+R10288:10291 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R10280:10280 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10283:10284 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10287:10287 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10315:10318 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R10300:10303 Coq.Init.Datatypes <> negb def
+R10306:10308 Lib.EqDec <> eqf meth
+R10310:10310 FreeGroup <> v:189 var
+R10319:10321 Coq.Bool.Bool <> eqb def
+R10323:10323 FreeGroup <> b:188 var
+R10360:10363 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R10354:10354 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10356:10357 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10359:10359 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10355:10355 FreeGroup <> b:188 var
+R10358:10358 FreeGroup <> v:189 var
+R10372:10375 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R10364:10364 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10367:10368 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10371:10371 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+def 10423:10434 <> canon_concat
+binder 10437:10437 <> A:192
+R10448:10454 FreeGroup <> EqGroup class
+R10456:10456 FreeGroup <> A:192 var
+binder 10448:10456 <> H:195
+R10465:10478 FreeGroup <> CanonFreeGroup def
+R10480:10480 FreeGroup <> A:192 var
+binder 10460:10460 <> x:196
+binder 10462:10462 <> y:197
+R10485:10498 FreeGroup <> CanonFreeGroup def
+R10500:10500 FreeGroup <> A:192 var
+R10513:10513 FreeGroup <> x:196 var
+R10524:10525 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R10540:10540 FreeGroup <> y:197 var
+R10552:10555 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R10546:10546 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10548:10549 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10551:10551 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R10562:10571 FreeGroup <> canon_cons def
+R10578:10589 FreeGroup <> canon_concat:198 def
+R10594:10594 FreeGroup <> y:197 var
+prf 10613:10623 <> concat_norm
+binder 10626:10626 <> A:200
+R10637:10643 FreeGroup <> EqGroup class
+R10645:10645 FreeGroup <> A:200 var
+binder 10637:10645 <> H:203
+R10654:10667 FreeGroup <> CanonFreeGroup def
+R10669:10669 FreeGroup <> A:200 var
+binder 10649:10649 <> x:204
+binder 10651:10651 <> y:205
+R10689:10692 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10677:10686 FreeGroup <> Normalized ind
+R10688:10688 FreeGroup <> x:204 var
+R10705:10708 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R10693:10702 FreeGroup <> Normalized ind
+R10704:10704 FreeGroup <> y:205 var
+R10709:10718 FreeGroup <> Normalized ind
+R10721:10732 FreeGroup <> canon_concat def
+R10736:10736 FreeGroup <> y:205 var
+R10734:10734 FreeGroup <> x:204 var
+R10819:10828 FreeGroup <> canon_cons def
+R10881:10884 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R10866:10869 Coq.Init.Datatypes <> negb def
+R10872:10874 Lib.EqDec <> eqf meth
+R10885:10887 Coq.Bool.Bool <> eqb def
+R10935:10946 Coq.Bool.Bool <> orb_true_iff thm
+R10949:10960 Coq.Bool.Bool <> eqb_true_iff thm
+R10963:10975 Coq.Bool.Bool <> negb_true_iff thm
+R10980:10990 Lib.EqDec <> not_eqf_iff thm
+R10881:10884 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R10866:10869 Coq.Init.Datatypes <> negb def
+R10872:10874 Lib.EqDec <> eqf meth
+R10885:10887 Coq.Bool.Bool <> eqb def
+R10935:10946 Coq.Bool.Bool <> orb_true_iff thm
+R10935:10946 Coq.Bool.Bool <> orb_true_iff thm
+R10949:10960 Coq.Bool.Bool <> eqb_true_iff thm
+R10949:10960 Coq.Bool.Bool <> eqb_true_iff thm
+R10963:10975 Coq.Bool.Bool <> negb_true_iff thm
+R10963:10975 Coq.Bool.Bool <> negb_true_iff thm
+R10980:10990 Lib.EqDec <> not_eqf_iff thm
+R10980:10990 Lib.EqDec <> not_eqf_iff thm
+R11044:11047 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11029:11032 Coq.Init.Datatypes <> negb def
+R11035:11037 Lib.EqDec <> eqf meth
+R11048:11050 Coq.Bool.Bool <> eqb def
+R11044:11047 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11029:11032 Coq.Init.Datatypes <> negb def
+R11035:11037 Lib.EqDec <> eqf meth
+R11048:11050 Coq.Bool.Bool <> eqb def
+R11103:11114 Coq.Bool.Bool <> orb_true_iff thm
+R11117:11128 Coq.Bool.Bool <> eqb_true_iff thm
+R11131:11143 Coq.Bool.Bool <> negb_true_iff thm
+R11148:11158 Lib.EqDec <> not_eqf_iff thm
+R11103:11114 Coq.Bool.Bool <> orb_true_iff thm
+R11103:11114 Coq.Bool.Bool <> orb_true_iff thm
+R11117:11128 Coq.Bool.Bool <> eqb_true_iff thm
+R11117:11128 Coq.Bool.Bool <> eqb_true_iff thm
+R11131:11143 Coq.Bool.Bool <> negb_true_iff thm
+R11131:11143 Coq.Bool.Bool <> negb_true_iff thm
+R11148:11158 Lib.EqDec <> not_eqf_iff thm
+R11148:11158 Lib.EqDec <> not_eqf_iff thm
+R11224:11226 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11212:11215 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11197:11200 Coq.Init.Datatypes <> negb def
+R11203:11205 Lib.EqDec <> eqf meth
+R11216:11218 Coq.Bool.Bool <> eqb def
+R11227:11230 Coq.Init.Datatypes <> true constr
+R11252:11263 Coq.Bool.Bool <> orb_true_iff thm
+R11266:11277 Coq.Bool.Bool <> eqb_true_iff thm
+R11280:11292 Coq.Bool.Bool <> negb_true_iff thm
+R11297:11307 Lib.EqDec <> not_eqf_iff thm
+R11224:11226 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11212:11215 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11197:11200 Coq.Init.Datatypes <> negb def
+R11203:11205 Lib.EqDec <> eqf meth
+R11216:11218 Coq.Bool.Bool <> eqb def
+R11227:11230 Coq.Init.Datatypes <> true constr
+R11252:11263 Coq.Bool.Bool <> orb_true_iff thm
+R11252:11263 Coq.Bool.Bool <> orb_true_iff thm
+R11266:11277 Coq.Bool.Bool <> eqb_true_iff thm
+R11266:11277 Coq.Bool.Bool <> eqb_true_iff thm
+R11280:11292 Coq.Bool.Bool <> negb_true_iff thm
+R11280:11292 Coq.Bool.Bool <> negb_true_iff thm
+R11297:11307 Lib.EqDec <> not_eqf_iff thm
+R11297:11307 Lib.EqDec <> not_eqf_iff thm
+R11324:11335 FreeGroup <> canon_concat def
+R11376:11385 FreeGroup <> canon_cons def
+R11324:11335 FreeGroup <> canon_concat def
+R11485:11494 FreeGroup <> canon_cons def
+R11536:11539 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11519:11522 Coq.Init.Datatypes <> negb def
+R11525:11527 Lib.EqDec <> eqf meth
+R11540:11542 Coq.Bool.Bool <> eqb def
+R11536:11539 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11519:11522 Coq.Init.Datatypes <> negb def
+R11525:11527 Lib.EqDec <> eqf meth
+R11540:11542 Coq.Bool.Bool <> eqb def
+R11602:11604 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11590:11593 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11575:11578 Coq.Init.Datatypes <> negb def
+R11581:11583 Lib.EqDec <> eqf meth
+R11594:11596 Coq.Bool.Bool <> eqb def
+R11605:11608 Coq.Init.Datatypes <> true constr
+R11634:11645 Coq.Bool.Bool <> orb_true_iff thm
+R11648:11659 Coq.Bool.Bool <> eqb_true_iff thm
+R11662:11674 Coq.Bool.Bool <> negb_true_iff thm
+R11679:11689 Lib.EqDec <> not_eqf_iff thm
+R11602:11604 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R11590:11593 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11575:11578 Coq.Init.Datatypes <> negb def
+R11581:11583 Lib.EqDec <> eqf meth
+R11594:11596 Coq.Bool.Bool <> eqb def
+R11605:11608 Coq.Init.Datatypes <> true constr
+R11634:11645 Coq.Bool.Bool <> orb_true_iff thm
+R11634:11645 Coq.Bool.Bool <> orb_true_iff thm
+R11648:11659 Coq.Bool.Bool <> eqb_true_iff thm
+R11648:11659 Coq.Bool.Bool <> eqb_true_iff thm
+R11662:11674 Coq.Bool.Bool <> negb_true_iff thm
+R11662:11674 Coq.Bool.Bool <> negb_true_iff thm
+R11679:11689 Lib.EqDec <> not_eqf_iff thm
+R11679:11689 Lib.EqDec <> not_eqf_iff thm
+R11863:11866 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11846:11849 Coq.Init.Datatypes <> negb def
+R11852:11854 Lib.EqDec <> eqf meth
+R11867:11869 Coq.Bool.Bool <> eqb def
+R11863:11866 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R11846:11849 Coq.Init.Datatypes <> negb def
+R11852:11854 Lib.EqDec <> eqf meth
+R11867:11869 Coq.Bool.Bool <> eqb def
+R11924:11935 Coq.Bool.Bool <> orb_true_iff thm
+R11938:11949 Coq.Bool.Bool <> eqb_true_iff thm
+R11952:11964 Coq.Bool.Bool <> negb_true_iff thm
+R11969:11979 Lib.EqDec <> not_eqf_iff thm
+R11924:11935 Coq.Bool.Bool <> orb_true_iff thm
+R11924:11935 Coq.Bool.Bool <> orb_true_iff thm
+R11938:11949 Coq.Bool.Bool <> eqb_true_iff thm
+R11938:11949 Coq.Bool.Bool <> eqb_true_iff thm
+R11952:11964 Coq.Bool.Bool <> negb_true_iff thm
+R11952:11964 Coq.Bool.Bool <> negb_true_iff thm
+R11969:11979 Lib.EqDec <> not_eqf_iff thm
+R11969:11979 Lib.EqDec <> not_eqf_iff thm
+def 12106:12113 <> quot_hd'
+binder 12116:12116 <> A:206
+R12127:12133 FreeGroup <> EqGroup class
+R12135:12135 FreeGroup <> A:206 var
+binder 12127:12135 <> H:209
+R12142:12156 FreeGroup <> NEQuotFreeGroup ind
+R12158:12158 FreeGroup <> A:206 var
+binder 12139:12139 <> x:210
+R12167:12169 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R12163:12166 Coq.Init.Datatypes <> bool ind
+R12170:12170 FreeGroup <> A:206 var
+R12183:12183 FreeGroup <> x:210 var
+R12195:12199 FreeGroup <> Singl constr
+R12208:12208 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12210:12211 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12213:12213 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12219:12222 FreeGroup <> Stay constr
+R12248:12255 FreeGroup <> quot_hd':211 def
+binder 12237:12238 <> b':213
+binder 12241:12242 <> v':214
+R12263:12263 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12266:12267 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12275:12275 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12264:12265 FreeGroup <> b':213 var
+R12268:12269 Lib.Algebra <> op meth
+R12273:12274 FreeGroup <> v':214 var
+R12281:12286 FreeGroup <> Switch constr
+R12314:12321 FreeGroup <> quot_hd':211 def
+binder 12303:12304 <> b':215
+binder 12307:12308 <> v':216
+R12329:12329 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12337:12338 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12346:12346 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R12330:12333 Coq.Init.Datatypes <> negb def
+R12335:12336 FreeGroup <> b':215 var
+R12339:12340 Lib.Algebra <> op meth
+R12344:12345 FreeGroup <> v':216 var
+def 12367:12374 <> fq_tail'
+binder 12377:12377 <> A:217
+R12388:12394 FreeGroup <> EqGroup class
+R12396:12396 FreeGroup <> A:217 var
+binder 12388:12396 <> H:220
+R12403:12417 FreeGroup <> NEQuotFreeGroup ind
+R12419:12419 FreeGroup <> A:217 var
+binder 12400:12400 <> x:221
+R12424:12436 FreeGroup <> QuotFreeGroup def
+R12438:12438 FreeGroup <> A:217 var
+R12451:12451 FreeGroup <> x:221 var
+R12463:12467 FreeGroup <> Singl constr
+R12480:12483 Coq.Init.Datatypes <> None constr
+R12489:12492 FreeGroup <> Stay constr
+R12506:12509 Coq.Init.Datatypes <> Some constr
+R12518:12523 FreeGroup <> Switch constr
+R12535:12538 Coq.Init.Datatypes <> Some constr
+def 12562:12571 <> quot_cons'
+binder 12574:12574 <> A:223
+R12585:12591 FreeGroup <> EqGroup class
+R12593:12593 FreeGroup <> A:223 var
+binder 12585:12593 <> H:226
+R12600:12603 Coq.Init.Datatypes <> bool ind
+binder 12597:12597 <> b:227
+R12610:12610 FreeGroup <> A:223 var
+binder 12607:12607 <> v:228
+R12617:12631 FreeGroup <> NEQuotFreeGroup ind
+R12633:12633 FreeGroup <> A:223 var
+binder 12614:12614 <> x:229
+R12642:12654 FreeGroup <> QuotFreeGroup def
+R12656:12656 FreeGroup <> A:223 var
+R12681:12688 FreeGroup <> quot_hd' def
+R12690:12690 FreeGroup <> x:229 var
+binder 12670:12671 <> b':230
+binder 12674:12675 <> v':231
+R12705:12707 Coq.Bool.Bool <> eqb def
+R12709:12709 FreeGroup <> b:227 var
+R12711:12712 FreeGroup <> b':230 var
+R12767:12777 Lib.EqDec <> eqf_leibniz meth
+R12790:12793 Lib.Algebra <> zero meth
+R12780:12782 Lib.Algebra <> sub def
+R12786:12787 FreeGroup <> v':231 var
+R12784:12784 FreeGroup <> v:228 var
+R12813:12820 Coq.Bool.Bool <> ReflectT constr
+R12829:12836 FreeGroup <> fq_tail' def
+R12838:12838 FreeGroup <> x:229 var
+R12853:12860 Coq.Bool.Bool <> ReflectF constr
+R12869:12872 Coq.Init.Datatypes <> Some constr
+R12875:12880 FreeGroup <> Switch constr
+R12904:12904 FreeGroup <> x:229 var
+R12894:12899 Coq.Logic.StrictProp <> squash constr
+R12883:12885 Lib.Algebra <> sub def
+R12889:12890 FreeGroup <> v':231 var
+R12887:12887 FreeGroup <> v:228 var
+R12725:12728 Coq.Init.Datatypes <> Some constr
+R12731:12734 FreeGroup <> Stay constr
+R12747:12747 FreeGroup <> x:229 var
+R12737:12739 Lib.Algebra <> sub def
+R12743:12744 FreeGroup <> v':231 var
+R12741:12741 FreeGroup <> v:228 var
+def 12935:12943 <> quot_cons
+binder 12946:12946 <> A:232
+R12957:12963 FreeGroup <> EqGroup class
+R12965:12965 FreeGroup <> A:232 var
+binder 12957:12965 <> H:235
+R12972:12975 Coq.Init.Datatypes <> bool ind
+binder 12969:12969 <> b:236
+R12982:12982 FreeGroup <> A:232 var
+binder 12979:12979 <> v:237
+R12989:13001 FreeGroup <> QuotFreeGroup def
+R13003:13003 FreeGroup <> A:232 var
+binder 12986:12986 <> x:238
+R13008:13020 FreeGroup <> QuotFreeGroup def
+R13022:13022 FreeGroup <> A:232 var
+R13035:13035 FreeGroup <> x:238 var
+R13046:13049 Coq.Init.Datatypes <> None constr
+R13054:13057 Coq.Init.Datatypes <> Some constr
+R13060:13064 FreeGroup <> Singl constr
+R13068:13068 FreeGroup <> v:237 var
+R13066:13066 FreeGroup <> b:236 var
+R13075:13078 Coq.Init.Datatypes <> Some constr
+R13086:13095 FreeGroup <> quot_cons' def
+R13099:13099 FreeGroup <> v:237 var
+R13097:13097 FreeGroup <> b:236 var
+def 13123:13132 <> quot_cons2
+binder 13135:13135 <> A:240
+R13146:13152 FreeGroup <> EqGroup class
+R13154:13154 FreeGroup <> A:240 var
+binder 13146:13154 <> H:243
+R13165:13167 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R13161:13164 Coq.Init.Datatypes <> bool ind
+R13168:13168 FreeGroup <> A:240 var
+binder 13158:13158 <> p:244
+R13175:13187 FreeGroup <> QuotFreeGroup def
+R13189:13189 FreeGroup <> A:240 var
+binder 13172:13172 <> x:245
+R13194:13206 FreeGroup <> QuotFreeGroup def
+R13208:13208 FreeGroup <> A:240 var
+R13230:13230 FreeGroup <> p:244 var
+binder 13221:13221 <> b:246
+binder 13224:13224 <> v:247
+R13235:13243 FreeGroup <> quot_cons def
+R13249:13249 FreeGroup <> x:245 var
+R13247:13247 FreeGroup <> v:247 var
+R13245:13245 FreeGroup <> b:246 var
+def 13262:13273 <> quot_concat'
+binder 13276:13276 <> A:248
+R13287:13293 FreeGroup <> EqGroup class
+R13295:13295 FreeGroup <> A:248 var
+binder 13287:13295 <> H:251
+R13302:13316 FreeGroup <> NEQuotFreeGroup ind
+R13318:13318 FreeGroup <> A:248 var
+binder 13299:13299 <> x:252
+R13328:13340 FreeGroup <> QuotFreeGroup def
+R13342:13342 FreeGroup <> A:248 var
+binder 13325:13325 <> y:253
+R13347:13359 FreeGroup <> QuotFreeGroup def
+R13361:13361 FreeGroup <> A:248 var
+R13374:13374 FreeGroup <> x:252 var
+R13385:13389 FreeGroup <> Singl constr
+R13402:13410 FreeGroup <> quot_cons def
+R13416:13416 FreeGroup <> y:253 var
+R13422:13425 FreeGroup <> Stay constr
+R13439:13448 FreeGroup <> quot_cons2 def
+R13464:13475 FreeGroup <> quot_concat':254 def
+R13480:13480 FreeGroup <> y:253 var
+R13451:13458 FreeGroup <> quot_hd' def
+R13460:13460 FreeGroup <> x:252 var
+R13487:13492 FreeGroup <> Switch constr
+R13504:13513 FreeGroup <> quot_cons2 def
+R13529:13540 FreeGroup <> quot_concat':254 def
+R13545:13545 FreeGroup <> y:253 var
+R13516:13523 FreeGroup <> quot_hd' def
+R13525:13525 FreeGroup <> x:252 var
+def 13567:13577 <> quot_concat
+binder 13580:13580 <> A:256
+R13591:13597 FreeGroup <> EqGroup class
+R13599:13599 FreeGroup <> A:256 var
+binder 13591:13599 <> H:259
+R13608:13620 FreeGroup <> QuotFreeGroup def
+R13622:13622 FreeGroup <> A:256 var
+binder 13603:13603 <> x:260
+binder 13605:13605 <> y:261
+R13627:13639 FreeGroup <> QuotFreeGroup def
+R13641:13641 FreeGroup <> A:256 var
+R13654:13654 FreeGroup <> x:260 var
+R13665:13668 Coq.Init.Datatypes <> None constr
+R13673:13673 FreeGroup <> y:261 var
+R13679:13682 Coq.Init.Datatypes <> Some constr
+R13690:13701 FreeGroup <> quot_concat' def
+R13706:13706 FreeGroup <> y:261 var
+prf 13724:13736 <> quot_canon_hd
+binder 13739:13739 <> A:263
+R13750:13756 FreeGroup <> EqGroup class
+R13758:13758 FreeGroup <> A:263 var
+binder 13750:13758 <> H:266
+R13765:13779 FreeGroup <> NEQuotFreeGroup ind
+R13781:13781 FreeGroup <> A:263 var
+binder 13762:13762 <> x:267
+R13805:13807 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R13788:13791 Coq.Init.Datatypes <> Some constr
+R13794:13801 FreeGroup <> quot_hd' def
+R13803:13803 FreeGroup <> x:267 var
+R13808:13815 Coq.Lists.List <> hd_error def
+R13818:13825 FreeGroup <> to_canon def
+R13828:13831 Coq.Init.Datatypes <> Some constr
+R13833:13833 FreeGroup <> x:267 var
+R13895:13903 FreeGroup <> to_canon' def
+R13895:13903 FreeGroup <> to_canon' def
+R13998:14006 FreeGroup <> to_canon' def
+R13998:14006 FreeGroup <> to_canon' def
+prf 14090:14117 <> quot_canon_cons_homomorphism
+binder 14120:14120 <> A:268
+R14131:14137 FreeGroup <> EqGroup class
+R14139:14139 FreeGroup <> A:268 var
+binder 14131:14139 <> H:271
+R14146:14149 Coq.Init.Datatypes <> bool ind
+binder 14143:14143 <> b:272
+R14156:14156 FreeGroup <> A:268 var
+binder 14153:14153 <> v:273
+R14163:14175 FreeGroup <> QuotFreeGroup def
+R14177:14177 FreeGroup <> A:268 var
+binder 14160:14160 <> x:274
+R14210:14212 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14184:14191 FreeGroup <> to_canon def
+R14194:14202 FreeGroup <> quot_cons def
+R14208:14208 FreeGroup <> x:274 var
+R14206:14206 FreeGroup <> v:273 var
+R14204:14204 FreeGroup <> b:272 var
+R14213:14222 FreeGroup <> canon_cons def
+R14229:14236 FreeGroup <> to_canon def
+R14238:14238 FreeGroup <> x:274 var
+R14226:14226 FreeGroup <> v:273 var
+R14224:14224 FreeGroup <> b:272 var
+R14285:14294 FreeGroup <> canon_cons def
+R14357:14359 Coq.Bool.Bool <> eqb def
+R14357:14359 Coq.Bool.Bool <> eqb def
+R14393:14402 Coq.Bool.Bool <> orb_true_r thm
+R14405:14410 Lib.Algebra <> op_sub thm
+R14393:14402 Coq.Bool.Bool <> orb_true_r thm
+R14393:14402 Coq.Bool.Bool <> orb_true_r thm
+R14405:14410 Lib.Algebra <> op_sub thm
+R14405:14410 Lib.Algebra <> op_sub thm
+R14451:14458 Coq.Bool.Bool <> eqb_prop thm
+R14451:14458 Coq.Bool.Bool <> eqb_prop thm
+R14477:14487 Lib.EqDec <> eqf_leibniz meth
+R14500:14503 Lib.Algebra <> zero meth
+R14490:14492 Lib.Algebra <> sub def
+R14477:14487 Lib.EqDec <> eqf_leibniz meth
+R14500:14503 Lib.Algebra <> zero meth
+R14490:14492 Lib.Algebra <> sub def
+R14524:14526 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14544:14556 Lib.Algebra <> sub_zero_uniq thm
+R14524:14526 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14544:14556 Lib.Algebra <> sub_zero_uniq thm
+R14582:14589 Lib.EqDec <> eqf_refl thm
+R14582:14589 Lib.EqDec <> eqf_refl thm
+R14582:14589 Lib.EqDec <> eqf_refl thm
+R14619:14634 FreeGroup <> eqf_sub_not_zero thm
+R14619:14634 FreeGroup <> eqf_sub_not_zero thm
+R14619:14634 FreeGroup <> eqf_sub_not_zero thm
+R14653:14658 Lib.Algebra <> op_sub thm
+R14653:14658 Lib.Algebra <> op_sub thm
+R14653:14658 Lib.Algebra <> op_sub thm
+R14707:14709 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14700:14703 Coq.Init.Datatypes <> negb def
+R14737:14750 FreeGroup <> not_eqb_is_neg thm
+R14707:14709 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14700:14703 Coq.Init.Datatypes <> negb def
+R14737:14750 FreeGroup <> not_eqb_is_neg thm
+R14780:14788 FreeGroup <> to_canon' def
+R14780:14788 FreeGroup <> to_canon' def
+R14829:14838 FreeGroup <> quot_cons' def
+R14873:14875 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14862:14869 FreeGroup <> quot_hd' def
+R14876:14876 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14880:14881 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14885:14885 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14873:14875 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R14862:14869 FreeGroup <> quot_hd' def
+R14876:14876 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14880:14881 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14885:14885 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R14901:14907 FreeGroup <> some_eq thm
+R14901:14907 FreeGroup <> some_eq thm
+R14918:14930 FreeGroup <> quot_canon_hd thm
+R14918:14930 FreeGroup <> quot_canon_hd thm
+R14918:14930 FreeGroup <> quot_canon_hd thm
+R14984:14986 Coq.Bool.Bool <> eqb def
+R14991:14994 Coq.Init.Datatypes <> negb def
+R14984:14986 Coq.Bool.Bool <> eqb def
+R14991:14994 Coq.Init.Datatypes <> negb def
+R15029:15040 Coq.Bool.Bool <> eqb_true_iff thm
+R15029:15040 Coq.Bool.Bool <> eqb_true_iff thm
+R15029:15040 Coq.Bool.Bool <> eqb_true_iff thm
+R15068:15077 Coq.Bool.Bool <> orb_true_r thm
+R15083:15088 Lib.Algebra <> op_sub thm
+R15068:15077 Coq.Bool.Bool <> orb_true_r thm
+R15068:15077 Coq.Bool.Bool <> orb_true_r thm
+R15083:15088 Lib.Algebra <> op_sub thm
+R15083:15088 Lib.Algebra <> op_sub thm
+R15108:15118 Lib.EqDec <> eqf_leibniz meth
+R15121:15123 Lib.Algebra <> sub def
+R15128:15129 Lib.Algebra <> op meth
+R15108:15118 Lib.EqDec <> eqf_leibniz meth
+R15121:15123 Lib.Algebra <> sub def
+R15128:15129 Lib.Algebra <> op meth
+R15159:15162 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15172:15172 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15163:15164 Lib.Algebra <> op meth
+R15185:15197 Lib.Algebra <> sub_zero_uniq thm
+R15159:15162 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15172:15172 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15163:15164 Lib.Algebra <> op meth
+R15185:15197 Lib.Algebra <> sub_zero_uniq thm
+R15239:15246 Lib.EqDec <> eqf_refl thm
+R15239:15246 Lib.EqDec <> eqf_refl thm
+R15239:15246 Lib.EqDec <> eqf_refl thm
+R15273:15288 FreeGroup <> eqf_sub_not_zero thm
+R15273:15288 FreeGroup <> eqf_sub_not_zero thm
+R15273:15288 FreeGroup <> eqf_sub_not_zero thm
+R15317:15319 Lib.Algebra <> sub def
+R15344:15351 Lib.Algebra <> op_assoc meth
+R15357:15359 Lib.Algebra <> inv meth
+R15362:15363 Lib.Algebra <> op meth
+R15376:15383 Lib.Algebra <> l_op_inv meth
+R15386:15392 Lib.Algebra <> r_op_id meth
+R15395:15409 Coq.Bool.Bool <> negb_involutive thm
+R15344:15351 Lib.Algebra <> op_assoc meth
+R15357:15359 Lib.Algebra <> inv meth
+R15362:15363 Lib.Algebra <> op meth
+R15344:15351 Lib.Algebra <> op_assoc meth
+R15357:15359 Lib.Algebra <> inv meth
+R15362:15363 Lib.Algebra <> op meth
+R15376:15383 Lib.Algebra <> l_op_inv meth
+R15376:15383 Lib.Algebra <> l_op_inv meth
+R15386:15392 Lib.Algebra <> r_op_id meth
+R15386:15392 Lib.Algebra <> r_op_id meth
+R15395:15409 Coq.Bool.Bool <> negb_involutive thm
+R15395:15409 Coq.Bool.Bool <> negb_involutive thm
+R15437:15447 FreeGroup <> eqb_not_neg thm
+R15437:15447 FreeGroup <> eqb_not_neg thm
+R15437:15447 FreeGroup <> eqb_not_neg thm
+R15488:15496 FreeGroup <> to_canon' def
+R15488:15496 FreeGroup <> to_canon' def
+R15537:15546 FreeGroup <> quot_cons' def
+R15581:15583 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15570:15577 FreeGroup <> quot_hd' def
+R15584:15584 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R15588:15589 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R15593:15593 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R15581:15583 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15570:15577 FreeGroup <> quot_hd' def
+R15584:15584 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R15588:15589 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R15593:15593 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R15609:15615 FreeGroup <> some_eq thm
+R15609:15615 FreeGroup <> some_eq thm
+R15626:15638 FreeGroup <> quot_canon_hd thm
+R15626:15638 FreeGroup <> quot_canon_hd thm
+R15626:15638 FreeGroup <> quot_canon_hd thm
+R15692:15694 Coq.Bool.Bool <> eqb def
+R15692:15694 Coq.Bool.Bool <> eqb def
+R15730:15741 Coq.Bool.Bool <> eqb_true_iff thm
+R15730:15741 Coq.Bool.Bool <> eqb_true_iff thm
+R15730:15741 Coq.Bool.Bool <> eqb_true_iff thm
+R15769:15778 Coq.Bool.Bool <> orb_true_r thm
+R15784:15789 Lib.Algebra <> op_sub thm
+R15769:15778 Coq.Bool.Bool <> orb_true_r thm
+R15769:15778 Coq.Bool.Bool <> orb_true_r thm
+R15784:15789 Lib.Algebra <> op_sub thm
+R15784:15789 Lib.Algebra <> op_sub thm
+R15809:15819 Lib.EqDec <> eqf_leibniz meth
+R15822:15824 Lib.Algebra <> sub def
+R15829:15830 Lib.Algebra <> op meth
+R15809:15819 Lib.EqDec <> eqf_leibniz meth
+R15822:15824 Lib.Algebra <> sub def
+R15829:15830 Lib.Algebra <> op meth
+R15860:15863 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15873:15873 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15864:15865 Lib.Algebra <> op meth
+R15886:15898 Lib.Algebra <> sub_zero_uniq thm
+R15860:15863 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15873:15873 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R15864:15865 Lib.Algebra <> op meth
+R15886:15898 Lib.Algebra <> sub_zero_uniq thm
+R15940:15947 Lib.EqDec <> eqf_refl thm
+R15940:15947 Lib.EqDec <> eqf_refl thm
+R15940:15947 Lib.EqDec <> eqf_refl thm
+R15974:15989 FreeGroup <> eqf_sub_not_zero thm
+R15974:15989 FreeGroup <> eqf_sub_not_zero thm
+R15974:15989 FreeGroup <> eqf_sub_not_zero thm
+R16018:16020 Lib.Algebra <> sub def
+R16045:16052 Lib.Algebra <> op_assoc meth
+R16058:16060 Lib.Algebra <> inv meth
+R16063:16064 Lib.Algebra <> op meth
+R16077:16084 Lib.Algebra <> l_op_inv meth
+R16087:16093 Lib.Algebra <> r_op_id meth
+R16045:16052 Lib.Algebra <> op_assoc meth
+R16058:16060 Lib.Algebra <> inv meth
+R16063:16064 Lib.Algebra <> op meth
+R16045:16052 Lib.Algebra <> op_assoc meth
+R16058:16060 Lib.Algebra <> inv meth
+R16063:16064 Lib.Algebra <> op meth
+R16077:16084 Lib.Algebra <> l_op_inv meth
+R16077:16084 Lib.Algebra <> l_op_inv meth
+R16087:16093 Lib.Algebra <> r_op_id meth
+R16087:16093 Lib.Algebra <> r_op_id meth
+R16122:16124 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16125:16128 Coq.Init.Datatypes <> negb def
+R16145:16158 FreeGroup <> not_eqb_is_neg thm
+R16122:16124 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16125:16128 Coq.Init.Datatypes <> negb def
+R16145:16158 FreeGroup <> not_eqb_is_neg thm
+prf 16203:16232 <> quot_canon_concat_homomorphism
+binder 16235:16235 <> A:275
+R16246:16252 FreeGroup <> EqGroup class
+R16254:16254 FreeGroup <> A:275 var
+binder 16246:16254 <> H:278
+R16263:16275 FreeGroup <> QuotFreeGroup def
+R16277:16277 FreeGroup <> A:275 var
+binder 16258:16258 <> x:279
+binder 16260:16260 <> y:280
+R16310:16312 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16284:16291 FreeGroup <> to_canon def
+R16294:16304 FreeGroup <> quot_concat def
+R16308:16308 FreeGroup <> y:280 var
+R16306:16306 FreeGroup <> x:279 var
+R16313:16324 FreeGroup <> canon_concat def
+R16340:16347 FreeGroup <> to_canon def
+R16349:16349 FreeGroup <> y:280 var
+R16327:16334 FreeGroup <> to_canon def
+R16336:16336 FreeGroup <> x:279 var
+R16454:16481 FreeGroup <> quot_canon_cons_homomorphism thm
+R16454:16481 FreeGroup <> quot_canon_cons_homomorphism thm
+R16498:16506 FreeGroup <> to_canon' def
+R16498:16506 FreeGroup <> to_canon' def
+R16563:16565 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16552:16559 FreeGroup <> quot_hd' def
+R16566:16566 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16568:16569 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16571:16571 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16563:16565 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16552:16559 FreeGroup <> quot_hd' def
+R16566:16566 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16568:16569 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16571:16571 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16587:16593 FreeGroup <> some_eq thm
+R16587:16593 FreeGroup <> some_eq thm
+R16604:16616 FreeGroup <> quot_canon_hd thm
+R16604:16616 FreeGroup <> quot_canon_hd thm
+R16604:16616 FreeGroup <> quot_canon_hd thm
+R16693:16720 FreeGroup <> quot_canon_cons_homomorphism thm
+R16693:16720 FreeGroup <> quot_canon_cons_homomorphism thm
+R16737:16745 FreeGroup <> to_canon' def
+R16737:16745 FreeGroup <> to_canon' def
+R16802:16804 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16791:16798 FreeGroup <> quot_hd' def
+R16805:16805 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16807:16808 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16810:16810 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16802:16804 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R16791:16798 FreeGroup <> quot_hd' def
+R16805:16805 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16807:16808 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16810:16810 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R16826:16832 FreeGroup <> some_eq thm
+R16826:16832 FreeGroup <> some_eq thm
+R16843:16855 FreeGroup <> quot_canon_hd thm
+R16843:16855 FreeGroup <> quot_canon_hd thm
+R16843:16855 FreeGroup <> quot_canon_hd thm
+R16932:16959 FreeGroup <> quot_canon_cons_homomorphism thm
+R16932:16959 FreeGroup <> quot_canon_cons_homomorphism thm
+def 17005:17015 <> canon_apinv
+binder 17018:17018 <> A:281
+R17029:17035 FreeGroup <> EqGroup class
+R17037:17037 FreeGroup <> A:281 var
+binder 17029:17037 <> H:284
+R17046:17059 FreeGroup <> CanonFreeGroup def
+R17061:17061 FreeGroup <> A:281 var
+binder 17041:17041 <> x:285
+binder 17043:17043 <> y:286
+R17075:17075 FreeGroup <> x:285 var
+R17086:17087 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R17092:17092 FreeGroup <> y:286 var
+R17104:17107 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R17098:17098 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17100:17101 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17103:17103 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17114:17124 FreeGroup <> canon_apinv:287 def
+R17141:17144 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R17130:17130 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17137:17138 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17140:17140 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17131:17134 Coq.Init.Datatypes <> negb def
+R17145:17145 FreeGroup <> y:286 var
+def 17167:17175 <> canon_inv
+binder 17178:17178 <> A:289
+R17189:17195 FreeGroup <> EqGroup class
+R17197:17197 FreeGroup <> A:289 var
+binder 17189:17197 <> H:292
+R17204:17217 FreeGroup <> CanonFreeGroup def
+R17219:17219 FreeGroup <> A:289 var
+binder 17201:17201 <> x:293
+R17225:17235 FreeGroup <> canon_apinv def
+R17239:17240 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R17237:17237 FreeGroup <> x:293 var
+def 17253:17264 <> canon_append
+binder 17267:17267 <> A:294
+R17278:17284 FreeGroup <> EqGroup class
+R17286:17286 FreeGroup <> A:294 var
+binder 17278:17286 <> H:297
+R17293:17296 Coq.Init.Datatypes <> bool ind
+binder 17290:17290 <> b:298
+R17303:17303 FreeGroup <> A:294 var
+binder 17300:17300 <> v:299
+R17310:17323 FreeGroup <> CanonFreeGroup def
+R17325:17325 FreeGroup <> A:294 var
+binder 17307:17307 <> x:300
+R17339:17339 FreeGroup <> x:300 var
+R17350:17351 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R17356:17356 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17363:17363 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17357:17357 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17359:17360 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17362:17362 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17358:17358 FreeGroup <> b:298 var
+R17361:17361 FreeGroup <> v:299 var
+R17369:17369 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17378:17378 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17370:17370 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17373:17374 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17377:17377 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17401:17404 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R17386:17389 Coq.Init.Datatypes <> negb def
+R17392:17394 Lib.EqDec <> eqf meth
+R17396:17396 FreeGroup <> v:299 var
+R17405:17407 Coq.Bool.Bool <> eqb def
+R17409:17409 FreeGroup <> b:298 var
+R17485:17486 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R17440:17440 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R17449:17450 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R17457:17457 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R17441:17441 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17444:17445 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17448:17448 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17451:17451 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17453:17454 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17456:17456 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17452:17452 FreeGroup <> b:298 var
+R17455:17455 FreeGroup <> v:299 var
+R17493:17496 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R17504:17508 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R17528:17528 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R17509:17520 FreeGroup <> canon_append:301 def
+R17524:17524 FreeGroup <> v:299 var
+R17522:17522 FreeGroup <> b:298 var
+prf 17544:17564 <> append_for_normalized
+binder 17567:17567 <> A:303
+R17578:17584 FreeGroup <> EqGroup class
+R17586:17586 FreeGroup <> A:303 var
+binder 17578:17586 <> H:306
+R17593:17596 Coq.Init.Datatypes <> bool ind
+binder 17590:17590 <> b:307
+R17603:17603 FreeGroup <> A:303 var
+binder 17600:17600 <> v:308
+R17611:17624 FreeGroup <> CanonFreeGroup def
+R17626:17626 FreeGroup <> A:303 var
+binder 17607:17607 <> x:309
+R17660:17663 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R17634:17643 FreeGroup <> Normalized ind
+R17647:17650 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R17646:17646 FreeGroup <> x:309 var
+R17651:17651 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17658:17658 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17652:17652 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17654:17655 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17657:17657 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17653:17653 FreeGroup <> b:307 var
+R17656:17656 FreeGroup <> v:308 var
+R17677:17679 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R17665:17668 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R17664:17664 FreeGroup <> x:309 var
+R17669:17669 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17676:17676 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R17670:17670 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17672:17673 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17675:17675 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R17671:17671 FreeGroup <> b:307 var
+R17674:17674 FreeGroup <> v:308 var
+R17680:17691 FreeGroup <> canon_append def
+R17697:17697 FreeGroup <> x:309 var
+R17695:17695 FreeGroup <> v:308 var
+R17693:17693 FreeGroup <> b:307 var
+R17870:17880 Lib.EqDec <> not_eqf_iff thm
+R17870:17880 Lib.EqDec <> not_eqf_iff thm
+R17870:17880 Lib.EqDec <> not_eqf_iff thm
+R17897:17903 Lib.EqDec <> eqf_sym thm
+R17897:17903 Lib.EqDec <> eqf_sym thm
+R17897:17903 Lib.EqDec <> eqf_sym thm
+R17942:17950 Coq.Bool.Bool <> eqb_reflx thm
+R17953:17962 Coq.Bool.Bool <> orb_true_r thm
+R17942:17950 Coq.Bool.Bool <> eqb_reflx thm
+R17942:17950 Coq.Bool.Bool <> eqb_reflx thm
+R17953:17962 Coq.Bool.Bool <> orb_true_r thm
+R17953:17962 Coq.Bool.Bool <> orb_true_r thm
+prf 18032:18050 <> cons_for_normalized
+binder 18053:18053 <> A:310
+R18064:18070 FreeGroup <> EqGroup class
+R18072:18072 FreeGroup <> A:310 var
+binder 18064:18072 <> H:313
+R18079:18082 Coq.Init.Datatypes <> bool ind
+binder 18076:18076 <> b:314
+R18089:18089 FreeGroup <> A:310 var
+binder 18086:18086 <> v:315
+R18097:18110 FreeGroup <> CanonFreeGroup def
+R18112:18112 FreeGroup <> A:310 var
+binder 18093:18093 <> x:316
+R18144:18147 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18120:18129 FreeGroup <> Normalized ind
+R18138:18141 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R18132:18132 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18134:18135 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18137:18137 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18133:18133 FreeGroup <> b:314 var
+R18136:18136 FreeGroup <> v:315 var
+R18142:18142 FreeGroup <> x:316 var
+R18159:18161 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18154:18157 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R18148:18148 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18150:18151 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18153:18153 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R18149:18149 FreeGroup <> b:314 var
+R18152:18152 FreeGroup <> v:315 var
+R18158:18158 FreeGroup <> x:316 var
+R18162:18171 FreeGroup <> canon_cons def
+R18177:18177 FreeGroup <> x:316 var
+R18175:18175 FreeGroup <> v:315 var
+R18173:18173 FreeGroup <> b:314 var
+R18276:18288 FreeGroup <> condition_iff thm
+R18276:18288 FreeGroup <> condition_iff thm
+R18276:18288 FreeGroup <> condition_iff thm
+prf 18325:18343 <> canon_cons_inv_elem
+binder 18346:18346 <> A:317
+R18357:18363 FreeGroup <> EqGroup class
+R18365:18365 FreeGroup <> A:317 var
+binder 18357:18365 <> H:320
+R18375:18378 Coq.Init.Datatypes <> bool ind
+binder 18369:18369 <> b:321
+binder 18371:18372 <> b':322
+R18388:18388 FreeGroup <> A:317 var
+binder 18382:18382 <> v:323
+binder 18384:18385 <> v':324
+R18395:18408 FreeGroup <> CanonFreeGroup def
+R18410:18410 FreeGroup <> A:317 var
+binder 18392:18392 <> x:325
+R18429:18432 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18417:18426 FreeGroup <> Normalized ind
+R18428:18428 FreeGroup <> x:325 var
+R18468:18471 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R18460:18462 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18448:18451 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R18433:18436 Coq.Init.Datatypes <> negb def
+R18439:18441 Lib.EqDec <> eqf meth
+R18445:18446 FreeGroup <> v':324 var
+R18443:18443 FreeGroup <> v:323 var
+R18452:18454 Coq.Bool.Bool <> eqb def
+R18456:18456 FreeGroup <> b:321 var
+R18458:18459 FreeGroup <> b':322 var
+R18463:18467 Coq.Init.Datatypes <> false constr
+R18507:18509 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R18472:18481 FreeGroup <> canon_cons def
+R18488:18497 FreeGroup <> canon_cons def
+R18505:18505 FreeGroup <> x:325 var
+R18502:18503 FreeGroup <> v':324 var
+R18499:18500 FreeGroup <> b':322 var
+R18485:18485 FreeGroup <> v:323 var
+R18483:18483 FreeGroup <> b:321 var
+R18510:18510 FreeGroup <> x:325 var
+R18648:18651 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R18631:18634 Coq.Init.Datatypes <> negb def
+R18637:18639 Lib.EqDec <> eqf meth
+R18652:18654 Coq.Bool.Bool <> eqb def
+R18648:18651 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R18631:18634 Coq.Init.Datatypes <> negb def
+R18637:18639 Lib.EqDec <> eqf meth
+R18652:18654 Coq.Bool.Bool <> eqb def
+R18718:18730 Coq.Bool.Bool <> orb_false_iff thm
+R18733:18746 Coq.Bool.Bool <> negb_false_iff thm
+R18718:18730 Coq.Bool.Bool <> orb_false_iff thm
+R18718:18730 Coq.Bool.Bool <> orb_false_iff thm
+R18733:18746 Coq.Bool.Bool <> negb_false_iff thm
+R18733:18746 Coq.Bool.Bool <> negb_false_iff thm
+R18792:18798 Lib.EqDec <> eqf_iff thm
+R18792:18798 Lib.EqDec <> eqf_iff thm
+R18792:18798 Lib.EqDec <> eqf_iff thm
+R18817:18823 Lib.EqDec <> eqf_iff thm
+R18817:18823 Lib.EqDec <> eqf_iff thm
+R18817:18823 Lib.EqDec <> eqf_iff thm
+R18869:18883 FreeGroup <> eqb_false_chain thm
+R18869:18883 FreeGroup <> eqb_false_chain thm
+R18919:18931 FreeGroup <> condition_iff thm
+R18919:18931 FreeGroup <> condition_iff thm
+R18919:18931 FreeGroup <> condition_iff thm
+R18972:18975 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R18955:18958 Coq.Init.Datatypes <> negb def
+R18961:18963 Lib.EqDec <> eqf meth
+R18976:18978 Coq.Bool.Bool <> eqb def
+R18972:18975 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R18955:18958 Coq.Init.Datatypes <> negb def
+R18961:18963 Lib.EqDec <> eqf meth
+R18976:18978 Coq.Bool.Bool <> eqb def
+R19052:19070 FreeGroup <> condition_false_iff thm
+R19052:19070 FreeGroup <> condition_false_iff thm
+R19052:19070 FreeGroup <> condition_false_iff thm
+R19121:19135 Coq.Bool.Bool <> negb_involutive thm
+R19121:19135 Coq.Bool.Bool <> negb_involutive thm
+R19121:19135 Coq.Bool.Bool <> negb_involutive thm
+prf 19160:19176 <> canon_concat_cons
+binder 19179:19179 <> A:326
+R19190:19196 FreeGroup <> EqGroup class
+R19198:19198 FreeGroup <> A:326 var
+binder 19190:19198 <> H:329
+R19205:19208 Coq.Init.Datatypes <> bool ind
+binder 19202:19202 <> b:330
+R19215:19215 FreeGroup <> A:326 var
+binder 19212:19212 <> v:331
+R19224:19237 FreeGroup <> CanonFreeGroup def
+R19239:19239 FreeGroup <> A:326 var
+binder 19219:19219 <> x:332
+binder 19221:19221 <> y:333
+R19258:19261 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19246:19255 FreeGroup <> Normalized ind
+R19257:19257 FreeGroup <> x:332 var
+R19274:19277 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19262:19271 FreeGroup <> Normalized ind
+R19273:19273 FreeGroup <> y:333 var
+R19311:19314 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19278:19289 FreeGroup <> canon_concat def
+R19310:19310 FreeGroup <> y:333 var
+R19292:19301 FreeGroup <> canon_cons def
+R19307:19307 FreeGroup <> x:332 var
+R19305:19305 FreeGroup <> v:331 var
+R19303:19303 FreeGroup <> b:330 var
+R19315:19324 FreeGroup <> canon_cons def
+R19331:19342 FreeGroup <> canon_concat def
+R19346:19346 FreeGroup <> y:333 var
+R19344:19344 FreeGroup <> x:332 var
+R19328:19328 FreeGroup <> v:331 var
+R19326:19326 FreeGroup <> b:330 var
+R19444:19447 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R19429:19432 Coq.Init.Datatypes <> negb def
+R19435:19437 Lib.EqDec <> eqf meth
+R19448:19450 Coq.Bool.Bool <> eqb def
+R19444:19447 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R19429:19432 Coq.Init.Datatypes <> negb def
+R19435:19437 Lib.EqDec <> eqf meth
+R19448:19450 Coq.Bool.Bool <> eqb def
+R19489:19507 FreeGroup <> canon_cons_inv_elem thm
+R19489:19507 FreeGroup <> canon_cons_inv_elem thm
+R19522:19532 FreeGroup <> concat_norm thm
+R19522:19532 FreeGroup <> concat_norm thm
+R19551:19573 FreeGroup <> normalized_without_head thm
+R19551:19573 FreeGroup <> normalized_without_head thm
+prf 19603:19620 <> canon_concat_assoc
+binder 19623:19623 <> A:334
+R19634:19640 FreeGroup <> EqGroup class
+R19642:19642 FreeGroup <> A:334 var
+binder 19634:19642 <> H:337
+R19653:19666 FreeGroup <> CanonFreeGroup def
+R19668:19668 FreeGroup <> A:334 var
+binder 19646:19646 <> x:338
+binder 19648:19648 <> y:339
+binder 19650:19650 <> z:340
+R19685:19692 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19673:19682 FreeGroup <> Normalized ind
+R19684:19684 FreeGroup <> x:338 var
+R19705:19708 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19693:19702 FreeGroup <> Normalized ind
+R19704:19704 FreeGroup <> y:339 var
+R19721:19724 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R19709:19718 FreeGroup <> Normalized ind
+R19720:19720 FreeGroup <> z:340 var
+R19758:19760 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R19725:19736 FreeGroup <> canon_concat def
+R19757:19757 FreeGroup <> z:340 var
+R19739:19750 FreeGroup <> canon_concat def
+R19754:19754 FreeGroup <> y:339 var
+R19752:19752 FreeGroup <> x:338 var
+R19761:19772 FreeGroup <> canon_concat def
+R19777:19788 FreeGroup <> canon_concat def
+R19792:19792 FreeGroup <> z:340 var
+R19790:19790 FreeGroup <> y:339 var
+R19774:19774 FreeGroup <> x:338 var
+R19885:19901 FreeGroup <> canon_concat_cons thm
+R19885:19901 FreeGroup <> canon_concat_cons thm
+R19885:19901 FreeGroup <> canon_concat_cons thm
+R19885:19901 FreeGroup <> canon_concat_cons thm
+R19885:19901 FreeGroup <> canon_concat_cons thm
+R19926:19948 FreeGroup <> normalized_without_head thm
+R19926:19948 FreeGroup <> normalized_without_head thm
+R19972:19982 FreeGroup <> concat_norm thm
+R19972:19982 FreeGroup <> concat_norm thm
+R19998:20020 FreeGroup <> normalized_without_head thm
+R19998:20020 FreeGroup <> normalized_without_head thm
+prf 20046:20060 <> normalized_head
+binder 20063:20063 <> A:341
+R20074:20080 FreeGroup <> EqGroup class
+R20082:20082 FreeGroup <> A:341 var
+binder 20074:20082 <> H:344
+R20089:20092 Coq.Init.Datatypes <> bool ind
+binder 20086:20086 <> b:345
+R20099:20099 FreeGroup <> A:341 var
+binder 20096:20096 <> v:346
+R20106:20119 FreeGroup <> CanonFreeGroup def
+R20121:20121 FreeGroup <> A:341 var
+binder 20103:20103 <> x:347
+R20229:20235 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20145:20149 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R20228:20228 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R20138:20140 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20128:20135 Coq.Lists.List <> hd_error def
+R20137:20137 FreeGroup <> x:347 var
+R20141:20144 Coq.Init.Datatypes <> None constr
+R20150:20157 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R20176:20178 Coq.Init.Logic <> ::type_scope:'exists'_x_'..'_x_','_x not
+R20163:20166 Coq.Init.Datatypes <> bool ind
+binder 20158:20159 <> b':348
+R20175:20175 FreeGroup <> A:341 var
+binder 20170:20171 <> v':349
+R20205:20209 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R20227:20227 Coq.Init.Logic <> ::type_scope:x_'/\'_x not
+R20189:20191 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20179:20186 Coq.Lists.List <> hd_error def
+R20188:20188 FreeGroup <> x:347 var
+R20192:20195 Coq.Init.Datatypes <> Some constr
+R20197:20197 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20200:20201 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20204:20204 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20198:20199 FreeGroup <> b':348 var
+R20202:20203 FreeGroup <> v':349 var
+R20217:20220 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R20211:20214 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R20210:20210 FreeGroup <> v:346 var
+R20215:20216 FreeGroup <> v':349 var
+R20222:20224 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20221:20221 FreeGroup <> b:345 var
+R20225:20226 FreeGroup <> b':348 var
+R20248:20251 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20236:20245 FreeGroup <> Normalized ind
+R20247:20247 FreeGroup <> x:347 var
+R20252:20261 FreeGroup <> Normalized ind
+R20270:20273 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R20264:20264 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20266:20267 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20269:20269 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20265:20265 FreeGroup <> b:345 var
+R20268:20268 FreeGroup <> v:346 var
+R20274:20274 FreeGroup <> x:347 var
+prf 20493:20515 <> noramlized_singl_append
+binder 20518:20518 <> A:350
+R20529:20535 FreeGroup <> EqGroup class
+R20537:20537 FreeGroup <> A:350 var
+binder 20529:20537 <> H:353
+R20551:20554 Coq.Init.Datatypes <> bool ind
+binder 20541:20542 <> b0:354
+binder 20544:20545 <> b1:355
+binder 20547:20548 <> b':356
+R20568:20568 FreeGroup <> A:350 var
+binder 20558:20559 <> v0:357
+binder 20561:20562 <> v1:358
+binder 20564:20565 <> v':359
+R20575:20588 FreeGroup <> CanonFreeGroup def
+R20590:20590 FreeGroup <> A:350 var
+binder 20572:20572 <> x:360
+R20635:20638 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R20597:20606 FreeGroup <> Normalized ind
+R20617:20620 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R20609:20609 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20612:20613 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20616:20616 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20610:20611 FreeGroup <> b0:354 var
+R20614:20615 FreeGroup <> v0:357 var
+R20629:20632 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R20621:20621 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20624:20625 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20628:20628 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20622:20623 FreeGroup <> b1:355 var
+R20626:20627 FreeGroup <> v1:358 var
+R20633:20633 FreeGroup <> x:360 var
+R20690:20695 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R20639:20650 FreeGroup <> canon_concat def
+R20680:20680 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R20689:20689 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R20681:20681 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20684:20685 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20688:20688 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20682:20683 FreeGroup <> b':356 var
+R20686:20687 FreeGroup <> v':359 var
+R20661:20664 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R20653:20653 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20656:20657 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20660:20660 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20654:20655 FreeGroup <> b0:354 var
+R20658:20659 FreeGroup <> v0:357 var
+R20673:20676 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R20665:20665 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20668:20669 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20672:20672 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20666:20667 FreeGroup <> b1:355 var
+R20670:20671 FreeGroup <> v1:358 var
+R20677:20677 FreeGroup <> x:360 var
+R20704:20707 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R20696:20696 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20699:20700 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20703:20703 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20697:20698 FreeGroup <> b0:354 var
+R20701:20702 FreeGroup <> v0:357 var
+R20708:20719 FreeGroup <> canon_concat def
+R20737:20737 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R20746:20746 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R20738:20738 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20741:20742 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20745:20745 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20739:20740 FreeGroup <> b':356 var
+R20743:20744 FreeGroup <> v':359 var
+R20730:20733 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R20722:20722 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20725:20726 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20729:20729 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R20723:20724 FreeGroup <> b1:355 var
+R20727:20728 FreeGroup <> v1:358 var
+R20734:20734 FreeGroup <> x:360 var
+R20899:20902 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R20883:20886 Coq.Init.Datatypes <> negb def
+R20889:20891 Lib.EqDec <> eqf meth
+R20903:20905 Coq.Bool.Bool <> eqb def
+R20899:20902 Coq.Init.Datatypes <> ::bool_scope:x_'||'_x not
+R20883:20886 Coq.Init.Datatypes <> negb def
+R20889:20891 Lib.EqDec <> eqf meth
+R20903:20905 Coq.Bool.Bool <> eqb def
+R20947:20959 FreeGroup <> condition_iff thm
+R20947:20959 FreeGroup <> condition_iff thm
+R20947:20959 FreeGroup <> condition_iff thm
+R21044:21056 FreeGroup <> condition_iff thm
+R21044:21056 FreeGroup <> condition_iff thm
+R21044:21056 FreeGroup <> condition_iff thm
+prf 21102:21124 <> append_is_concat_at_end
+binder 21127:21127 <> A:361
+R21138:21144 FreeGroup <> EqGroup class
+R21146:21146 FreeGroup <> A:361 var
+binder 21138:21146 <> H:364
+R21153:21156 Coq.Init.Datatypes <> bool ind
+binder 21150:21150 <> b:365
+R21163:21163 FreeGroup <> A:361 var
+binder 21160:21160 <> v:366
+R21170:21183 FreeGroup <> CanonFreeGroup def
+R21185:21185 FreeGroup <> A:361 var
+binder 21167:21167 <> x:367
+R21204:21207 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21192:21201 FreeGroup <> Normalized ind
+R21203:21203 FreeGroup <> x:367 var
+R21226:21228 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21208:21219 FreeGroup <> canon_append def
+R21225:21225 FreeGroup <> x:367 var
+R21223:21223 FreeGroup <> v:366 var
+R21221:21221 FreeGroup <> b:365 var
+R21229:21240 FreeGroup <> canon_concat def
+R21244:21244 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R21251:21251 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R21245:21245 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R21247:21248 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R21250:21250 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R21246:21246 FreeGroup <> b:365 var
+R21249:21249 FreeGroup <> v:366 var
+R21242:21242 FreeGroup <> x:367 var
+R21368:21374 Lib.EqDec <> eqf_sym thm
+R21377:21383 FreeGroup <> eqb_sym thm
+R21368:21374 Lib.EqDec <> eqf_sym thm
+R21368:21374 Lib.EqDec <> eqf_sym thm
+R21377:21383 FreeGroup <> eqb_sym thm
+R21377:21383 FreeGroup <> eqb_sym thm
+R21398:21420 FreeGroup <> noramlized_singl_append thm
+R21398:21420 FreeGroup <> noramlized_singl_append thm
+R21398:21420 FreeGroup <> noramlized_singl_append thm
+R21398:21420 FreeGroup <> noramlized_singl_append thm
+prf 21497:21519 <> cons_is_concat_at_start
+binder 21522:21522 <> A:368
+R21533:21539 FreeGroup <> EqGroup class
+R21541:21541 FreeGroup <> A:368 var
+binder 21533:21541 <> H:371
+R21548:21551 Coq.Init.Datatypes <> bool ind
+binder 21545:21545 <> b:372
+R21558:21558 FreeGroup <> A:368 var
+binder 21555:21555 <> v:373
+R21565:21578 FreeGroup <> CanonFreeGroup def
+R21580:21580 FreeGroup <> A:368 var
+binder 21562:21562 <> x:374
+R21603:21605 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21587:21596 FreeGroup <> canon_cons def
+R21602:21602 FreeGroup <> x:374 var
+R21600:21600 FreeGroup <> v:373 var
+R21598:21598 FreeGroup <> b:372 var
+R21606:21617 FreeGroup <> canon_concat def
+R21628:21628 FreeGroup <> x:374 var
+R21619:21619 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R21626:21626 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R21620:21620 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R21622:21623 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R21625:21625 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R21621:21621 FreeGroup <> b:372 var
+R21624:21624 FreeGroup <> v:373 var
+prf 21660:21675 <> cons_append_comm
+binder 21678:21678 <> A:375
+R21689:21695 FreeGroup <> EqGroup class
+R21697:21697 FreeGroup <> A:375 var
+binder 21689:21697 <> H:378
+R21707:21710 Coq.Init.Datatypes <> bool ind
+binder 21701:21701 <> b:379
+binder 21703:21704 <> b':380
+R21720:21720 FreeGroup <> A:375 var
+binder 21714:21714 <> v:381
+binder 21716:21717 <> v':382
+R21727:21740 FreeGroup <> CanonFreeGroup def
+R21742:21742 FreeGroup <> A:375 var
+binder 21724:21724 <> x:383
+R21761:21764 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R21749:21758 FreeGroup <> Normalized ind
+R21760:21760 FreeGroup <> x:383 var
+R21802:21804 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R21765:21774 FreeGroup <> canon_cons def
+R21781:21792 FreeGroup <> canon_append def
+R21800:21800 FreeGroup <> x:383 var
+R21797:21798 FreeGroup <> v':382 var
+R21794:21795 FreeGroup <> b':380 var
+R21778:21778 FreeGroup <> v:381 var
+R21776:21776 FreeGroup <> b:379 var
+R21805:21816 FreeGroup <> canon_append def
+R21825:21834 FreeGroup <> canon_cons def
+R21840:21840 FreeGroup <> x:383 var
+R21838:21838 FreeGroup <> v:381 var
+R21836:21836 FreeGroup <> b:379 var
+R21821:21822 FreeGroup <> v':382 var
+R21818:21819 FreeGroup <> b':380 var
+R21872:21894 FreeGroup <> cons_is_concat_at_start thm
+R21897:21919 FreeGroup <> cons_is_concat_at_start thm
+R21924:21946 FreeGroup <> append_is_concat_at_end thm
+R21949:21971 FreeGroup <> append_is_concat_at_end thm
+R21974:21991 FreeGroup <> canon_concat_assoc thm
+R21872:21894 FreeGroup <> cons_is_concat_at_start thm
+R21872:21894 FreeGroup <> cons_is_concat_at_start thm
+R21897:21919 FreeGroup <> cons_is_concat_at_start thm
+R21897:21919 FreeGroup <> cons_is_concat_at_start thm
+R21924:21946 FreeGroup <> append_is_concat_at_end thm
+R21924:21946 FreeGroup <> append_is_concat_at_end thm
+R21924:21946 FreeGroup <> append_is_concat_at_end thm
+R21949:21971 FreeGroup <> append_is_concat_at_end thm
+R21949:21971 FreeGroup <> append_is_concat_at_end thm
+R21949:21971 FreeGroup <> append_is_concat_at_end thm
+R21974:21991 FreeGroup <> canon_concat_assoc thm
+R21974:21991 FreeGroup <> canon_concat_assoc thm
+R21974:21991 FreeGroup <> canon_concat_assoc thm
+R21974:21991 FreeGroup <> canon_concat_assoc thm
+R21974:21991 FreeGroup <> canon_concat_assoc thm
+R22044:22054 FreeGroup <> concat_norm thm
+R22044:22054 FreeGroup <> concat_norm thm
+prf 22093:22105 <> concat_append
+binder 22108:22108 <> A:384
+R22119:22125 FreeGroup <> EqGroup class
+R22127:22127 FreeGroup <> A:384 var
+binder 22119:22127 <> H:387
+R22134:22137 Coq.Init.Datatypes <> bool ind
+binder 22131:22131 <> b:388
+R22144:22144 FreeGroup <> A:384 var
+binder 22141:22141 <> v:389
+R22153:22166 FreeGroup <> CanonFreeGroup def
+R22168:22168 FreeGroup <> A:384 var
+binder 22148:22148 <> x:390
+binder 22150:22150 <> y:391
+R22187:22190 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R22175:22184 FreeGroup <> Normalized ind
+R22186:22186 FreeGroup <> x:390 var
+R22203:22209 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R22191:22200 FreeGroup <> Normalized ind
+R22202:22202 FreeGroup <> y:391 var
+R22245:22247 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R22210:22221 FreeGroup <> canon_concat def
+R22226:22237 FreeGroup <> canon_append def
+R22243:22243 FreeGroup <> y:391 var
+R22241:22241 FreeGroup <> v:389 var
+R22239:22239 FreeGroup <> b:388 var
+R22223:22223 FreeGroup <> x:390 var
+R22248:22259 FreeGroup <> canon_append def
+R22266:22277 FreeGroup <> canon_concat def
+R22281:22281 FreeGroup <> y:391 var
+R22279:22279 FreeGroup <> x:390 var
+R22263:22263 FreeGroup <> v:389 var
+R22261:22261 FreeGroup <> b:388 var
+R22381:22403 FreeGroup <> normalized_without_head thm
+R22381:22403 FreeGroup <> normalized_without_head thm
+R22426:22441 FreeGroup <> cons_append_comm thm
+R22426:22441 FreeGroup <> cons_append_comm thm
+R22452:22462 FreeGroup <> concat_norm thm
+R22452:22462 FreeGroup <> concat_norm thm
+R22478:22500 FreeGroup <> normalized_without_head thm
+R22478:22500 FreeGroup <> normalized_without_head thm
+prf 22528:22545 <> appinv_concat_elim
+binder 22548:22548 <> A:392
+R22559:22565 FreeGroup <> EqGroup class
+R22567:22567 FreeGroup <> A:392 var
+binder 22559:22567 <> H:395
+R22576:22589 FreeGroup <> CanonFreeGroup def
+R22591:22591 FreeGroup <> A:392 var
+binder 22571:22571 <> x:396
+binder 22573:22573 <> y:397
+R22630:22632 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R22598:22609 FreeGroup <> canon_concat def
+R22614:22624 FreeGroup <> canon_apinv def
+R22628:22628 FreeGroup <> y:397 var
+R22626:22626 FreeGroup <> x:396 var
+R22611:22611 FreeGroup <> x:396 var
+R22633:22633 FreeGroup <> y:397 var
+R22735:22742 Lib.EqDec <> eqf_refl thm
+R22745:22753 Coq.Bool.Bool <> eqb_negb2 thm
+R22735:22742 Lib.EqDec <> eqf_refl thm
+R22735:22742 Lib.EqDec <> eqf_refl thm
+R22745:22753 Coq.Bool.Bool <> eqb_negb2 thm
+R22745:22753 Coq.Bool.Bool <> eqb_negb2 thm
+prf 22776:22793 <> r_canon_concat_inv
+binder 22796:22796 <> A:398
+R22807:22813 FreeGroup <> EqGroup class
+R22815:22815 FreeGroup <> A:398 var
+binder 22807:22815 <> H:401
+R22823:22836 FreeGroup <> CanonFreeGroup def
+R22838:22838 FreeGroup <> A:398 var
+binder 22819:22819 <> x:402
+R22874:22876 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R22846:22857 FreeGroup <> canon_concat def
+R22862:22870 FreeGroup <> canon_inv def
+R22872:22872 FreeGroup <> x:402 var
+R22859:22859 FreeGroup <> x:402 var
+R22877:22878 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R22940:22957 FreeGroup <> appinv_concat_elim thm
+R22940:22957 FreeGroup <> appinv_concat_elim thm
+R22940:22957 FreeGroup <> appinv_concat_elim thm
+R22975:22982 Lib.EqDec <> eqf_refl thm
+R22985:22993 Coq.Bool.Bool <> eqb_negb2 thm
+R22975:22982 Lib.EqDec <> eqf_refl thm
+R22975:22982 Lib.EqDec <> eqf_refl thm
+R22985:22993 Coq.Bool.Bool <> eqb_negb2 thm
+R22985:22993 Coq.Bool.Bool <> eqb_negb2 thm
+prf 23014:23022 <> apinv_def
+binder 23025:23025 <> A:403
+R23036:23042 FreeGroup <> EqGroup class
+R23044:23044 FreeGroup <> A:403 var
+binder 23036:23044 <> H:406
+R23053:23066 FreeGroup <> CanonFreeGroup def
+R23068:23068 FreeGroup <> A:403 var
+binder 23048:23048 <> x:407
+binder 23050:23050 <> y:408
+R23091:23093 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R23076:23086 FreeGroup <> canon_apinv def
+R23090:23090 FreeGroup <> y:408 var
+R23088:23088 FreeGroup <> x:407 var
+R23105:23108 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R23094:23102 FreeGroup <> canon_inv def
+R23104:23104 FreeGroup <> x:407 var
+R23109:23109 FreeGroup <> y:408 var
+R23128:23136 FreeGroup <> canon_inv def
+R23225:23225 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23237:23237 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23226:23226 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23233:23234 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23236:23236 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23227:23230 Coq.Init.Datatypes <> negb def
+R23244:23252 Coq.Lists.List <> app_assoc thm
+R23225:23225 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23237:23237 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23226:23226 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23233:23234 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23236:23236 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23227:23230 Coq.Init.Datatypes <> negb def
+R23225:23225 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23237:23237 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23226:23226 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23233:23234 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23236:23236 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23227:23230 Coq.Init.Datatypes <> negb def
+R23244:23252 Coq.Lists.List <> app_assoc thm
+R23244:23252 Coq.Lists.List <> app_assoc thm
+prf 23267:23283 <> cannon_inv_append
+binder 23286:23286 <> A:409
+R23297:23303 FreeGroup <> EqGroup class
+R23305:23305 FreeGroup <> A:409 var
+binder 23297:23305 <> H:412
+R23312:23315 Coq.Init.Datatypes <> bool ind
+binder 23309:23309 <> b:413
+R23322:23322 FreeGroup <> A:409 var
+binder 23319:23319 <> v:414
+R23330:23343 FreeGroup <> CanonFreeGroup def
+R23345:23345 FreeGroup <> A:409 var
+binder 23326:23326 <> x:415
+R23378:23380 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R23353:23361 FreeGroup <> canon_inv def
+R23365:23368 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R23364:23364 FreeGroup <> x:415 var
+R23369:23369 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23376:23376 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23370:23370 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23372:23373 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23375:23375 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23371:23371 FreeGroup <> b:413 var
+R23374:23374 FreeGroup <> v:414 var
+R23392:23395 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R23381:23381 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23388:23389 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23391:23391 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23382:23385 Coq.Init.Datatypes <> negb def
+R23387:23387 FreeGroup <> b:413 var
+R23390:23390 FreeGroup <> v:414 var
+R23396:23404 FreeGroup <> canon_inv def
+R23406:23406 FreeGroup <> x:415 var
+R23500:23508 FreeGroup <> apinv_def thm
+R23516:23524 FreeGroup <> apinv_def thm
+R23527:23539 Coq.Lists.List <> app_comm_cons thm
+R23500:23508 FreeGroup <> apinv_def thm
+R23500:23508 FreeGroup <> apinv_def thm
+R23516:23524 FreeGroup <> apinv_def thm
+R23516:23524 FreeGroup <> apinv_def thm
+R23527:23539 Coq.Lists.List <> app_comm_cons thm
+R23527:23539 Coq.Lists.List <> app_comm_cons thm
+prf 23554:23574 <> concat_for_normalized
+binder 23577:23577 <> A:416
+R23588:23594 FreeGroup <> EqGroup class
+R23596:23596 FreeGroup <> A:416 var
+binder 23588:23596 <> H:419
+R23605:23618 FreeGroup <> CanonFreeGroup def
+R23620:23620 FreeGroup <> A:416 var
+binder 23600:23600 <> x:420
+binder 23602:23602 <> y:421
+R23646:23649 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R23627:23636 FreeGroup <> Normalized ind
+R23640:23643 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R23639:23639 FreeGroup <> x:420 var
+R23644:23644 FreeGroup <> y:421 var
+R23666:23668 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R23650:23661 FreeGroup <> canon_concat def
+R23665:23665 FreeGroup <> y:421 var
+R23663:23663 FreeGroup <> x:420 var
+R23670:23673 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R23669:23669 FreeGroup <> x:420 var
+R23674:23674 FreeGroup <> y:421 var
+R23749:23767 FreeGroup <> cons_for_normalized thm
+R23749:23767 FreeGroup <> cons_for_normalized thm
+R23749:23767 FreeGroup <> cons_for_normalized thm
+R23749:23767 FreeGroup <> cons_for_normalized thm
+R23783:23805 FreeGroup <> normalized_without_head thm
+R23783:23805 FreeGroup <> normalized_without_head thm
+R23824:23836 Coq.Lists.List <> app_comm_cons thm
+R23824:23836 Coq.Lists.List <> app_comm_cons thm
+R23824:23836 Coq.Lists.List <> app_comm_cons thm
+prf 23858:23879 <> normalized_list_concat
+binder 23882:23882 <> A:422
+R23893:23899 FreeGroup <> EqGroup class
+R23901:23901 FreeGroup <> A:422 var
+binder 23893:23901 <> H:425
+R23911:23914 Coq.Init.Datatypes <> bool ind
+binder 23905:23905 <> b:426
+binder 23907:23908 <> b':427
+R23924:23924 FreeGroup <> A:422 var
+binder 23918:23918 <> v:428
+binder 23920:23921 <> v':429
+R23933:23946 FreeGroup <> CanonFreeGroup def
+R23948:23948 FreeGroup <> A:422 var
+binder 23928:23928 <> x:430
+binder 23930:23930 <> y:431
+R23981:23984 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R23955:23964 FreeGroup <> Normalized ind
+R23968:23971 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R23967:23967 FreeGroup <> x:430 var
+R23972:23972 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23979:23979 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R23973:23973 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23975:23976 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23978:23978 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23974:23974 FreeGroup <> b:426 var
+R23977:23977 FreeGroup <> v:428 var
+R24011:24016 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R23985:23994 FreeGroup <> Normalized ind
+R24005:24008 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R23997:23997 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24000:24001 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24004:24004 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R23998:23999 FreeGroup <> b':427 var
+R24002:24003 FreeGroup <> v':429 var
+R24009:24009 FreeGroup <> y:431 var
+R24034:24037 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24024:24027 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R24018:24021 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R24017:24017 FreeGroup <> v:428 var
+R24022:24023 FreeGroup <> v':429 var
+R24029:24031 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R24028:24028 FreeGroup <> b:426 var
+R24032:24033 FreeGroup <> b':427 var
+R24038:24047 FreeGroup <> Normalized ind
+R24051:24054 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R24050:24050 FreeGroup <> x:430 var
+R24061:24064 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R24055:24055 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24057:24058 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24060:24060 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24056:24056 FreeGroup <> b:426 var
+R24059:24059 FreeGroup <> v:428 var
+R24073:24076 Coq.Init.Datatypes <> ::list_scope:x_'::'_x not
+R24065:24065 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24068:24069 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24072:24072 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24066:24067 FreeGroup <> b':427 var
+R24070:24071 FreeGroup <> v':429 var
+R24077:24077 FreeGroup <> y:431 var
+R24128:24134 Coq.Lists.List <> rev_ind thm
+R24128:24134 Coq.Lists.List <> rev_ind thm
+R24209:24217 Coq.Lists.List <> app_assoc thm
+R24209:24217 Coq.Lists.List <> app_assoc thm
+R24209:24217 Coq.Lists.List <> app_assoc thm
+R24279:24297 FreeGroup <> concat_normalized_l thm
+R24320:24320 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24327:24327 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24321:24321 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24323:24324 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24326:24326 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24302:24305 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R24306:24306 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24317:24317 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24307:24307 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24311:24312 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24316:24316 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24279:24297 FreeGroup <> concat_normalized_l thm
+R24320:24320 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24327:24327 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24321:24321 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24323:24324 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24326:24326 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24302:24305 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R24306:24306 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24317:24317 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24307:24307 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24311:24312 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24316:24316 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24370:24379 FreeGroup <> Normalized ind
+R24381:24381 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24392:24393 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24400:24400 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24382:24382 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24386:24387 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24391:24391 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24394:24394 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24396:24397 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24399:24399 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24420:24438 FreeGroup <> concat_normalized_r thm
+R24460:24468 Coq.Lists.List <> app_assoc thm
+R24370:24379 FreeGroup <> Normalized ind
+R24381:24381 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24392:24393 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24400:24400 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24382:24382 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24386:24387 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24391:24391 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24394:24394 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24396:24397 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24399:24399 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24420:24438 FreeGroup <> concat_normalized_r thm
+R24460:24468 Coq.Lists.List <> app_assoc thm
+R24460:24468 Coq.Lists.List <> app_assoc thm
+prf 24531:24544 <> rev_normalized
+binder 24547:24547 <> A:432
+R24558:24564 FreeGroup <> EqGroup class
+R24566:24566 FreeGroup <> A:432 var
+binder 24558:24566 <> H:435
+R24576:24579 Coq.Init.Datatypes <> bool ind
+binder 24570:24570 <> b:436
+binder 24572:24573 <> b':437
+R24589:24589 FreeGroup <> A:432 var
+binder 24583:24583 <> v:438
+binder 24585:24586 <> v':439
+R24596:24609 FreeGroup <> CanonFreeGroup def
+R24611:24611 FreeGroup <> A:432 var
+binder 24593:24593 <> x:440
+R24644:24647 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24618:24627 FreeGroup <> Normalized ind
+R24631:24634 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R24630:24630 FreeGroup <> x:440 var
+R24635:24635 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24642:24642 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R24636:24636 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24638:24639 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24641:24641 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24637:24637 FreeGroup <> b:436 var
+R24640:24640 FreeGroup <> v:438 var
+R24665:24668 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24655:24658 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R24649:24652 Coq.Init.Logic <> ::type_scope:x_'<>'_x not
+R24648:24648 FreeGroup <> v:438 var
+R24653:24654 FreeGroup <> v':439 var
+R24660:24662 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R24659:24659 FreeGroup <> b:436 var
+R24663:24664 FreeGroup <> b':437 var
+R24669:24678 FreeGroup <> Normalized ind
+R24682:24685 Coq.Init.Datatypes <> ::list_scope:x_'++'_x not
+R24681:24681 FreeGroup <> x:440 var
+R24686:24686 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24693:24694 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24703:24703 Coq.Lists.List ListNotations ::list_scope:'['_x_';'_x_';'_'..'_';'_x_']' not
+R24687:24687 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24689:24690 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24692:24692 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24688:24688 FreeGroup <> b:436 var
+R24691:24691 FreeGroup <> v:438 var
+R24695:24695 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24698:24699 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24702:24702 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R24696:24697 FreeGroup <> b':437 var
+R24700:24701 FreeGroup <> v':439 var
+R24769:24775 Coq.Lists.List <> rev_ind thm
+R24769:24775 Coq.Lists.List <> rev_ind thm
+R24857:24878 FreeGroup <> normalized_list_concat thm
+R24857:24878 FreeGroup <> normalized_list_concat thm
+prf 24925:24932 <> inv_norm
+binder 24935:24935 <> A:441
+R24946:24952 FreeGroup <> EqGroup class
+R24954:24954 FreeGroup <> A:441 var
+binder 24946:24954 <> H:444
+R24961:24974 FreeGroup <> CanonFreeGroup def
+R24976:24976 FreeGroup <> A:441 var
+binder 24958:24958 <> x:445
+R24996:24999 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R24984:24993 FreeGroup <> Normalized ind
+R24995:24995 FreeGroup <> x:445 var
+R25000:25009 FreeGroup <> Normalized ind
+R25012:25020 FreeGroup <> canon_inv def
+R25022:25022 FreeGroup <> x:445 var
+R25111:25119 FreeGroup <> apinv_def thm
+R25111:25119 FreeGroup <> apinv_def thm
+R25111:25119 FreeGroup <> apinv_def thm
+R25138:25146 FreeGroup <> apinv_def thm
+R25138:25146 FreeGroup <> apinv_def thm
+R25138:25146 FreeGroup <> apinv_def thm
+R25157:25170 FreeGroup <> rev_normalized thm
+R25157:25170 FreeGroup <> rev_normalized thm
+prf 25225:25242 <> l_canon_concat_inv
+binder 25245:25245 <> A:446
+R25256:25262 FreeGroup <> EqGroup class
+R25264:25264 FreeGroup <> A:446 var
+binder 25256:25264 <> H:449
+R25272:25285 FreeGroup <> CanonFreeGroup def
+R25287:25287 FreeGroup <> A:446 var
+binder 25268:25268 <> x:450
+R25307:25310 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25295:25304 FreeGroup <> Normalized ind
+R25306:25306 FreeGroup <> x:450 var
+R25339:25341 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R25311:25322 FreeGroup <> canon_concat def
+R25338:25338 FreeGroup <> x:450 var
+R25325:25333 FreeGroup <> canon_inv def
+R25335:25335 FreeGroup <> x:450 var
+R25342:25343 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R25388:25394 Coq.Lists.List <> rev_ind thm
+R25388:25394 Coq.Lists.List <> rev_ind thm
+R25426:25442 FreeGroup <> cannon_inv_append thm
+R25426:25442 FreeGroup <> cannon_inv_append thm
+R25426:25442 FreeGroup <> cannon_inv_append thm
+R25458:25478 FreeGroup <> append_for_normalized thm
+R25458:25478 FreeGroup <> append_for_normalized thm
+R25458:25478 FreeGroup <> append_for_normalized thm
+R25458:25478 FreeGroup <> append_for_normalized thm
+R25497:25506 FreeGroup <> Normalized ind
+R25525:25543 FreeGroup <> concat_normalized_l thm
+R25547:25547 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R25554:25554 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R25548:25548 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R25550:25551 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R25553:25553 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R25497:25506 FreeGroup <> Normalized ind
+R25525:25543 FreeGroup <> concat_normalized_l thm
+R25547:25547 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R25554:25554 Coq.Lists.List ListNotations ::list_scope:'['_x_']' not
+R25548:25548 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R25550:25551 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R25553:25553 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R25568:25580 FreeGroup <> concat_append thm
+R25568:25580 FreeGroup <> concat_append thm
+R25568:25580 FreeGroup <> concat_append thm
+R25568:25580 FreeGroup <> concat_append thm
+R25568:25580 FreeGroup <> concat_append thm
+R25611:25618 Lib.EqDec <> eqf_refl thm
+R25621:25629 Coq.Bool.Bool <> eqb_negb1 thm
+R25611:25618 Lib.EqDec <> eqf_refl thm
+R25611:25618 Lib.EqDec <> eqf_refl thm
+R25621:25629 Coq.Bool.Bool <> eqb_negb1 thm
+R25621:25629 Coq.Bool.Bool <> eqb_negb1 thm
+R25648:25655 FreeGroup <> inv_norm thm
+R25648:25655 FreeGroup <> inv_norm thm
+prf 25678:25694 <> l_canon_concat_id
+binder 25697:25697 <> A:451
+R25708:25714 FreeGroup <> EqGroup class
+R25716:25716 FreeGroup <> A:451 var
+binder 25708:25716 <> H:454
+R25724:25737 FreeGroup <> CanonFreeGroup def
+R25739:25739 FreeGroup <> A:451 var
+binder 25720:25720 <> x:455
+R25764:25766 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R25747:25758 FreeGroup <> canon_concat def
+R25763:25763 FreeGroup <> x:455 var
+R25760:25761 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R25767:25767 FreeGroup <> x:455 var
+prf 25799:25815 <> r_canon_concat_id
+binder 25818:25818 <> A:456
+R25829:25835 FreeGroup <> EqGroup class
+R25837:25837 FreeGroup <> A:456 var
+binder 25829:25837 <> H:459
+R25845:25858 FreeGroup <> CanonFreeGroup def
+R25860:25860 FreeGroup <> A:456 var
+binder 25841:25841 <> x:460
+R25880:25883 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R25868:25877 FreeGroup <> Normalized ind
+R25879:25879 FreeGroup <> x:460 var
+R25901:25903 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R25884:25895 FreeGroup <> canon_concat def
+R25899:25900 Coq.Lists.List ListNotations ::list_scope:'['_']' not
+R25897:25897 FreeGroup <> x:460 var
+R25904:25904 FreeGroup <> x:460 var
+R25981:25999 FreeGroup <> cons_for_normalized thm
+R25981:25999 FreeGroup <> cons_for_normalized thm
+R25981:25999 FreeGroup <> cons_for_normalized thm
+R25981:25999 FreeGroup <> cons_for_normalized thm
+R26017:26039 FreeGroup <> normalized_without_head thm
+R26017:26039 FreeGroup <> normalized_without_head thm
+def 26100:26108 <> quot_zero
+binder 26111:26111 <> A:461
+R26122:26128 FreeGroup <> EqGroup class
+R26130:26130 FreeGroup <> A:461 var
+binder 26122:26130 <> H:464
+R26136:26139 Coq.Init.Datatypes <> None constr
+R26147:26161 FreeGroup <> NEQuotFreeGroup ind
+R26163:26163 FreeGroup <> A:461 var
+def 26179:26199 <> quot_via_canon_concat
+binder 26202:26202 <> A:465
+R26213:26219 FreeGroup <> EqGroup class
+R26221:26221 FreeGroup <> A:465 var
+binder 26213:26221 <> H:468
+R26230:26242 FreeGroup <> QuotFreeGroup def
+R26244:26244 FreeGroup <> A:465 var
+binder 26225:26225 <> x:469
+binder 26227:26227 <> y:470
+R26249:26261 FreeGroup <> QuotFreeGroup def
+R26263:26263 FreeGroup <> A:465 var
+R26270:26276 FreeGroup <> to_quot def
+R26279:26290 FreeGroup <> canon_concat def
+R26306:26313 FreeGroup <> to_canon def
+R26315:26315 FreeGroup <> y:470 var
+R26293:26300 FreeGroup <> to_canon def
+R26302:26302 FreeGroup <> x:469 var
+def 26332:26349 <> quot_via_canon_inv
+binder 26352:26352 <> A:471
+R26363:26369 FreeGroup <> EqGroup class
+R26371:26371 FreeGroup <> A:471 var
+binder 26363:26371 <> H:474
+R26378:26390 FreeGroup <> QuotFreeGroup def
+R26392:26392 FreeGroup <> A:471 var
+binder 26375:26375 <> x:475
+R26397:26409 FreeGroup <> QuotFreeGroup def
+R26411:26411 FreeGroup <> A:471 var
+R26418:26424 FreeGroup <> to_quot def
+R26427:26435 FreeGroup <> canon_inv def
+R26438:26445 FreeGroup <> to_canon def
+R26447:26447 FreeGroup <> x:475 var
+prf 26461:26487 <> l_quot_via_canon_concat_inv
+binder 26490:26490 <> A:476
+R26501:26507 FreeGroup <> EqGroup class
+R26509:26509 FreeGroup <> A:476 var
+binder 26501:26509 <> H:479
+R26518:26530 FreeGroup <> QuotFreeGroup def
+R26532:26532 FreeGroup <> A:476 var
+binder 26513:26513 <> x:480
+binder 26515:26515 <> y:481
+R26586:26588 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R26540:26560 FreeGroup <> quot_via_canon_concat def
+R26585:26585 FreeGroup <> x:480 var
+R26563:26580 FreeGroup <> quot_via_canon_inv def
+R26582:26582 FreeGroup <> x:480 var
+R26589:26597 FreeGroup <> quot_zero def
+R26616:26636 FreeGroup <> quot_via_canon_concat def
+R26639:26656 FreeGroup <> quot_via_canon_inv def
+R26667:26680 FreeGroup <> canon_epi_quot thm
+R26667:26680 FreeGroup <> canon_epi_quot thm
+R26667:26680 FreeGroup <> canon_epi_quot thm
+R26667:26680 FreeGroup <> canon_epi_quot thm
+R26695:26712 FreeGroup <> l_canon_concat_inv thm
+R26695:26712 FreeGroup <> l_canon_concat_inv thm
+R26695:26712 FreeGroup <> l_canon_concat_inv thm
+R26695:26712 FreeGroup <> l_canon_concat_inv thm
+R26727:26740 FreeGroup <> quot_is_normal thm
+R26727:26740 FreeGroup <> quot_is_normal thm
+R26753:26760 FreeGroup <> inv_norm thm
+R26753:26760 FreeGroup <> inv_norm thm
+R26769:26782 FreeGroup <> quot_is_normal thm
+R26769:26782 FreeGroup <> quot_is_normal thm
+prf 26799:26825 <> r_quot_via_canon_concat_inv
+binder 26828:26828 <> A:482
+R26839:26845 FreeGroup <> EqGroup class
+R26847:26847 FreeGroup <> A:482 var
+binder 26839:26847 <> H:485
+R26856:26868 FreeGroup <> QuotFreeGroup def
+R26870:26870 FreeGroup <> A:482 var
+binder 26851:26851 <> x:486
+binder 26853:26853 <> y:487
+R26924:26926 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R26878:26898 FreeGroup <> quot_via_canon_concat def
+R26903:26920 FreeGroup <> quot_via_canon_inv def
+R26922:26922 FreeGroup <> x:486 var
+R26900:26900 FreeGroup <> x:486 var
+R26927:26935 FreeGroup <> quot_zero def
+R26954:26974 FreeGroup <> quot_via_canon_concat def
+R26977:26994 FreeGroup <> quot_via_canon_inv def
+R27005:27018 FreeGroup <> canon_epi_quot thm
+R27005:27018 FreeGroup <> canon_epi_quot thm
+R27005:27018 FreeGroup <> canon_epi_quot thm
+R27005:27018 FreeGroup <> canon_epi_quot thm
+R27033:27050 FreeGroup <> r_canon_concat_inv thm
+R27033:27050 FreeGroup <> r_canon_concat_inv thm
+R27033:27050 FreeGroup <> r_canon_concat_inv thm
+R27069:27076 FreeGroup <> inv_norm thm
+R27069:27076 FreeGroup <> inv_norm thm
+R27085:27098 FreeGroup <> quot_is_normal thm
+R27085:27098 FreeGroup <> quot_is_normal thm
+prf 27115:27140 <> l_quot_via_canon_concat_id
+binder 27143:27143 <> A:488
+R27154:27160 FreeGroup <> EqGroup class
+R27162:27162 FreeGroup <> A:488 var
+binder 27154:27162 <> H:491
+R27171:27183 FreeGroup <> QuotFreeGroup def
+R27185:27185 FreeGroup <> A:488 var
+binder 27166:27166 <> x:492
+binder 27168:27168 <> y:493
+R27226:27228 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R27193:27213 FreeGroup <> quot_via_canon_concat def
+R27225:27225 FreeGroup <> x:492 var
+R27215:27223 FreeGroup <> quot_zero def
+R27229:27229 FreeGroup <> x:492 var
+R27248:27268 FreeGroup <> quot_via_canon_concat def
+R27282:27295 FreeGroup <> quot_epi_canon thm
+R27282:27295 FreeGroup <> quot_epi_canon thm
+prf 27312:27337 <> r_quot_via_canon_concat_id
+binder 27340:27340 <> A:494
+R27351:27357 FreeGroup <> EqGroup class
+R27359:27359 FreeGroup <> A:494 var
+binder 27351:27359 <> H:497
+R27368:27380 FreeGroup <> QuotFreeGroup def
+R27382:27382 FreeGroup <> A:494 var
+binder 27363:27363 <> x:498
+binder 27365:27365 <> y:499
+R27423:27425 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R27390:27410 FreeGroup <> quot_via_canon_concat def
+R27414:27422 FreeGroup <> quot_zero def
+R27412:27412 FreeGroup <> x:498 var
+R27426:27426 FreeGroup <> x:498 var
+R27445:27465 FreeGroup <> quot_via_canon_concat def
+R27481:27497 FreeGroup <> r_canon_concat_id thm
+R27481:27497 FreeGroup <> r_canon_concat_id thm
+R27481:27497 FreeGroup <> r_canon_concat_id thm
+R27481:27497 FreeGroup <> r_canon_concat_id thm
+R27510:27523 FreeGroup <> quot_epi_canon thm
+R27510:27523 FreeGroup <> quot_epi_canon thm
+R27536:27549 FreeGroup <> quot_is_normal thm
+R27536:27549 FreeGroup <> quot_is_normal thm
+prf 27566:27592 <> quot_via_canon_concat_assoc
+binder 27595:27595 <> A:500
+R27606:27612 FreeGroup <> EqGroup class
+R27614:27614 FreeGroup <> A:500 var
+binder 27606:27614 <> H:503
+R27625:27637 FreeGroup <> QuotFreeGroup def
+R27639:27639 FreeGroup <> A:500 var
+binder 27618:27618 <> x:504
+binder 27620:27620 <> y:505
+binder 27622:27622 <> z:506
+R27698:27700 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R27647:27667 FreeGroup <> quot_via_canon_concat def
+R27697:27697 FreeGroup <> z:506 var
+R27670:27690 FreeGroup <> quot_via_canon_concat def
+R27694:27694 FreeGroup <> y:505 var
+R27692:27692 FreeGroup <> x:504 var
+R27701:27721 FreeGroup <> quot_via_canon_concat def
+R27726:27746 FreeGroup <> quot_via_canon_concat def
+R27750:27750 FreeGroup <> z:506 var
+R27748:27748 FreeGroup <> y:505 var
+R27723:27723 FreeGroup <> x:504 var
+R27770:27790 FreeGroup <> quot_via_canon_concat def
+R27801:27814 FreeGroup <> canon_epi_quot thm
+R27817:27830 FreeGroup <> canon_epi_quot thm
+R27801:27814 FreeGroup <> canon_epi_quot thm
+R27801:27814 FreeGroup <> canon_epi_quot thm
+R27801:27814 FreeGroup <> canon_epi_quot thm
+R27817:27830 FreeGroup <> canon_epi_quot thm
+R27817:27830 FreeGroup <> canon_epi_quot thm
+R27817:27830 FreeGroup <> canon_epi_quot thm
+R27845:27862 FreeGroup <> canon_concat_assoc thm
+R27881:27894 FreeGroup <> quot_is_normal thm
+R27845:27862 FreeGroup <> canon_concat_assoc thm
+R27845:27862 FreeGroup <> canon_concat_assoc thm
+R27845:27862 FreeGroup <> canon_concat_assoc thm
+R27845:27862 FreeGroup <> canon_concat_assoc thm
+R27845:27862 FreeGroup <> canon_concat_assoc thm
+R27881:27894 FreeGroup <> quot_is_normal thm
+R27881:27894 FreeGroup <> quot_is_normal thm
+R27881:27894 FreeGroup <> quot_is_normal thm
+R27907:27917 FreeGroup <> concat_norm thm
+R27926:27939 FreeGroup <> quot_is_normal thm
+R27907:27917 FreeGroup <> concat_norm thm
+R27926:27939 FreeGroup <> quot_is_normal thm
+R27926:27939 FreeGroup <> quot_is_normal thm
+R27952:27962 FreeGroup <> concat_norm thm
+R27971:27984 FreeGroup <> quot_is_normal thm
+R27952:27962 FreeGroup <> concat_norm thm
+R27971:27984 FreeGroup <> quot_is_normal thm
+R27971:27984 FreeGroup <> quot_is_normal thm
+inst 28017:28038 <> QuotFreeGroup_is_Group
+binder 28041:28041 <> A:507
+R28052:28058 FreeGroup <> EqGroup class
+R28060:28060 FreeGroup <> A:507 var
+binder 28052:28060 <> H:510
+R28065:28069 Lib.Algebra <> Group class
+R28072:28084 FreeGroup <> QuotFreeGroup def
+R28086:28086 FreeGroup <> A:507 var
+R28155:28157 Lib.Algebra <> inv meth
+R28117:28118 Lib.Algebra <> op meth
+R28096:28099 Lib.Algebra <> zero meth
+R28109:28112 Coq.Init.Datatypes <> None constr
+R28130:28150 FreeGroup <> quot_via_canon_concat def
+R28168:28185 FreeGroup <> quot_via_canon_inv def
+R28219:28244 FreeGroup <> l_quot_via_canon_concat_id thm
+R28219:28244 FreeGroup <> l_quot_via_canon_concat_id thm
+R28283:28308 FreeGroup <> r_quot_via_canon_concat_id thm
+R28283:28308 FreeGroup <> r_quot_via_canon_concat_id thm
+R28347:28373 FreeGroup <> l_quot_via_canon_concat_inv thm
+R28347:28373 FreeGroup <> l_quot_via_canon_concat_inv thm
+R28412:28438 FreeGroup <> r_quot_via_canon_concat_inv thm
+R28412:28438 FreeGroup <> r_quot_via_canon_concat_inv thm
+R28477:28503 FreeGroup <> quot_via_canon_concat_assoc thm
+R28477:28503 FreeGroup <> quot_via_canon_concat_assoc thm
+def 28549:28556 <> quot_eq'
+binder 28559:28559 <> A:511
+R28570:28576 FreeGroup <> EqGroup class
+R28578:28578 FreeGroup <> A:511 var
+binder 28570:28578 <> H:514
+R28587:28601 FreeGroup <> NEQuotFreeGroup ind
+R28603:28603 FreeGroup <> A:511 var
+binder 28582:28582 <> x:515
+binder 28584:28584 <> y:516
+R28608:28611 Coq.Init.Datatypes <> bool ind
+R28627:28627 FreeGroup <> y:516 var
+R28624:28624 FreeGroup <> x:515 var
+R28638:28642 FreeGroup <> Singl constr
+R28654:28658 FreeGroup <> Singl constr
+R28681:28684 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R28672:28674 Coq.Bool.Bool <> eqb def
+R28685:28687 Lib.EqDec <> eqf meth
+R28699:28704 FreeGroup <> Switch constr
+R28715:28720 FreeGroup <> Switch constr
+R28742:28745 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R28733:28735 Lib.EqDec <> eqf meth
+R28746:28753 FreeGroup <> quot_eq':517 def
+R28765:28768 FreeGroup <> Stay constr
+R28781:28784 FreeGroup <> Stay constr
+R28808:28811 Coq.Init.Datatypes <> ::bool_scope:x_'&&'_x not
+R28799:28801 Lib.EqDec <> eqf meth
+R28812:28819 FreeGroup <> quot_eq':517 def
+R28865:28869 Coq.Init.Datatypes <> false constr
+def 28890:28896 <> quot_eq
+binder 28899:28899 <> A:520
+R28910:28916 FreeGroup <> EqGroup class
+R28918:28918 FreeGroup <> A:520 var
+binder 28910:28918 <> H:523
+R28927:28939 FreeGroup <> QuotFreeGroup def
+R28941:28941 FreeGroup <> A:520 var
+binder 28922:28922 <> x:524
+binder 28924:28924 <> y:525
+R28946:28949 Coq.Init.Datatypes <> bool ind
+R28965:28965 FreeGroup <> y:525 var
+R28962:28962 FreeGroup <> x:524 var
+R28976:28979 Coq.Init.Datatypes <> None constr
+R28985:28988 Coq.Init.Datatypes <> None constr
+R28996:28999 Coq.Init.Datatypes <> true constr
+R29005:29008 Coq.Init.Datatypes <> Some constr
+R29014:29017 Coq.Init.Datatypes <> Some constr
+R29025:29032 FreeGroup <> quot_eq' def
+R29064:29068 Coq.Init.Datatypes <> false constr
+prf 29086:29096 <> quot_eqf_eq
+binder 29099:29099 <> A:528
+R29110:29116 FreeGroup <> EqGroup class
+R29118:29118 FreeGroup <> A:528 var
+binder 29110:29118 <> H:531
+R29127:29139 FreeGroup <> QuotFreeGroup def
+R29141:29141 FreeGroup <> A:528 var
+binder 29122:29122 <> x:532
+binder 29124:29124 <> y:533
+R29146:29152 Coq.Bool.Bool <> reflect ind
+R29156:29158 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R29155:29155 FreeGroup <> x:532 var
+R29159:29159 FreeGroup <> y:533 var
+R29163:29169 FreeGroup <> quot_eq def
+R29173:29173 FreeGroup <> y:533 var
+R29171:29171 FreeGroup <> x:532 var
+R29192:29202 Coq.Bool.Bool <> iff_reflect thm
+R29192:29202 Coq.Bool.Bool <> iff_reflect thm
+R29297:29305 Coq.Bool.Bool <> eqb_reflx thm
+R29308:29315 Lib.EqDec <> eqf_refl thm
+R29297:29305 Coq.Bool.Bool <> eqb_reflx thm
+R29297:29305 Coq.Bool.Bool <> eqb_reflx thm
+R29308:29315 Lib.EqDec <> eqf_refl thm
+R29308:29315 Lib.EqDec <> eqf_refl thm
+R29336:29343 Lib.EqDec <> eqf_refl thm
+R29336:29343 Lib.EqDec <> eqf_refl thm
+R29336:29343 Lib.EqDec <> eqf_refl thm
+R29369:29376 Lib.EqDec <> eqf_refl thm
+R29369:29376 Lib.EqDec <> eqf_refl thm
+R29369:29376 Lib.EqDec <> eqf_refl thm
+R29627:29639 Coq.Bool.Bool <> andb_true_iff thm
+R29627:29639 Coq.Bool.Bool <> andb_true_iff thm
+R29627:29639 Coq.Bool.Bool <> andb_true_iff thm
+R29669:29680 Coq.Bool.Bool <> eqb_true_iff thm
+R29669:29680 Coq.Bool.Bool <> eqb_true_iff thm
+R29669:29680 Coq.Bool.Bool <> eqb_true_iff thm
+R29705:29711 Lib.EqDec <> eqf_iff thm
+R29705:29711 Lib.EqDec <> eqf_iff thm
+R29705:29711 Lib.EqDec <> eqf_iff thm
+R29802:29814 Coq.Bool.Bool <> andb_true_iff thm
+R29802:29814 Coq.Bool.Bool <> andb_true_iff thm
+R29802:29814 Coq.Bool.Bool <> andb_true_iff thm
+R29852:29858 Lib.EqDec <> eqf_iff thm
+R29852:29858 Lib.EqDec <> eqf_iff thm
+R29852:29858 Lib.EqDec <> eqf_iff thm
+R29971:29983 Coq.Bool.Bool <> andb_true_iff thm
+R29971:29983 Coq.Bool.Bool <> andb_true_iff thm
+R29971:29983 Coq.Bool.Bool <> andb_true_iff thm
+R30021:30027 Lib.EqDec <> eqf_iff thm
+R30021:30027 Lib.EqDec <> eqf_iff thm
+R30021:30027 Lib.EqDec <> eqf_iff thm
+inst 30103:30124 <> QuotFreeGroup_is_EqDec
+binder 30127:30127 <> A:534
+R30138:30144 FreeGroup <> EqGroup class
+R30146:30146 FreeGroup <> A:534 var
+binder 30138:30146 <> H:537
+R30151:30155 Lib.EqDec <> EqDec class
+R30158:30170 FreeGroup <> QuotFreeGroup def
+R30172:30172 FreeGroup <> A:534 var
+R30182:30184 Lib.EqDec <> eqf meth
+R30195:30201 FreeGroup <> quot_eq def
+R30231:30241 FreeGroup <> quot_eqf_eq thm
+R30231:30241 FreeGroup <> quot_eqf_eq thm
+def 30294:30311 <> FreeGroupIntegrals
+R30316:30328 FreeGroup <> QuotFreeGroup def
+R30330:30333 Coq.Init.Datatypes <> unit ind

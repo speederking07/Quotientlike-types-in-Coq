@@ -1,0 +1,15 @@
+DIGEST 1dfad88f8b455316b0206081bd2f9cb7
+FExtras.FullQ
+R15:19 Qplus <> <> lib
+R37:43 Integer <> <> lib
+ind 57:61 <> FullQ
+constr 68:70 <> Pos
+constr 92:95 <> Zero
+constr 107:109 <> Neg
+R80:83 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R75:79 Qplus <> Qplus ind
+R84:88 Extras.FullQ <> FullQ:1 ind
+R99:103 Extras.FullQ <> FullQ:1 ind
+R119:122 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R114:118 Qplus <> Qplus ind
+R123:127 Extras.FullQ <> FullQ:1 ind

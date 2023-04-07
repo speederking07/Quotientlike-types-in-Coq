@@ -1,0 +1,211 @@
+DIGEST b11442e7daa5b4614eaf50aa8a98dfb7
+FExtras.IntegerNormalization
+R15:21 Integer <> <> lib
+constr 59:61 <> Izo
+rec 32:42 <> Izomorphism
+proj 67:73 <> izo_fun
+proj 87:93 <> izo_inv
+proj 107:112 <> izo_id
+proj 157:163 <> izo_id'
+binder 45:45 <> A:1
+binder 47:47 <> B:2
+R78:81 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R77:77 Extras.IntegerNormalization <> A:1 var
+R82:82 Extras.IntegerNormalization <> B:2 var
+R98:101 Coq.Init.Logic <> ::type_scope:x_'->'_x not
+R97:97 Extras.IntegerNormalization <> B:2 var
+R102:102 Extras.IntegerNormalization <> A:1 var
+R127:127 Extras.IntegerNormalization <> A:1 var
+binder 124:124 <> x:6
+R149:151 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R130:136 Extras.IntegerNormalization <> izo_inv:5 meth
+R139:145 Extras.IntegerNormalization <> izo_fun:4 meth
+R147:147 Extras.IntegerNormalization <> x:6 var
+R152:152 Extras.IntegerNormalization <> x:6 var
+R177:177 Extras.IntegerNormalization <> B:2 var
+binder 174:174 <> x:8
+R199:201 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R180:186 Extras.IntegerNormalization <> izo_fun:4 meth
+R189:195 Extras.IntegerNormalization <> izo_inv:5 meth
+R197:197 Extras.IntegerNormalization <> x:8 var
+R202:202 Extras.IntegerNormalization <> x:8 var
+constr 227:229 <> Int
+rec 216:222 <> Integer
+proj 235:235 <> v
+proj 252:259 <> one_zero
+R242:244 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R239:241 Coq.Init.Datatypes <> nat ind
+R245:247 Coq.Init.Datatypes <> nat ind
+R277:277 Extras.IntegerNormalization <> v:11 meth
+binder 268:268 <> x:12
+binder 271:271 <> y:13
+R282:282 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R288:293 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R299:299 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R284:286 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R283:283 Extras.IntegerNormalization <> x:12 var
+R287:287 Coq.Init.Datatypes <> O constr
+R295:297 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R294:294 Extras.IntegerNormalization <> y:13 var
+R298:298 Coq.Init.Datatypes <> O constr
+def 316:319 <> norm
+R328:330 Coq.Init.Datatypes <> nat ind
+binder 322:322 <> x:15
+binder 324:324 <> y:16
+R339:341 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R336:338 Coq.Init.Datatypes <> nat ind
+R342:344 Coq.Init.Datatypes <> nat ind
+R359:359 Extras.IntegerNormalization <> y:16 var
+R356:356 Extras.IntegerNormalization <> x:15 var
+R368:368 Coq.Init.Datatypes <> S constr
+R373:373 Coq.Init.Datatypes <> S constr
+R380:383 Extras.IntegerNormalization <> norm:17 def
+R387:387 Extras.IntegerNormalization <> y:16 var
+R385:385 Extras.IntegerNormalization <> x:15 var
+R399:399 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R401:402 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R404:404 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R400:400 Extras.IntegerNormalization <> x:15 var
+R403:403 Extras.IntegerNormalization <> y:16 var
+def 423:427 <> norm'
+R436:438 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R433:435 Coq.Init.Datatypes <> nat ind
+R439:441 Coq.Init.Datatypes <> nat ind
+binder 430:430 <> p:20
+R450:452 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R447:449 Coq.Init.Datatypes <> nat ind
+R453:455 Coq.Init.Datatypes <> nat ind
+R478:478 Extras.IntegerNormalization <> p:20 var
+binder 469:469 <> x:21
+binder 472:472 <> y:22
+R483:486 Extras.IntegerNormalization <> norm def
+R488:488 Extras.IntegerNormalization <> x:21 var
+R490:490 Extras.IntegerNormalization <> y:22 var
+prf 502:515 <> norm_is_normal
+R524:526 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R521:523 Coq.Init.Datatypes <> nat ind
+R527:529 Coq.Init.Datatypes <> nat ind
+binder 518:518 <> p:23
+R549:553 Extras.IntegerNormalization <> norm' def
+R555:555 Extras.IntegerNormalization <> p:23 var
+binder 539:539 <> x:24
+binder 542:542 <> y:25
+R561:561 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R567:572 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R578:578 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R563:565 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R562:562 Extras.IntegerNormalization <> x:24 var
+R566:566 Coq.Init.Datatypes <> O constr
+R574:576 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R573:573 Extras.IntegerNormalization <> y:25 var
+R577:577 Coq.Init.Datatypes <> O constr
+prf 738:753 <> norm_is_impotent
+R770:772 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R767:769 Coq.Init.Datatypes <> nat ind
+R773:775 Coq.Init.Datatypes <> nat ind
+binder 764:764 <> p:26
+R785:787 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R778:782 Extras.IntegerNormalization <> norm' def
+R784:784 Extras.IntegerNormalization <> p:26 var
+R788:792 Extras.IntegerNormalization <> norm' def
+R795:799 Extras.IntegerNormalization <> norm' def
+R801:801 Extras.IntegerNormalization <> p:26 var
+def 966:976 <> get_integer
+R985:987 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R982:984 Coq.Init.Datatypes <> nat ind
+R988:990 Coq.Init.Datatypes <> nat ind
+binder 979:979 <> p:27
+R995:1001 Extras.IntegerNormalization <> Integer rec
+R1011:1011 Extras.IntegerNormalization <> v proj
+R1011:1011 Extras.IntegerNormalization <> v proj
+R1011:1011 Extras.IntegerNormalization <> v proj
+R1027:1034 Extras.IntegerNormalization <> one_zero proj
+R1027:1034 Extras.IntegerNormalization <> one_zero proj
+R1016:1020 Extras.IntegerNormalization <> norm' def
+R1022:1022 Extras.IntegerNormalization <> p:27 var
+R1039:1052 Extras.IntegerNormalization <> norm_is_normal thm
+R1054:1054 Extras.IntegerNormalization <> p:27 var
+def 1073:1085 <> Z_to_Integer'
+R1092:1092 Integer <> Z ind
+binder 1088:1088 <> z:28
+R1100:1100 Coq.Init.Datatypes <> ::type_scope:x_'*'_x not
+R1097:1099 Coq.Init.Datatypes <> nat ind
+R1101:1103 Coq.Init.Datatypes <> nat ind
+R1115:1115 Extras.IntegerNormalization <> z:28 var
+R1125:1127 Integer <> Pos constr
+R1134:1134 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1138:1139 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1141:1141 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1135:1135 Coq.Init.Datatypes <> S constr
+R1140:1140 Coq.Init.Datatypes <> O constr
+R1145:1148 Integer <> Zero constr
+R1153:1153 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1155:1156 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1158:1158 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1154:1154 Coq.Init.Datatypes <> O constr
+R1157:1157 Coq.Init.Datatypes <> O constr
+R1163:1165 Integer <> Neg constr
+R1172:1172 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1174:1175 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1179:1179 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1173:1173 Coq.Init.Datatypes <> O constr
+R1176:1176 Coq.Init.Datatypes <> S constr
+prf 1195:1212 <> Z_to_Integer_proof
+R1226:1226 Integer <> Z ind
+binder 1223:1223 <> z:30
+R1244:1256 Extras.IntegerNormalization <> Z_to_Integer' def
+R1258:1258 Extras.IntegerNormalization <> z:30 var
+binder 1234:1234 <> x:31
+binder 1237:1237 <> y:32
+R1264:1264 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1270:1275 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1281:1281 Coq.Init.Logic <> ::type_scope:x_'\/'_x not
+R1266:1268 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1265:1265 Extras.IntegerNormalization <> x:31 var
+R1269:1269 Coq.Init.Datatypes <> O constr
+R1277:1279 Coq.Init.Logic <> ::type_scope:x_'='_x not
+R1276:1276 Extras.IntegerNormalization <> y:32 var
+R1280:1280 Coq.Init.Datatypes <> O constr
+def 1346:1357 <> Z_to_Integer
+R1364:1364 Integer <> Z ind
+binder 1360:1360 <> z:33
+R1369:1375 Extras.IntegerNormalization <> Integer rec
+R1385:1385 Extras.IntegerNormalization <> v proj
+R1385:1385 Extras.IntegerNormalization <> v proj
+R1385:1385 Extras.IntegerNormalization <> v proj
+R1409:1416 Extras.IntegerNormalization <> one_zero proj
+R1409:1416 Extras.IntegerNormalization <> one_zero proj
+R1390:1402 Extras.IntegerNormalization <> Z_to_Integer' def
+R1404:1404 Extras.IntegerNormalization <> z:33 var
+R1421:1438 Extras.IntegerNormalization <> Z_to_Integer_proof thm
+R1440:1440 Extras.IntegerNormalization <> z:33 var
+def 1459:1470 <> Integer_to_Z
+R1477:1483 Extras.IntegerNormalization <> Integer rec
+binder 1473:1473 <> i:34
+R1488:1488 Integer <> Z ind
+R1499:1499 Extras.IntegerNormalization <> v proj
+R1501:1501 Extras.IntegerNormalization <> i:34 var
+R1510:1510 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1512:1513 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1515:1515 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1511:1511 Coq.Init.Datatypes <> O constr
+R1514:1514 Coq.Init.Datatypes <> O constr
+R1520:1523 Integer <> Zero constr
+R1527:1527 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1531:1532 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1534:1534 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1528:1528 Coq.Init.Datatypes <> S constr
+R1533:1533 Coq.Init.Datatypes <> O constr
+R1539:1541 Integer <> Pos constr
+R1547:1547 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1549:1550 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1554:1554 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1548:1548 Coq.Init.Datatypes <> O constr
+R1551:1551 Coq.Init.Datatypes <> S constr
+R1559:1561 Integer <> Neg constr
+R1567:1567 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1571:1572 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1577:1577 Coq.Init.Datatypes <> ::core_scope:'('_x_','_x_','_'..'_','_x_')' not
+R1568:1568 Coq.Init.Datatypes <> S constr
+R1573:1573 Coq.Init.Datatypes <> S constr
+R1582:1585 Integer <> Zero constr

@@ -1,4 +1,4 @@
-DIGEST bb74d5d38c50fe240a49af165ea9976e
+DIGEST 3af01324ed9d50f54e2b95ab799d76cc
 FLib.EqDec
 R15:18 Coq.Bool.Bool <> <> lib
 R36:41 Coq.Setoids.Setoid <> <> lib
@@ -173,3 +173,8 @@ R2195:2200 Coq.Arith.PeanoNat Nat eqb_eq thm
 R2195:2200 Coq.Arith.PeanoNat Nat eqb_eq thm
 R2232:2238 Coq.Arith.PeanoNat Nat eqb_neq thm
 R2232:2238 Coq.Arith.PeanoNat Nat eqb_neq thm
+inst 2282:2295 <> Unit_for_EqDec
+R2299:2303 Lib.EqDec <> EqDec class
+R2305:2308 Coq.Init.Datatypes <> unit ind
+R2317:2319 Lib.EqDec <> eqf meth
+R2335:2338 Coq.Init.Datatypes <> true constr

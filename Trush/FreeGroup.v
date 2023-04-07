@@ -4,40 +4,39 @@ Require Import Coq.Lists.List.
 Require Import StrictProp.
 Import ListNotations.
 
-Require Import Lib.EqDec.
-
-Class Group (A : Type) `{Ed: EqDec A} := GroupDef {
+Class Group (A : Type) := GroupDef {
   zero      : A;
   op        : A -> A -> A;
   inv       : A -> A;
-
+  eqf       : A -> A -> bool;
   left_id   : forall x: A, op zero x = x;
   right_id  : forall x: A, op x zero = x;
   left_inv  : forall x: A, op (inv x) x = zero;
   right_inv : forall x: A, op x (inv x) = zero;
   op_assoc  : forall x y z: A, op (op x y) z = op x (op y z);
+  eqf_eq    : forall x y, reflect (x = y) (eqf x y)
 }.
 
 Lemma eqf_refl {A: Type} `{Group A} (x : A) : eqf x x = true.
 Proof.
-  destruct (eqf_leibniz x x); auto.
+  destruct (eqf_eq x x); auto.
 Qed.
 
 Definition eqf_true_iff {A: Type} `{Group A} {x y: A} : eqf x y = true <-> x = y.
 Proof.
-  destruct (eqf_leibniz x y); split; auto. intros F. discriminate.
+  destruct (eqf_eq x y); split; auto. intros F. discriminate.
 Qed.
 
 Definition eqf_false_iff {A: Type} `{Group A} {x y: A} : eqf x y = false <-> x <> y.
 Proof.
   split.
   - intros H0 H1. subst. rewrite eqf_refl in H0. discriminate.
-  - intros H0. destruct (eqf_leibniz x y); auto. subst. contradiction.
+  - intros H0. destruct (eqf_eq x y); auto. subst. contradiction.
 Defined.
 
 Lemma eqf_sym {A: Type} `{Group A} (x y: A) : eqf x y = eqf y x.
 Proof.
-  destruct (eqf_leibniz x y).
+  destruct (eqf_eq x y).
   - subst. rewrite eqf_refl. auto.
   - assert (y <> x) by (apply not_eq_sym; auto). rewrite <- eqf_false_iff in H0.
     rewrite H0. auto.
@@ -88,7 +87,7 @@ match x with
 | []             => Singl b v
 | (b', v') :: x' => if eqb b b' 
                       then Stay (sub v v') (to_uniq' b' v' x')
-                      else match eqf_leibniz (sub v v') zero with
+                      else match eqf_eq (sub v v') zero with
                            | ReflectF _ p => Switch (sub v v') (squash p) (to_uniq' b' v' x')
                            | _  => (Singl b v) (* invalid *)
                            end
@@ -100,23 +99,21 @@ match x with
 | (b, v) :: x' => Some (to_uniq' b v x')
 end.
 
-Fixpoint to_canon' {A: Type} `{Group A} (x: NonEmptyFreeGroup A) : CanonFreeGroup A :=
+Fixpoint to_canon' {A: Type} `{Group A} (x: NonEmptyFreeGroup A) : bool * A * list (bool*A) :=
 match x with 
-| Singl b v     => [(b, v)]
+| Singl b v     => ((b, v), [])
 | Stay v x'     => match to_canon' x' with
-                   | [] => [(true, v)] (* invalid *)
-                   | (b, v') :: y => (b, op v v') :: (b, v') :: y
+                   | ((b, v'), y)  => ((b, op v v'), (b, v') :: y)
                    end
 | Switch v _ x' => match to_canon' x' with
-                   | [] => [(true, v)] (* invalid *)
-                   | (b, v') :: y => (negb b, op v v') :: (b, v') :: y
+                   | ((b, v'), y)  => ((negb b, op v v'), (b, v') :: y)
                    end
 end.
 
 Definition to_canon {A: Type} `{Group A} (x: FreeGroup A) : CanonFreeGroup A :=
 match x with
 | None => []
-| Some x' => to_canon' x'
+| Some x' => let (h, t) := to_canon' x' in h :: t
 end.
 
 Lemma op_sub {A: Type} `{Group A} (x y : A) : op (sub x y) y = x.
@@ -175,36 +172,36 @@ Qed.
 Theorem free_group_epi_canon {A: Type} `{Group A} (x: FreeGroup A) : 
   to_uniq (to_canon x) = x.
 Proof.
-  destruct x as [x |]; auto. induction x; auto.
-  - cbn in *. destruct (to_canon' x0); inversion IHx. destruct p. cbn in *. 
-    inversion IHx. subst. rewrite eqb_negb1, sub_op. destruct (eqf_leibniz x zero); auto.
-    subst. apply (squash_not_refl zero); auto.
-  - cbn in *. destruct (to_canon' x); inversion IHx. destruct p. cbn in *.
-    inversion IHx. subst. rewrite eqb_reflx, sub_op. auto.
+  destruct x as [x |]; auto. induction x; [auto|..]; cbn in *.
+  - destruct (to_canon' x0) as [[b  v] l]. cbn in *. 
+    inversion IHx. subst. rewrite eqb_negb1, sub_op. 
+    destruct (eqf_eq x zero); [|auto]. subst. now apply (squash_not_refl zero).
+  - destruct (to_canon' x) as [[b  v] l]. cbn in *.
+    inversion IHx. subst. now rewrite eqb_reflx, sub_op.
 Qed.
 
 Theorem canon_epi_free_group {A: Type} `{Group A} (x: CanonFreeGroup A) : 
   Normalized x -> to_canon (to_uniq x) = x.
 Proof.
-  intros N. induction N; auto. cbn in *. destruct H0 as [v_neq | b_neq].
+  intros N. induction N; [auto | auto |]. cbn in *. destruct H0 as [v_neq | b_neq].
   - destruct (eqb b b') eqn:b_eq.
-    + cbn. rewrite IHN, op_sub. f_equal. f_equal. symmetry. apply eqb_prop. auto.
-    + destruct (eqf_leibniz (sub v v') zero).
+    + cbn. destruct (to_canon' (to_uniq' b' v' x)) as [[b'' v''] l]. 
+      inversion IHN. subst. rewrite op_sub. f_equal. f_equal. symmetry. 
+      now apply eqb_prop.
+    + destruct (eqf_eq (sub v v') zero).
       * assert (v = v') by (apply sub_inv_uniq; auto). contradiction.
-      * cbn. rewrite IHN, op_sub. f_equal. f_equal. symmetry. apply not_eqb_is_neg. auto.
-  - subst. rewrite eqb_reflx. cbn. rewrite IHN, op_sub. auto.
+      * cbn. destruct (to_canon' (to_uniq' b' v' x)) as [[b'' v''] l]. 
+        inversion IHN; subst. rewrite op_sub. f_equal. f_equal. symmetry. 
+        now apply not_eqb_is_neg.
+  - subst. rewrite eqb_reflx. cbn. destruct (to_canon' (to_uniq' b' v' x)) as [[b'' v''] l]. 
+    inversion IHN; subst. now rewrite op_sub.
 Qed.
 
-Lemma to_canon'_not_nil {A: Type} `{Group A} (x: NonEmptyFreeGroup A) : to_canon' x <> nil.
+Lemma to_canon_not_nil {A: Type} `{Group A} (x: NonEmptyFreeGroup A) : to_canon (Some x) <> nil.
 Proof.
-  intros H0. destruct x; cbn in *.
-  - inversion H0.
-  - destruct (to_canon' x0).
-    + inversion H0.
-    + destruct p. inversion H0.
-  - destruct (to_canon' x).
-    + inversion H0.
-    + destruct p. inversion H0.
+  intros H0. destruct x; cbn in *; [inversion H0|..].
+  - destruct (to_canon' x0) as [[b v] l]. inversion H0.
+  - destruct (to_canon' x) as [[b v] l]. inversion H0.
 Qed.
 
 Lemma group_add_non_zero {A: Type} `{Group A} (x y : A) : x <> zero -> op x y <> y.
@@ -215,28 +212,28 @@ Qed.
 
 Lemma group_squash_non_zero {A: Type} `{Group A} (x : A) : Squash (x <> zero) -> x <> zero.
 Proof.
-  intros H0. destruct (eqf_leibniz x zero); auto. subst. apply (squash_not_refl zero). auto.
+  intros H0. destruct (eqf_eq x zero); auto. subst. apply (squash_not_refl zero). auto.
 Qed. 
 
 Theorem free_group_is_normal {A: Type} `{Group A} (x: FreeGroup A) : Normalized (to_canon x).
 Proof.
-  destruct x as [x |].
-  - induction x.
-    + cbn. constructor.
-    + dependent destruction IHx.
-      * assert (to_canon (Some x0) <> []) by (apply to_canon'_not_nil). rewrite x in H0.
-        contradiction.
-      * cbn in *. rewrite <- x. constructor; constructor. apply group_add_non_zero. 
-        apply group_squash_non_zero. auto.
-      * cbn in *. rewrite <- x. constructor.
-        -- left. apply group_add_non_zero. apply group_squash_non_zero. auto.
-        -- constructor; auto.
-    + dependent destruction IHx.
-      * assert (to_canon (Some x0) <> []) by (apply to_canon'_not_nil). rewrite x in H0.
-        contradiction.
-      * cbn in *. rewrite <- x. constructor; try right; constructor.
-      * cbn in *. rewrite <- x. constructor; try right; constructor; auto.
+  destruct x as [x |]; cbn; [|constructor]. induction x.
   - cbn. constructor.
+  - dependent destruction IHx; cbn in *.
+    + assert (to_canon (Some x0) <> []) by (apply to_canon_not_nil). rewrite x in H0.
+      contradiction.
+    + destruct (to_canon' x0) as [[b' v'] l]. inversion x; subst.
+      constructor; constructor. apply group_add_non_zero. apply group_squash_non_zero. auto.
+    + destruct (to_canon' x0) as [[b'' v''] l]. inversion x; subst. constructor.
+      * left. apply group_add_non_zero. now apply group_squash_non_zero.
+      * now constructor.
+  - dependent destruction IHx; cbn in *.
+    + assert (to_canon (Some x0) <> []) by (apply to_canon_not_nil). rewrite x in H0.
+      contradiction.
+    + destruct (to_canon' x0) as [[b' v'] l]. inversion x; subst. 
+      constructor; [right|]; constructor.
+    + destruct (to_canon' x1) as [[b'' v''] l]. inversion x; subst. 
+      constructor; [right|]; now constructor.
 Qed.
 
 Definition option_bind {A B: Type} (x: option A) (f: A -> option B) : option B :=
@@ -258,12 +255,12 @@ Definition fg_hd {A: Type} `{Group A} (x: FreeGroup A) : option (bool * A) :=
 Theorem fg_hd_for_canon {A: Type} `{Group A} (x: CanonFreeGroup A) :
   Normalized x -> hd_error x = fg_hd (to_uniq x).
 Proof.
-  intros H0. induction H0; auto. cbn in *. f_equal. inversion IHNormalized. destruct H0.
+  intros H0. induction H0; [auto | auto|]. cbn in *. f_equal. inversion IHNormalized. destruct H0.
   - destruct (eqb b b') eqn:e.
-    + cbn. rewrite <- H3, op_sub. rewrite eqb_true_iff in e. f_equal; auto.
-    + destruct (eqf_leibniz (sub v v') zero); auto. cbn. rewrite <- H3, op_sub. f_equal.
-      apply not_eqb_is_neg. auto.
-  - subst. rewrite eqb_reflx. cbn. rewrite <- H3, op_sub. auto.
+    + cbn. rewrite <- H3, op_sub. f_equal. now apply eqb_true_iff.
+    + destruct (eqf_eq (sub v v') zero); [auto|]. cbn. rewrite <- H3, op_sub. f_equal.
+      now apply not_eqb_is_neg.
+  - subst. rewrite eqb_reflx. cbn. now rewrite <- H3, op_sub.
 Qed.
 
 Definition fq_tail' {A: Type} `{Group A} (x: NonEmptyFreeGroup A) : FreeGroup A :=
@@ -281,7 +278,7 @@ Definition fg_cons' {A: Type} `{Group A} (b: bool) (v: A) (x: NonEmptyFreeGroup 
     let (b', v') := fg_hd' x in 
       if eqb b b'
       then Some (Stay (sub v v') x)
-      else match eqf_leibniz (sub v v') zero with
+      else match eqf_eq (sub v v') zero with
            | ReflectT _ _ => fq_tail' x
            | ReflectF _ p => Some (Switch (sub v v') (squash p) x)
            end.
@@ -304,12 +301,12 @@ Theorem inv_elem_cons_is_tail {A: Type} `{Group A} (x: NonEmptyFreeGroup A) :
   fg_cons'2 (elem_inv (fg_hd' x)) x = fq_tail' x.
 Proof.
   destruct (fg_hd' x) eqn:hd. destruct x; cbn.
-  - inversion hd. unfold sub. rewrite eqb_negb1, right_inv.
-    destruct (eqf_leibniz zero zero); auto. contradiction.
+  - inversion hd; subst. unfold sub. rewrite eqb_negb1, right_inv.
+    destruct (eqf_eq zero zero); [auto | contradiction].
   - unfold fg_cons', sub. rewrite hd, eqb_negb1, right_inv. 
-    destruct (eqf_leibniz zero zero); auto. contradiction.
+    destruct (eqf_eq zero zero); auto. contradiction.
   - unfold fg_cons', sub. rewrite hd, eqb_negb1, right_inv. 
-    destruct (eqf_leibniz zero zero); auto. contradiction.
+    destruct (eqf_eq zero zero); auto. contradiction.
 Qed.
 
 Definition canon_cons {A: Type} `{Group A} (b: bool) (v: A) (x: CanonFreeGroup A) :
@@ -371,7 +368,7 @@ Definition fg_concat {A: Type} `{Group A} (x y: FreeGroup A) : FreeGroup A :=
 Lemma eqf_sub_not_zero {A: Type} `{Group A} (x y: A) : sub x y <> zero <-> eqf x y = false.
 Proof.
   unfold sub. split.
-  - intros H0. destruct (eqf_leibniz x y); auto. subst. rewrite right_inv in H0. 
+  - intros H0. destruct (eqf_eq x y); auto. subst. rewrite right_inv in H0. 
     contradiction.
   - intros H0 H1. assert (x = y) by (apply sub_inv_uniq; auto). subst.
     rewrite eqf_refl in H0. discriminate.
@@ -381,12 +378,10 @@ Theorem free_canon_hd'_izo {A: Type} `{Group A} (x: NonEmptyFreeGroup A) :
   Some (fg_hd' x) = hd_error (to_canon (Some x)).
 Proof.
   induction x; auto.
-  - cbn in *. destruct (to_canon' x0) eqn:e.
-    + exfalso. apply (to_canon'_not_nil x0). auto.
-    + destruct p. cbn in *. inversion IHx. rewrite H1. auto.
-  - cbn in *. destruct (to_canon' x) eqn:e.
-    + exfalso. apply (to_canon'_not_nil x). auto.
-    + destruct p. cbn in *. inversion IHx. rewrite H1. auto.
+  - cbn in *. destruct (to_canon' x0) as [[b v] l] eqn:e.
+    cbn in *. inversion IHx. rewrite H1. auto.
+  - cbn in *. destruct (to_canon' x) as [[b v] l] eqn:e.
+    cbn in *. inversion IHx. rewrite H1. auto.
 Qed.
 
 Theorem free_canon_hd_izo {A: Type} `{Group A} (x: FreeGroup A) :
@@ -401,35 +396,33 @@ Proof.
   destruct x as [x |]; auto. unfold canon_cons. destruct x.
   - cbn. destruct (eqb b b0) eqn:e.
     + cbn. rewrite orb_true_r, op_sub. rewrite eqb_true_iff in e. subst. auto.
-    + destruct (eqf_leibniz (sub v a) zero).
+    + destruct (eqf_eq (sub v a) zero).
       * assert (v = a) by (apply sub_inv_uniq; auto). subst.
         rewrite eqf_refl. cbn. auto.
       * cbn. rewrite eqf_sub_not_zero in n. rewrite n, op_sub. cbn.
         assert (negb b0 = b) by (symmetry; apply not_eqb_is_neg; auto). 
         subst. auto.
   - cbn. destruct (to_canon' x0) eqn:c.
-    + exfalso. apply (to_canon'_not_nil x0). auto.
     + destruct p. unfold fg_cons'. cbn. assert (hd_eq : fg_hd' x0 = (b0, a)).
       { apply some_eq. rewrite free_canon_hd'_izo. cbn. rewrite c. auto. }
       rewrite hd_eq. destruct (eqb b (negb b0)) eqn:eb.
       * cbn. rewrite orb_true_r, c, op_sub. rewrite eqb_true_iff in eb. subst.
         auto.
-      * destruct (eqf_leibniz (sub v (op x a))).
+      * destruct (eqf_eq (sub v (op x a))).
         -- assert (v = (op x a)) by (apply sub_inv_uniq; auto). subst.
-          rewrite eqf_refl. cbn. auto.
+           cbn. now rewrite eqf_refl, c.
         -- cbn. rewrite eqf_sub_not_zero in n. rewrite n, c. unfold sub. cbn.
            rewrite (op_assoc  v (inv (op x a))), left_inv, right_id, negb_involutive.
            f_equal. rewrite eqb_not_neg in eb. subst. auto.
   - cbn. destruct (to_canon' x) eqn:c.
-    + exfalso. apply (to_canon'_not_nil x). auto.
     + destruct p. unfold fg_cons'. cbn. assert (hd_eq : fg_hd' x = (b0, a0)).
       { apply some_eq. rewrite free_canon_hd'_izo. cbn. rewrite c. auto. }
       rewrite hd_eq. destruct (eqb b b0) eqn:eb.
       * cbn. rewrite orb_true_r, c, op_sub. rewrite eqb_true_iff in eb. subst.
         auto.
-      * destruct (eqf_leibniz (sub v (op a a0))).
+      * destruct (eqf_eq (sub v (op a a0))).
         -- assert (v = (op a a0)) by (apply sub_inv_uniq; auto). subst.
-          rewrite eqf_refl. cbn. auto.
+          cbn. rewrite eqf_refl, c. auto.
         -- cbn. rewrite eqf_sub_not_zero in n. rewrite n, c. unfold sub. cbn.
            rewrite (op_assoc  v (inv (op a a0))), left_inv, right_id.
            f_equal. assert (b = negb b0) by (apply not_eqb_is_neg; auto).
@@ -442,12 +435,10 @@ Proof.
   destruct x as [x |]; auto. cbn. induction x.
   - cbn. apply free_canon_cons_izo.
   - cbn. destruct (to_canon' x0) eqn:c.
-    + exfalso. apply (to_canon'_not_nil x0). auto.
     + destruct p. assert (hd_eq : fg_hd' x0 = (b, a)).
       { apply some_eq. rewrite free_canon_hd'_izo. cbn. rewrite c. auto. }
       rewrite hd_eq. cbn in *. rewrite <- IHx. apply free_canon_cons_izo.
   - cbn. destruct (to_canon' x) eqn:c.
-    + exfalso. apply (to_canon'_not_nil x). auto.
     + destruct p. assert (hd_eq : fg_hd' x = (b, a0)).
       { apply some_eq. rewrite free_canon_hd'_izo. cbn. rewrite c. auto. }
       rewrite hd_eq. cbn in *. rewrite <- IHx. apply free_canon_cons_izo.
@@ -752,7 +743,7 @@ Definition fg_eq {A: Type} `{Group A} (x y: FreeGroup A) : bool :=
   | _,       _       => false
   end.
 
-Theorem fq_eqf_leibniz {A: Type} `{Group A} (x y: FreeGroup A) : reflect (x = y) (fg_eq x y).
+Theorem fq_eqf_eq {A: Type} `{Group A} (x y: FreeGroup A) : reflect (x = y) (fg_eq x y).
 Proof.
   apply iff_reflect. split.
   - intros []. destruct x as [x |]; auto. induction x.
@@ -833,7 +824,7 @@ Next Obligation. apply fq_right_id; auto. Defined.
 Next Obligation. apply fq_left_inv; auto. Defined.
 Next Obligation. apply fq_right_inv; auto. Defined.
 Next Obligation. apply fq_op_assoc; auto. Defined.
-Next Obligation. apply fq_eqf_leibniz; auto. Defined.
+Next Obligation. apply fq_eqf_eq; auto. Defined.
 
 
 

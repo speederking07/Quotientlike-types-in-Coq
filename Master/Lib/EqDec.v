@@ -66,3 +66,9 @@ Proof.
 Defined.
 
 
+Global Program Instance Unit_for_EqDec : EqDec unit := {
+  eqf := fun _ _ => true;
+}.
+
+Next Obligation. constructor. destruct x, y. auto. Defined.
+
