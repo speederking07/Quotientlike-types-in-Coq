@@ -3,6 +3,11 @@ Inductive Z : Type :=
 | Zero : Z
 | Neg : nat -> Z.
 
+Declare Scope Z_scope.
+Delimit Scope Z_scope with Z.
+Bind Scope Z_scope with Z.
+Open Scope Z_scope.
+
 Definition neg (n: Z) : Z :=
 match n with
 | Pos k => Neg k
@@ -15,6 +20,13 @@ match n with
 | Pos k => Pos k
 | Zero => Zero
 | Neg k => Pos k
+end.
+
+Definition abs' (n: Z) : nat :=
+match n with
+| Pos k => S k
+| Zero => O
+| Neg k => S k
 end.
 
 Definition succ (n: Z) : Z :=
@@ -103,8 +115,6 @@ Qed.
 
 
 
-
-
 (* add *)
 
 Fixpoint map_n {A: Type} (n: nat) (f: A -> A) (x: A) : A :=
@@ -120,13 +130,19 @@ match a with
 | Neg n => map_n (S n) pred b
 end.
 
-Theorem add_r_zero : forall x: Z, add x Zero = x.
+Notation "- x" := (neg x) : Z_scope.
+Infix "+" := add : Z_scope.
+
+Definition sub (a b : Z) : Z :=
+  a + (- b).
+
+Theorem add_r_zero : forall x: Z, x + Zero = x.
 Proof.
   induction x using Z_ind''; cbn; [trivial | trivial | trivial |rewrite succ_S | rewrite pred_S];
   f_equal; apply IHx.
 Qed.
 
-Theorem add_r_succ : forall x y: Z, add x (succ y) = succ (add x y).
+Theorem add_r_succ : forall x y: Z, x + (succ y) = succ (x + y).
 Proof.
   intros x y. induction x using Z_ind''; trivial; cbn in *.
   - rewrite pred_succ. rewrite succ_pred. trivial.
@@ -134,7 +150,7 @@ Proof.
   - rewrite succ_pred. rewrite succ_pred in IHx. rewrite IHx. trivial.
 Qed.
 
-Theorem add_r_pred : forall x y: Z, add x (pred y) = pred (add x y).
+Theorem add_r_pred : forall x y: Z, x + (pred y) = pred (x + y).
 Proof.
   intros x y. induction x using Z_ind''; trivial; cbn in *.
   - rewrite pred_succ, succ_pred. trivial.
@@ -142,7 +158,7 @@ Proof.
   - f_equal. apply IHx.
 Qed.
 
-Theorem add_sym: forall x y: Z, add x y = add y x.
+Theorem add_comm: forall x y: Z, x + y = y + x.
 Proof.
   intro x. induction x using Z_ind''; intro y; cbn.
   - rewrite add_r_zero. cbn. trivial.
@@ -152,52 +168,57 @@ Proof.
   - rewrite pred_S, add_r_pred. f_equal. apply IHx.
 Qed.
 
-Theorem neg_succ : forall x: Z, neg (succ x) = pred (neg x).
+Theorem neg_succ : forall x: Z, - (succ x) = pred (- x).
 Proof.
   destruct x; [| auto |]; now destruct n.
 Qed.
 
-Theorem neg_pred : forall x: Z, neg (pred x) = succ (neg x).
+Theorem neg_pred : forall x: Z, - (pred x) = succ (- x).
 Proof.
   destruct x; [| auto |]; now destruct n.
 Qed.
 
-Theorem add_pred_succ : forall x y: Z, add (pred x) (succ y) = add x y.
+Theorem add_pred_succ : forall x y: Z, (pred x) + (succ y) = x + y.
 Proof.
   intros x y. 
-  now rewrite add_r_succ, (add_sym (pred x) y), add_r_pred, succ_pred, add_sym.
+  now rewrite add_r_succ, (add_comm (pred x) y), add_r_pred, succ_pred, add_comm.
 Qed.
 
-Theorem neg_is_add_inv : forall x: Z, add x (neg x) = Zero.
+Theorem add_neg_r : forall x: Z, x + (- x) = Zero.
 Proof.
   induction x using Z_ind''; trivial.
-  - now rewrite succ_S, neg_succ, add_sym, add_pred_succ, add_sym.
+  - now rewrite succ_S, neg_succ, add_comm, add_pred_succ, add_comm.
   - now rewrite pred_S, neg_pred, add_pred_succ.
 Qed.
 
-
-Theorem add_l_succ : forall x y: Z, add (succ x) y = succ (add x y).
+Theorem add_neg_l : forall x: Z, (- x) + x = Zero.
 Proof.
-  intros x y. rewrite (add_sym (succ x) y), add_r_succ. f_equal. apply add_sym.
+  intros x. now rewrite add_comm, add_neg_r.
 Qed.
 
-Theorem add_succ_swap : forall x y: Z,  add x (succ y) = add (succ x) y.
+
+Theorem add_l_succ : forall x y: Z, (succ x) + y = succ (x + y).
+Proof.
+  intros x y. rewrite (add_comm (succ x) y), add_r_succ. f_equal. apply add_comm.
+Qed.
+
+Theorem add_succ_swap : forall x y: Z, x + (succ y) = (succ x) + y.
 Proof.
   intros x y. rewrite add_r_succ, add_l_succ. trivial.
 Qed.
 
-Theorem add_l_pred : forall x y: Z, add (pred x) y = pred (add x y).
+Theorem add_l_pred : forall x y: Z, (pred x) + y = pred (x + y).
 Proof.
-  intros x y. rewrite (add_sym (pred x) y), add_r_pred. f_equal.
-  apply add_sym.
+  intros x y. rewrite (add_comm (pred x) y), add_r_pred. f_equal.
+  apply add_comm.
 Qed.
 
-Theorem add_pred_swap : forall x y: Z, add x (pred y) = add (pred x) y.
+Theorem add_pred_swap : forall x y: Z, x + (pred y) = (pred x) + y.
 Proof.
   intros x y. rewrite add_r_pred, add_l_pred. trivial.
 Qed.
 
-Theorem add_assoc : forall x y z: Z, add (add x y) z = add x (add y z).
+Theorem add_assoc : forall x y z: Z, (x + y) + z = x + (y + z).
 Proof.
   intros x y z. induction x using Z_ind'';
   [ auto | cbn; apply add_l_succ | cbn; apply add_l_pred | ..].
@@ -205,17 +226,17 @@ Proof.
   - rewrite pred_S, add_l_pred, add_l_pred, add_l_pred. f_equal. apply IHx.
 Qed.
 
-Theorem add_one : forall x: Z, add x (Pos O) = succ x.
+Theorem add_one : forall x: Z, x + (Pos O) = succ x.
 Proof.
   intro x. rewrite one_is_zero_succ, add_r_succ, add_r_zero. trivial.
 Qed.
 
-Theorem add_minus_one : forall x: Z, add x (Neg O) = pred x.
+Theorem add_minus_one : forall x: Z, x + (Neg O) = pred x.
 Proof.
   intro x. now rewrite minus_one_is_zero_pred, add_r_pred, add_r_zero.
 Qed.
 
-Theorem add_neg : forall x y: Z, add (neg x) (neg y) =  neg (add x y).
+Theorem add_neg : forall x y: Z, (- x) + (- y) =  - (x + y).
 Proof.
   intros x y. induction x using Z_ind''; 
   [ trivial | cbn; symmetry; apply neg_succ | cbn; symmetry; apply neg_pred | ..].
@@ -223,7 +244,7 @@ Proof.
   - now rewrite pred_S, add_l_pred, neg_pred, neg_pred, <- IHx, add_l_succ.
 Qed.
 
-Theorem add_r_neg : forall x y: Z, add x (neg y) =  neg (add (neg x) y).
+Theorem add_r_neg : forall x y: Z, x + (- y) =  - ((- x) + y).
 Proof.
   intros x y. induction x using Z_ind'';
   [ trivial | cbn; now rewrite neg_pred | cbn; now rewrite neg_succ | ..].
@@ -231,9 +252,9 @@ Proof.
   - now rewrite pred_S, add_l_pred, neg_pred, add_l_succ, neg_succ, IHx. 
 Qed.
 
-Theorem add_l_neg : forall x y: Z, add (neg x) y =  neg (add x (neg y)).
+Theorem add_l_neg : forall x y: Z, (- x) + y =  - (x + (- y)).
 Proof.
-  intros x y. now rewrite add_sym, add_r_neg, add_sym.
+  intros x y. now rewrite add_comm, add_r_neg, add_comm.
 Qed.
 
 
@@ -249,28 +270,30 @@ match a with
 | Neg n => neg (map_n (S n) (add b) Zero)
 end.
 
+Infix "*" := mul : Z_scope.
+
 Definition id {A: Type} (x: A) := x.
 
-Theorem mul_r_zero : forall x: Z, mul x Zero = Zero.
+Theorem mul_r_zero : forall x: Z, x * Zero = Zero.
 Proof.
   intros x. destruct x; cbn; [| auto |]; now induction n.
 Qed.
 
-Theorem mul_r_one : forall x: Z, mul x (Pos O) = x.
+Theorem mul_r_one : forall x: Z, x * (Pos O) = x.
 Proof.
   induction x using Z_ind''; [auto | auto | auto | ..]; cbn.
   - rewrite succ_S. now f_equal.
   - rewrite pred_S, neg_succ. now f_equal. 
 Qed.
 
-Theorem mul_r_minus_one : forall x: Z, mul x (Neg O) = neg x.
+Theorem mul_r_minus_one : forall x: Z, x * (Neg O) = - x.
 Proof.
   induction x using Z_ind''; [auto | auto | auto | ..]; cbn.
   - rewrite pred_S. now f_equal.
   - rewrite succ_S, neg_pred. now f_equal.
 Qed.
 
-Theorem mul_r_succ : forall x y: Z, mul x (succ y) = add (mul x y) x.
+Theorem mul_r_succ : forall x y: Z, x * (succ y) = (x * y) + x.
 Proof.
   intros x y. induction x using Z_ind''; [trivial|..]; cbn in *.
   - now rewrite add_r_zero, add_r_zero, add_one.
@@ -282,7 +305,7 @@ Proof.
     now rewrite add_assoc, add_assoc, add_assoc.
 Qed.
 
-Theorem mul_r_pred : forall x y: Z, mul x (pred y) = add (mul x y) (neg x).
+Theorem mul_r_pred : forall x y: Z, x * (pred y) = (x * y) + (- x).
 Proof.
   intros x y. induction x using Z_ind''; [trivial| ..]; cbn in *.
   - now rewrite add_r_zero, add_r_zero, add_minus_one.
@@ -294,67 +317,75 @@ Proof.
     now rewrite add_assoc, add_assoc, add_assoc.
 Qed.
 
-Theorem mul_sym : forall x y: Z, mul x y = mul y x.
+Theorem mul_comm : forall x y: Z, x * y = y * x.
 Proof.
   intros x y. induction x using Z_ind''.
   - now rewrite mul_r_zero.
   - cbn. now rewrite mul_r_one, add_r_zero.
   - cbn. now rewrite mul_r_minus_one, add_r_zero.
   - rewrite succ_S, mul_r_succ, <- IHx. cbn. rewrite add_assoc.
-    f_equal. apply add_sym.
+    f_equal. apply add_comm.
   - rewrite pred_S, mul_r_pred, <- IHx. cbn.
-    now rewrite <- add_neg, <- add_neg, add_sym.
+    now rewrite <- add_neg, <- add_neg, add_comm.
 Qed.
 
-Theorem mul_l_succ : forall x y: Z, mul (succ x) y = add (mul x y) y.
+Theorem mul_l_succ : forall x y: Z, (succ x) * y = (x * y) + y.
 Proof.
-  intros x y. now rewrite mul_sym, mul_r_succ, (mul_sym x y).
+  intros x y. now rewrite mul_comm, mul_r_succ, (mul_comm x y).
 Qed.
 
-Theorem mul_l_pred : forall x y: Z, mul (pred x) y = add (mul x y) (neg y).
+Theorem mul_l_pred : forall x y: Z, (pred x) * y = (x * y) + (- y).
 Proof.
-  intros x y. now rewrite mul_sym, mul_r_pred, (mul_sym x y).
+  intros x y. now rewrite mul_comm, mul_r_pred, (mul_comm x y).
 Qed.
 
-Theorem mul_r_neg : forall x y: Z, mul x (neg y) = neg (mul x y).
+Theorem mul_r_neg : forall x y: Z, x * (- y) = - (x * y).
 Proof.
   intros x y. induction x using Z_ind'; [auto | auto | auto |..].
   - now rewrite mul_l_succ, mul_l_succ, IHx, add_neg.
   - now rewrite mul_l_pred, mul_l_pred, IHx, add_r_neg, neg_neg.
 Qed.
 
-Theorem mul_l_neg : forall x y: Z, mul (neg x) y = neg (mul x y).
+Theorem mul_l_neg : forall x y: Z, (- x) * y = - (x * y).
 Proof.
-  intros x y. now rewrite mul_sym, mul_r_neg, mul_sym.
+  intros x y. now rewrite mul_comm, mul_r_neg, mul_comm.
 Qed.
 
-Theorem mul_neg : forall x y: Z, mul (neg x) (neg y) = mul x y.
+Theorem mul_neg : forall x y: Z, (- x) * (- y) = x * y.
 Proof.
   intros x y. now rewrite mul_r_neg, mul_l_neg, neg_neg.
 Qed.
 
-Theorem mul_neg_swap : forall x y: Z, mul (neg x) y = mul x (neg y).
+Theorem mul_neg_swap : forall x y: Z, (- x) * y = x * (- y).
 Proof.
   intros x y. now rewrite mul_r_neg, mul_l_neg.
 Qed.
 
-Theorem mul_dist_add : forall x y z: Z, mul x (add y z) = add (mul x y) (mul x z).
+Theorem mul_l_dist : forall x y z: Z, x * (y + z) = (x * y) + (x * z).
 Proof.
   intros x y z. induction x using Z_ind'; [auto | auto | auto |..].
   - now rewrite mul_l_succ, mul_l_succ, mul_l_succ, IHx, add_assoc, add_assoc,
-    (add_sym (mul x z) (add y z)), (add_sym (mul x z) z), add_assoc.
+    (add_comm (mul x z) (add y z)), (add_comm (mul x z) z), add_assoc.
   - now rewrite mul_l_pred, mul_l_pred, mul_l_pred, IHx, add_assoc, add_assoc,
-    (add_sym (neg y) (add (mul x z) (neg z))), (add_sym y z), add_assoc, add_neg.
+    (add_comm (neg y) (add (mul x z) (neg z))), (add_comm y z), add_assoc, add_neg.
 Qed.
 
-Theorem mul_assoc : forall x y z: Z, mul (mul x y) z = mul x (mul y z).
+Theorem mul_r_dist : forall x y z: Z, (y + z) * x = (y * x) + (z * x).
+Proof.
+  intros x y z. now rewrite (mul_comm (y + z) x), (mul_comm y x), (mul_comm z x), mul_l_dist.
+Qed.
+
+Theorem mul_assoc : forall x y z: Z, (x * y) * z = x * (y * z).
 Proof.
   intros x y z. induction x using Z_ind'; [auto | auto | auto |..].
-  - rewrite mul_l_succ, mul_l_succ, mul_sym, mul_dist_add, <- IHx. 
-    f_equal; apply mul_sym.
+  - rewrite mul_l_succ, mul_l_succ, mul_comm, mul_l_dist, <- IHx. 
+    f_equal; apply mul_comm.
   - rewrite mul_l_pred, mul_l_pred, add_r_neg, mul_l_neg, add_r_neg. 
-    f_equal. rewrite mul_sym, mul_dist_add. f_equal.
-    + rewrite <- IHx, mul_r_neg. f_equal. apply mul_sym.
-    + apply mul_sym.
+    f_equal. rewrite mul_comm, mul_l_dist. f_equal.
+    + rewrite <- IHx, mul_r_neg. f_equal. apply mul_comm.
+    + apply mul_comm.
 Qed.
+
+
+
 

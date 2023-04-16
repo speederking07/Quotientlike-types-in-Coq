@@ -340,6 +340,11 @@ Proof.
   - rewrite H. apply qplus_c'_mul_pos.
 Qed.
 
+Lemma qplus_same' : forall p k: nat, qplus_c' p p k = One.
+Proof.
+  intros p k. destruct k; [auto|]. cbn. now rewrite Nat.compare_refl.
+Qed.
+
 
 
 
@@ -613,8 +618,25 @@ Qed.
 
 
 
-Inductive FullQ :=
-| Pos  : Qplus -> FullQ
-| Zero : FullQ
-| Neg  : Qplus -> FullQ.
+Fixpoint Qplus_inv (q: Qplus) : Qplus :=
+match q with
+| N x => D (Qplus_inv x)
+| One => One
+| D x => N (Qplus_inv x)
+end.
+
+Theorem Qplus_inv_in_Q (x: Qplus) (n d: nat) :
+  qplus_i x = (n, d) -> qplus_i (Qplus_inv x) = (d, n).
+Proof.
+  revert n d. induction x; intros n d H.
+  - cbn in *. now inversion H.
+  - cbn [Qplus_inv qplus_i] in *. destruct (qplus_i x) as [n' d'].
+    inversion H. subst. rewrite (IHx n' d); [f_equal; lia | auto].
+  - cbn [Qplus_inv qplus_i] in *. destruct (qplus_i x) as [n' d'].
+    inversion H. subst. rewrite (IHx n d'); [f_equal; lia | auto].
+Qed.
+
+
+
+
 
