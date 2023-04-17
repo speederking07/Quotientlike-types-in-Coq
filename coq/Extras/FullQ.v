@@ -210,9 +210,7 @@ match x, y with
 end.
 
 Definition Qadd (x y: FullQ) : FullQ :=
-match (fullQ_i x), (fullQ_i y) with
-| x', y' => fullQ_c (Qadd' x' y')
-end.
+  fullQ_c (Qadd'(fullQ_i x) (fullQ_i y)).
 
 Definition Qmul' (x y: Q') : Q' :=
 match x, y with
@@ -220,9 +218,7 @@ match x, y with
 end.
 
 Definition Qmul (x y: FullQ) : FullQ :=
-match (fullQ_i x), (fullQ_i y) with
-| x', y' => fullQ_c (Qmul' x' y')
-end.
+  fullQ_c (Qmul' (fullQ_i x) (fullQ_i y)).
 
 
 
