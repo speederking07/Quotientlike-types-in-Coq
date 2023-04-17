@@ -4,6 +4,7 @@ Require Import Coq.Program.Equality.
 Require Import Qplus.
 Require Import Integer.
 
+
 Inductive FullQ :=
 | QPos  : Qplus -> FullQ
 | QZero : FullQ
@@ -13,43 +14,9 @@ Definition Q' : Type := Z * Z.
 
 
 
-Lemma pos_add (n m: nat) : add (Pos n) (Pos m) = Pos (S (n + m)).
-Proof.
-  induction n; [auto|]. now rewrite succ_S, add_l_succ, IHn, <-succ_S.
-Qed.
-
-Lemma neg_add (n m: nat) : add (Neg n) (Neg m) = Neg (S (n + m)).
-Proof.
-  induction n; [auto|]. now rewrite pred_S, add_l_pred, IHn, <-pred_S.
-Qed.
-
-Lemma pos_mul (n m: nat) : Pos n * Pos m = Pos (S n * S m - 1).
-Proof.
-  induction n.
-  - cbn [mul map_n]. rewrite add_r_zero. f_equal. lia.
-  - rewrite succ_S, mul_l_succ, IHn, pos_add. f_equal. lia.
-Qed.
-
-Lemma pos_neg_mul (n m: nat) : Pos n * Neg m = Neg (S n * S m - 1).
-Proof.
-  induction n.
-  - cbn [mul map_n]. rewrite add_r_zero. f_equal. lia.
-  - rewrite succ_S, mul_l_succ, IHn, neg_add. f_equal. lia.
-Qed.
-
-Lemma neg_pos_mul (n m: nat) : Neg n * Pos m = Neg (S n * S m - 1).
-Proof.
-  rewrite mul_comm, pos_neg_mul. f_equal. lia.
-Qed.
-
-Lemma neg_mul (n m: nat) : Neg n * Neg m = Pos (S n * S m - 1).
-Proof.
-  induction n.
-  - cbn [mul map_n]. rewrite add_r_zero. cbn. f_equal. lia.
-  - rewrite pred_S, mul_l_pred, IHn. cbn [neg]. rewrite pos_add. f_equal. lia.
-Qed.
 
 
+(* Fraction equality equvalance relation and proof *)
 Inductive frac_eq' : Q' -> Q' -> Prop :=
 | PosFracEq  : forall (n d n' d' : nat), frac_eq (S n, S d) (S n', S d') -> 
                frac_eq' (Pos n, Pos d) (Pos n', Pos d')
@@ -128,6 +95,10 @@ Proof.
 Qed.
 
 
+
+
+
+(* FullQ and Q' transport functions *) 
 Definition fullQ_c (q: Q') : FullQ :=
 match q with
 | (Pos n, d) => QPos (qplus_c (S n, abs' d))
@@ -149,7 +120,7 @@ match q with
 end.
 
 
-
+(* Q' and FullQ izomorphism theorems *)
 Theorem fullQ_i_is_valid (q: FullQ) : QValid (fullQ_i q).
 Proof.
   destruct q; cbn; [|constructor|]; assert (valid (qplus_i q)) by apply qplus_valid;
@@ -218,7 +189,7 @@ Qed.
 
 
 
-
+(* Basic operations definitions *)
 Definition Qinv (q: FullQ) : FullQ :=
 match q with
 | QPos x => QPos (Qplus_inv x)
@@ -253,6 +224,8 @@ match (fullQ_i x), (fullQ_i y) with
 | x', y' => fullQ_c (Qmul' x' y')
 end.
 
+
+
 Declare Scope Q_scope.
 Delimit Scope Q_scope with FullQ.
 Bind Scope Q_scope with FullQ.
@@ -262,6 +235,8 @@ Notation "- x" := (Qneg x) : Q_scope.
 Infix "+" := Qadd : Q_scope.
 Infix "*" := Qmul : Q_scope.
 
+
+(* FullQ add properties proofs *)
 Theorem Qadd_neg_r (x: FullQ) : x + (-x) = QZero.
 Proof.
   destruct x; cbn; [| auto |].
@@ -368,7 +343,7 @@ Qed.
 
 
 
-
+(* FullQ mul properties proofs *)
 Theorem Qmul'_comm (x y: Q') : (Qmul' x y) = (Qmul' y x).
 Proof.
   destruct x as [xn xd]. destruct y as [yn yd]. cbn [Qmul']. f_equal.
@@ -513,9 +488,10 @@ Proof.
   - apply Qmul'_valid; apply fullQ_i_is_valid.
   - apply Qadd'_valid; apply fullQ_i_is_valid.
   - apply (frac_eq'_trans _ (Qmul' (fullQ_i x) (Qadd' (fullQ_i y) (fullQ_i z)))).
-    2: apply (frac_eq'_trans _ (Qadd' (Qmul' (fullQ_i x) (fullQ_i y)) (Qmul' (fullQ_i x) (fullQ_i z)))).
-    3: apply (frac_eq'_trans _ 
-      (Qadd' (Qmul' (fullQ_i x) (fullQ_i y)) (fullQ_i (fullQ_c (Qmul' (fullQ_i x) (fullQ_i z)))))).
+    2: apply (frac_eq'_trans _ (Qadd' (Qmul' (fullQ_i x) (fullQ_i y)) 
+      (Qmul' (fullQ_i x) (fullQ_i z)))).
+    3: apply (frac_eq'_trans _ (Qadd' (Qmul' (fullQ_i x) (fullQ_i y)) 
+      (fullQ_i (fullQ_c (Qmul' (fullQ_i x) (fullQ_i z)))))).
     + apply Qmul'_frac_eq_l; [auto|]. apply frac_eq'_sym. apply fullQ_epi'. 
       now apply Qadd'_valid.
     + now apply Qmul'_dist.
@@ -525,7 +501,49 @@ Proof.
       now apply Qmul'_valid.
 Qed.
 
+Theorem Qmul_dist_r (x y z: FullQ) : (x + y) * z = (x * z) + (y * z).
+Proof.
+  now rewrite Qmul_comm, Qmul_dist_l, (Qmul_comm z), (Qmul_comm z).  
+Qed.
 
 
+
+
+(* Algebra instances *)
+Require Import Lib.Algebra.
+
+Global Program Instance FullQ_is_Group : Group FullQ := {
+  zero := QZero;
+  op   := Qadd;
+  inv  := Qneg;
+}.
+
+Next Obligation. apply Qadd_zero_l. Defined.
+Next Obligation. apply Qadd_zero_r. Defined.
+Next Obligation. apply Qadd_neg_l. Defined.
+Next Obligation. apply Qadd_neg_r. Defined.
+Next Obligation. apply Qadd_assoc. Defined.
+
+Global Program Instance FullQ_is_Ring : Ring FullQ := {
+  one := QPos One;
+  mul := Qmul;
+}.
+
+Next Obligation. apply Qadd_comm. Defined.
+Next Obligation. apply Qmul_one_l. Defined.
+Next Obligation. apply Qmul_one_r. Defined.
+Next Obligation. apply Qmul_assoc. Defined.
+Next Obligation. apply Qmul_dist_l. Defined.
+Next Obligation. apply Qmul_dist_r. Defined.
+
+Global Program Instance FullQ_is_RingComm : RingComm FullQ.
+
+Next Obligation. apply Qmul_comm. Defined.
+
+Global Program Instance FullQ_is_Field : Field FullQ := {
+  mul_inv := Qinv;
+}.
+
+Next Obligation. now apply Qmul_inv_l. Defined.
 
    

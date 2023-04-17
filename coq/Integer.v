@@ -1,3 +1,7 @@
+Require Import Lia.
+
+Require Import Lib.Algebra.
+
 Inductive Z : Type :=
 | Pos : nat -> Z
 | Zero : Z
@@ -387,5 +391,73 @@ Proof.
 Qed.
 
 
+(* additional operations on know sign numbers *)
+Lemma pos_add (n m: nat) : add (Pos n) (Pos m) = Pos (S (n + m)).
+Proof.
+  induction n; [auto|]. now rewrite succ_S, add_l_succ, IHn, <-succ_S.
+Qed.
+
+Lemma neg_add (n m: nat) : add (Neg n) (Neg m) = Neg (S (n + m)).
+Proof.
+  induction n; [auto|]. now rewrite pred_S, add_l_pred, IHn, <-pred_S.
+Qed.
+
+Lemma pos_mul (n m: nat) : Pos n * Pos m = Pos (S n * S m - 1).
+Proof.
+  induction n.
+  - cbn [mul map_n]. rewrite add_r_zero. f_equal. lia.
+  - rewrite succ_S, mul_l_succ, IHn, pos_add. f_equal. lia.
+Qed.
+
+Lemma pos_neg_mul (n m: nat) : Pos n * Neg m = Neg (S n * S m - 1).
+Proof.
+  induction n.
+  - cbn [mul map_n]. rewrite add_r_zero. f_equal. lia.
+  - rewrite succ_S, mul_l_succ, IHn, neg_add. f_equal. lia.
+Qed.
+
+Lemma neg_pos_mul (n m: nat) : Neg n * Pos m = Neg (S n * S m - 1).
+Proof.
+  rewrite mul_comm, pos_neg_mul. f_equal. lia.
+Qed.
+
+Lemma neg_mul (n m: nat) : Neg n * Neg m = Pos (S n * S m - 1).
+Proof.
+  induction n.
+  - cbn [mul map_n]. rewrite add_r_zero. cbn. f_equal. lia.
+  - rewrite pred_S, mul_l_pred, IHn. cbn [neg]. rewrite pos_add. f_equal. lia.
+Qed.
+
+
+(* Algebra instances *)
+
+Global Program Instance Z_is_Group : Group Z := {
+  zero  := Zero;
+  op    := add;
+  inv   := neg;
+}.
+
+Next Obligation. apply add_r_zero. Defined.
+Next Obligation. apply add_neg_l. Defined.
+Next Obligation. apply add_neg_r. Defined.
+Next Obligation. apply add_assoc. Defined.
+
+Global Program Instance Z_is_Ring : Ring Z := {
+  one  := Pos O;
+  mul  := mul;
+}.
+
+Next Obligation. apply add_comm. Defined.
+Next Obligation. apply add_r_zero. Defined.
+Next Obligation. apply mul_r_one. Defined.
+Next Obligation. apply mul_assoc. Defined.
+Next Obligation. apply mul_l_dist. Defined.
+Next Obligation. apply mul_r_dist. Defined.
+
+
+Global Program Instance Z_is_RingComm : RingComm Z.
+
+Next Obligation. apply mul_comm. Defined.
+  
 
 

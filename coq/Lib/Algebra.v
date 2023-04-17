@@ -103,10 +103,19 @@ Proof.
   rewrite H1 at 2. now rewrite distr_r, l_mul_id, op_assoc, r_op_inv, r_op_id.
 Qed.
 
+Class RingComm (A : Type) `{Ring A} := RingCommDef {
+  mul_comm   : forall x y: A, mul x y = mul y x;
+}.
 
+Class Field (A : Type) `{RingComm A} := FieldDef {
+  mul_inv   : A -> A;
+  l_mul_inv : forall x: A, x <> zero -> mul (mul_inv x) x = one;
+}.
 
-
-
+Theorem r_mul_inv (A : Type) `{Field A} (x: A) : x <> zero -> mul x (mul_inv x) = one.
+Proof.
+  intros P. rewrite mul_comm. now apply l_mul_inv.
+Qed.
 
 
 

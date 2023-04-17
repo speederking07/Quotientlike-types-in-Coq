@@ -1,3 +1,4 @@
+cd coq
 coqc Lib/Algebra.v
 coqc Lib/EqDec.v
 coqc Lib/LinearOrder.v
