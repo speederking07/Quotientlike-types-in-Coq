@@ -1,3 +1,4 @@
+% Dowód teirdzenia Streichera 
 @article{Streicher,
   title={Investigations into intensional type theory},
   author={Streicher, Thomas},
@@ -5,8 +6,10 @@
   year={1993}
 }
 
+% Dowód teirdzenia Hedberga
 @article{hedberg_1998, title={A coherence theorem for Martin-Löf's type theory}, volume={8}, DOI={10.1017/S0956796898003153}, number={4}, journal={Journal of Functional Programming}, publisher={Cambridge University Press}, author={HEDBERG, MICHAEL}, year={1998}, pages={413–436}}
 
+% HoTT book
 @book{HoTT,
   title={Homotopy Type Theory: Univalent Foundations of Mathematics},
   author={Institute for Advanced Study (Princeton, N.J.) and Univalent Foundations Program},
@@ -15,8 +18,13 @@
   publisher={Univalent Foundations Program}
 }
 
+% Opis Coqa
+ @misc{coqDoc, title={Calculus of inductive constructions}, url={https://coq.inria.fr/refman/index.html}, journal={ Coq 8.9.1 documentation}} 
+
+% Opis Coqa
  @misc{cic, title={Calculus of inductive constructions}, url={https://coq.github.io/doc/v8.9/refman/language/cic.html}, journal={Calculus of Inductive Constructions - Coq 8.9.1 documentation}} 
- 
+
+% Izomorfizm Curry Howarda 
  @book{curry-howard,
 	author = {Ph De Groote},
 	year = {1995},
@@ -24,34 +32,228 @@
 	title = {The Curry-Howard Isomorphism}
 }
 
+% Praca o prześciahc z setoidu do jednoznacznych reprezentacji.
+% Zawiera wiele przykłdaów typów ilorazowaych i tego co nie może mieć jednożnaczej reprezenctacji.
+% Pokazuje jak zdefiniowac parę/listę nieuporządkowana dla N -> N i (N -> N) -> N. A nawet więcej używając lokalnego ciągłości
+@article{DefinableQuotients,
+  author = {Thorsten Altenkirch and Thomas Anberrée and Nuo Li},
+  title =	 {Definable Quotients in Type Theory},
+  year={2011},
+  url={http://www.cs.nott.ac.uk/~psztxa/publ/defquotients.pdf}
+}
+
+% Setoidy w Toerii Typów
+% Praca opicuje jak używać setoidów w celu symulowania typów ilorazowych
+% Praca wyrónia różne rodzaje setoidów: częściowe i zupełne, ...
+@article{SetoidsInTT, 
+    title={Setoids in type theory},
+    volume={13},
+    DOI={10.1017/S0956796802004501},
+    number={2},
+    journal={Journal of Functional Programming},
+    publisher={Cambridge University Press},
+    author={BARTHE, GILLES and CAPRETTA, VENANZIO and PONS, OLIVIER},
+    year={2003},
+    pages={261–293}
+}
+
+% Praca opisuje jak sprawnie używać typów ilorazowych w coqu za pomocą wykorzystnia obu światów, z jednej storny typu setoidowego, oraz typu z jednoznaczą reprezentacją.
+% Do przenoszenia się między nimi używamy dówch funkcji pi oraz repr, oraz prawa że pi . repr = id.
+% Praca opisuje co powinniśmy wymagać od funkcji aby zachowaywaly iloraz, oraz jak można zautomatyzować problem przenoszenia się między reprezentacjami.
+% Ponad to pokazuje jak wykorzystująć aksjomat wyboru każdy iloraz ma funckję normalizująćą. 
+@InProceedings{PragmaticQT,
+    author="Cohen, Cyril",
+    editor="Blazy, Sandrine
+    and Paulin-Mohring, Christine
+    and Pichardie, David",
+    title="Pragmatic Quotient Types in Coq",
+    booktitle="Interactive Theorem Proving",
+    year="2013",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="213--228",
+    abstract="In intensional type theory, it is not always possible to form the quotient of a type by an equivalence relation. However, quotients are extremely useful when formalizing mathematics, especially in algebra. We provide a Coq library with a pragmatic approach in two complementary components. First, we provide a framework to work with quotient types in an axiomatic manner. Second, we program construction mechanisms for some specific cases where it is possible to build a quotient type. This library was helpful in implementing the types of rational fractions, multivariate polynomials, field extensions and real algebraic numbers.",
+    isbn="978-3-642-39634-2"
+}
+
+% Praca opisuje pierwsze próby rozszerzenia  Calculus of Constructions o typy ilorazowe
+@phdthesis{cicQuotient,
+  author  = "Martin Hofmann",
+  title   = "Extensional concepts in intensional type theory",
+  school  = "University of Edinburgh",
+  year    = "1995"
+}
+
+% Praca dlaczego nie da się zbudować izomofrfizmu między E -> F/R, a (E -> F)/S, gdzie S skleja funkje które rzutują zawsze w tą samą klasę akstrakcji R.
+@InProceedings{Quot_izo,
+    author="Chicli, Laurent
+    and Pottier, Lo{\"i}c
+    and Simpson, Carlos",
+    editor="Geuvers, Herman
+    and Wiedijk, Freek",
+    title="Mathematical Quotients and Quotient Types in Coq",
+    booktitle="Types for Proofs and Programs",
+    year="2003",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="95--107",
+    abstract="This note studies quotient types in the Calculus of Inductive Constructions (CIC), implemented in the proof assistant coq, and compares their expressivity to that of mathematical quotients. In [Hof95], Martin Hofmann proposes an extension of the Calculus of Constructions (CC) with quotient types which he shows consistent, but notices that they are not sufficient to account for the natural isomorphism $\theta$ which exists in set theory between functional spaces {\$}{\$}E {\backslash}to {\backslash}frac{\{}F{\}}{\{}R{\}}{\$}{\$}and {\$}{\$}{\backslash}frac{\{}{\{}E {\backslash}to F{\}}{\}}{\{}S{\}}{\$}{\$}where {\$}{\$}f{\{}{\backslash}mathbf{\{} {\}}{\}}Sg{\{}{\backslash}mathbf{\{} {\}}{\}}{\{}{\backslash}text{\{}iff{\}}{\}}{\{}{\backslash}mathbf{\{} {\}}{\}}{\backslash}forall x {\backslash}in F,{\{}{\backslash}mathbf{\{} {\}}{\}}f{\backslash}left( x {\backslash}right)Rg{\backslash}left( x {\backslash}right){\$}{\$}. One can thus ask the question to know if it is possible to extend these quotient types to be able to show injectivity and surjectivity of this morphism. We show here that any extension of this kind in Coq with the impredicative sort Set would be contradictory.",
+    isbn="978-3-540-39185-2"
+}
+
+% Praca głównie się skupia na NuPRL.
+% Opowiada w jaki sposób typy ilorazowe są wyrażone w tym języku i pomio natywnego wsparcia wciąż pojawiają się problemy z tym że a = b \in A / R nie implikuje a R b.
+% Praca spupia się na różnicach między intensjonalnymi i ekstensjonalnymi ilorazami.
+% Podsuwa inną pracę tym razem skupioną na COQu: Normalized types.
+@InProceedings{NuPRL_quot,
+    author="Nogin, Aleksey",
+    editor="Carre{\~{n}}o, Victor A.
+    and Mu{\~{n}}oz, C{\'e}sar A.
+    and Tahar, Sofi{\`e}ne",
+    title="Quotient Types: A Modular Approach",
+    booktitle="Theorem Proving in Higher Order Logics",
+    year="2002",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="263--280",
+    abstract="In this paper we introduce a new approach to axiomatizing quotient types in type theory. We suggest replacing the existing monolithic rule set by a modular set of rules for a specially chosen set of primitive operations. This modular formalization of quotient types turns out to be much easier to use and free of many limitations of the traditional monolithic formalization. To illustrate the advantages of the new approach, we show how the type of collections (that is known to be very hard to formalize using traditional quotient types) can be naturally formalized using the new primitives. We also show how modularity allows us to reuse one of the new primitives to simplify and enhance the rules for the set types.",
+    isbn="978-3-540-45685-8"
+}
+
+% Praca definująca Calculus of Inductive Constructions bazę dla COQa
+@article{cicOrigins,
+author = {Werner, Benjamin},
+year = {1994},
+month = {05},
+pages = {},
+title = {Une Théorie des Constructions Inductives}
+}
+
+% Praca o możliwości rozszeżenia COQa o typy ilorozowe z normalizcacji.
+% Takie rozszerzenie zachowuje cechy systemu takie jak silna normalizacja oraz rozstrzygalność typowania.
+% Używa konceptu normalizacji to definiowania typów ilorazowych jak moja praca 
 @InProceedings{NormalizedTypes,
-author="Courtieu, Pierre",
-editor="Fribourg, Laurent",
-title="Normalized Types",
-booktitle="Computer Science Logic",
-year="2001",
-publisher="Springer Berlin Heidelberg",
-address="Berlin, Heidelberg",
-pages="554--569",
-abstract="We present a new method to specify a certain class of quotient in intentional type theory, and in the calculus of inductive constructions in particular. We define the notion of ``normalized types''. The main idea is to associate a normalization function to a type, instead of the usual relation. This function allows to compute on a particular element for each equivalence class, avoiding the difficult task of computing on equivalence classes themselves. We restrict ourselves to quotients that allow the construction of such a function, i.e. quotient having a canonical member for each equivalence class. This method is described as an extension of the calculus of constructions allowing normalized types. We prove that this calculus has the properties of strong normalization, subject reduction, decidability of typing. In order to show the example of the definition of ℤ by a normalized type, we finally present a pseudo Coq session.",
-isbn="978-3-540-44802-0"
+    author="Courtieu, Pierre",
+    editor="Fribourg, Laurent",
+    title="Normalized Types",
+    booktitle="Computer Science Logic",
+    year="2001",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="554--569",
+    abstract="We present a new method to specify a certain class of quotient in intentional type theory, and in the calculus of inductive constructions in particular. We define the notion of ``normalized types''. The main idea is to associate a normalization function to a type, instead of the usual relation. This function allows to compute on a particular element for each equivalence class, avoiding the difficult task of computing on equivalence classes themselves. We restrict ourselves to quotients that allow the construction of such a function, i.e. quotient having a canonical member for each equivalence class. This method is described as an extension of the calculus of constructions allowing normalized types. We prove that this calculus has the properties of strong normalization, subject reduction, decidability of typing. In order to show the example of the definition of ℤ by a normalized type, we finally present a pseudo Coq session.",
+    isbn="978-3-540-44802-0"
 }
 
+% Praca opisuje konstukcję "aksjomatu wyboru" dla pewnych typów.
+@InProceedings{COQChoise,
+    author="Garillot, Fran{\c{c}}ois
+    and Gonthier, Georges
+    and Mahboubi, Assia
+    and Rideau, Laurence",
+    editor="Berghofer, Stefan
+    and Nipkow, Tobias
+    and Urban, Christian
+    and Wenzel, Makarius",
+    title="Packaging Mathematical Structures",
+    booktitle="Theorem Proving in Higher Order Logics",
+    year="2009",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="327--342",
+    abstract="This paper proposes generic design patterns to define and combine algebraic structures, using dependent records, coercions and type inference, inside the Coq system. This alternative to telescopes in particular supports multiple inheritance, maximal sharing of notations and theories, and automated structure inference. Our methodology is robust enough to handle a hierarchy comprising a broad variety of algebraic structures, from types with a choice operator to algebraically closed fields. Interfaces for the structures enjoy the convenience of a classical setting, without requiring any axiom. Finally, we present two applications of our proof techniques: a key lemma for characterising the discrete logarithm, and a matrix decomposition problem.",
+    isbn="978-3-642-03359-9"
+}
+
+% Congruence Types
+% Troche jak HIT tylko że bez ścieżek wyższego rzędu. Nawet ok, ale no nie da się tego łatwo przenieść do COQa. Może z wykorzystniem prywantych konstruktorów?
+@article{DIY_TT,
+    author="Backhouse, Roland and Chisholm, Paul and Malcolm, Grant and Saaman, Erik",
+    title="Do-it-yourself type theory",
+    journal="Formal Aspects of Computing",
+    year="1989",
+    publisher="Springer Berlin Heidelberg",
+    address="Berlin, Heidelberg",
+    pages="327--342",
+    abstract="This paper provides a tutorial introduction to a constructive theory of types based on, but incorporating some extensions to, that originally developed by Per Martin-Löf. The emphasis is on the relevance of the theory to the construction of computer programs and, in particular, on the formal relationship between program and data structure. Topics discussed include the principle of propositions as types, free types, congruence types, types with information loss and mutually recursive types. Several examples of program development within the theory are also discussed in detail.",
+    isbn="978-3-642-03359-9",
+    volume = {1},
+    number = {1},
+    pages = {19--4},
+    doi = {10.1007/BF01887198},
+    url = { https://doi.org/10.1007/BF01887198},
+    issn = {1433-299X},
+}
+
+% Opisuje jak można użyć ekstencjonalość zdań i funkcji oraz aksjomat wyboru do stworzenia typów ilorazowych.
+@misc{QuotientsInCoq,   
+    title = {Quotients in Coq},
+    author = "Arthur Azevedo de Amorim",
+    url = {http://poleiro.info/posts/2019-12-25-quotients-in-coq.html},   
+    year = {2019},   
+    note = {Accessed on June 7th, 2023} 
+}
+
+% Praca opisuje jak można z śladu algorytmu euklidesa stworzyć typ ilorazowy dla dodatnuch liczb wymiernych.
 @article{Qplus,
-title = {A simple canonical representation of rational numbers},
-journal = {Electronic Notes in Theoretical Computer Science},
-volume = {85},
-number = {7},
-pages = {1-16},
-year = {2003},
-note = {Mathematics, Logic and Computation (Satellite Event of ICALP 2003)},
-issn = {1571-0661},
-doi = {https://doi.org/10.1016/S1571-0661(04)80754-0},
-url = {https://www.sciencedirect.com/science/article/pii/S1571066104807540},
-author = {Yves Bertot},
-abstract = {We propose to use a simple inductive type as a basis to represent the field of rational numbers. We describe the relation between this representation of numbers and the representation as fractions of non-zero natural numbers. The usual operations of comparison, multiplication, and addition are then defined in a naive way. The whole construction is used to build a model of the set of rational numbers as an ordered archimedian field. All constructions have been modeled and verified in the Coq proof assistant.}
+    title = {A simple canonical representation of rational numbers},
+    journal = {Electronic Notes in Theoretical Computer Science},
+    volume = {85},
+    number = {7},
+    pages = {1-16},
+    year = {2003},
+    note = {Mathematics, Logic and Computation (Satellite Event of ICALP 2003)},
+    issn = {1571-0661},
+    doi = {https://doi.org/10.1016/S1571-0661(04)80754-0},
+    url = {https://www.sciencedirect.com/science/article/pii/S1571066104807540},
+    author = {Yves Bertot},
+    abstract = {We propose to use a simple inductive type as a basis to represent the field of rational numbers. We describe the relation between this representation of numbers and the representation as fractions of non-zero natural numbers. The usual operations of comparison, multiplication, and addition are then defined in a naive way. The whole construction is used to build a model of the set of rational numbers as an ordered archimedian field. All constructions have been modeled and verified in the Coq proof assistant.}
 }
 
+% Książka zawiera wszystkie ważne aspekty dowodzenia/programowania w COQu można wykorzytsać jako cytat do podtypowania. 
+@book{CoqBook,
+    author = {Chlipala, Adam},
+    title = {Certified Programming with Dependent Types: A Pragmatic Introduction to the Coq Proof Assistant},
+    year = {2013},
+    isbn = {0262026651},
+    publisher = {The MIT Press},
+    abstract = {The technology of mechanized program verification can play a supporting role in many kinds of research projects in computer science, and related tools for formal proof-checking are seeing increasing adoption in mathematics and engineering. This book provides an introduction to the Coq software for writing and checking mathematical proofs. It takes a practical engineering focus throughout, emphasizing techniques that will help users to build, understand, and maintain large Coq developments and minimize the cost of code change over time. Two topics, rarely discussed elsewhere, are covered in detail: effective dependently typed programming (making productive use of a feature at the heart of the Coq system) and construction of domain-specific proof tactics. Almost every subject covered is also relevant to interactive computer theorem proving in general, not just program verification, demonstrated through examples of verified programs applied in many different sorts of formalizations. The book develops a unique automated proof style and applies it throughout; even experienced Coq users may benefit from reading about basic Coq concepts from this novel perspective. The book also offers a library of tactics, or programs that find proofs, designed for use with examples in the book. Readers will acquire the necessary skills to reimplement these tactics in other settings by the end of the book. All of the code appearing in the book is freely available online.}
+}
+
+% Kolejny poradnik do Coqa ma ładanie rozpisane uniwersa.
+@book{CoqBook2,
+    author = {Bertot, Yves and Castran, Pierre},
+    title = {Interactive Theorem Proving and Program Development: Coq'Art The Calculus of Inductive Constructions},
+    year = {2010},
+    isbn = {3642058809},
+    publisher = {Springer Publishing Company, Incorporated},
+    edition = {1st},
+    abstract = {A practical introduction to the development of proofs and certified programs using Coq. An invaluable tool for researchers, students, and engineers interested in formal methods and the development of zero-fault software.}
+}
+
+% Praca o tym że type(n) nie może żyć w type(n), stąd teź nieskończa hierarchia uniwersów.
+@InProceedings{TypeNotInType,
+    author = 	 {Thierry Coquand},
+    title = 	 {An Analysis of Girard's Paradox},
+    booktitle =  {Proceedings of the First Annual IEEE Symposium on Logic in Computer Science (LICS 1986)},
+    year =	 {1986},
+    month =	 {June}, 
+    pages =      {227--236},
+    location =   {Cambridge, MA, USA}, 
+    publisher =	 {IEEE Computer Society Press}
+  }
+
+% Książka o algebrze abstrakcyjnej można zacytować konstrucje takie jak wolna grupa, monoid, czy pierścień
+@book{AbstractAlgebra, 
+    address={New York}, 
+    edition={3rd ed}, 
+    title={Abstract algebra}, 
+    publisher={Wiley}, 
+    author={Dummit, David S. and Foote, Richard M.}, 
+    year={2004} 
+}
+
+% Domumentacja języka Lean4
 @misc{lean4,   
     title = {Theorem Proving in Lean 4},   
     url = {https://leanprover.github.io/theorem_proving_in_lean4/axioms_and_computation.html},   
@@ -59,6 +261,7 @@ abstract = {We propose to use a simple inductive type as a basis to represent th
     note = {Accessed on Febrauary 18, 2023} 
 }
 
+% Domumentacja języka Agda
 @misc{agda,   
     title = {Agda documentation},   
     url = {https://agda.readthedocs.io/en/v2.6.0.1/getting-started/what-is-agda.html},   
@@ -66,6 +269,15 @@ abstract = {We propose to use a simple inductive type as a basis to represent th
     note = {Accessed on Febrauary 22, 2023} 
 }
 
+% Domumentacja języka Idris 2
+@misc{idris,   
+    title = {Idris 2 documentation},   
+    url = {https://idris2.readthedocs.io/en/latest/tutorial/index.html},   
+    year = {2021},   
+    note = {Accessed on April 5th, 2023} 
+}
+
+% Praca o tym jak z aksjomatu wyboru można wyprowadzić prawo wyłączonego środka
 @article{choise,
 	volume = {51},
 	journal = {Proceedings of the American Mathematical Society},
@@ -77,21 +289,309 @@ abstract = {We propose to use a simple inductive type as a basis to represent th
 	year = {1975}
 }
 
+% ???
 @incollection{MARTINLOF197573,
-title = {An Intuitionistic Theory of Types: Predicative Part},
-editor = {H.E. Rose and J.C. Shepherdson},
-series = {Studies in Logic and the Foundations of Mathematics},
-publisher = {Elsevier},
-volume = {80},
-pages = {73-118},
-year = {1975},
-booktitle = {Logic Colloquium '73},
-issn = {0049-237X},
-doi = {https://doi.org/10.1016/S0049-237X(08)71945-1},
-url = {https://www.sciencedirect.com/science/article/pii/S0049237X08719451},
-author = {Per Martin-Löf},
-abstract = {Publisher Summary
-The theory of types is intended to be a full-scale system for formalizing intuitionistic mathematics as developed. The language of the theory is richer than the languages of traditional intuitionistic systems in permitting proofs to appear as parts of propositions so that the propositions of the theory can express properties of proofs. There are axioms for universes that link the generation of objects and types and play somewhat the same role for the present theory as does the replacement axiom for Zermelo–Fraenkel set theory. The present theory is based on a strongly impredicative axiom that there is a type of all types in symbols. This axiom has to be abandoned, however, after it has been shown to lead to a contraction. This chapter discusses Normalization theorem, which can be strengthened in two ways: it can be made to cover open terms and it can be proved that every reduction sequence starting from an arbitrary term leads to a unique normal term after a finite number of steps. The definition of the notion of convertibility and the proof that an arbitrary term is convertible can no longer be separated because the type symbols and the terms are generated simultaneously.}
+    title = {An Intuitionistic Theory of Types: Predicative Part},
+    editor = {H.E. Rose and J.C. Shepherdson},
+    series = {Studies in Logic and the Foundations of Mathematics},
+    publisher = {Elsevier},
+    volume = {80},
+    pages = {73-118},
+    year = {1975},
+    booktitle = {Logic Colloquium '73},
+    issn = {0049-237X},
+    doi = {https://doi.org/10.1016/S0049-237X(08)71945-1},
+    url = {https://www.sciencedirect.com/science/article/pii/S0049237X08719451},
+    author = {Per Martin-Löf},
+    abstract = {Publisher Summary
+    The theory of types is intended to be a full-scale system for formalizing intuitionistic mathematics as developed. The language of the theory is richer than the languages of traditional intuitionistic systems in permitting proofs to appear as parts of propositions so that the propositions of the theory can express properties of proofs. There are axioms for universes that link the generation of objects and types and play somewhat the same role for the present theory as does the replacement axiom for Zermelo–Fraenkel set theory. The present theory is based on a strongly impredicative axiom that there is a type of all types in symbols. This axiom has to be abandoned, however, after it has been shown to lead to a contraction. This chapter discusses Normalization theorem, which can be strengthened in two ways: it can be made to cover open terms and it can be proved that every reduction sequence starting from an arbitrary term leads to a unique normal term after a finite number of steps. The definition of the notion of convertibility and the proof that an arbitrary term is convertible can no longer be separated because the type symbols and the terms are generated simultaneously.}
 }
 
-@article{cubical, title={Cubical methods in homotopy type theory and univalent foundations}, volume={31}, DOI={10.1017/S0960129521000311}, number={10}, journal={Mathematical Structures in Computer Science}, publisher={Cambridge University Press}, author={Mörtberg, Anders}, year={2021}, pages={1147–1184}}
+% Praca o kubicznej teorii typów - czyli HoTT który można zaimplementować.
+@article{cubical, 
+    title={Cubical methods in homotopy type theory and univalent foundations}, 
+    volume={31}, 
+    DOI={10.1017/S0960129521000311}, 
+    number={10}, 
+    journal={Mathematical Structures in Computer Science}, 
+    publisher={Cambridge University Press}, 
+    author={Mörtberg, Anders}, 
+    year={2021}, 
+    pages={1147–1184}
+}
+
+% Praca o bibliotece HoTT do Coqa
+@article{HoTTinCoq,
+  author       = {Andrej Bauer and
+                  Jason Gross and
+                  Peter LeFanu Lumsdaine and
+                  Michael Shulman and
+                  Matthieu Sozeau and
+                  Bas Spitters},
+  title        = {The HoTT Library: {A} formalization of homotopy type theory in Coq},
+  journal      = {CoRR},
+  volume       = {abs/1610.04591},
+  year         = {2016},
+  url          = {http://arxiv.org/abs/1610.04591},
+  eprinttype    = {arXiv},
+  eprint       = {1610.04591},
+  timestamp    = {Mon, 13 Aug 2018 16:48:11 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/BauerGLSSS16.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+% Praca o prywatnych typach induktywnych
+@article{PrivetInductive,
+  author       = {Yves Bertot},
+  title        = {Private Inductive Types Proposing a language extension},
+  year         = {2013},
+  url          = {https://coq.inria.fr/files/coq5_submission_3.pdf},
+  timestamp    = {Mon, 13 Aug 2018 16:48:11 +0200},
+}
+
+% Teoretyczny podstawy SPropa w Coqu
+@article{BasesOfSProp,
+    author = {Gilbert, Ga\"{e}tan and Cockx, Jesper and Sozeau, Matthieu and Tabareau, Nicolas},
+    title = {Definitional Proof-Irrelevance without K},
+    year = {2019},
+    issue_date = {January 2019},
+    publisher = {Association for Computing Machinery},
+    address = {New York, NY, USA},
+    volume = {3},
+    number = {POPL},
+    url = {https://doi.org/10.1145/3290316},
+    doi = {10.1145/3290316},
+    abstract = {Definitional equality—or conversion—for a type theory with a decidable type checking is the simplest tool to prove that two objects are the same, letting the system decide just using computation. Therefore, the more things are equal by conversion, the simpler it is to use a language based on type theory. Proof-irrelevance, stating that any two proofs of the same proposition are equal, is a possible way to extend conversion to make a type theory more powerful. However, this new power comes at a price if we integrate it naively, either by making type checking undecidable or by realizing new axioms—such as uniqueness of identity proofs (UIP)—that are incompatible with other extensions, such as univalence. In this paper, taking inspiration from homotopy type theory, we propose a general way to extend a type theory with definitional proof irrelevance, in a way that keeps type checking decidable and is compatible with univalence. We provide a new criterion to decide whether a proposition can be eliminated over a type (correcting and improving the so-called singleton elimination of Coq) by using techniques coming from recent development on dependent pattern matching without UIP. We show the generality of our approach by providing implementations for both Coq and Agda, both of which are planned to be integrated in future versions of those proof assistants.},
+    journal = {Proc. ACM Program. Lang.},
+    month = {jan},
+    articleno = {3},
+    numpages = {28},
+    keywords = {proof irrelevance, proof assistants, type theory}
+}
+
+% Haskell
+@misc{Haskell,
+  added-at = {2010-06-28T21:16:35.000+0200},
+  author = {Lipovača, Miran},
+  biburl = {https://www.bibsonomy.org/bibtex/2ea63d5ff1043fb6eddfe1be3068f6427/mhwombat},
+  groups = {public},
+  howpublished = {http://learnyouahaskell.com/},
+  interhash = {f4f780f3c7e55cfb6006e1a0688770c3},
+  intrahash = {ea63d5ff1043fb6eddfe1be3068f6427},
+  keywords = {functional_programming haskell languages},
+  lastchecked = {2010-05-20 19:47:03},
+  timestamp = {2016-07-12T19:25:30.000+0200},
+  title = {Learn You a Haskell for Great Good!},
+  url = {http://learnyouahaskell.com/},
+  username = {mhwombat},
+  year = 2010
+}
+
+% Praca o zastosowaniu setoidów w teorii typów
+@InProceedings{Setoids2,
+    author="Altenkirch, Thorsten
+    and Boulier, Simon
+    and Kaposi, Ambrus
+    and Tabareau, Nicolas",
+    editor="Hutton, Graham",
+    title="Setoid Type Theory---A Syntactic Translation",
+    booktitle="Mathematics of Program Construction",
+    year="2019",
+    publisher="Springer International Publishing",
+    address="Cham",
+    pages="155--196",
+    abstract="We introduce setoid type theory, an intensional type theory with a proof-irrelevant universe of propositions and an equality type satisfying function extensionality, propositional extensionality and a definitional computation rule for transport. We justify the rules of setoid type theory by a syntactic translation into a pure type theory with a universe of propositions. We conjecture that our syntax is complete with regards to this translation.",
+    isbn="978-3-030-33636-3"
+}
+
+% Monada częściowych obliczeń
+@inproceedings{DelayedMonad,
+  author       = {Andreas Abel and
+                  James Chapman},
+  editor       = {Paul Blain Levy and
+                  Neel Krishnaswami},
+  title        = {Normalization by Evaluation in the Delay Monad: {A} Case Study for
+                  Coinduction via Copatterns and Sized Types},
+  booktitle    = {Proceedings 5th Workshop on Mathematically Structured Functional Programming,
+                  MSFP@ETAPS 2014, Grenoble, France, 12 April 2014},
+  series       = {{EPTCS}},
+  volume       = {153},
+  pages        = {51--67},
+  year         = {2014},
+  url          = {https://doi.org/10.4204/EPTCS.153.4},
+  doi          = {10.4204/EPTCS.153.4},
+  timestamp    = {Wed, 29 Sep 2021 08:56:00 +0200},
+  biburl       = {https://dblp.org/rec/journals/corr/AbelC14.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+% Construction of Cauchy Reals
+@Book{ CauchyReals,
+    author = { Rudin, Walter },
+    title = { Principles of mathematical analysis / Walter Rudin },
+    edition = { 3d ed. },
+    isbn = { 007054235 },
+    publisher = { McGraw-Hill New York },
+    pages = { x, 342 p. ; },
+    year = { 1976 },
+    type = { Book },
+    url = { http://www.loc.gov/catdir/toc/mh031/75017903.html },
+    language = { English },
+    subjects = { Mathematical analysis. },
+    life-dates = { 1976 -  },
+    catalogue-url = { https://nla.gov.au/nla.cat-vn298857 },
+}
+
+% Book about mathematical analysis
+@book{Anal,
+	editor = {},
+	title = {Foundations of Constructive Analysis},
+	publisher = {New York, NY, USA: Mcgraw-Hill},
+	year = {1967},
+	author = {Errett Bishop}
+}
+
+% Problem stopu
+@book{Undecidable,
+  title={The Undecidable: Basic Papers on Undecidable Propositions, Unsolvable Problems and Computable Functions},
+  author={Davis, M.},
+  isbn={9780486432281},
+  lccn={2003067180},
+  series={Dover books on mathematics},
+  url={https://books.google.pl/books?id=qW8x7sQ4JXgC},
+  year={2004},
+  publisher={Dover Publications}
+}
+
+% Książka o Javie
+@book{Java,
+	author = {Boyarsky, Jeanne and Selikoff, Scott},
+	title = {OCA Oracle Certified Associate Java SE 8 Programmer I study guide},
+	publisher = {John Wiley and Sons},
+	year = {2015}
+}
+
+@book{CategoryTheory,
+  added-at = {2009-09-18T21:22:09.000+0200},
+  address = {New York},
+  author = {MacLane, Saunders},
+  biburl = {https://www.bibsonomy.org/bibtex/29e8ca8b4bf357cc41e40e98cca25cb8c/minas},
+  interhash = {51566d046db4c3ea930c2b5ca79173f1},
+  intrahash = {9e8ca8b4bf357cc41e40e98cca25cb8c},
+  keywords = {CategoryTheory},
+  mrclass = {18-02},
+  mrnumber = {MR0354798 (50 \#7275)},
+  mrreviewer = {H.-B. Brinkmann},
+  note = {Graduate Texts in Mathematics, Vol. 5},
+  pages = {ix+262},
+  publisher = {Springer-Verlag},
+  timestamp = {2009-09-18T21:22:09.000+0200},
+  title = {Categories for the Working Mathematician},
+  year = 1971
+}
+
+% Można wspomnieć przy irrelavance axiom
+@InProceedings{ProofIrrelevance,
+author="Barthe, Gilles",
+editor="Larsen, Kim G.
+and Skyum, Sven
+and Winskel, Glynn",
+title="The relevance of proof-irrelevance",
+booktitle="Automata, Languages and Programming",
+year="1998",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="755--768",
+abstract="We propose a general technique, inspired from proof-irrelevance, to prove strong normalisation and consistency for extensions of the Calculus of Constructions.",
+isbn="978-3-540-68681-1"
+}
+
+@InProceedings{HedbergProof,
+author="Kraus, Nicolai
+and Escard{\'o}, Mart{\'i}n
+and Coquand, Thierry
+and Altenkirch, Thorsten",
+editor="Hasegawa, Masahito",
+title="Generalizations of Hedberg's Theorem",
+booktitle="Typed Lambda Calculi and Applications",
+year="2013",
+publisher="Springer Berlin Heidelberg",
+address="Berlin, Heidelberg",
+pages="173--188",
+abstract="As the groupoid interpretation by Hofmann and Streicher shows, uniqueness of identity proofs (UIP) is not provable. Generalizing a theorem by Hedberg, we give new characterizations of types that satisfy UIP. It turns out to be natural in this context to consider constant endofunctions. For such a function, we can look at the type of its fixed points. We show that this type has at most one element, which is a nontrivial lemma in the absence of UIP. As an application, a new notion of anonymous existence can be defined. One further main result is that, if every type has a constant endofunction, then all equalities are decidable. All the proofs have been formalized in Agda.",
+isbn="978-3-642-38946-7"
+}
+
+% Basic set theory concepts like pairs
+@book{SetTheorey,
+  title={Introduction to Modern Set Theory},
+  author={Roitman, J.},
+  isbn={9780471635192},
+  lccn={lc89033698},
+  series={A Wiley-interscience publication},
+  url={https://books.google.pl/books?id=0euMlBhBxjMC},
+  year={1990},
+  publisher={Wiley}
+}
+
+% Applications of multisets
+@article{MSetApplic,
+author = {Singh, D. and Adeku Musa, Ibrahim and Tella, Yohanna and Singh, Jai},
+year = {2007},
+month = {01},
+pages = {73-92},
+title = {An overview of the applications of multisets},
+volume = {37},
+journal = {Novi Sad J. Math}
+}
+
+@article{Btree,
+  title={Organization and maintenance of large ordered indexes},
+  author={Rudolf Bayer and Edward M. McCreight},
+  journal={Acta Informatica},
+  year={1972},
+  volume={1},
+  pages={173-189}
+}
+
+% Basic data structures like binary trees
+@book{knuth,
+  added-at = {2015-06-04T07:09:07.000+0200},
+  address = {Reading, Mass.},
+  author = {Knuth, Donald E.},
+  biburl = {https://www.bibsonomy.org/bibtex/296a2ce8070028e53a72f4b1d64d467a5/ytyoun},
+  edition = {Third},
+  interhash = {bb4a4a475ed6fc749f4863d5fa9bb651},
+  intrahash = {96a2ce8070028e53a72f4b1d64d467a5},
+  isbn = {0201896834 9780201896831},
+  keywords = {algorithm knuth no.pdf taocp textbook},
+  publisher = {Addison-Wesley},
+  refid = {872287313},
+  timestamp = {2015-07-29T09:31:31.000+0200},
+  title = {The Art of Computer Programming, Vol. 1: Fundamental Algorithms},
+  year = 1997
+}
+
+@inproceedings{GroupsCoq,
+  author       = {Sidi Ould Biha},
+  editor       = {Jacques Carette and
+                  Lucas Dixon and
+                  Claudio Sacerdoti Coen and
+                  Stephen M. Watt},
+  title        = {Finite Groups Representation Theory with Coq},
+  booktitle    = {Intelligent Computer Mathematics, 16th Symposium, Calculemus 2009,
+                  8th International Conference, {MKM} 2009, Held as Part of {CICM} 2009,
+                  Grand Bend, Canada, July 6-12, 2009. Proceedings},
+  series       = {Lecture Notes in Computer Science},
+  volume       = {5625},
+  pages        = {438--452},
+  publisher    = {Springer},
+  year         = {2009},
+  url          = {https://doi.org/10.1007/978-3-642-02614-0\_34},
+  doi          = {10.1007/978-3-642-02614-0\_34},
+  timestamp    = {Sun, 02 Jun 2019 21:17:34 +0200},
+  biburl       = {https://dblp.org/rec/conf/mkm/Biha09.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
+}
+
+ @misc{FreeGroupsCoq, title={FreeGroups Coq contribution}, url={https://github.com/coq-contribs/free-groups}, author={Daniel Schepler}} 

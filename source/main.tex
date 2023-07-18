@@ -1,6 +1,6 @@
 % Opcje klasy 'iithesis' opisane sa w komentarzach w pliku klasy. Za ich pomoca
 % ustawia sie przede wszystkim jezyk oraz rodzaj (lic/inz/mgr) pracy.
-\documentclass[shortabstract, mgr]{iithesis}
+\documentclass[shortabstract, mgr, english]{iithesis}
 
 \usepackage[utf8]{inputenc}
 
@@ -11,7 +11,7 @@
 % zlamaniu wierszy w temacie pracy, zwlaszcza tego w jezyku pracy. Uzyj do tego
 % polecenia \fmlinebreak.
 \polishtitle    {Funkcje normalizujące dla typów ilorazowych w Coqu}
-\englishtitle   {Canonizing functions for quotints types in Coq}
+\englishtitle   {Normalization functions \fmlinebreak for quotient types in Coq}
 \polishabstract {\ldots}
 \englishabstract{\ldots}
 % w pracach wielu autorow nazwiska mozna oddzielic poleceniem \and
@@ -27,27 +27,244 @@
 
 %%%%% WLASNE DODATKOWE PAKIETY
 \usepackage{amsfonts} 
+\usepackage{stmaryrd}
 \usepackage{minted}
 \usepackage{polski}
 \usepackage{graphicx}
 \usepackage{MnSymbol}
 \usepackage{tikz}
 \usepackage{tikz-qtree}
-\usepackage{float}
-\usepackage[headheight=18pt, top=25mm, bottom=25mm, left=25mm, right=25mm]{geometry}
-\usetikzlibrary{positioning}
+\usepackage{enumitem}
+
 \graphicspath{ {./img/} }
 \usemintedstyle{tango}
-\usepackage{newfloat}
+\usetikzlibrary {arrows.meta}
+\usepackage[framemethod=TikZ]{mdframed}
 
 %%%%% WĹASNE DEFINICJE I POLECENIA
-\DeclareFloatingEnvironment[
-    fileext=los,
-    listname={Kod źródłowy},
-    name=Kod źródłowy,
-    placement=!tbhp,
-    within=section,
-]{code}
+\definecolor{CoqIDE}{RGB}{255,248,220}
+\definecolor{darkYellow}{RGB}{224,165,38}
+\definecolor{grey}{RGB}{105,105,105}
+\definecolor{turq}{RGB}{72,209,204}
+
+% [G] - do not split
+
+\newcounter{theo}[section]\setcounter{theo}{0}
+\renewcommand{\thetheo}{T-\arabic{chapter}.\arabic{section}.\arabic{theo}}
+\newenvironment{theo}[3][]{%
+\refstepcounter{theo}%
+\ifstrempty{#2}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20,align=left]
+{\strut Theorem~\thetheo};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20,align=left]
+{\strut Theorem~\thetheo:~#2};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=blue!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+frametitlealignment=\raggedright
+}
+\ifstrempty{#1}
+{\mdfsetup{nobreak=false}}
+{\mdfsetup{nobreak=true}}
+\begin{mdframed}[]\relax%
+\label{#3}}{\end{mdframed}}
+
+
+\newcounter{defi}[section]\setcounter{defi}{0}
+\renewcommand{\thedefi}{D-\arabic{chapter}.\arabic{section}.\arabic{defi}}
+\newenvironment{defi}[3][]{%
+\refstepcounter{defi}%
+\ifstrempty{#2}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=darkYellow!30,align=left]
+{\strut Definition~\thedefi};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=darkYellow!30,align=left]
+{\strut Definition~\thedefi:~#2};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=darkYellow!30,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+frametitlealignment=\raggedright
+}
+\ifstrempty{#1}
+{\mdfsetup{nobreak=false}}
+{\mdfsetup{nobreak=true}}
+\begin{mdframed}[]\relax%
+\label{#3}}{\end{mdframed}}
+
+
+\newcounter{proof}[section]\setcounter{proof}{0}
+\renewcommand{\theproof}{P-\arabic{chapter}.\arabic{section}.\arabic{proof}}
+\newenvironment{proof}[3][]{%
+\refstepcounter{proof}%
+\ifstrempty{#2}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20,align=left]
+{\strut Proof~\theproof};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20,align=left]
+{\strut Proof~\theproof:~#2};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=red!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+frametitlealignment=\raggedright,
+nobreak=false
+}
+\ifstrempty{#1}
+{\mdfsetup{nobreak=false}}
+{\mdfsetup{nobreak=true}}
+\begin{mdframed}[]\relax%
+\label{#3}}{\end{mdframed}}
+
+
+\newcounter{coq}[section]\setcounter{proof}{0}
+\renewcommand{\thecoq}{C-\arabic{chapter}.\arabic{section}.\arabic{coq}}
+\newenvironment{coq}[3][]{%
+\refstepcounter{coq}%
+\ifstrempty{#2}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20,align=left]
+{\strut Advanced Coq~\thecoq};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20,align=left]
+{\strut Advanced Coq~\thecoq:~#2};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=green!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+frametitlealignment=\raggedright
+}
+\ifstrempty{#1}
+{\mdfsetup{nobreak=false}}
+{\mdfsetup{nobreak=true}}
+\begin{mdframed}[]\relax%
+\label{#3}}{\end{mdframed}}
+
+
+\newcounter{func}[section]\setcounter{func}{0}
+\renewcommand{\thefunc}{F-\arabic{chapter}.\arabic{section}.\arabic{func}}
+\newenvironment{func}[3][]{%
+\refstepcounter{func}%
+\ifstrempty{#2}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=violet!20,align=left]
+{\strut Function~\thefunc};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=violet!20,align=left]
+{\strut Function~\thefunc:~#2};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=violet!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+frametitlealignment=\raggedright
+}
+\ifstrempty{#1}
+{\mdfsetup{nobreak=false}}
+{\mdfsetup{nobreak=true}}
+\begin{mdframed}[]\relax%
+\label{#3}}{\end{mdframed}}
+
+
+\newcounter{vis}[section]\setcounter{vis}{0}
+\renewcommand{\thevis}{V-\arabic{chapter}.\arabic{section}.\arabic{vis}}
+\newenvironment{vis}[3][]{%
+\refstepcounter{vis}%
+\ifstrempty{#2}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=turq!20,align=left]
+{\strut Visualization~\thevis};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=turq!20,align=left]
+{\strut Visualization~\thevis:~#2};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=turq!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+frametitlealignment=\raggedright
+}
+\ifstrempty{#1}
+{\mdfsetup{nobreak=false}}
+{\mdfsetup{nobreak=true}}
+\begin{mdframed}[]\relax%
+\label{#3}}{\end{mdframed}}
+
+
+\newcounter{example}[section]\setcounter{func}{0}
+\renewcommand{\theexample}{E-\arabic{chapter}.\arabic{section}.\arabic{example}}
+\newenvironment{example}[3][]{%
+\refstepcounter{example}%
+\ifstrempty{#2}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=grey!20,align=left]
+{\strut Example~\theexample};}}
+}%
+{\mdfsetup{%
+frametitle={%
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=grey!20,align=left]
+{\strut Example~\theexample:~#2};}}%
+}%
+\mdfsetup{innertopmargin=10pt,linecolor=grey!20,%
+linewidth=2pt,topline=true,%
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax,
+frametitlealignment=\raggedright
+}
+\ifstrempty{#1}
+{\mdfsetup{nobreak=false}}
+{\mdfsetup{nobreak=true}}
+\begin{mdframed}[]\relax%
+\label{#3}}{\end{mdframed}}
+
+
+\mdfdefinestyle{codestyle}{linecolor=black, linewidth=0.7pt, leftline=false, rightline=false, backgroundcolor=CoqIDE}
+
+\newenvironment{code}
+{ \begin{ccode} \begin{mdframed}[style=codestyle] }
+{ \end{mdframed} \end{ccode} }
+
+\newcommand{\qed}{\phantom{Marek} \hfill \ensuremath{\Box}}
+\newcommand{\contradiction}{\phantom{Marek} \hfill \ensuremath{\lightning}}
+
+\newcommand{\coqsource}[1]{the appendix \textbf{#1}}
+\newcommand{\mcoq}[1]{\mintinline{coq}{#1}}
+
 
 %\theoremstyle{definition} \newtheorem{definition}{Definition}[chapter]
 %\theoremstyle{remark} \newtheorem{remark}[definition]{Observation}
@@ -56,28 +273,27 @@
 %\renewcommand \qedsymbol {\ensuremath{\square}}
 % ...
 %%%%%
-
 \begin{document}
 
 %%%%% POCZÄTEK ZASADNICZEGO TEKSTU PRACY
 
-    \chapter{Definicja problemu}
+    \chapter{Introduction}
 	\input{chapter1}
 	
-	\chapter{Pod-typowanie jako namiastka typów ilorazowych}
+    \chapter{Quotient types and subtypes}
 	\input{chapter2}
 
-    \chapter{Typów ilorazowe z wykorzystujące pod-typowania}
+    \chapter{Quotient types utilizing subtyping}
 	\input{chapter3}
 
-    \chapter{Typy ilorazowe jako ślad funkcji normalizującej}
+    \chapter{Quotient types as normalization traces}
 	\input{chapter4}
 
-    \chapter{Funkcje jako typy ilorazowe}
-	\input{chapter5}
+    \chapter{Function types as quotient types}
+	%\input{chapter5}
 
-    \chapter{Typy ilorazowe w wybranych językach}
-	\input{chapter6}
+    \chapter{Quotient types in selected languages}
+	%\input{chapter6}
 
 %%%%% BIBLIOGRAFIA
 	\bibliographystyle{plabbrv}
