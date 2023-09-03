@@ -1,5 +1,5 @@
-Require Import Lib.HoTT.
-Require Import Lib.EqDec.
+Require Import Master.Lib.HoTT.
+Require Import Master.Lib.EqDec.
 
 Definition normalzation {A: Type} (f: A -> A) :=
   forall x: A, f x = f (f x).

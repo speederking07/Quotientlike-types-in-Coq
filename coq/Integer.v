@@ -1,6 +1,6 @@
 Require Import Lia.
 
-Require Import Lib.Algebra.
+Require Import Master.Lib.Algebra.
 
 Inductive Z : Type :=
 | Pos : nat -> Z

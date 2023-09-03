@@ -1,73 +1,98 @@
-W tym rozdziale przedstawiony zostanie sposób wykorzystania typu funkcji do zdefiniowania pewnych typów ilorazowych. Niestety, poniższe przykłady generują więcej problemów niż rozwiązań i w związku z tym są praktycznie bezużyteczne w rzeczywistych aplikacjach. Niemniej jednak, stanowią ciekawy przykład niekonwencjonalnego podejścia do problemu i dlatego zostały zamieszczone w tym krótkim rozdziale.
-\section{Utożsamianie elementów przez funkcje}
-Na początku pracy wspomnieliśmy, że nie można zdefiniować typu zbiorów oraz multizbiorów dla dowolnego typu bazowego. Jest to prawdą w przypadku typów induktywnych, gdzie kolejność konstruktorów ma znaczenie. Jednakże, możemy wykorzystać wbudowany w praktycznie każdy język programowania typ funkcji. Oczywiście, aby móc w rozsądny sposób rozumować o równościach na funkcjach, będziemy musieli założyć aksjomat ekstensjonalności funkcji\ref{FunExt}. Wprowadzenie tego aksjomatu nie wprowadza sprzeczności do systemu Coq, więc możemy go bezpiecznie dodać z biblioteki standardowej.
-\begin{code}
+In this chapter, we will explore how to define quotient-like types using functions. However, these representations often lead to more problems than solutions. Nonetheless, they serve as intriguing examples of innovative approaches to quotient types in Coq. These examples are sourced from Coq's set library \cite{coqDoc}. %Better source
+\section{Quotient-like functions}
+At the beginning of the thesis, we mentioned that it is impossible to define the type of sets and multisets for any arbitrary underlying type. It is true for inductive types, where the order of constructors matters. However, we can utilize the built-in function type. Of course, to reason about the equalities of functions in a sensible manner, we will need to assume the axiom of function extensionality. Introducing this axiom does not introduce any contradictions to the Coq system, so we can safely add it.
+\begin{defi}{Function extensionality}{def:FunExt}
 \begin{minted}{coq}
-Definition FunExt := forall (A B: Type) (f g: A -> B),
-    (forall x: A, f x = g x) -> f = g.
+Definition FunExt := forall (A B : Type) (f g : A -> B),
+    (forall x : A, f x = g x) -> f = g.
 \end{minted}
-\caption{Aksjomat ekstensjonalności funkcji w Coqu.}
-\label{FunExt}
-\end{code}
-Po dodaniu tego aksjomatu, funkcje "zapominają" swój wbudowany algorytm sprawdzania równości. Dwie funkcje, które dają takie same wyniki dla całej przestrzeni argumentów, będą sobie równe. Możemy wykorzystać tę właściwość do "zapomnienia" kolejności elementów, nie powołując się na porządek liniowy.
-\section{Typy zbiorów i multizbiorów}
-Mając już ten koncept w głowie, możemy przejść do zdefiniowania typu zbioru \ref{set} jako funkcji rozstrzygającej, czy element należy do zbioru.
-\begin{code}
+\end{defi}
+Without this axiom, two functions are equal if and only if they are intentionally equal, which means they perform computations in the same way. With this axiom, two functions are equal if and only if they give the same results. We can use this property to "forget" the order of elements since the order of computations does not matter as long as it does not change the result.
+\section{Sets and multisets}
+Knowing this concept, we can define the set as the set characteristic function that decides whether the element is in the set.
+\begin{defi}{Set as characteristic function}{def:fSet}
 \begin{minted}{coq}
-Definition set (A: Type) : Type := A -> bool.
+Definition set (A : Type) : Type := A -> bool.
 \end{minted}
-\caption{Typ zbioru w Coqu.}
-\label{set}
-\end{code}
-W przeciwieństwie do innych definicji zbiorów przedstawionych w tej pracy, zbiory przedstawione powyżej mogą być potencjalnie nieskończone dla typów, które mają nieskończenie wiele elementów. Pozwala nam to na bardziej elastyczne definicje, jednak kosztem obliczalności podstawowych operacji. Jedną z takich operacji jest np. sprawdzenie, czy zbiór nie jest pusty. Ta operacja w ogólności jest oczywiście nieobliczalna. Możemy w łatwy sposób zdefiniować zbiór liczby rekurencyjnych wywołań (paliwa) potrzebnych, aby dany algorytm zakończył obliczenia. Gdybyśmy mogli sprawdzić, czy taki zbiór jest pusty czy nie, moglibyśmy rozstrzygnąć, czy algorytm kiedyś terminuje, czy nie. Problemu stopu jak wiemy jest jednak problem nierozstrzygalny. W oczywisty sposób, inne operacje, takie jak sprawdzenie, czy dwa zbiory są sobie równe, również będą nierozstrzygalne z tego samego powodu.
-
-Multi-zbiór możemy zdefiniować w bardzo podobny sposób \cite{mset} jak zbiór, zamieniając jedynie typ dwuelementowy \mintinline{coq}{bool} na typ liczb naturalnych \mintinline{coq}{nat}.
-\begin{code}
+\end{defi}
+In contrast to previous definitions of sets, this one lets us define sets with potentially infinitely many elements. We can use this representation to reason about any set with a computable characteristic function. The cost of such a general definition is that some basic functions on set are uncomputable for this representation.
+\begin{theo}{Checking }{th:emptyNotComp}
+The function $E : \textrm{set}(X) \rightarrow \{0, 1\}$, which checks whether the set is empty, is uncomputable.
+\end{theo}
+\begin{proof}{}{proof:emptyNotComp}
+Let $E$ be a computable function. For any Turing machine $M$ there exist set $T_M = \{t \in \mathbb{N} : \textrm{after} \; t \; \textrm{steps machine} \; M \; \textrm{is in HALT state}\}$. Every set $T_M$ has a computable characteristic function since checking if the Turing machine halts after a specific number of steps is a computable problem. Checking if $T_M$ is empty is equivalent to checking if the Truning machine ever halts. However, this is an undecidable problem. Therefore function $E$ is not computable. \phantom{dasd} \contradiction
+\end{proof}
+Multisets can be defined similarly by replacing codomain type from booleans to natural numbers.
+\begin{defi}{Multisets as characteristic function}{def:fMSet}
 \begin{minted}{coq}
-Definition mset (A: Type) : Type := A -> nat.
+Definition mset (A : Type) : Type := A -> nat.
 \end{minted}
-\caption{Typ multizbioru w Coqu.}
-\label{mset}
-\end{code}
-Taka implementacja wspiera jedynie takie multizbiory, które mają skończoną liczbę każdego z elementów. Jednakże, można zamienić liczby naturalne na liczby co-naturalne, aby pozbyć się tego ograniczenia. Podobnie jak w przypadku zbiorów, również tu występuje problem z rozstrzyganiem niepustości.
-\section{Podstawowe operacje na zbiorach}
-Wykazaliśmy, że podstawowe operacje, takie jak sprawdzenie niepustości czy równość, nie są rekurencyjne na potencjalnie nieskończonych zbiorach i multizbiorach. Podobnie jest w przypadku operacji mapowania zbioru, gdyż gdyby istniała taka rekurencyjna funkcja, moglibyśmy dokonać mapowania na typ jednoelementowy wszystkich elementów zbioru i w ten sposób rozstrzygnąć jego niepustość. Zatem zdefiniowane przez nas zbiory nie są ani funktorami, ani monadami w obliczalny sposób. Możemy jednak zdefiniować parę użytecznych funkcji. Sprawdzenie, czy dany element należy do zbioru, jest trywialne, gdyż sam zbiór jest definiowany przez taką funkcją. Możemy także zdefiniować funkcję filtrującą dla zbiorów \cite{set_filter}.
-\begin{code}
+\end{defi}
+We can only express multisets in this representation, such that there are finitely many copies of each element of the underlying type. In order to generalize this representation, we need to replace natural numbers with co-natural numbers.
+\begin{coq}{Co-natural numbers}{coq:conat}
+In Coq, \emph{co-natural numbers} can be defined in the following way:
 \begin{minted}{coq}
-Definition set_filter {A: Type} (p: A-> bool) (s: set A) : set A :=
-  fun x: A => if p x then s x else false.
+CoInductive conat : Type := 
+| O' : conat
+| S' : conat -> conat.
 \end{minted}
-\caption{Funckja filtrująca dla zbiorów w Coqu.}
-\label{set_filter}
-\end{code}
-Funkcja ta działa w sposób leniwy, zatem potencjalna nieskończoność zbioru jej nie przeszkadza. W podobny sposób można zdefiniować sumę, przekrój oraz dopełnienie \cite{set_union}.
-\begin{code}
+In contrast to an inductive definition of natural numbers, co-natural numbers are coinductive. That means we define destructors instead of constructors. Destructors describe that from a co-natural number, we can either get \mcoq{O'} -- zero or \mcoq{S' n} -- the successor of co-natural number n. Since we use destructors, we can define a number that is a successor of itself.
 \begin{minted}{coq}
-Definition set_union {A: Type} (s s': set A) : set A :=
-  fun x: A => (s x) || (s' x).
-
-Definition set_intersection {A: Type} (s s': set A) : set A :=
-  fun x: A => (s x) && (s' x).
-
-Definition set_complement {A: Type} (s: set A) : set A :=
-  fun x: A => negb (s x).
+CoFixpoint inf : conat := S' inf.
 \end{minted}
-\caption{Definicja sumy, przekroju oraz dopełniania dla zbiorów w Coqu.}
-\label{set_union}
-\end{code}
-Wykorzystują one osobne sprawdzenie na jednym i drugim zbiorze, a następnie łączą wyniki za pomocą operatorów na typie \mintinline{coq}{bool}. Bardzo podobnie można je również zaimplementować na multizbiorach używając odpowiednio sumy oraz minimum. Operacja dopełniania nie jest oczywiście zdefiniowana dla multizbiorów. Wadą tych leniwych obliczeń jest rosnąca złożoność sprawdzania przynależności do zbioru z każdym kolejnym przekrojem i sumą. Operacje dodania elementu do zbioru da się zdefiniować w rekurencyjny sposób, niestety wymaga ona od typu bazowego posiadania zdefiniowanej rozstrzygalnej równości.
-\begin{code}
+This number can be regarded as infinity. We can also define any finite number.
 \begin{minted}{coq}
-Definition set_add {A: Type} `{EqDec A} (a: A) (s: set A)  : set A :=
+Fixpoint toConat (n : nat) : conat :=
+  match n with
+  | O => O'
+  | S n' => S' (toConat n') 
+  end.
+\end{minted}
+\end{coq}
+\section{Basic operations}
+As we showed in theorem \ref{th:emptyNotComp}, checking is set is empty is an uncomputable function. Comparing two sets is also an uncomputable operation since we can compare a set to an empty set to check if it is empty. Another missing operation is a mapping operation. We could check emptiness by mapping every element to unit type if it were computable. Despite those problems, we can still define helpful functions on this set representation. Checking if some element is in a set is trivial since we represent a set as a characteristic function. We can easily define the filtering function.
+\begin{func}{Filtering}{fn:set_filter}
+\begin{minted}{coq}
+Definition set_filter {A : Type} (p : A -> bool) 
+  (s : set A) : set A :=
+  fun x : A => if p x then s x else false.
+\end{minted}
+\end{func}
+This definition utilizes lazy evaluation. Therefore, potential infinity is not a problem. Similarly, we can define set union, intersection, and complement.
+\begin{func}{Union}{fn:set_union}
+\begin{minted}{coq}
+Definition set_union {A : Type} (s s' : set A) : set A :=
+  fun x : A => (s x) || (s' x).
+\end{minted}
+\end{func}
+\begin{func}{Intersection}{fn:set_intersection}
+\begin{minted}{coq}
+Definition set_intersection {A : Type} (s s' : set A) : set A :=
+  fun x : A => (s x) && (s' x).
+\end{minted}
+\end{func}
+\begin{func}{Complement}{fn:set_complement}
+\begin{minted}{coq}
+Definition set_complement {A : Type} (s : set A) : set A :=
+  fun x : A => negb (s x).
+\end{minted}
+\end{func}
+Those operations can also be implemented similarly on multisets using sum and minimum operations. The complement operation is not defined for multisets. The drawback of these lazy computations is the increasing complexity of checking membership in the set with each subsequent intersection and union. The operations of adding an element to the set can also be defined. However, it requires the underlying type with decidable equality.
+\begin{func}{Addition to a set}{fn:set_add}
+\begin{minted}{coq}
+Definition set_add {A : Type} `{EqDec A} (a : A) (s : set A)  
+  : set A :=
   fun x: A => if eqf x a then true else s x.
-
-Fixpoint list_to_set {A: Type} `{EqDec A} (l: list A) : set A :=
-match l with
-| []        => fun _ => false
-| (h :: l') => set_add h (list_to_set l')
-end.
 \end{minted}
-\caption{Definicja dodawania elementu do zbioru oraz konwersji listy do zbioru w Coqu.}
-\label{set_union}
-\end{code}
-Jeśli takowy mamy, możemy go zdefiniować poprzez porównanie badanego elementu z tym, który dodajemy, a następnie zwrócenie wartości \mintinline{coq}{true}, jeśli są one równe. Wykorzystując tę funkcję, można zdefiniować tworzenie zbioru z listy elementów. Podobnie dla multizbiorów, lecz zamiast zwracania wartości \mintinline{coq}{true}, nakładany jest następnik. Dowody poprawności zdefiniowanych powyżej funkcji można znaleźć w dodatku $FunctionalQuotient.v$.
+\end{func}
+\begin{func}{Conversion to a set}{fn:list_to_set}
+\begin{minted}{coq}
+Fixpoint list_to_set {A : Type} `{EqDec A} (l : list A) 
+  : set A :=
+  match l with
+  | []        => fun _ => false
+  | (h :: l') => set_add h (list_to_set l')
+  end.
+\end{minted}
+\end{func}
+Proof of fundamental properties of those operations can be found in \coqsource{FunctionalQuotient.v}.

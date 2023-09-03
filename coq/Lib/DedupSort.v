@@ -5,10 +5,10 @@ Require Import Coq.Program.Equality.
 Import ListNotations.
 Import PeanoNat.Nat.
 
-Require Import Lib.Deduplicated.
-Require Import Lib.Sorted.
-Require Import Lib.EqDec.
-Require Import Lib.LinearOrder.
+Require Import Master.Lib.Deduplicated.
+Require Import Master.Lib.Sorted.
+Require Import Master.Lib.EqDec.
+Require Import Master.Lib.LinearOrder.
 
 Inductive BTree (A: Type) : Type :=
 | leaf : BTree A

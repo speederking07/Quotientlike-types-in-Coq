@@ -2,7 +2,8 @@ Require Import Setoid.
 Require Import Coq.Lists.List.
 Require Import Coq.Program.Equality.
 Import ListNotations.
-Require Import Lib.EqDec.
+
+Require Import Master.Lib.EqDec.
 
 Class LinearOrder (A: Type) := {
   ord      : A -> A -> bool;

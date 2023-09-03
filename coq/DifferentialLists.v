@@ -6,10 +6,10 @@ Import PeanoNat.Nat.
 Require Import Lia.
 Import ListNotations.
 
-Require Import Lib.Sorted.
-Require Import Lib.EqDec.
-Require Import Lib.LinearOrder.
-Require Import Lib.MergeSort.
+Require Import Master.Lib.Sorted.
+Require Import Master.Lib.EqDec.
+Require Import Master.Lib.LinearOrder.
+Require Import Master.Lib.MergeSort.
 
 Class Diff (A: Type) `{E: EqDec A} := {
   D: Type;
@@ -122,8 +122,10 @@ Proof.
   - revert a. induction l; cbn. 
     + constructor.
     + intros h. destruct l; cbn in *.
-      * constructor; try constructor. apply eqf_iff. rewrite diff_comm, <- diff_def; auto.
-      * constructor; auto. cbn. apply eqf_iff. rewrite diff_comm, <- diff_def; auto.
+      * constructor; try constructor; unfold ord, Diff_is_LO.
+        rewrite <- eqf_iff, diff_comm, <- diff_def; auto.
+      * constructor; auto; unfold ord, Diff_is_LO. cbn.
+        rewrite <- eqf_iff, diff_comm, <- diff_def; auto.
   - constructor.
 Qed.
 

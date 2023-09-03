@@ -2,7 +2,7 @@ Require Import Bool.
 Require Import Coq.Lists.List.
 Import ListNotations.
 
-Require Import Lib.EqDec.
+Require Import Master.Lib.EqDec.
 
 Definition FunExt := forall (A B: Type) (f g: A -> B), (forall x: A, f x = g x) -> f = g.
 

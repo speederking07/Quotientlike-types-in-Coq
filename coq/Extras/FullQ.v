@@ -1,8 +1,8 @@
 Require Import Lia.
 Require Import Coq.Program.Equality.
 
-Require Import Qplus.
-Require Import Integer.
+Require Import Master.Qplus.
+Require Import Master.Integer.
 
 
 Inductive FullQ :=

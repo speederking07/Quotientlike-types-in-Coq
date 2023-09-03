@@ -3,9 +3,9 @@ Require Import Coq.Program.Equality.
 Require Import Coq.Lists.List.
 Import ListNotations.
 
-Require Import Lib.Sorted.
-Require Import Lib.EqDec.
-Require Import Lib.LinearOrder.
+Require Import Master.Lib.Sorted.
+Require Import Master.Lib.EqDec.
+Require Import Master.Lib.LinearOrder.
 
 Definition PredPerm {A : Type} `{EqDec A} (l l' : list A) :=
   forall p : A -> bool, count p l = count p l'.

@@ -3,3 +3,6 @@
 **/*.glob
 **/*.vo?
 **/*.cache
+**/*.log
+**/*.fls
+**/*.fdb_latexmk

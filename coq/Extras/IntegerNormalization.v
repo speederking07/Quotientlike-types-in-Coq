@@ -1,4 +1,4 @@
-Require Import Integer.
+Require Import Master.Integer.
 
 Record Izomorphism (A B: Type) := Izo {
   izo_fun : A -> B;

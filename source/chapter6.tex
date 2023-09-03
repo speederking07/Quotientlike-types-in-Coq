@@ -1,139 +1,115 @@
-W poprzednich rozdziałach omówiliśmy, w jaki sposób możemy zdefiniować typy ilorazowe w Coqu, a dokładniej, jak możemy obejść problem braku typów ilorazowych w tym języku. Niektóre z tych rozwiązań nie wymagają użycia typów zależnych i mogą zostać zaimplementowane w prawie każdym języku programowania. Inne rozwiązania wymagają takiego wsparcia. W tym rozdziale przyjrzymy się językom które posiadają wbudowane wsparcie dla typów ilorazowych. Poznamy w jaki sposób można z nich korzystać oraz czy podobnego typu mechanizmy da się wykorzystać w Coqu.
+In the previous chapters, we discussed how we can define quotient-like types in Coq. In this chapter, we will examine languages that have built-in support for quotient types. We will learn how they are implemented and whether similar mechanisms can be utilized in Coq.
 \section{Lean}
-Lean, a szczególnie jego najnowsza wersja - Lean 4, jest asystentem dowodzenia rozwijanym od 2013 roku. Jest to narzędzie open source pozwalające na dowodzenie poprawności programów oraz twierdzeń matematycznych, podobnie jak Coq. Projekt Lean jest rozwijany przez Microsoft Research.
-\subsection{Różnice względem Coqa}
-W przeciwieństwie do Coqa, Lean nie wymaga konstruktywności dla twierdzeń \cite{lean4}. Oznacza to, że mamy do czynienia z systemem bardziej zbliżonym do matematycznych dowodów niż do programowania. Niestety, oznacza to również, że nie każdy dowód jest w istocie programem zgodnie z izomorfizmem Currego-Howarda. Ponadto, w Leanie mamy definicyjną irrelewację zdań. System formalny opiera się na trzech aksjomatach:
-\begin{description}
-    \item[Aksjomat ekstensjonalności zdań] - mówi on, że jeśli dwa zdania są sobie równoważne, to są sobie równe.
-    \begin{minted}{coq}
-Axiom prop_ext: forall P Q: Prop, (P <-> Q) <-> (P = Q)
-    \end{minted}
-    \item[Aksjomat wyboru] - mówi on, że z każdego niepustego typu możemy wyprodukować jego element.
-    \begin{minted}{coq}
-Inductive NonEmpty (A: Type) : Prop := intro : A -> NonEmpty A.
-Axiom choise: forall A: Type, NonEmpty A -> A.
-    \end{minted}
-    \item[Aksjomat istnienia ilorazów] - mówi on, że dla każdego typu oraz relacji możemy wyprodukować typ ilorazowy, w którym wszystkie elementy które są ze sobą w tej relacji są sobie równe.
-\end{description}
-Niektórzy być może wiedzą, że jedną z głównych różnic między Leanem a Coqiem jest stosowanie logiki klasycznej w Leanie. W związku z tym można by przypuszczać, że prawo wyłączonego środka powinno być jednym z aksjomatów w tym systemie. Okazuje się jednak, że wymienione wyżej trzy aksjomaty wystarczają do wyprowadzenia prawa wyłączonego środka, jak również egzystencjalności funkcji. Egzystencjalność można wyprowadzić z istnienia ilorazów, a dowód wyłączonego środka korzysta z konstrukcji zaproponowanej przez Diaconescu w 1975 roku \cite{choise}. Dowody te można również znaleźć w bibliotece standardowej Lean pod nazwami \mintinline{lean}{em} oraz \mintinline{lean}{funext}.
-\subsection{Konstrukcja typów ilorazowych w Leanie}
-Jak już widzieliśmy wcześniej, typy ilorazowe stanowią kluczowy element języka Lean. Po zapoznaniu się z podobieństwami i różnicami między Leanem a Coqiem, warto bliżej przyjrzeć się aksjomatom, które towarzyszą typom ilorazowym w Leanie.
-\begin{code}
+Lean is a proof assistant under development since 2013 \cite{lean4}. It is an open-source tool that verifies program reliability and mathematical theorems, similar to Coq. Due to the similarity of both languages, we will translate Lean's axioms into the Coq language.
+\begin{coq}{Differences compared to Coq}{coq:lean}
+Unlike Coq, Lean does not require constructively for theorems \cite{lean4}. It means we are dealing with a system closer to mathematical proofs than programming. Moreover, in Lean, we have definitional irrelevance of propositions. The formal system is based on three axioms:
+\begin{itemize}
+    \item{Propositional Extensionality}
 \begin{minted}{coq}
-Axiom Quot : forall {A: Type}, (A -> A -> Prop) -> Type.
+Axiom prop_ext: forall P Q : Prop, (P <-> Q) <-> (P = Q)
 \end{minted}
-\caption{Odpowiednik aksjomatu \mintinline{lean}{Quot} w Coqu.}
-\label{Quot}
-\end{code}
-
-Pierwszy aksjomat, którym warto się przyjrzeć, to \mintinline{lean}{Quot} \ref{Quot}. Postuluje on istnienie typów ilorazowych tworzonych z dowolnego typu bazowego oraz dowolnej relacji na tym typie.
-\begin{code}
+    \item{Choise}
 \begin{minted}{coq}
-Axiom Quot_mk : forall {A:  Type} (r: A -> A -> Prop),
+Inductive NEmpty (A : Type) : Prop := intro : A -> NEmpty A.
+Axiom choise: forall A: Type, NEmpty A -> A.
+\end{minted}
+    \item{Quotient types}
+\begin{minted}{coq}
+Axiom Quot : forall {A : Type}, (A -> A -> Prop) -> Type.
+\end{minted}
+\end{itemize}
+One of the main differences between Lean and Coq is the use of classical logic in Lean. Therefore, one might assume that the law of excluded middle should be one of the axioms in this system. However, the three axioms mentioned above are sufficient to derive the law of excluded middle and the extensionality of functions. Extensionality of functions can be derived from quotients, and the law of excluded middle proposed can be derived from the axiom of choice as proposed by Diaconescu \cite{choise}. These proofs can also be found in the Lean standard library under the names \mlean{em} and \mlean{funext}.
+\end{coq}
+\subsection{Axioms of quotient types}
+As we saw in \ref{coq:lean}, quotient types are integral to Lean language. Let us take a closer look at the axioms that define them.
+\begin{defi}{Axioms of Lean's quotient types}{def:leanQuot}
+
+The first axiom, named in Lean as \mlean{Quot}, states that quotient type exists for every relation and underlying type.
+\begin{minted}{coq}
+Axiom Quot : forall {A : Type}, (A -> A -> Prop) -> Type.
+\end{minted}
+The second axiom, named in Lean as \mlean{Quot.mk}, states that there exists an embedding function that, out of every element of the underlying type, makes an element of quotient type.
+\begin{minted}{coq}
+Axiom Quot_mk : forall {A : Type} (r : A -> A -> Prop),
   A -> Quot r.
 \end{minted}
-\caption{Odpowiednik aksjomatu \mintinline{lean}{Quot.mk} w Coqu.}
-\label{Quot.mk}
-\end{code}
-
-Drugim aksjomatem, który warto omówić, jest \mintinline{lean}{Quot.mk} \ref{Quot.mk}. Postuluje on istnienie funkcji, która tworzy elementy typu ilorazowego.
-\begin{code}
+The third axiom, named in Lean as \mlean{Quot.ind}, provides us with induction law for quotient types. It states that every element of the underlying type is made of an element of the underlying type.
 \begin{minted}{coq}
 Axiom Quot_ind : 
-  forall (A:  Type) (r: A -> A -> Prop) (P: Quot r -> Prop),
-    (forall a: A, P (Quot_mk r a)) -> forall q: Quot r, P q.
+  forall (A : Type) (r : A -> A -> Prop) (P : Quot r -> Prop),
+  (forall a : A, P (Quot_mk r a)) -> forall q: Quot r, P q.
 \end{minted}
-\caption{Odpowiednik aksjomatu \mintinline{lean}{Quot.ind} w Coqu.}
-\label{Quot.ind}
-\end{code}
-
-Trzeci aksjomat, który warto wspomnieć, to \mintinline{lean}{Quot.ind} \ref{Quot.ind}. Postuluje on prawa indukcji dla typów ilorazowych. Oznacza to, że jeśli dla każdego elementu powstałego z elementu typu bazowego zachodzi pewien predykat, to zachodzi on również dla całego typu ilorazowego.
-\begin{code}
+The fourth axiom, named in Lean as \mlean{Quot.lift}, states how functions on the underlying type can be applied to the quotient type. It requires that such function respect quotient-defining relation. In Lean, this axiom comes with a rule that it states that application on quotient type works the same way on quotient type. In Coq, this rule needs to be added as an additional axiom.
 \begin{minted}{coq}
 Axiom Quot_lift :
-  forall (A:  Type) (r: A -> A -> Prop) (B: Type) (f: A -> B),
-    (forall a b: A, r a b -> f a = f b) -> Quot r -> B.
+  forall (A : Type) (r : A -> A -> Prop) (B : Type) (f : A -> B),
+  (forall a b : A, r a b -> f a = f b) -> Quot r -> B.
 
-Axiom Quot_lift' : forall {A:  Type} {r: A -> A -> Prop} {B: Type} 
-  (f: A -> B) (P: forall a b: A, r a b -> f a = f b) (x: A),
-    f x = Quot_lift f P (Quot_mk r x).
+Axiom Quot_lift' : forall {A : Type} {r : A -> A -> Prop} 
+  {B : Type} (f : A -> B) (P : forall a b: A, r a b -> f a = f b) 
+  (x : A), f x = Quot_lift f P (Quot_mk r x).
 \end{minted}
-\caption{Odpowiednik aksjomatu \mintinline{lean}{Quot.lift} w Coqu.}
-\label{Quot.lift}
-\end{code}
-
-Czwarty aksjomat, \mintinline{lean}{Quot.lift} \ref{Quot.lift}, opisuje, jak aplikować funkcje z typu bazowego na elementach typu ilorazowego. Wymaga to, aby funkcja szanowała relacje - jeśli dwa elementy są ze sobą w relacji, to wynik funkcji dla nich obu musi być taki sam. W Leanie aksjomat \mintinline{lean}{Quot.lift} jest łączony z regułą przepisywania, która mówi, że aplikacja funkcji $f$ respektującej relację na elemencie typu ilorazowego daje identyczny efekt jak aplikacja jej na tym samym elemencie typu pierwotnego. Dlatego, aby korzystać z typów ilorazowych jak w Leanie, konieczne jest postulowanie dodatkowego aksjomatu z tą regułą przepisywania w Coqu.
-\begin{code}
+The fifty axioms, named in Lean as \mlean{Quot.sound}, state that \mlean{Quot} is indeed a quotient type -- if two elements are in the quotient-defining relation, they share the same element in quotient types.
 \begin{minted}{coq}
 Axiom Quot_sound :
-  forall (A: Type) (r: A -> A -> Prop) (a b: A),
-    r a b -> Quot_mk r a = Quot_mk r b.
+  forall (A : Type) (r : A -> A -> Prop) (a b : A),
+  r a b -> Quot_mk r a = Quot_mk r b.
 \end{minted}
-\caption{Odpowiednik aksjomatu \mintinline{lean}{Quot.sound} w Coqu.}
-\label{Quot.sound}
-\end{code}
-
-Piąty i ostatni aksjomat, który warto omówić, to \mintinline{lean}{Quot.sound} \ref{Quot.sound}. Postuluje on równość elementów typu ilorazowego, jeśli znajdują się one w relacji. Oznacza to, że typy ilorazowe w Leanie są rzeczywiście ilorazowe, czyli sklejone zgodnie z relacją.
-
-Przedstawione powyżej aksjomaty są wystarczające, aby wprowadzić typy ilorazowe do języka Lean. W ten sposób możemy cieszyć się typami ilorazowymi opartymi na tych aksjomatach. Co do Coqa, to również można wprowadzić do niego te same aksjomaty, co pozwoliłoby na korzystanie z typów ilorazowych w tym języku.
+\end{defi}
+As we see in the definition \ref{def:leanQuot}, axioms for quotient types can be expressed in Coq. Therefore, we can use them to add quotient type to the Coq language.
 \section{Agda}
-Agda jest językiem programowania stworzonym z myślą o wsparciu dla typów zależnych \cite{agda}. Powstał on jako rozszerzenie teorii typów Martina-Löfa \cite{MARTINLOF197573}. Ze względu na te cechy, Agda może służyć jako asystent dowodzenia. W przeciwieństwie jednak do języków takich jak Coq czy Lean, Agda nie posiada języka taktyk, co znacząco utrudnia jej wykorzystanie w tym celu. Natomiast obsługa typów zależnych w Agdzie jest na znacznie wyższym poziomie niż to, co możemy doświadczyć w Coqu. Agda potrafi sama w wielu wypadkach wywnioskować, że dany przypadek jest niemożliwy, co sprawia, że definiowanie funkcji zależnych jest dużo łatwiejsze niż w Coqu.
-\begin{code}
-\begin{minted}{agda}
-lookup : ∀ {A} {n} → Vec A n → Fin n → A
-lookup (x ∷ xs) zero    = x
-lookup (x ∷ xs) (suc i) = lookup' xs i
-\end{minted}
-\caption{Definicja funkcji zwracającej $n$-ty element zależnego wektora w Agdzie.}
-\label{agda-lookup}
-\end{code}
-\subsection{Kubiczna Agda}
-\emph{Cubical} to rozszerzenie języka Agda, które rozbudowuje możliwości języka o kubiczną teorię typów \cite{cubical}. Pozwala to na modelowanie konstrukcji z homotopicznej teorii typów natywnie w Agdzie i daje dostęp do takich funkcji jak transport \ref{transport}, które już wcześniej poznaliśmy. Wprowadza ono koncepcję ścieżek jako dowodów równości między elementami. Wszystkie te właściwości można było w większym lub mniejszym stopniu zamodelować w Coqu. Jednak to, co wyróżnia kubiczną Agdę na tle innych asystentów dowodzenia, to wyższe typy induktywne (HIT). Podobnie jak zwykłe typy induktywne, pozwalają one na definiowanie pewnych struktur danych. W przeciwieństwie jednak do znanych już nam typów induktywnych, które automatycznie generują równości między elementami, w wyższych typach induktywnych możemy ręcznie dodać kolejne ścieżki. Oznacza możliwość tworzenia typów posiadających nietrywialne równości między elementami. Tutaj dobrym przykładem będzie okrąg (patrz kod \ref{agda-S}), który posiada jedną nietrywialną ścieżkę. Innym bardzo ważnym wyższym typem induktywnym jest odcinek (patrz kod \ref{agda-Path}), który posiada dwa elementy połączone ścieżką, co czyni je równymi sobie.
-\begin{code}
+Agda is a programming language created to support dependent types \cite{agda}. It originated as an extension of Martin-Löf's type theory \cite{MARTINLOF197573}. Due to these features, Agda can be used as a proof assistant. However, unlike languages such as Coq or Lean, Agda does not have a tactic language, which significantly complicates its use as such. On the other hand, handling dependent types in Agda is at a much higher level than what we can experience in Coq. Agda can often infer that a particular case is impossible, making the definition of dependent functions much more accessible than in Coq.
+\subsection{Higher inductive types}
+In standard Agda, there is no built-in mechanism for defining quotient types. Therefore, in this section, we focus on \emph{Cubical} extension that introduces known from homotopic type theory higher inductive types.
+\begin{defi}{Higher inductive types}{def:HIT}
+\emph{Higher inductive types} (HITs) are a generalization of inductive types that allow constructors to produce not just elements of the defined type but also elements of its iterated identity types \cite{HoTT}.
+\end{defi}
+\begin{example}{Circle}{ex:circle}
+The \emph{circle} is a higher inductive type made out of single elements \magda{base} and extra identity proof \magda{loop} \cite{HoTT}. In homotopic interpretation, this is a point with a loop. Therefore, it is called a circle.
 \begin{minted}{agda}
 data S : Set where
   base : S
-  loop : base = base
+  loop : base ≡ base
 \end{minted}
-\caption{Definicja okręgu w kubicznej Agdzie.}
-\label{agda-S}
-\end{code}
-
-\begin{code}
+\end{example}
+\begin{example}{Interval}{ex:interval}
+The \emph{interval} is a higher inductive type made out of two elements \magda{left} and \magda{right}, that are connected by single identity proof \magda{segment} \cite{HoTT}.
 \begin{minted}{agda}
-data Path : Set where
-  left  : Path
-  right : Path
-  seq   : left = right
+data interval : Set where
+  left    : interval
+  right   : interval
+  segment : left ≡ right
 \end{minted}
-\caption{Definicja ścieżki w kubicznej Agdzie.}
-\label{agda-Path}
-\end{code}
-\subsection{Konstrukcja typów ilorazowych z wykorzystaniem wyższych typów induktywnych}
-Jak możemy zauważyć, definicja multizbioru skończonego \ref{agda-bag} w kubicznej Agdzie jest niezwykle prosta. Wystarczy dodać dodatkową ścieżkę (dowód równości) na listach, które mają dwa początkowe elementy zamienione miejscami. Przechodniość równości jest zapewniona z jej definicji, a więc nie musimy jej explicite definiować. Dodatkowo, równość dla pustego multizbioru oraz następnika dostajemy bezpłatnie, z ich definicji. W efekcie, ta definicja jest krótsza niż klasyczna definicja permutacji w Coqu.
-\begin{code}
+\end{example}
+\begin{example}{Suspension}{ex:suspension}
+The \emph{suspension} is a higher inductive type made out of two elements \magda{north} and \magda{south}, and paths for every element of underlying types \cite{HoTT}.
 \begin{minted}{agda}
-data Bag (X : Set) : Set where
-  nil  : Bag X
-  _::_ : X -> Bag X -> Bag X
-  swap : (x y : X) (z : Bag X) -> x :: y :: z = y :: x :: z
+data susp (A : Set) : Set where
+  north : susp A
+  south : susp A
+  merid : A -> north ≡ south.
 \end{minted}
-\caption{Definicja multizbioru skończonego w kubicznej Agdzie.}
-\label{agda-bag}
-\end{code}
-
-W bardzo podobny sposób możemy zdefiniować liczby całkowite w kubicznej Agdzie, za pomocą zera, następnika oraz poprzednika. Aby jednak zagwarantować izomorfizm tej konstrukcji z znanymi nam z matematyki liczbami całkowitymi, musimy dodać dwie dodatkowe równości, które mówią, w jaki sposób następnik i poprzednik nawzajem się niwelują. W ten sposób otrzymujemy prawie liczby całkowite \ref{agda-int}. Ich problemem jest fakt, że zgodnie z naszą definicją istnieje wiele dowodów równości między tymi samymi liczbami całkowitymi. Możemy go rozwiązać dodając jeszcze jedną równość, tym razem między dowodami równości. Jednakże, na potrzeby tej pracy, możemy uznać tę definicję za poprawną.
-\begin{code}
+\end{example}
+\subsection{Quotient types utilizing HITs}
+Higher inductive types solve the fundamental problem of inductive types: the inability to glue equivalent elements. Using inductive types, we can only add new elements via constructors. If two different construction represents the same value, we need to use some quotient type to glue equivalent elements. In higher inductive types, we can combine those two steps and add additional equalities (paths) for the inductive type that is being defined.
+\begin{example}{Multiset}{ex:agdaMSet}
 \begin{minted}{agda}
-data Int : Set where
-  zero  : Int
-  succ  : Int -> Int
-  pred  : Int -> Int
-  ps_eq : (z: Int) -> pred (succ z) = z
-  sp_eq : (z: Int) -> succ (pred z) = z
+data MSet (A : Set) : Set where
+  []   : MSet A
+  _::_ : A -> MSet A -> MSet A 
+  swap : (x y : A) (z : MSet A) -> x :: y :: z ≡ y :: x :: z
 \end{minted}
-\caption{Definicja liczb całkowitych w Agdzie.}
-\label{agda-int}
-\end{code}
-
-Podsumowując, wyższe typy indykatywne doskonale nadają się do definiowania typów ilorazowych. Niestety, nie możemy ich zastosować do definiowania typów ilorazowych bezpośrednio w Coqu, ponieważ jego system typów nie wspiera tak zaawansowanych konstrukcji. Próba odtworzenia dodawania równości między elementami za pomocą aksjomatów prowadzi bardzo szybko do wprowadzenia sprzeczności do systemu. Z ratunkiem przychodzą jednak prywatne typy induktywne\cite{PrivetInductive} pozwalają one na stworzenie typu typu induktywnego na którym nie można wykonać dopasowania do wzorca poza modułem jego zdefiniowania. Takie podejście umożliwia dodanie aksjomatów które normalnie prowadziłby do sprzeczności jak np. aksjomat, który mówi, że oba końce homotopicznego odcinka są sobie równe. Z wykorzystaniem prywatnych typów indutywnych powstała biblioteka do Coqa, która pozwala na pracowanie z homotopiczną teorią typów wraz z wyższymi typami induktywnymi \cite{HoTTinCoq}. 
+\end{example}
+The higher inductive types' downside is that they complicate defining functions since we also need to handle those constructors for identity proofs. Otherwise, we could define functions that do not respect identities (paths).
+\begin{example}{Union}{ex:agdaMSetUnion}
+\begin{minted}{agda}
+_ ∪ _ : (xs ys : Bag A) → Bag A
+xs ∪ [] = xs
+xs ∪ (y :: ys) = y :: (xs ∪ ys)
+xs ∪ (swap y y' ys i) = swap y y' (xs ∪ ys) i
+\end{minted}
+\end{example}
+As we see in the example \ref{ex:agdaMSetUnion}, to define a multiset union, we also needed to define a case when a multiset is on the path that swaps its heads. For both ends of this path, the result must be the same. Therefore, defining the head function for multisets is impossible.
+\begin{coq}{HIT in Coq}{coq:HIT}
+In Coq, we can also define higher inductive types. However, they require using private inductive type, proposed by Yves Bertot \cite{PrivetInductive}. They let us define the inductive type and hide its definition. It turns off pattern matching on those inductive types, forcing users to use only exposed functions. A library for Coq was created using private inductive types, enabling work with homotopy type theory alongside higher inductive types \cite{HoTTinCoq}.
+\end{coq}

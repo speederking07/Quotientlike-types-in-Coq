@@ -1,0 +1,24 @@
+-R coq Master
+
+coq/Lib/EqDec.v
+coq/Lib/Algebra.v
+coq/Lib/LinearOrder.v
+coq/Lib/HoTT.v
+coq/Lib/Normalization.v
+coq/Lib/Sorted.v
+coq/Lib/MergeSort.v
+coq/Extras/Permutations.v
+coq/Extras/Streicher.v
+coq/Lib/Deduplicated.v
+coq/Lib/DedupSort.v
+coq/Integer.v
+coq/FreeGroup.v
+coq/Qplus.v
+coq/DifferentialLists.v
+coq/ExoticInteger.v
+coq/FiniteMultiSet.v
+coq/FiniteSet.v
+coq/FunctionalQuotient.v
+coq/Extras/FreeGroupMonad.v
+coq/Extras/IntegerNormalization.v
+coq/Extras/FullQ.v

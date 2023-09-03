@@ -4,9 +4,9 @@ Require Import Coq.Lists.List.
 Require Import StrictProp.
 Import ListNotations.
 
-Require Import Lib.Algebra.
-Require Import Lib.Normalization.
-Require Import Lib.EqDec.
+Require Import Master.Lib.Algebra.
+Require Import Master.Lib.Normalization.
+Require Import Master.Lib.EqDec.
 
 
 Class EqGroup (A : Type) `{E: EqDec A} `{G: Group A} := {}.
@@ -15,9 +15,9 @@ Global Instance EqGroup_def {A: Type} `{E: EqDec A} `{G: Group A} : EqGroup A.
 Proof.
 Qed.
 
-Definition CanonFreeGroup (A: Type) `{EqGroup A} := list (bool*A).
+Definition NaiveFreeGroup (A: Type) := list (bool*A).
 
-Fixpoint normalize {A: Type} `{EqGroup A} (x: CanonFreeGroup A) :=
+Fixpoint normalize {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) :=
 match x with
 | [] => []
 | (b, v) :: x' => 
@@ -29,10 +29,10 @@ match x with
     end
 end.
 
-Inductive Normalized {A: Type} `{EqGroup A} : CanonFreeGroup A -> Prop :=
+Inductive Normalized {A: Type} : NaiveFreeGroup A -> Prop :=
 | NNil   : Normalized []
 | NSingl : forall (b : bool) (v : A), Normalized [(b, v)]
-| NCons  : forall (b b': bool) (v v' : A) (x: CanonFreeGroup A), 
+| NCons  : forall (b b': bool) (v v' : A) (x: NaiveFreeGroup A), 
             v <> v' \/ b = b' -> Normalized ((b', v') :: x) ->
             Normalized ((b, v) :: (b', v') :: x).
 
@@ -49,7 +49,7 @@ Arguments Singl {A E G H}.
 
 Definition QuotFreeGroup (A: Type) `{EqGroup A} := option (NEQuotFreeGroup A).
 
-Fixpoint to_quot' {A: Type} `{EqGroup A} (b : bool) (v: A) (x: CanonFreeGroup A) : NEQuotFreeGroup A :=
+Fixpoint to_quot' {A: Type} `{EqGroup A} (b : bool) (v: A) (x: NaiveFreeGroup A) : NEQuotFreeGroup A :=
 match x with 
 | []             => Singl b v
 | (b', v') :: x' => if eqb b b' 
@@ -60,30 +60,30 @@ match x with
                            end
 end.
 
-Definition to_quot {A: Type} `{EqGroup A} (x: CanonFreeGroup A) : QuotFreeGroup A :=
+Definition to_quot {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) : QuotFreeGroup A :=
 match x with
 | [] => None
 | (b, v) :: x' => Some (to_quot' b v x')
 end.
 
-Definition all_to_quot {A: Type} `{EqGroup A} (x: CanonFreeGroup A) : QuotFreeGroup A :=
+Definition all_to_quot {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) : QuotFreeGroup A :=
 to_quot (normalize x).
 
-Fixpoint to_canon' {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A) : bool * A * list (bool*A) :=
+Fixpoint to_naive' {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A) : bool * A * list (bool*A) :=
 match x with 
 | Singl b v     => ((b, v), [])
-| Stay v x'     => match to_canon' x' with
+| Stay v x'     => match to_naive' x' with
                    | ((b, v'), y)  => ((b, op v v'), (b, v') :: y)
                    end
-| Switch v _ x' => match to_canon' x' with
+| Switch v _ x' => match to_naive' x' with
                    | ((b, v'), y)  => ((negb b, op v v'), (b, v') :: y)
                    end
 end.
 
-Definition to_canon {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : CanonFreeGroup A :=
+Definition to_naive {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : NaiveFreeGroup A :=
 match x with
 | None => []
-| Some x' => let (h, t) := to_canon' x' in h :: t
+| Some x' => let (h, t) := to_naive' x' in h :: t
 end.
 
 
@@ -185,14 +185,14 @@ Qed.
 
 (* normalization lemmas *)
 
-Lemma normalized_without_head {A: Type} `{EqGroup A} (b: bool) (v: A) (x: CanonFreeGroup A) :
+Lemma normalized_without_head {A: Type} `{EqGroup A} (b: bool) (v: A) (x: NaiveFreeGroup A) :
   Normalized ((b, v) :: x) -> Normalized x.
 Proof.
   intros Nx. destruct x; [constructor|].
   destruct p as (b', v'). now dependent destruction Nx.
 Qed.
 
-Lemma concat_normalized_l {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) :
+Lemma concat_normalized_l {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) :
   Normalized (x ++ y) -> Normalized x.
 Proof.
   destruct x as [| (b, v)]; [constructor|].
@@ -200,7 +200,7 @@ Proof.
   dependent destruction H0. constructor; auto.
 Qed.
 
-Lemma concat_normalized_r {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) :
+Lemma concat_normalized_r {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) :
   Normalized (x ++ y) -> Normalized y.
 Proof.
   induction x as [| (b, v)]; [auto|].
@@ -208,7 +208,7 @@ Proof.
   now apply (normalized_without_head b v).
 Qed.
 
-Theorem normalize_normalizes {A: Type} `{EqGroup A} (x: CanonFreeGroup A) :
+Theorem normalize_normalizes {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) :
   Normalized (normalize x).
 Proof.
   induction x as [|(b & v) x]; [constructor | ].
@@ -218,7 +218,7 @@ Proof.
   - constructor; [|auto]. now apply condition_iff'.
 Qed.
 
-Theorem normalize_is_id_for_normalized {A: Type} `{EqGroup A} (x: CanonFreeGroup A) :
+Theorem normalize_is_id_for_normalized {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) :
   Normalized x -> normalize x = x.
 Proof.
   intros Nx. induction Nx; [auto | auto |]. rewrite condition_iff' in H0.
@@ -237,70 +237,70 @@ Qed.
 
 
 
-(* to_quot and to_canon lemmas *)
-Theorem quot_epi_canon {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : 
-  to_quot (to_canon x) = x.
+(* to_quot and to_naive lemmas *)
+Theorem quot_epi_naive {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : 
+  to_quot (to_naive x) = x.
 Proof.
   destruct x as [x |]; auto. induction x; [auto|..]; cbn in *.
-  - destruct (to_canon' x0) as [[b  v] l]. cbn in *. 
+  - destruct (to_naive' x0) as [[b  v] l]. cbn in *. 
     inversion IHx. subst. rewrite eqb_negb1, sub_op. 
     destruct (eqf_leibniz x zero); [|auto]. subst. now apply (squash_not_refl zero).
-  - destruct (to_canon' x) as [[b  v] l]. cbn in *.
+  - destruct (to_naive' x) as [[b  v] l]. cbn in *.
     inversion IHx. subst. now rewrite eqb_reflx, sub_op.
 Qed.
 
-Theorem canon_epi_quot {A: Type} `{EqGroup A} (x: CanonFreeGroup A) : 
-  Normalized x -> to_canon (to_quot x) = x.
+Theorem naive_epi_quot {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) : 
+  Normalized x -> to_naive (to_quot x) = x.
 Proof.
   intros N. induction N; [auto | auto |]. cbn in *. destruct H0 as [v_neq | b_neq].
   - destruct (eqb b b') eqn:b_eq.
-    + cbn. destruct (to_canon' (to_quot' b' v' x)) as [[b'' v''] l]. 
+    + cbn. destruct (to_naive' (to_quot' b' v' x)) as [[b'' v''] l]. 
       inversion IHN. subst. rewrite op_sub. f_equal. f_equal. symmetry. 
       now apply eqb_prop.
     + destruct (eqf_leibniz (sub v v') zero).
       * assert (v = v') by (apply sub_zero_uniq; auto). contradiction.
-      * cbn. destruct (to_canon' (to_quot' b' v' x)) as [[b'' v''] l]. 
+      * cbn. destruct (to_naive' (to_quot' b' v' x)) as [[b'' v''] l]. 
         inversion IHN; subst. rewrite op_sub. f_equal. f_equal. symmetry. 
         now apply not_eqb_is_neg.
-  - subst. rewrite eqb_reflx. cbn. destruct (to_canon' (to_quot' b' v' x)) as [[b'' v''] l]. 
+  - subst. rewrite eqb_reflx. cbn. destruct (to_naive' (to_quot' b' v' x)) as [[b'' v''] l]. 
     inversion IHN; subst. now rewrite op_sub.
 Qed.
 
-Lemma to_canon_not_nil {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A) : to_canon (Some x) <> nil.
+Lemma to_naive_not_nil {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A) : to_naive (Some x) <> nil.
 Proof.
   intros H0. destruct x; cbn in *; [inversion H0|..].
-  - destruct (to_canon' x0) as [[b v] l]. inversion H0.
-  - destruct (to_canon' x) as [[b v] l]. inversion H0.
+  - destruct (to_naive' x0) as [[b v] l]. inversion H0.
+  - destruct (to_naive' x) as [[b v] l]. inversion H0.
 Qed.
 
-Theorem quot_is_normal {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : Normalized (to_canon x).
+Theorem quot_is_normal {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : Normalized (to_naive x).
 Proof.
   destruct x as [x |]; cbn; [|constructor]. induction x.
   - cbn. constructor.
   - dependent destruction IHx; cbn in *.
-    + assert (to_canon (Some x0) <> []) by (apply to_canon_not_nil). rewrite x in H0.
+    + assert (to_naive (Some x0) <> []) by (apply to_naive_not_nil). rewrite x in H0.
       contradiction.
-    + destruct (to_canon' x0) as [[b' v'] l]. inversion x; subst.
+    + destruct (to_naive' x0) as [[b' v'] l]. inversion x; subst.
       constructor; constructor. apply add_is_non_zero. apply group_squash_non_zero. auto.
-    + destruct (to_canon' x0) as [[b'' v''] l]. inversion x; subst. constructor.
+    + destruct (to_naive' x0) as [[b'' v''] l]. inversion x; subst. constructor.
       * left. apply add_is_non_zero. now apply group_squash_non_zero.
       * now constructor.
   - dependent destruction IHx; cbn in *.
-    + assert (to_canon (Some x0) <> []) by (apply to_canon_not_nil). rewrite x in H0.
+    + assert (to_naive (Some x0) <> []) by (apply to_naive_not_nil). rewrite x in H0.
       contradiction.
-    + destruct (to_canon' x0) as [[b' v'] l]. inversion x; subst. 
+    + destruct (to_naive' x0) as [[b' v'] l]. inversion x; subst. 
       constructor; [right|]; constructor.
-    + destruct (to_canon' x1) as [[b'' v''] l]. inversion x; subst. 
+    + destruct (to_naive' x1) as [[b'' v''] l]. inversion x; subst. 
       constructor; [right|]; now constructor.
 Qed.
 
 
 
 
-(* Canon concat definition *)
+(* Naive concat definition *)
 
-Definition canon_cons {A: Type} `{EqGroup A} (b: bool) (v: A) (x: CanonFreeGroup A) :
-  CanonFreeGroup A :=
+Definition naive_cons {A: Type} `{EqGroup A} (b: bool) (v: A) (x: NaiveFreeGroup A) :
+  NaiveFreeGroup A :=
   match x with
   | [] => [(b, v)]
   | (b', v') :: t => if negb (eqf v v') || eqb b b'
@@ -308,17 +308,17 @@ Definition canon_cons {A: Type} `{EqGroup A} (b: bool) (v: A) (x: CanonFreeGroup
                      else t
   end.
 
-Fixpoint canon_concat {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) : CanonFreeGroup A :=
+Fixpoint naive_concat {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
   | []           => y
-  | (b, v) :: x' => canon_cons b v (canon_concat x' y)
+  | (b, v) :: x' => naive_cons b v (naive_concat x' y)
   end.
 
-Theorem concat_norm {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) : 
-  Normalized x -> Normalized y -> Normalized (canon_concat x y).
+Theorem concat_norm {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) : 
+  Normalized x -> Normalized y -> Normalized (naive_concat x y).
 Proof.
   intros Nx Ny. induction Nx; [auto | ..]; cbn.
-  - destruct Ny; unfold canon_cons.
+  - destruct Ny; unfold naive_cons.
     + constructor.
     + destruct (negb (eqf v v0) || eqb b b0 ) eqn:e; constructor;
       [now rewrite orb_true_iff, eqb_true_iff, negb_true_iff, <-not_eqf_iff in e | constructor].
@@ -326,9 +326,9 @@ Proof.
       [now rewrite orb_true_iff, eqb_true_iff, negb_true_iff, <-not_eqf_iff in e | now constructor].
   - assert (negb (eqf v v') || eqb b b' = true) by
     now rewrite orb_true_iff, eqb_true_iff, negb_true_iff, <-not_eqf_iff.
-    destruct (canon_concat x y) as [|(b'' & v'') l] eqn:c; unfold canon_cons in *.
+    destruct (naive_concat x y) as [|(b'' & v'') l] eqn:c; unfold naive_cons in *.
     + rewrite H1. constructor; [auto | constructor].
-    + cbn in *. rewrite c in *. unfold canon_cons in *. 
+    + cbn in *. rewrite c in *. unfold naive_cons in *. 
       destruct (negb (eqf v' v'') || eqb b' b'') eqn:e.
       * assert (negb (eqf v v') || eqb b b' = true) by
         now rewrite orb_true_iff, eqb_true_iff, negb_true_iff, <-not_eqf_iff.
@@ -390,20 +390,20 @@ Definition quot_concat {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : QuotFreeG
   | Some x' => quot_concat' x' y
   end.
 
-Theorem quot_canon_hd {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A) :
-  Some (quot_hd' x) = hd_error (to_canon (Some x)).
+Theorem quot_naive_hd {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A) :
+  Some (quot_hd' x) = hd_error (to_naive (Some x)).
 Proof.
   induction x; [auto|..].
-  - cbn in *. destruct (to_canon' x0) as [[b v] l] eqn:e.
+  - cbn in *. destruct (to_naive' x0) as [[b v] l] eqn:e.
     cbn in *. inversion IHx. now rewrite H1.
-  - cbn in *. destruct (to_canon' x) as [[b v] l] eqn:e.
+  - cbn in *. destruct (to_naive' x) as [[b v] l] eqn:e.
     cbn in *. inversion IHx. now rewrite H1.
 Qed.
 
-Theorem quot_canon_cons_homomorphism {A: Type} `{EqGroup A} (b: bool) (v: A) (x: QuotFreeGroup A) :
-  to_canon (quot_cons b v x) = canon_cons b v (to_canon x).
+Theorem quot_naive_cons_homomorphism {A: Type} `{EqGroup A} (b: bool) (v: A) (x: QuotFreeGroup A) :
+  to_naive (quot_cons b v x) = naive_cons b v (to_naive x).
 Proof.
-  destruct x as [x |]; auto. unfold canon_cons. destruct x as [b' v' | v' p x' | v' x'].
+  destruct x as [x |]; auto. unfold naive_cons. destruct x as [b' v' | v' p x' | v' x'].
   - cbn. destruct (eqb b b') eqn:e.
     + cbn. rewrite orb_true_r, op_sub. f_equal. f_equal. symmetry. now apply eqb_prop.
     + destruct (eqf_leibniz (sub v v') zero).
@@ -411,9 +411,9 @@ Proof.
         rewrite eqf_refl. auto.
       * cbn. rewrite eqf_sub_not_zero in n. rewrite n, op_sub. cbn. f_equal. f_equal.
         assert (negb b' = b) by (symmetry; now apply not_eqb_is_neg). auto. 
-  - cbn. destruct (to_canon' x') as [[b'' v''] l] eqn:c.
+  - cbn. destruct (to_naive' x') as [[b'' v''] l] eqn:c.
     unfold quot_cons'. cbn. assert (hd_eq : quot_hd' x' = (b'', v'')).
-    { apply some_eq. rewrite quot_canon_hd. cbn. now rewrite c. }
+    { apply some_eq. rewrite quot_naive_hd. cbn. now rewrite c. }
     rewrite hd_eq. destruct (eqb b (negb b'')) eqn:eb.
     + cbn. rewrite eqb_true_iff in eb; subst. now rewrite orb_true_r, c, op_sub. 
     + destruct (eqf_leibniz (sub v (op v' v''))).
@@ -422,9 +422,9 @@ Proof.
       * cbn. rewrite eqf_sub_not_zero in n. rewrite n, c. unfold sub. cbn.
         rewrite (op_assoc  v (inv (op v' v''))), l_op_inv, r_op_id, negb_involutive.
         f_equal. rewrite eqb_not_neg in eb. subst. auto.
-  - cbn. destruct (to_canon' x') as [[b'' v''] l] eqn:c.
+  - cbn. destruct (to_naive' x') as [[b'' v''] l] eqn:c.
     unfold quot_cons'. cbn. assert (hd_eq : quot_hd' x' = (b'', v'')).
-    { apply some_eq. rewrite quot_canon_hd. cbn. now rewrite c. }
+    { apply some_eq. rewrite quot_naive_hd. cbn. now rewrite c. }
     rewrite hd_eq. destruct (eqb b b'') eqn:eb.
     + cbn. rewrite eqb_true_iff in eb; subst. now rewrite orb_true_r, c, op_sub. 
     + destruct (eqf_leibniz (sub v (op v' v''))).
@@ -436,45 +436,45 @@ Proof.
         subst. auto.
 Qed.
 
-Theorem quot_canon_concat_homomorphism {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) :
-  to_canon (quot_concat x y) = canon_concat (to_canon x) (to_canon y).
+Theorem quot_naive_concat_homomorphism {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) :
+  to_naive (quot_concat x y) = naive_concat (to_naive x) (to_naive y).
 Proof.
   destruct x as [x |]; [|auto]. cbn. induction x as [b' v' | v' p x' | v' x']; cbn.
-  - apply quot_canon_cons_homomorphism.
-  - destruct (to_canon' x') as [[b v] l] eqn:c.
+  - apply quot_naive_cons_homomorphism.
+  - destruct (to_naive' x') as [[b v] l] eqn:c.
     assert (hd_eq : quot_hd' x' = (b, v)).
-    { apply some_eq. rewrite quot_canon_hd. cbn. now rewrite c. }
-    rewrite hd_eq. cbn in *. rewrite <- IHx'. apply quot_canon_cons_homomorphism.
-  - destruct (to_canon' x') as [[b v] l] eqn:c.
+    { apply some_eq. rewrite quot_naive_hd. cbn. now rewrite c. }
+    rewrite hd_eq. cbn in *. rewrite <- IHx'. apply quot_naive_cons_homomorphism.
+  - destruct (to_naive' x') as [[b v] l] eqn:c.
     assert (hd_eq : quot_hd' x' = (b, v)).
-    { apply some_eq. rewrite quot_canon_hd. cbn. now rewrite c. }
-    rewrite hd_eq. cbn in *. rewrite <- IHx'. apply quot_canon_cons_homomorphism.
+    { apply some_eq. rewrite quot_naive_hd. cbn. now rewrite c. }
+    rewrite hd_eq. cbn in *. rewrite <- IHx'. apply quot_naive_cons_homomorphism.
 Qed.
 
 
 
 
 
-(* Canon concat laws *)
-Fixpoint canon_apinv {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) :=
+(* Naive concat laws *)
+Fixpoint naive_apinv {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) :=
   match x with
   | [] => y
-  | (b, v) :: x' => canon_apinv x' ((negb b, v) :: y)
+  | (b, v) :: x' => naive_apinv x' ((negb b, v) :: y)
   end.
 
-Definition canon_inv {A: Type} `{EqGroup A} (x: CanonFreeGroup A) := canon_apinv x [].
+Definition naive_inv {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) := naive_apinv x [].
 
-Fixpoint canon_append {A: Type} `{EqGroup A} (b: bool) (v: A) (x: CanonFreeGroup A) :=
+Fixpoint naive_append {A: Type} `{EqGroup A} (b: bool) (v: A) (x: NaiveFreeGroup A) :=
   match x with
   | [] => [(b, v)]
   | [(b', v')] => if negb (eqf v v') || eqb b b'
                      then [(b', v'); (b, v)]
                      else []
-  | h :: x' => h :: (canon_append b v x')
+  | h :: x' => h :: (naive_append b v x')
   end.
 
-Lemma append_for_normalized {A: Type} `{EqGroup A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
-  Normalized (x ++ [(b, v)]) -> x ++ [(b, v)] = canon_append b v x.
+Lemma append_for_normalized {A: Type} `{EqGroup A} (b: bool) (v: A) (x : NaiveFreeGroup A) : 
+  Normalized (x ++ [(b, v)]) -> x ++ [(b, v)] = naive_append b v x.
 Proof.
   induction x as [|(b' & v')]; [auto|..]; intros H0. cbn in *.
   destruct x as [| (b'' & v'')].
@@ -484,15 +484,15 @@ Proof.
   - rewrite IHx; auto. dependent destruction H0; auto.
 Qed.
 
-Lemma cons_for_normalized {A: Type} `{EqGroup A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
-  Normalized ((b, v) :: x) -> (b, v) :: x = canon_cons b v x.
+Lemma cons_for_normalized {A: Type} `{EqGroup A} (b: bool) (v: A) (x : NaiveFreeGroup A) : 
+  Normalized ((b, v) :: x) -> (b, v) :: x = naive_cons b v x.
 Proof.
   intros Nx. destruct x as [| (b' & v')]; auto. cbn. dependent destruction Nx.
   rewrite condition_iff in H0. now rewrite H0.
 Qed.
 
-Lemma canon_cons_inv_elem {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
-  Normalized x -> negb (eqf v v') || eqb b b' = false -> canon_cons b v (canon_cons b' v' x) = x.
+Lemma naive_cons_inv_elem {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x: NaiveFreeGroup A) :
+  Normalized x -> negb (eqf v v') || eqb b b' = false -> naive_cons b v (naive_cons b' v' x) = x.
 Proof.
   intros Nx H0. induction Nx as [| b'' v'' | b'' b''' v'' v'''].
   - cbn. rewrite H0. auto.
@@ -507,25 +507,25 @@ Proof.
       destruct H0, H2. subst. rewrite negb_involutive, H1. auto.
 Qed.
 
-Lemma canon_concat_cons {A: Type} `{EqGroup A} (b: bool) (v: A) (x y: CanonFreeGroup A) :
-  Normalized x -> Normalized y -> canon_concat (canon_cons b v x) y  = canon_cons b v (canon_concat x y).
+Lemma naive_concat_cons {A: Type} `{EqGroup A} (b: bool) (v: A) (x y: NaiveFreeGroup A) :
+  Normalized x -> Normalized y -> naive_concat (naive_cons b v x) y  = naive_cons b v (naive_concat x y).
 Proof.
   intros Nx Ny. destruct x as [| (b' & v') x']; auto. cbn. 
   destruct (negb (eqf v v') || eqb b b') eqn:e; auto. symmetry.
-  apply canon_cons_inv_elem; auto. apply concat_norm; auto. 
+  apply naive_cons_inv_elem; auto. apply concat_norm; auto. 
   apply (normalized_without_head b' v'). auto.
 Qed.
 
-Theorem canon_concat_assoc {A: Type} `{EqGroup A} (x y z: CanonFreeGroup A) : Normalized x -> 
-   Normalized y -> Normalized z -> canon_concat (canon_concat x y) z = canon_concat x (canon_concat y z).
+Theorem naive_concat_assoc {A: Type} `{EqGroup A} (x y z: NaiveFreeGroup A) : Normalized x -> 
+   Normalized y -> Normalized z -> naive_concat (naive_concat x y) z = naive_concat x (naive_concat y z).
 Proof.
   revert y z. induction x; intros y z Nx Ny Nz; auto. cbn. destruct a. 
-  rewrite canon_concat_cons, IHx; auto.
+  rewrite naive_concat_cons, IHx; auto.
   - apply (normalized_without_head b a). auto.
   - apply concat_norm; auto. apply (normalized_without_head b a). auto.
 Qed.
 
-Lemma normalized_head {A: Type} `{EqGroup A} (b: bool) (v: A) (x: CanonFreeGroup A) :
+Lemma normalized_head {A: Type} `{EqGroup A} (b: bool) (v: A) (x: NaiveFreeGroup A) :
   hd_error x = None \/ (exists (b' : bool) (v' : A), hd_error x = Some (b', v') /\ (v <> v' \/ b = b'))
    -> Normalized x -> Normalized ((b, v) :: x).
 Proof.
@@ -536,9 +536,9 @@ Proof.
 Qed.
   
 
-Lemma noramlized_singl_append {A: Type} `{EqGroup A} (b0 b1 b': bool) (v0 v1 v': A) (x: CanonFreeGroup A) :
-  Normalized ((b0, v0) :: (b1, v1) :: x) -> canon_concat ((b0, v0) :: (b1, v1) :: x) [(b', v')] 
-  = (b0, v0) :: canon_concat ((b1, v1) :: x) [(b', v')].
+Lemma noramlized_singl_append {A: Type} `{EqGroup A} (b0 b1 b': bool) (v0 v1 v': A) (x: NaiveFreeGroup A) :
+  Normalized ((b0, v0) :: (b1, v1) :: x) -> naive_concat ((b0, v0) :: (b1, v1) :: x) [(b', v')] 
+  = (b0, v0) :: naive_concat ((b1, v1) :: x) [(b', v')].
 Proof.
   revert b0 b1 v0 v1. induction x as [| (b2 & v2)]; intros b0 b1 v0 v1 Nx; cbn in *. 
   - dependent destruction Nx. destruct ( negb (eqf v1 v') || eqb b1 b') eqn:e; [|auto].
@@ -547,8 +547,8 @@ Proof.
     cbn. now rewrite H0.
 Qed.
 
-Lemma append_is_concat_at_end {A: Type} `{EqGroup A} (b: bool) (v: A) (x: CanonFreeGroup A) :
-  Normalized x -> canon_append b v x = canon_concat x [(b, v)].
+Lemma append_is_concat_at_end {A: Type} `{EqGroup A} (b: bool) (v: A) (x: NaiveFreeGroup A) :
+  Normalized x -> naive_append b v x = naive_concat x [(b, v)].
 Proof.
   intros Nx. revert b v. induction Nx as [| b' v' | b' b'' v' v'']; auto; intros b v.
   - cbn. now rewrite eqf_sym, eqb_sym.
@@ -557,68 +557,68 @@ Proof.
     + constructor; auto.
 Qed.
 
-Lemma cons_is_concat_at_start {A: Type} `{EqGroup A} (b: bool) (v: A) (x: CanonFreeGroup A) :
-  canon_cons b v x = canon_concat [(b, v)] x.
+Lemma cons_is_concat_at_start {A: Type} `{EqGroup A} (b: bool) (v: A) (x: NaiveFreeGroup A) :
+  naive_cons b v x = naive_concat [(b, v)] x.
 Proof.
   auto.
 Qed.
 
-Theorem cons_append_comm {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
-  Normalized x -> canon_cons b v (canon_append b' v' x) = canon_append b' v' (canon_cons b v x).
+Theorem cons_append_comm {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x: NaiveFreeGroup A) :
+  Normalized x -> naive_cons b v (naive_append b' v' x) = naive_append b' v' (naive_cons b v x).
 Proof.
   intros Nx. rewrite cons_is_concat_at_start, cons_is_concat_at_start,
-  append_is_concat_at_end, append_is_concat_at_end, canon_concat_assoc; auto.
+  append_is_concat_at_end, append_is_concat_at_end, naive_concat_assoc; auto.
   - constructor.
   - constructor.
   - apply concat_norm; [constructor | auto].
 Qed.
 
-Theorem concat_append {A: Type} `{EqGroup A} (b: bool) (v: A) (x y: CanonFreeGroup A) :
+Theorem concat_append {A: Type} `{EqGroup A} (b: bool) (v: A) (x y: NaiveFreeGroup A) :
   Normalized x -> Normalized y -> 
-  canon_concat x (canon_append b v y) = canon_append b v (canon_concat x y).
+  naive_concat x (naive_append b v y) = naive_append b v (naive_concat x y).
 Proof.
   induction x as [|(b' & v')]; [auto|]. intros Nx Ny. cbn. rewrite IHx; 
   [| now apply (normalized_without_head b' v') |auto]. apply cons_append_comm.
   apply concat_norm; auto. apply (normalized_without_head b' v'); auto.
 Qed.
 
-Lemma appinv_concat_elim {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) :
-  canon_concat x (canon_apinv x y) = y.
+Lemma appinv_concat_elim {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) :
+  naive_concat x (naive_apinv x y) = y.
 Proof.
   revert y. induction x as [| (b & v)]; [auto|]. intros y. cbn. rewrite IHx.
   cbn. rewrite eqf_refl, eqb_negb2. auto.
 Qed.
 
-Theorem r_canon_concat_inv {A: Type} `{EqGroup A} (x : CanonFreeGroup A) : 
-  canon_concat x (canon_inv x) = [].
+Theorem r_naive_concat_inv {A: Type} `{EqGroup A} (x : NaiveFreeGroup A) : 
+  naive_concat x (naive_inv x) = [].
 Proof.
   induction x as [| (b & v)]; [auto|]. cbn. rewrite appinv_concat_elim.
   cbn. rewrite eqf_refl, eqb_negb2. auto.
 Qed.
 
-Lemma apinv_def {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) : 
-  canon_apinv x y = canon_inv x ++ y.
+Lemma apinv_def {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) : 
+  naive_apinv x y = naive_inv x ++ y.
 Proof.
-  unfold canon_inv. revert y. induction x as [| (b & v)]; [auto|]. intros y.
+  unfold naive_inv. revert y. induction x as [| (b & v)]; [auto|]. intros y.
   cbn. now rewrite IHx, (IHx [(negb b, v)]), <- app_assoc.
 Qed.
 
-Lemma cannon_inv_append {A: Type} `{EqGroup A} (b: bool) (v: A) (x : CanonFreeGroup A) : 
-  canon_inv (x ++ [(b, v)]) = (negb b, v) :: canon_inv x.
+Lemma cannon_inv_append {A: Type} `{EqGroup A} (b: bool) (v: A) (x : NaiveFreeGroup A) : 
+  naive_inv (x ++ [(b, v)]) = (negb b, v) :: naive_inv x.
 Proof.
   revert b v. induction x as [| (b' & v')]; [auto|]. intros b v. cbn.
   now rewrite apinv_def, IHx, apinv_def, app_comm_cons.
 Qed.
 
-Lemma concat_for_normalized {A: Type} `{EqGroup A} (x y: CanonFreeGroup A) :
-  Normalized (x ++ y) -> canon_concat x y = x ++ y.
+Lemma concat_for_normalized {A: Type} `{EqGroup A} (x y: NaiveFreeGroup A) :
+  Normalized (x ++ y) -> naive_concat x y = x ++ y.
 Proof.
   intro N. induction x as [| (b, v)]; auto. cbn. 
   rewrite IHx, cons_for_normalized; auto. apply (normalized_without_head b v). 
   rewrite app_comm_cons. auto. 
 Qed.
 
-Lemma normalized_list_concat {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x y: CanonFreeGroup A) :
+Lemma normalized_list_concat {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x y: NaiveFreeGroup A) :
   Normalized (x ++ [(b, v)]) -> Normalized ((b', v') :: y) ->
   v <> v' \/ b = b' -> Normalized (x ++ (b, v) :: (b', v') :: y).
 Proof.
@@ -632,7 +632,7 @@ Proof.
       dependent destruction H1. auto.
 Qed. 
 
-Theorem rev_normalized {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x: CanonFreeGroup A) :
+Theorem rev_normalized {A: Type} `{EqGroup A} (b b': bool) (v v': A) (x: NaiveFreeGroup A) :
   Normalized (x ++ [(b, v)]) -> v <> v' \/ b = b' -> Normalized (x ++ [(b, v); (b', v')]).
 Proof.
   revert b b' v v'. destruct x as [| (b'', v'')] using rev_ind ; intros b b' v v' Nx H0.
@@ -640,16 +640,16 @@ Proof.
   - apply normalized_list_concat; [auto | constructor | auto].
 Qed. 
 
-Theorem inv_norm {A: Type} `{EqGroup A} (x: CanonFreeGroup A) : 
-  Normalized x -> Normalized (canon_inv x).
+Theorem inv_norm {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) : 
+  Normalized x -> Normalized (naive_inv x).
 Proof.
   intros Nx. induction Nx; cbn in *; [constructor | constructor |].
   rewrite apinv_def in IHNx. rewrite apinv_def.
   apply rev_normalized; auto. destruct H0; auto. subst. auto.
 Qed.
 
-Theorem l_canon_concat_inv {A: Type} `{EqGroup A} (x : CanonFreeGroup A) : 
-  Normalized x -> canon_concat (canon_inv x) x = [].
+Theorem l_naive_concat_inv {A: Type} `{EqGroup A} (x : NaiveFreeGroup A) : 
+  Normalized x -> naive_concat (naive_inv x) x = [].
 Proof.
   induction x as [| (b & v)] using rev_ind; [auto|]. intros N.
   rewrite cannon_inv_append. cbn. rewrite append_for_normalized; auto.
@@ -659,14 +659,14 @@ Proof.
   - apply inv_norm; auto.
 Qed.
 
-Theorem l_canon_concat_id {A: Type} `{EqGroup A} (x : CanonFreeGroup A) : 
-  canon_concat [] x = x.
+Theorem l_naive_concat_id {A: Type} `{EqGroup A} (x : NaiveFreeGroup A) : 
+  naive_concat [] x = x.
 Proof.
   auto.
 Qed.
 
-Theorem r_canon_concat_id {A: Type} `{EqGroup A} (x : CanonFreeGroup A) : 
-  Normalized x -> canon_concat x [] = x.
+Theorem r_naive_concat_id {A: Type} `{EqGroup A} (x : NaiveFreeGroup A) : 
+  Normalized x -> naive_concat x [] = x.
 Proof.
   intros Nx. induction x as [| (b, v)]; [auto|]. cbn. rewrite IHx, cons_for_normalized; auto.
   apply (normalized_without_head b v); auto.
@@ -679,62 +679,62 @@ Qed.
 (* Free Group is Group *)
 Definition quot_zero {A: Type} `{EqGroup A} := None (A := NEQuotFreeGroup A).
 
-Definition quot_via_canon_concat {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : QuotFreeGroup A :=
-  to_quot (canon_concat (to_canon x) (to_canon y)).
+Definition quot_via_naive_concat {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : QuotFreeGroup A :=
+  to_quot (naive_concat (to_naive x) (to_naive y)).
 
-Definition quot_via_canon_inv {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : QuotFreeGroup A :=
-  to_quot (canon_inv (to_canon x)).
+Definition quot_via_naive_inv {A: Type} `{EqGroup A} (x: QuotFreeGroup A) : QuotFreeGroup A :=
+  to_quot (naive_inv (to_naive x)).
 
-Theorem l_quot_via_canon_concat_inv {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
-  quot_via_canon_concat (quot_via_canon_inv x) x = quot_zero.
+Theorem l_quot_via_naive_concat_inv {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
+  quot_via_naive_concat (quot_via_naive_inv x) x = quot_zero.
 Proof.
-  unfold quot_via_canon_concat, quot_via_canon_inv. rewrite canon_epi_quot.
-  - rewrite l_canon_concat_inv; auto. apply quot_is_normal.
+  unfold quot_via_naive_concat, quot_via_naive_inv. rewrite naive_epi_quot.
+  - rewrite l_naive_concat_inv; auto. apply quot_is_normal.
   - apply inv_norm. apply quot_is_normal.
 Qed.
 
-Theorem r_quot_via_canon_concat_inv {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
-  quot_via_canon_concat x (quot_via_canon_inv x) = quot_zero.
+Theorem r_quot_via_naive_concat_inv {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
+  quot_via_naive_concat x (quot_via_naive_inv x) = quot_zero.
 Proof.
-  unfold quot_via_canon_concat, quot_via_canon_inv. rewrite canon_epi_quot.
-  - rewrite r_canon_concat_inv; auto.
+  unfold quot_via_naive_concat, quot_via_naive_inv. rewrite naive_epi_quot.
+  - rewrite r_naive_concat_inv; auto.
   - apply inv_norm. apply quot_is_normal.
 Qed.
 
-Theorem l_quot_via_canon_concat_id {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
-  quot_via_canon_concat quot_zero x = x.
+Theorem l_quot_via_naive_concat_id {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
+  quot_via_naive_concat quot_zero x = x.
 Proof.
-  unfold quot_via_canon_concat. cbn. apply quot_epi_canon.
+  unfold quot_via_naive_concat. cbn. apply quot_epi_naive.
 Qed.
 
-Theorem r_quot_via_canon_concat_id {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
-  quot_via_canon_concat x quot_zero = x.
+Theorem r_quot_via_naive_concat_id {A: Type} `{EqGroup A} (x y: QuotFreeGroup A) : 
+  quot_via_naive_concat x quot_zero = x.
 Proof.
-  unfold quot_via_canon_concat. cbn. rewrite r_canon_concat_id.
-  - apply quot_epi_canon.
+  unfold quot_via_naive_concat. cbn. rewrite r_naive_concat_id.
+  - apply quot_epi_naive.
   - apply quot_is_normal.
 Qed.
 
-Theorem quot_via_canon_concat_assoc {A: Type} `{EqGroup A} (x y z: QuotFreeGroup A) : 
-  quot_via_canon_concat (quot_via_canon_concat x y) z = quot_via_canon_concat x (quot_via_canon_concat y z).
+Theorem quot_via_naive_concat_assoc {A: Type} `{EqGroup A} (x y z: QuotFreeGroup A) : 
+  quot_via_naive_concat (quot_via_naive_concat x y) z = quot_via_naive_concat x (quot_via_naive_concat y z).
 Proof.
-  unfold quot_via_canon_concat. rewrite canon_epi_quot, canon_epi_quot.
-  - rewrite canon_concat_assoc; auto; try apply quot_is_normal.
+  unfold quot_via_naive_concat. rewrite naive_epi_quot, naive_epi_quot.
+  - rewrite naive_concat_assoc; auto; try apply quot_is_normal.
   - apply concat_norm; apply quot_is_normal.
   - apply concat_norm; apply quot_is_normal.
 Qed.
 
 Global Program Instance QuotFreeGroup_is_Group {A: Type} `{EqGroup A} : Group (QuotFreeGroup A) := {
   zero      := None;
-  op        := quot_via_canon_concat;
-  inv       := quot_via_canon_inv;
+  op        := quot_via_naive_concat;
+  inv       := quot_via_naive_inv;
 }.
 
-Next Obligation. now apply l_quot_via_canon_concat_id. Defined.
-Next Obligation. now apply r_quot_via_canon_concat_id. Defined.
-Next Obligation. now apply l_quot_via_canon_concat_inv. Defined.
-Next Obligation. now apply r_quot_via_canon_concat_inv. Defined.
-Next Obligation. now apply quot_via_canon_concat_assoc. Defined.
+Next Obligation. now apply l_quot_via_naive_concat_id. Defined.
+Next Obligation. now apply r_quot_via_naive_concat_id. Defined.
+Next Obligation. now apply l_quot_via_naive_concat_inv. Defined.
+Next Obligation. now apply r_quot_via_naive_concat_inv. Defined.
+Next Obligation. now apply quot_via_naive_concat_assoc. Defined.
 
 (* Free Group eqdec *)
 

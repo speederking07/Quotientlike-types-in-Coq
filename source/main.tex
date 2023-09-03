@@ -12,8 +12,8 @@
 % polecenia \fmlinebreak.
 \polishtitle    {Funkcje normalizujące dla typów ilorazowych w Coqu}
 \englishtitle   {Normalization functions \fmlinebreak for quotient types in Coq}
-\polishabstract {\ldots}
-\englishabstract{\ldots}
+\polishabstract {Pomimo wielu zastosowań dla typów ilorazowych, Coq nie posiada wbudowanego wsparcia dla nich. W tej pracy omówimy jaki sposób można zniwelować ten problem poprzez definiowanie typów prawie ilorazowych -- w których dla każdej klasy abstrakcji istnieje dokładnie jeden element. Skupimy się na dwóch podejściach, pierwszy z nich polega na zastosowaniu pod-typowania, drugi natomiast na definiowaniu typów induktywnych opartych o ślady normalizacji. Ponad to zostaną wspomniane inne sposoby na definiowanie typów ilorazowych takie jak użycie setoidów, dodatkowych aksjomatów lub wyższych typów induktywnych.}
+\englishabstract{Despite many applications for quotient types, Coq does not have built-in support for them. This work will discuss how to mitigate this problem by defining quotient-like types in which precisely one element exists for each abstraction class. We will focus on two approaches: the first relies on subtyping, while the second involves defining inductive types based on normalization traces. Additionally, we will mention other methods of defining quotient types, such as using setoids, additional axioms, or higher inductive types.}
 % w pracach wielu autorow nazwiska mozna oddzielic poleceniem \and
 \author         {Marek Bauer}
 % w przypadku kilku promotorow, lub koniecznosci podania ich afiliacji, linie
@@ -35,6 +35,7 @@
 \usepackage{tikz}
 \usepackage{tikz-qtree}
 \usepackage{enumitem}
+\usepackage{textcomp}
 
 \graphicspath{ {./img/} }
 \usemintedstyle{tango}
@@ -259,11 +260,15 @@ frametitlealignment=\raggedright
 { \begin{ccode} \begin{mdframed}[style=codestyle] }
 { \end{mdframed} \end{ccode} }
 
-\newcommand{\qed}{\phantom{Marek} \hfill \ensuremath{\Box}}
-\newcommand{\contradiction}{\phantom{Marek} \hfill \ensuremath{\lightning}}
+\newcommand{\qed}{\phantom{RRR} \hfill \ensuremath{\Box}}
+\newcommand{\contradiction}{\phantom{RRR} \hfill \ensuremath{\lightning}}
 
 \newcommand{\coqsource}[1]{the appendix \textbf{#1}}
 \newcommand{\mcoq}[1]{\mintinline{coq}{#1}}
+\newcommand{\mlean}[1]{\mintinline{lean}{#1}}
+\newcommand{\magda}[1]{\mintinline{agda}{#1}}
+\DeclareUnicodeCharacter{2261}{$\equiv$}
+\DeclareUnicodeCharacter{222A}{$\cup$}
 
 
 %\theoremstyle{definition} \newtheorem{definition}{Definition}[chapter]
@@ -290,13 +295,17 @@ frametitlealignment=\raggedright
 	\input{chapter4}
 
     \chapter{Function types as quotient types}
-	%\input{chapter5}
+	\input{chapter5}
 
     \chapter{Quotient types in selected languages}
-	%\input{chapter6}
+	\input{chapter6}
+
+    \chapter{Summary}
+	\input{chapter7}
 
 %%%%% BIBLIOGRAFIA
-	\bibliographystyle{plabbrv}
+        \bibliographystyle{abbrv}
+%	     \bibliographystyle{plabbrv}
 	\bibliography{thebibliography}
 
 \end{document}

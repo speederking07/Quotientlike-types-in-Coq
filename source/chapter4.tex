@@ -36,7 +36,7 @@ $$(1 \circ 2) \circ (e \circ 3) = (1 \circ 2) \circ 3 =  1 \circ 2 \circ 3 \not=
 We are accustomed to list representation of free monoids. However, not every notation of free monoids can be expressed in this form. We call the type of every notation of free monoid a naive representation. A first attempt to implement free monoid in Coq for someone unfamiliar with this concept would likely look similar. 
 \begin{defi}{Naive free monoid}{def:naiveMonoid}
 \begin{minted}{coq}
-Inductive FreeMonoid (A: Type) :=
+Inductive FreeMonoid (A : Type) :=
 | leaf : FreeMonoid A
 | var  : A -> FreeMonoid A
 | op   : FreeMonoid A -> FreeMonoid A -> FreeMonoid A.
@@ -51,7 +51,7 @@ $$
 As expected, we devised a classic list representation of free monoid. 
 \begin{defi}{List as free monoid}{def:list}
 \begin{minted}{coq}
-Inductive list (A: Type) :=
+Inductive list (A : Type) :=
 | nil  : list A
 | cons : A -> list A -> list A.
 \end{minted}
@@ -59,7 +59,7 @@ Inductive list (A: Type) :=
 The normalization function finds the first element in the naively defined free monoid, put it as the first constructor, and recursively normalize the rest of the free monoid. If the free monoid is equivalent to a neutral element, the normalization function returns a natural element. The formal definition of this function is not very educative. Therefore we will skip it. However, we will present a conversion function from a naive representation to a normalized one.
 \begin{func}{A naive representation to a list conversion}{fn:free_to_list}
 \begin{minted}{coq}
-Fixpoint free_to_list {A: Type} (m: FreeMonoid A) : list A :=
+Fixpoint free_to_list {A : Type} (m : FreeMonoid A) : list A :=
 match m with
 | leaf   => []
 | var x  => [x]
@@ -78,7 +78,7 @@ Definition Int : Type := nat * nat.
 For this representation, we can easily define the addition function by adding the number of predecessors and successors of two numbers.
 \begin{func}{Addition of naive integers}{fn:int_add}
 \begin{minted}{coq}
-Definition int_add (n m: Int) : Int :=
+Definition int_add (n m : Int) : Int :=
   let (a, b) := n in let (c, d) := m in (a + c, b + d).
 \end{minted}
 \end{func}
@@ -91,7 +91,7 @@ Fixpoint int_norm' (x y : nat) : (nat * nat) :=
   | _, _       => (x, y)
   end.
 
-Definition int_norm (p: Int) : Int := 
+Definition int_norm (p : Int) : Int := 
   let (x, y) := p in int_norm' x y.
 \end{minted}
 \end{func}
@@ -127,7 +127,7 @@ Fixpoint int_to_Z (x y : nat) : Z :=
 We define some basic operations for the normalized representation of integers \ref{def:Z}. Like natural numbers, starting with successor and predecessor definitions is the best option.
 \begin{func}{Successor}{fn:int_succ}
 \begin{minted}{coq}
-Definition succ (n: Z) : Z :=
+Definition succ (n : Z) : Z :=
   match n with
   | Pos k     => Pos (S k)
   | Zero      => Pos O
@@ -138,7 +138,7 @@ end.
 \end{func}
 \begin{func}{Predecessor}{fn:int_pred}
 \begin{minted}{coq}
-Definition pred (n: Z) : Z :=
+Definition pred (n : Z) : Z :=
   match n with
   | Pos (S n) => Pos n
   | Pos O     => Zero
@@ -150,7 +150,7 @@ end.
 Both definitions are straightforward but substantially more complicated than the same operations for naive representations. A fourth case was required to handle the transition to zero in both cases.
 \begin{func}{Negation}{fn:int_neg}
 \begin{minted}{coq}
-Definition neg (n: Z) : Z :=
+Definition neg (n : Z) : Z :=
 match n with
 | Pos k => Neg k
 | Zero  => Zero
@@ -161,7 +161,7 @@ end.
 The definition of negation is simple and does not require a discussion. The next basic operation for integers is addition.
 \begin{func}{Map $n$ times}{fn:map_n}
 \begin{minted}{coq}
-Fixpoint map_n {A: Type} (n: nat) (f: A -> A) (x: A) : A :=
+Fixpoint map_n {A : Type} (n : nat) (f : A -> A) (x : A) : A :=
   match n with
   | O    => x
   | S n' => f (map_n n' f x)
@@ -179,10 +179,10 @@ Definition add (a b : Z) : Z :=
   end.
 \end{minted}
 \end{func}
-For defining addition, we first needed to define an ancillary function that applies some function $n$ times. Using it, we can define addition as applying the successor operation several times. Subtraction can be defined as the addition of an opposite number.
+For defining addition, we first needed to define an ancillary function that applies some function $n$ times. Using it, we can define addition as applying the successor or predecessor operation several times. Subtraction can be defined as the addition of an opposite number.
 \begin{func}{Multiplication}{fn:int_mul}
 \begin{minted}{coq}
-Definition mul (a b: Z) : Z :=
+Definition mul (a b : Z) : Z :=
   match a with 
   | Pos n => map_n (S n) (add b) Zero
   | Zero  => Zero
@@ -198,13 +198,13 @@ Integers defined in the previous section are a great choice due to their symmetr
 We can define the normalization process in an alternative way. Instead of finishing when we determine if the number is positive or negative, we can continue the process by moving successors from input to output. Of course, this step is de facto an identity function on natural numbers with linear complexity.
 \begin{func}{Alternative normalization}{fn:int_alt_norm}
 \begin{minted}{coq}
-Fixpoint alt_norm (n m: nat) : nat * nat :=
+Fixpoint alt_norm (n m : nat) : nat * nat :=
   match n, m with
   | S n', S m' => alt_norm n' m'
   | O   , S _  => map_n n 
-      (fun (i: nat * nat) => let (x, y) := i in (S x, y)) (O, O)
+      (fun (i : nat * nat) => let (x, y) := i in (S x, y)) (O, O)
   | O   , _    => map_n m 
-      (fun (i: nat * nat) => let (x, y) := i in (x, S y)) (O, O)
+      (fun (i : nat * nat) => let (x, y) := i in (x, S y)) (O, O)
   end.
 \end{minted}
 \end{func}
@@ -229,16 +229,16 @@ Fixpoint to_Z' (n m: nat) : Z' :=
 \end{minted}
 \end{func}
 \subsection{Basic operations}
-This definition of integers, however, could be more convenient for defining operations. As we can notice, to determine the sign of a number, we need to check the last constructor. Since our definition uses this same construction for successor and predecessor, even a simple operation of computing the successor of a number has linear complexity.
+This definition of integers, however, could be more convenient for defining operations. As we can notice, to determine the sign of a number, we need to check the last constructor. Since our definition uses the same construction for successor and predecessor, even a simple operation of computing the successor of a number has linear complexity.
 \begin{func}[D]{Successor}{fn:Z'_succ}
 \begin{minted}{coq}
 Fixpoint succ (k : Z') : Z' :=
   match k with
-  | Zero => Next Zero
-  | MinusOne => Zero
-  | Next Zero => Next (Next Zero)
+  | Zero          => Next Zero
+  | MinusOne      => Zero
+  | Next Zero     => Next (Next Zero)
   | Next MinusOne => MinusOne
-  | Next k' => Next (succ k')
+  | Next k'       => Next (succ k')
   end.
 \end{minted}
 \end{func}
@@ -246,15 +246,15 @@ Fixpoint succ (k : Z') : Z' :=
 \begin{minted}{coq}
 Fixpoint pred (k : Z') : Z' :=
   match k with
-  | Zero => MinusOne
-  | MinusOne => Next MinusOne
-  | Next Zero => Zero
+  | Zero          => MinusOne
+  | MinusOne      => Next MinusOne
+  | Next Zero     => Zero
   | Next MinusOne => Next (Next MinusOne)
-  | Next k' => Next (pred k')
+  | Next k'       => Next (pred k')
   end.
 \end{minted}
 \end{func}
-Because of those difficulties, we recommend using an intermediate form of naively defined integers \ref{def:naiveInt} or the previous normalized definition of integers representation \ref{def:Z} to carry out computations. The conversion functions can be easily defined. The proof of standard and exotic integers definitions being isomorphic with some proofs of basic properties for exotic integers can be found in \coqsource{ExoticInteger.v}.
+Because of those difficulties, we recommend using an intermediate form of naively defined integers \ref{def:naiveInt} or the previous normalized definition of integers representation \ref{def:Z} to carry out computations. The conversion functions can be easily defined. The proof of standard and exotic integers definitions being isomorphic can be found in \coqsource{ExoticInteger.v}.
 \section{Positive rational numbers}
 In contrast to integers coming up with a type for rational numbers with unique representation is a challenging task. This section is based on the work of Yves Bertot \cite{Qplus}, which presents a solution to this problem based on a trace of the Euclidean algorithm.
 \subsection{A naive representation}
@@ -264,10 +264,10 @@ A naive representation of positive rational numbers is identical to that of inte
 Definition Q' : Type := nat * nat.
 \end{minted}
 \end{defi}
-We chose the second option since we want to use an already defined coq operation on natural numbers. As we know from mathematics, there are many notations for this same fraction. $\frac{1}{2}$ or $\frac{2}{4}$ represents the same rational number a half. Every fraction can be reduced to a normal irreducible fraction. In order to find this irreducible fraction, we need to divide the numerator and denominator by their greatest common denominator. There are many algorithms to compute this value, but one of the simplest is the Euclidean algorithm.
+We chose the second option since we want to use an already defined coq operation on natural numbers. As we know from mathematics, there are many notations for the same fraction. $\frac{1}{2}$ or $\frac{2}{4}$ represents the same rational number a half. Every fraction can be reduced to a normal irreducible fraction. In order to find this irreducible fraction, we need to divide the numerator and denominator by their greatest common denominator. There are many algorithms to compute this value, but one of the simplest is the Euclidean algorithm.
 \begin{func}{Euclidean algorithm}{fn:euclid}
 \begin{minted}{coq}
-Fixpoint euclid (p q: nat) : nat :=
+Fixpoint euclid (p q : nat) : nat :=
   match compare p q with
   | Eq => p
   | Gt => euclid (p - q) q n'
@@ -286,7 +286,7 @@ The Euclidean algorithm is based on the law that states $\textrm{gcd}(a, b) = \t
         k&=k=(2-1)k
     \end{split}
 \end{equation}
-The trace,  defined as inequality signs between values, does not change and does not depend on chosen value $k$. The other observation is that we can compute the input values by knowing the trace of the Euclidean algorithm and the output. Without the output, we can still compute the proportions of the input value. The proof of those statements can be found in \coqsource{Qplus.v}.
+The trace,  defined as inequality signs between values, does not depend on chosen value $k$. The other observation is that we can compute the input values by knowing the trace of the Euclidean algorithm and the output. Without the output, we can still compute the proportions of input values. The proof of those statements can be found in \coqsource{Qplus.v}.
 \subsection{The normalized representation}
 Based on those observations, we define an inductive type for positive rational numbers. It has three constructors: \mcoq{N} when the nominator was greater, \mcoq{D} when the denominator was greater, and \mcoq{One} when both values were the same.
 \begin{defi}{Normalized representation}{def:Qplus}
@@ -300,7 +300,7 @@ Inductive Qplus : Type :=
 This construction also provides a nice induction rule for positive rational numbers. The type \mcoq{Qplus} is based on the Euclidean algorithm. Therefore the conversion function is slightly modified by Euclidean algorithm that, instead of computing the greatest common denominator, returns its trace. 
 \begin{func}{Conversion to the Euclid's algorithm trace}{def:qplus_c}
 \begin{minted}{coq}
-Fixpoint qplus_c' (p q n: nat) : Qplus :=
+Fixpoint qplus_c' (p q n : nat) : Qplus :=
   match n with
   | O    => One
   | S n' => match compare p q with
@@ -310,11 +310,11 @@ Fixpoint qplus_c' (p q n: nat) : Qplus :=
             end
   end.
 
-Definition qplus_c (x: Q') : Qplus :=
+Definition qplus_c (x : Q') : Qplus :=
   let (p, q) := x in qplus_c' p q ((p + q) / gcd p q).
 \end{minted}
 \end{func}
-This function differs from the Euclidean algorithm defined in \ref{fn:euclid} since the Coq's termination checker cannot deduce the decreasing argument. Therefore defining the Euclidean algorithm this way is illegal in Coq (8.14.1). We circumvent this problem by adding an argument (the fuel) that constantly decreases, satisfying the termination condition. In order to not change the algorithm output, we need to set the fuel to be big enough. We know that the Euclidean algorithms need fewer steps to compute the result than the sum of its inputs. Moreover, as we noticed, multiplying inputs by positive numbers does not change the computations so that we can divide the fuel by the greatest common denominators of inputs.
+This function differs from the Euclidean algorithm defined in \ref{fn:euclid} since the Coq's termination checker cannot deduce the decreasing argument. Therefore defining the Euclidean algorithm this way is illegal in Coq (8.14.1). We circumvent this problem by adding an argument (the fuel) that constantly decreases, satisfying the termination condition. In order to not change the algorithm output, we need to set the fuel to be big enough. We know that the Euclidean algorithms need fewer steps to compute the result than the sum of its inputs. Moreover, as we noticed, multiplying inputs by positive numbers does not change the computations, so we can divide the fuel by the greatest common denominators of inputs.
 \begin{func}{Conversion to naive representation}{def:qplus_i}
 \begin{minted}{coq}
 Function qplus_i (x : Qplus) : Q' :=
@@ -327,7 +327,7 @@ Function qplus_i (x : Qplus) : Q' :=
 \end{func}
 The inverse conversion function is an even simpler construction. It is based on $(p - q) + q = p$. Of course, the inverse function does not return the same fraction but the equivalent irreducible fraction. The proof that this functions are inversions up to equivalency can be found in \coqsource{Qplus.v}
 \subsection{Extension to the field of rational numbers}
-There is a  natural extension to the field of rational numbers. It uses this same construction as the extension of natural numbers to integers (see \ref{def:Z}).
+There is a  natural extension to the field of rational numbers. It uses the same construction as the extension of natural numbers to integers (see \ref{def:Z}).
 \begin{defi}{Type of normalized rational numbers}{def:FullQ}
 \begin{minted}{coq}
 Inductive FullQ :=
@@ -347,17 +347,17 @@ Definition Q : Type := Z * Z.
 In order to use it to perform computations, we also need to define conversion functions.
 \begin{func}{Absolute value}{fn:abs'}
 \begin{minted}{coq}
-Definition abs' (n: Z) : nat :=
+Definition abs' (n : Z) : nat :=
   match n with
   | Pos k => S k
-  | Zero => O
+  | Zero  => O
   | Neg k => S k
   end.
 \end{minted}
 \end{func}
 \begin{func}{Embedding natural numbers into integers}{fn:toPos}
 \begin{minted}{coq}
-Definition toPos (x: nat) : Z :=
+Definition toPos (x : nat) : Z :=
   match x with
   | O   => Zero
   | S n => Pos n
@@ -367,7 +367,7 @@ Definition toPos (x: nat) : Z :=
 We first need an integer to the natural number absolute value function \ref{fn:abs'}. And natural number to integer function \ref{fn:toPos}.
 \begin{func}{Conversion to the normalized rational number}{fn:fullQ_c}
 \begin{minted}{coq}
-Definition fullQ_c (q: Q') : FullQ :=
+Definition fullQ_c (q : Q') : FullQ :=
   match q with
   | (Pos n, d) => QPos (qplus_c (S n, abs' d))
   | (Zero , d) => QZero
@@ -378,7 +378,7 @@ Definition fullQ_c (q: Q') : FullQ :=
 The conversion function \ref{fn:fullQ_c} works only for fractions with a positive denominator.
 \begin{func}{Conversion to the naive rational number}{fn:fullQ_i}
 \begin{minted}{coq}
-Definition fullQ_i (q: FullQ) : Q :=
+Definition fullQ_i (q : FullQ) : Q :=
   match q with
   | QPos q' => let (n, d) := qplus_i q' in (toPos n, toPos d)
   | QZero   => (Zero, Pos O)
@@ -389,19 +389,19 @@ Definition fullQ_i (q: FullQ) : Q :=
 The inverse conversion function \ref{fn:fullQ_i} produces an irreducible fraction with a positive denominator. Having all conversion functions, we can define the addition operation.
 \begin{func}{Addition}{fn:Qadd}
 \begin{minted}{coq}
-Definition Qadd' (x y: Q') : Q' :=
+Definition Qadd' (x y : Q') : Q' :=
   match x, y with
   | (n, d), (n', d') => (d' * n + d * n', d * d')
   end.
 
-Definition Qadd (x y: FullQ) : FullQ :=
+Definition Qadd (x y : FullQ) : FullQ :=
   fullQ_c (Qadd'(fullQ_i x) (fullQ_i y)).
 \end{minted}
 \end{func}
 The additional operation adds numerators of two fractions reduced to a common denominator.
 \begin{func}{Negation}{fn:Qneg}
 \begin{minted}{coq}
-Definition Qneg (q: FullQ) : FullQ :=
+Definition Qneg (q : FullQ) : FullQ :=
   match q with
   | QPos x => QNeg x
   | QZero  => QZero
@@ -412,26 +412,26 @@ Definition Qneg (q: FullQ) : FullQ :=
 The negation switches the sign of a rational number. Subtraction can be defined as the addition of a negative number.
 \begin{func}{Multiplication}{fn:Qmul}
 \begin{minted}{coq}
-Definition Qmul' (x y: Q') : Q' :=
+Definition Qmul' (x y : Q') : Q' :=
   match x, y with
   | (n, d), (n', d') => (n * n', d * d')
   end.
 
-Definition Qmul (x y: FullQ) : FullQ :=
+Definition Qmul (x y : FullQ) : FullQ :=
   fullQ_c (Qmul' (fullQ_i x) (fullQ_i y)).
 \end{minted}
 \end{func}
 The multiplication operation multiplies both numerators and denominators.
 \begin{func}[D]{Inversion}{fn:Qinv}
 \begin{minted}{coq}
-Fixpoint Qplus_inv (q: Qplus) : Qplus :=
+Fixpoint Qplus_inv (q : Qplus) : Qplus :=
   match q with
   | N x => D (Qplus_inv x)
   | One => One
   | D x => N (Qplus_inv x)
   end.
 
-Definition Qinv (q: FullQ) : FullQ :=
+Definition Qinv (q : FullQ) : FullQ :=
   match q with
   | QPos x => QPos (Qplus_inv x)
   | QZero  => QZero
@@ -439,9 +439,9 @@ Definition Qinv (q: FullQ) : FullQ :=
   end.
 \end{minted}
 \end{func}
-The inversion can be easily computed on the Euclidean algorithm trace by swapping two constructors \mcoq{N} and \mcoq{D}. As we know, the inverse operation switches the numerator and the denominator. By swapping inputs of the Euclidean algorithm, we changed which number was bigger at all steps. The division can be defined as multiplying the inversion. The proof that rational numbers with those operations are an algebraic field can be found in \coqsource{Extras/FullQ.v}.
+The inversion can be easily computed on the Euclidean algorithm trace by swapping two constructors \mcoq{N} and \mcoq{D}. As we know, the inverse operation switches the numerator and the denominator. By swapping inputs of the Euclidean algorithm, we changed which number was greater at all steps. The division can be defined as multiplying the inversion. The proof that rational numbers with those operations are an algebraic field can be found in \coqsource{Extras/FullQ.v}.
 \section{Free groups}
-In this chapter, we learned how to define a free monoid; in this section, we define another free algebraic structure -- a free group.
+In this chapter, we have already learned how to define a free monoid; in this section, we define another free algebraic structure -- a free group.
 \begin{defi}{Group}{def:group}
 A algebraic structure $(\mathbf{A}, \circ)$, where $\mathbf{A}$ is a carrier set and $\circ: \mathbf{A} \rightarrow  \mathbf{A} \rightarrow \mathbf{A}$ is binary operation is a \emph{group} \cite{AbstractAlgebra} if:
 \setlist{nolistsep}
@@ -470,26 +470,26 @@ $$
 We know that a free monoid can be represented as a list. The difference between a monoid and a group is the existence of inverse elements. Therefore we can naively define a free monoid as a list of elements and the sign (information if the element is inverted or not) of the element.
 \begin{defi}{Naive free group representation}{def:CanonFreeGroup}
 \begin{minted}{coq}
-Definition NaiveFreeGroup (A: Type) := list (bool * A).
+Definition NaiveFreeGroup (A : Type) := list (bool * A).
 \end{minted}
 \end{defi}
 As it is easy to notice, this representation is not unique for every free group. Therefore we need to define a normalization function. In our case, we will reduce two elements next to each other but with opposite signs to a neutral element (empty list).
 \begin{defi}{Normalized naive representation}{def:Normalized}
 \begin{minted}{coq}
-Inductive Normalized {A: Type} : NaiveFreeGroup A -> Prop :=
+Inductive Normalized {A : Type} : NaiveFreeGroup A -> Prop :=
 | NNil   : Normalized []
 | NSingl : forall (b : bool) (v : A), Normalized [(b, v)]
-| NCons  : forall (b b': bool) (v v' : A) (x: NaiveFreeGroup A), 
-            v <> v' \/ b = b' -> Normalized ((b', v') :: x) ->
-            Normalized ((b, v) :: (b', v') :: x).
+| NCons  : forall (b b' : bool) (v w : A) (x : NaiveFreeGroup A), 
+            v <> w \/ b = b' -> Normalized ((b', w) :: x) ->
+            Normalized ((b, v) :: (b', w) :: x).
 \end{minted}
 \end{defi}
 We need an underlying type with decidable equality to define the normalization function.
 \begin{defi}{Decidable equality in Coq}{def:EqDec}
 \begin{minted}{coq}
 Class EqDec (A : Type) := { 
-  eqf : A -> A -> bool ;
-  eqf_leibniz : forall x y: A, reflect (x = y) (eqf x y);
+  eqf : A -> A -> bool;
+  eqf_leibniz : forall x y : A, reflect (x = y) (eqf x y);
 }.
 \end{minted}
 \end{defi}
@@ -504,7 +504,8 @@ Inductive reflect (P : Prop) : bool -> Set :=
 \end{coq}
 \begin{func}{Normalization function for free group}{fn:normalize}
 \begin{minted}{coq}
-Fixpoint normalize {A: Type} `{EqDec A} (x: NaiveFreeGroup A) :=
+Fixpoint normalize {A : Type} `{EqDec A} 
+  (x : NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
   | [] => []
   | (b, v) :: x' => 
@@ -526,24 +527,24 @@ Class Group (A : Type) := GroupDef {
   zero     : A;
   op       : A -> A -> A;
   inv      : A -> A;
-  l_op_id  : forall x: A, op zero x = x;
-  r_op_id  : forall x: A, op x zero = x;
-  l_op_inv : forall x: A, op (inv x) x = zero;
-  r_op_inv : forall x: A, op x (inv x) = zero;
-  op_assoc : forall x y z: A, op (op x y) z = op x (op y z);
+  l_op_id  : forall x : A, op zero x = x;
+  r_op_id  : forall x : A, op x zero = x;
+  l_op_inv : forall x : A, op (inv x) x = zero;
+  r_op_inv : forall x : A, op x (inv x) = zero;
+  op_assoc : forall x y z : A, op (op x y) z = op x (op y z);
 }.
 
-Class EqGroup (A : Type) `{E: EqDec A} `{G: Group A} := {}.
+Class EqGroup (A : Type) `{E : EqDec A} `{G : Group A} := {}.
 
-Definition sub {A: Type} `{Group A} (x y: A) := op x (inv y).
+Definition sub {A : Type} `{Group A} (x y : A) := op x (inv y).
 \end{minted}
 \end{defi}
 We can make the following observations if the underlying type is a group. First, we notice that two elements are equal if and only if the difference between them is a neutral element. The second one is that we can define any list as a list of differences between elements. Similar to the normalization process, the list of differences starts with the last element of the free group then differences from the previous elements are added.
 \begin{defi}{Normalized representation of free group}{def:Group}
 \begin{minted}{coq}
-Inductive NEQuotFreeGroup (A: Type) `{EqGroup A} :=
+Inductive NEQuotFreeGroup (A : Type) `{EqGroup A} :=
 | Singl  : bool -> A -> NEQuotFreeGroup A
-| Switch : forall x: A, Squash (x <> zero) -> 
+| Switch : forall x : A, Squash (x <> zero) -> 
              NEQuotFreeGroup A -> NEQuotFreeGroup A
 | Stay   : A -> NEQuotFreeGroup A -> NEQuotFreeGroup A.
 
@@ -551,13 +552,13 @@ Definition QuotFreeGroup (A: Type) `{EqGroup A}
   := option (NEQuotFreeGroup A).
 \end{minted}
 \end{defi}
-This inductive type \mcoq{NEQuotFreeGroup} of non-empty normalized free groups is made of three constructors. The first constructor \mcoq{Singl} is the constructor of the last element of a free group. The second one \mcoq{Switch} is the most interesting since it prevents the existence of two elements that differ only by a sign next to each other. It adds an element with a sign opposite to the head of the free group by providing a difference from the head and proof that this difference is not a neutral element. This proof is squashed (see \ref{coq:SProp}), so we do not need to worry about its uniqueness. The third one adds an element with this same sign as the head of the free group by providing a difference to the head. This construction cannot be used to define a type of free group with an empty group since we know that the inverse of neutral elements is a neutral element from the group's laws, and our definition requires providing a sign of every element. Therefore to define potentially empty free groups, we need to use a second definition utilizing an option. \mcoq{None} is the empty list constructor. This construction was created for this paper. The definition of groups and free groups is a common problem in Coq \cite{GroupsCoq} \cite{FreeGroupsCoq}. However, no similar definitions were found. 
+This inductive type \mcoq{NEQuotFreeGroup} of non-empty normalized free groups is made of three constructors. The first one \mcoq{Singl} is the constructor of the last element of a free group. The second one \mcoq{Switch} is the most interesting since it prevents the existence of two elements that differ only by a sign next to each other. It adds an element with a sign opposite to the head of the free group by providing a difference from the head and proof that this difference is not a neutral element. This proof is squashed (see \ref{coq:SProp}), so we do not need to worry about its uniqueness. The third one adds an element with the same sign as the head of the free group by providing a difference to the head. This construction cannot be used to define a type of free group with an empty group since we know that the inverse of neutral elements is a neutral element from the group's laws, and our definition requires providing a sign of every element. Therefore, to define potentially empty free groups, we need to use a second definition utilizing an option. \mcoq{None} is the empty list constructor. This construction was created for this paper. The definition of groups and free groups is a common problem in Coq \cite{GroupsCoq} \cite{FreeGroupsCoq}. However, no similar definitions have been found in any paper. 
 
-To apply this construction in practice, it is necessary to define conversion functions since the normalized representation is difficult for users to read and write. Therefore, the best approach is to define a free group in naive representation and convert them to normalized representation.
+To apply this construction in practice, it is necessary to define conversion functions since the normalized representation is difficult for users to read and write. Therefore, the best approach is to define a free group in naive representation and convert it to normalized representation.
 \begin{func}{Conversion to normalized representation}{fn:to_quot'}
 \begin{minted}{coq}
-Fixpoint to_quot' {A: Type} `{EqGroup A} (b : bool) (v: A) 
-  (x: NaiveFreeGroup A) : NEQuotFreeGroup A :=
+Fixpoint to_quot' {A : Type} `{EqGroup A} (b : bool) (v: A) 
+  (x : NaiveFreeGroup A) : NEQuotFreeGroup A :=
   match x with 
   | []             => Singl b v
   | (b', v') :: x' => 
@@ -573,19 +574,19 @@ end.
 \end{func}
 \begin{func}{Conversion to normalized representation}{fn:to_quot}
 \begin{minted}{coq}
-Definition to_quot {A: Type} `{EqGroup A} 
-  (x: NaiveFreeGroup A) : QuotFreeGroup A :=
+Definition to_quot {A : Type} `{EqGroup A} 
+  (x : NaiveFreeGroup A) : QuotFreeGroup A :=
 match x with
 | [] => None
 | (b, v) :: x' => Some (to_quot' b v x')
 end.
 \end{minted}
 \end{func}
-In the definition of the function \mcoq{to_quot'}, we need to prove that two consecutive elements are distinct when we change the sign. Fortunately, using \mcoq{reflect} in the deciadable equality definition allows us to extract such proof easily. The \mcoq{to_quot} function works correctly only for normalized free groups, so when mutually inverse elements appear next to each other, the result is undefined. In order to create a conversion function for any free group, we first need to normalize it, which means composing the conversion function with the normalization function \ref{fn:normalize}.
+In the definition of the function \mcoq{to_quot'}, we need to prove that two consecutive elements are distinct when we change the sign. Fortunately, using \mcoq{reflect} in the deciadable equality definition allows us to extract such proof easily. The \mcoq{to_quot} function works correctly only for normalized free groups, so the result is undefined when mutually inverse elements appear next to each other. In order to create a conversion function for any free group, we first need to normalize it, which means composing the conversion function with the normalization function \ref{fn:normalize}.
 \begin{func}{Conversion to naive representation}{fn:to_naive'}
 \begin{minted}{coq}
-Fixpoint to_naive' {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A) 
-  : bool * A * list (bool*A) :=
+Fixpoint to_naive' {A : Type} `{EqGroup A} 
+  (x : NEQuotFreeGroup A) : bool * A * list (bool * A) :=
   match x with 
   | Singl b v     => ((b, v), [])
   | Stay v x'     => 
@@ -601,8 +602,8 @@ Fixpoint to_naive' {A: Type} `{EqGroup A} (x: NEQuotFreeGroup A)
 \end{func}
 \begin{func}{Conversion to naive representation}{fn:to_naive}
 \begin{minted}{coq}
-Definition to_naive {A: Type} `{EqGroup A} (x: QuotFreeGroup A) 
-  : NaiveFreeGroup A :=
+Definition to_naive {A : Type} `{EqGroup A} 
+  (x : QuotFreeGroup A) : NaiveFreeGroup A :=
   match x with
   | None => []
   | Some x' => let (h, t) := to_naive' x' in h :: t
@@ -618,8 +619,8 @@ $$
 We can define the appropriate operations and demonstrate that they satisfy the group axioms. These operations can be defined on the normalized representation. However, because the normalized representation is a list of differences, operations such as concatenation or reversing the order are difficult to define and inefficient. Therefore, we will define these operations on the naive representation of free groups, ensuring that the result for normalized arguments is also normalized.
 \begin{func}{Adding element to free group}{fn:naive_cons}
 \begin{minted}{coq}
-Definition naive_cons {A: Type} `{EqGroup A} (b: bool) (v: A) 
-  (x: NaiveFreeGroup A) : NaiveFreeGroup A :=
+Definition naive_cons {A : Type} `{EqGroup A} (b : bool) 
+  (v : A) (x : NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
   | [] => [(b, v)]
   | (b', v') :: t => if negb (eqf v v') || eqb b b'
@@ -630,8 +631,8 @@ Definition naive_cons {A: Type} `{EqGroup A} (b: bool) (v: A)
 \end{func}
 \begin{func}{Concatenation}{fn:naive_concat}
 \begin{minted}{coq}
-Fixpoint naive_concat {A: Type} `{EqGroup A} 
-  (x y: NaiveFreeGroup A) : NaiveFreeGroup A :=
+Fixpoint naive_concat {A : Type} `{EqGroup A} 
+  (x y : NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
   | []           => y
   | (b, v) :: x' => naive_cons b v (naive_concat x' y)
@@ -641,15 +642,15 @@ Fixpoint naive_concat {A: Type} `{EqGroup A}
 The concatenation of free groups \mcoq{naive_concat} works similarly to the concatenation of lists, where elements from the first list are transferred to the second. However, in the case of free groups, adding an element to the beginning of a free group can remove its head if it is the same element but with the opposite sign.
 \begin{func}{Inversion}{fn:naive_inv}
 \begin{minted}{coq}
-Fixpoint naive_apinv {A: Type} `{EqGroup A} 
-  (x y: NaiveFreeGroup A) : NaiveFreeGroup A :=
+Fixpoint naive_apinv {A : Type} `{EqGroup A} 
+  (x y : NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
   | [] => y
   | (b, v) :: x' => naive_apinv x' ((negb b, v) :: y)
   end.
 
-Definition naive_inv {A: Type} `{EqGroup A} (x: NaiveFreeGroup A) 
-  : NaiveFreeGroup A := naive_apinv x [].
+Definition naive_inv {A : Type} `{EqGroup A} 
+  (x : NaiveFreeGroup A) : NaiveFreeGroup A := naive_apinv x [].
 \end{minted}
 \end{func}
 Similar to reversing regular lists, to define the inverse function for free groups \mcoq{naive_inv} in linear time, we will use an ancillary function called \mcoq{naive_apinv}. This function transfers elements from one list to another with their signs changed. The result is also normalized since we assume that the input is normalized.
@@ -660,11 +661,11 @@ To define these operations for normalized representation, we need to compose fun
 Class Monad (M : Type -> Type) := MondadDef {
   pure       : forall {A : Type}, A -> M A;
   bind       : forall {A B : Type}, M A -> (A -> M B) -> M B;
-  left_bind  : forall {A B : Type} (f: A -> M B) (x: A), 
+  left_bind  : forall {A B : Type} (f : A -> M B) (x : A), 
                  bind (pure x) f = f x; 
-  right_bind : forall {A B : Type} (x: M A), bind x pure = x; 
-  comp_bind  : forall {A B C : Type} (f: B -> M C) (g : A -> M B) 
-                 (x: M A), bind (bind x g) f = 
+  right_bind : forall {A B : Type} (x : M A), bind x pure = x; 
+  comp_bind  : forall {A B C : Type} (f : B -> M C) 
+                 (g : A -> M B) (x : M A), bind (bind x g) f = 
                  bind x (fun y => bind (g y) f);
 }.
 \end{minted}
@@ -682,8 +683,8 @@ $$
 $$
 \begin{func}{Bind function}{fn:naive_bind}
 \begin{minted}{coq}
-Fixpoint naive_bind {A B: Type} `{EqGroup A} `{EqGroup B} 
-  (x : NaiveFreeGroup A) (f: A -> NaiveFreeGroup B) 
+Fixpoint naive_bind {A B : Type} `{EqGroup A} `{EqGroup B} 
+  (x : NaiveFreeGroup A) (f : A -> NaiveFreeGroup B) 
   : NaiveFreeGroup B :=
   match x with
   | []               => []
@@ -695,45 +696,45 @@ Fixpoint naive_bind {A B: Type} `{EqGroup A} `{EqGroup B}
 \end{func}
 The proof that those definitions satisfy monad laws can be found in \coqsource{Extras/FreeGroupMonad.v}.
 \section{Finite multisets as lists of differences}
-In the previous chapter, we defined a multiset type using subtyping. The question arises if there is a definition of finite multisets that do not require dependant types since this concept is not available in many programming languages. For this purpose, we utilize a list of differences and characterize the underlying types for which it is possible to define such lists.
+In the previous chapter, we defined a multiset type using subtyping. The question arises if there is a definition of finite multisets that do not require dependant types since this concept is not available in many programming languages. For this purpose, we utilize a list of differences and characterize the underlying types for which it is possible to define such lists. The concept of storing differences and recovering values from them is known in computer science, for example, as differential backups \cite{DiffBackups}. However, using it for multiset representation has not been found in any paper.
 \subsection{An alternative normalization}
 We first define a normalization function for multisets of natural numbers to derive a normalized representation.
 \begin{func}{Minimal value in the list}{fn:min}
 \begin{minted}{coq}
-Fixpoint min (h: nat) (l: list nat) : nat :=
+Fixpoint min (h : nat) (l : list nat) : nat :=
   match l with
-  | [] => h
+  | []         => h
   | (h' :: l') => if h' <=? h then min h' l' else min h l'
   end.
 \end{minted}
 \end{func}
 \begin{func}{Subtract constant from every element of the list}{fn:sub_list}
 \begin{minted}{coq}
-Fixpoint sub_list (s: nat) (l: list nat) : list nat :=
+Fixpoint sub_list (s : nat) (l : list nat) : list nat :=
   match l with
-  | [] => []
+  | []        => []
   | (h :: l') => (h - s) :: sub_list s l'
   end.
 \end{minted}
 \end{func}
 \begin{func}{Remove one zero from the list}{fn:rm_one_zero}
 \begin{minted}{coq}
-Fixpoint rm_one_zero (l: list nat) : list nat :=
+Fixpoint rm_one_zero (l : list nat) : list nat :=
   match l with
-  | [] => []
+  | []        => []
   | (h :: l') => if h =? O then l' else h :: rm_one_zero l'
   end.
 \end{minted}
 \end{func}
 \begin{func}[D]{Optimized selection sort}{fn:select_sort}
 \begin{minted}{coq}
-Fixpoint select_sort' (f: nat) (prev: nat) (l : list nat) 
+Fixpoint select_sort' (f : nat) (prev : nat) (l : list nat) 
   : list nat :=
   match f with
-  | O => []
+  | O    => []
   | S f' =>
     match l with
-    | [] => []
+    | []        => []
     | (h :: l') => 
       let m := min h l' in
       let p := prev + m in
@@ -745,12 +746,12 @@ Definition select_sort (l : list nat) : list nat :=
   select_sort' (length l) O l.
 \end{minted}
 \end{func}
-For normalization, we use a modified selection sort algorithm for natural numbers. This modification optimizes the comparison operations by subtracting the found minimum from each number. Comparing natural numbers in unary representation is linear with respect to the smaller number. As a result, the smaller the numbers on the list, the faster the process of finding the minimum becomes. Since the previously found minimum reduces the values on the sorted list, the list of the consecutive minimums this algorithm finds is a list of consecutive differences of the sorted input list.
+For normalization, we use a modified selection sort algorithm for natural numbers. The modification optimizes the comparison operations by subtracting the found minimum from each member of yet to be sorted list. Comparing natural numbers in unary representation is linear with respect to the smaller number. As a result, the smaller the numbers on the list, the faster the process of finding the minimum becomes. Since the previously found minimum reduces the values on the sorted list, the list of the consecutive minimums this algorithm finds is a list of consecutive differences of the sorted input list.
 \subsection{The normalized representation}
 We can generalize this normalization process for all underlying types for which a unique symmetric difference between elements can be computed. For this, an underlying type needs to have a linear order defined. Otherwise, computing a unique minimum would be impossible.
-\begin{defi}{Type with compuatable unique diffrences}{def:Diff}
+\begin{defi}{Type with computable unique diffrences}{def:Diff}
 \begin{minted}{coq}
-Class Diff (A: Type) `{E: EqDec A} := {
+Class Diff (A : Type) `{E : EqDec A} := {
   D    : Type;
   diff : A -> A -> D;
   add  : A -> D -> A;
@@ -769,26 +770,26 @@ Class Diff (A: Type) `{E: EqDec A} := {
 In this paper, the definition above has been used. It implies the existence of a linear order without requiring it as a premise. However, it does require a type of symmetric difference -- \mcoq{D}, a function that computes such a difference for two elements -- \mcoq{diff}, and a function that adds the indicated difference to an element -- \mcoq{add}. Additionally, we require this function to meet five requirements. First enforces the symmetry of the difference through the commutative law of the difference operation. The second law defines the relationship between the symmetric difference operation and addition. The third one requires that at least one of the elements can be recovered from the symmetric difference. The fourth states that if we add a difference twice and the result does not change, that difference is neutral. The third and fourth laws imply the antisymmetry of the generated order. The fifth one requires that our symmetric differences be transitive, meaning that if we can recover a value by adding two differences with a common end, we can also recover it from the direct difference. Using this definition, we can define a linear order: two elements are in a relation if and only if adding their common difference to the first element gives us the second. The proof of this fact can be found in \coqsource{DifferentialLists.v}.
 
 Having the class of types with computable differences, we can define the type of multisets based on this definition. It is an option on the head and the list of consecutive differences.
-\begin{defi}{The normalized representation of multisets}{def:DiffList}
+\begin{defi}{Normalized representation of multisets}{def:DiffList}
 \begin{minted}{coq}
-Definition DiffList (A: Type) `{Diff A} :=
+Definition DiffList (A : Type) `{Diff A} :=
   option (A * list D).
 \end{minted}
 \end{defi}
 For this definition, we can define conversion functions.
-\begin{func}{Conversion function to normalized representation}{fn:to_diff}
+\begin{func}{Conversion to normalized representation}{fn:to_diff}
 \begin{minted}{coq}
 Fixpoint to_diff' {A : Type} `{Diff A} (p : A) (l : list A) 
   : list D :=
   match l with
-  | [] => []
+  | []       => []
   | (h :: t) => diff p h :: to_diff' h t
   end.
 
 Definition to_diff {A : Type} `{Diff A} (l : list A) 
   : DiffList A :=
   match l with
-  | [] => None
+  | []       => None
   | (h :: t) => Some (h, to_diff' h t)
   end.
 \end{minted}
@@ -810,15 +811,15 @@ Definition from_diff {A : Type} `{Diff A} (x : DiffList A)
   end.
 \end{minted}
 \end{func}
-The function \mcoq{from_diff} computes the list of multiset elements by adding all the differences. The proof that for every multiset, exactly one differential list exists can be found in \coqsource{DifferentialLists.v}.
+The function \mcoq{from_diff} computes the list of elements by adding all the differences. The proof that for every multiset, exactly one differential list exists can be found in \coqsource{DifferentialLists.v}.
 \subsection{Basic operations}
-Having the conversion functions defined, we can use all functions defined for lists for differential list type. That means our representation is, for example, a monad. However, using conversion functions is computationally expensive. Therefore we define an insertion operation without natively on normalized representation.
+Having the conversion functions defined, we can use all functions defined for lists as functions for multisets. That means our representation is, for example, a monad (for types that implements \ref{def:Diff}). However, using conversion functions is computationally expensive. Therefore we define an insertion operation natively on normalized representation.
 \begin{func}{Insertion}{fn:add_to_diff'}
 \begin{minted}{coq}
-Fixpoint add_to_diff' {A: Type} `{Diff A} (x: A) (h: A) 
-  (l: list D) : list D :=
+Fixpoint add_to_diff' {A : Type} `{Diff A} (x : A) (h : A) 
+  (l : list D) : list D :=
   match l with
-  | [] => [diff h x]
+  | []        => [diff h x]
   | (d :: l') => if ord x (add h d)
                  then diff h x :: diff x (add h d) :: l'
                  else d :: add_to_diff' x (add h d) l'
@@ -827,14 +828,14 @@ Fixpoint add_to_diff' {A: Type} `{Diff A} (x: A) (h: A)
 \end{func}
 \begin{func}{Insertion}{fn:add_to_diff}
 \begin{minted}{coq}
-Definition add_to_diff {A: Type} `{Diff A} (x: A) (l: DiffList A) 
-  : DiffList A :=
+Definition add_to_diff {A : Type} `{Diff A} (x : A) 
+  (l : DiffList A) : DiffList A :=
   match l with
-  | None => Some (x, [])
+  | None        => Some (x, [])
   | Some (h, l) => if ord x h
                    then Some (x, diff x h :: l)
                    else Some (h, add_to_diff' x h l)
   end.
 \end{minted}
 \end{func}
-The function \mcoq{add_to_diff} finds a position where the next value is greater than itself. In this position, it computes the difference between the previous value and itself and between itself and the next value. Next, it replaces the previous difference with two new ones. We can prove that after applying such a function to a list, the element new element is present, no element has been removed, and the length of the list has increased by one. The proofs of these facts can also be found in \coqsource{DifferentialLists.v}.
+The function \mcoq{add_to_diff} finds a position where the next value is greater than itself. In this position, it computes the difference between the previous value and itself and between itself and the next value. Next, it replaces the previous difference with two new ones. In function \ref{fn:add_to_diff'}, \mcoq{ord} is the linear order defined by symmetric differences. We can prove that after applying such a function to a list, the element new element is present, no element has been removed, and the length of the list has increased by one. The proofs of these facts can also be found in \coqsource{DifferentialLists.v}.

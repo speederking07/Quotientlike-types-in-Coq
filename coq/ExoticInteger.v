@@ -1,5 +1,6 @@
 Require Import Recdef.
-Require Import Integer.
+
+Require Import Master.Integer.
 
 Inductive ExoticZ : Type :=
 | Zero' : ExoticZ

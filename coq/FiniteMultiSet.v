@@ -1,9 +1,9 @@
-Require Import Lib.Normalization.
-Require Import Lib.EqDec.
-Require Import Lib.HoTT.
-Require Import Lib.LinearOrder.
-Require Import Lib.Sorted.
-Require Import Lib.MergeSort.
+Require Import Master.Lib.Normalization.
+Require Import Master.Lib.EqDec.
+Require Import Master.Lib.HoTT.
+Require Import Master.Lib.LinearOrder.
+Require Import Master.Lib.Sorted.
+Require Import Master.Lib.MergeSort.
 
 
 

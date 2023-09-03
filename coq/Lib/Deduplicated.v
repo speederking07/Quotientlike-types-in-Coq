@@ -5,10 +5,10 @@ Import ListNotations.
 Import PeanoNat.Nat.
 Require Import Lia.
 
-Require Import Lib.EqDec.
-Require Import Lib.LinearOrder.
-Require Import Lib.Sorted.
-Require Import Extras.Permutations.
+Require Import Master.Lib.EqDec.
+Require Import Master.Lib.LinearOrder.
+Require Import Master.Lib.Sorted.
+Require Import Master.Extras.Permutations.
 
 
 Inductive Deduplicated {A: Type} : list A -> Prop :=

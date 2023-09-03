@@ -3,8 +3,8 @@ Require Import Coq.Lists.List.
 Require Import Coq.Program.Equality.
 Import ListNotations.
 
-Require Import Lib.LinearOrder.
-Require Import Lib.EqDec.
+Require Import Master.Lib.LinearOrder.
+Require Import Master.Lib.EqDec.
 
 
 

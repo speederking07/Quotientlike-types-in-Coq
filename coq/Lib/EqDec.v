@@ -72,3 +72,11 @@ Global Program Instance Unit_for_EqDec : EqDec unit := {
 
 Next Obligation. constructor. destruct x, y. auto. Defined.
 
+
+Global Program Instance EqDec_for_Bool : EqDec bool := {
+  eqf := fun x y => negb (xorb x y);
+}.
+
+Next Obligation. destruct x; destruct y; cbn in *; constructor; auto. 
+  intro H. inversion H. Qed.
+

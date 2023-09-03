@@ -5,8 +5,8 @@ Import ListNotations.
 Require Import PeanoNat.
 Import Nat.
 
-Require Import Lib.LinearOrder.
-Require Import Lib.Sorted.
+Require Import Master.Lib.LinearOrder.
+Require Import Master.Lib.Sorted.
 
 Inductive BT(A : Type) : Type :=
   | leaf : A -> BT A

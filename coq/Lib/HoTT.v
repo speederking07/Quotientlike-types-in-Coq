@@ -1,15 +1,14 @@
 Require Import Setoid.
-Require Import Lib.EqDec.
 
-Inductive Empty : Type := .
+Require Import Master.Lib.EqDec.
 
-
-Definition dot {A B C} (f: B -> C) (g: A -> B) := fun (x: A) => f (g x).
-
-Notation "f $ g" := (dot f g) (at level 75). 
-Notation "! f" := (f -> Empty) (at level 75). 
+ 
 Notation "p ^" := (eq_sym p) (at level 30). 
+Notation "! P" := (P -> False) (at level 60).
 Notation "f @ g" := (eq_trans f g) (at level 40). 
+Notation "f |> g" := (fun x => g (f x)) (at level 20). 
+Notation "f <| g" := (fun x => f (g x)) (at level 20).
+Notation "f == g" := (forall x, f x = g x) (at level 15).
 
 Class Decidable (A : Type) :=
   dec : A + (A -> False).
@@ -42,9 +41,9 @@ Class Collapsible (A : Type) :={
 }.
 
 Theorem map_tought_isHProp : forall A B P: Type, forall f: A -> P, forall g: P -> B,
-  isHProp P -> WeaklyConstant (g $ f).
+  isHProp P -> WeaklyConstant (f |> g).
 Proof.
-  intros A B P f g isHProp. unfold WeaklyConstant. intros x y. unfold dot. assert (f x = f y).
+  intros A B P f g isHProp. unfold WeaklyConstant. intros x y. assert (f x = f y).
   - destruct (isHProp  (f x) (f y)). reflexivity.
   - destruct H. reflexivity.
 Qed.
@@ -66,13 +65,13 @@ Proof.
 Qed.
 
 Lemma loop_eq : forall A: Type, forall x y: A, forall p: x = y, 
-  eq_refl = eq_trans (eq_sym p) p.
+  eq_refl = (p^) @ p.
 Proof.
   intros A x y []. cbn. reflexivity.
 Qed.
 
 Lemma loop_eq' : forall A: Type, forall x y: A, forall p: x = y, 
-  eq_refl = p @ (p ^).
+  eq_refl = p @ (p^).
 Proof.
   intros A x y []. cbn. reflexivity.
 Qed.
@@ -98,6 +97,7 @@ Proof.
   - left. apply eqf_iff. auto.
   - right. intros f. subst. rewrite eqf_refl in e. inversion e.
 Qed.
+  
 
 Definition isLeft {A B: Type} (x : A + B): bool :=
   match x with
@@ -118,8 +118,20 @@ Proof.
   intros A H. apply pathdec_hset. apply eqDec_pathdec. assumption.
 Qed.
 
+
+Global Instance bool_is_HSet : isHSet bool.
+Proof.
+  apply dec_eq_hset. econstructor. exact Bool.eqb_spec.
+Defined.
+
+Global Instance nat_is_HSet : isHSet nat.
+Proof.
+  apply dec_eq_hset. econstructor. exact PeanoNat.Nat.eqb_spec.
+Defined.
+
+
 Definition path_contr {A: Type} `{isContr A} (x y: A) : x = y :=
- eq_trans (contr x) (eq_sym (contr y)).
+  (contr x) @ ((contr y)^).
 
 Lemma all_path_eq_in_contr {A: Type} `{isContr A} {x y: A}: forall p q: x = y, p = q.
 Proof.
@@ -140,9 +152,9 @@ Proof.
   specialize (contr0 p). rewrite contr0. reflexivity.
 Qed.
 
-Theorem contr_not_eq_hprop : exists A: Type, isHProp A /\ (! isContr A).
+Theorem contr_not_eq_hprop : exists A: Type, isHProp A /\ (!isContr A).
 Proof.
-  exists Empty. split.
+  exists False. split.
   - unfold isHProp. intros [] _.
   - intros []. destruct center0.
 Qed. 
@@ -169,7 +181,7 @@ Proof.
   unfold isHSet. intros x y p q. apply all_path_eq_in_hprop.
 Qed.
 
-Theorem hprop_not_eq_hset : exists A: Type, isHSet A /\ !isHProp A.
+Theorem hprop_not_eq_hset : exists A: Type, isHSet A /\ (! isHProp A).
 Proof.
   exists bool. split.
   - apply pathdec_hset. intros x y. unfold Decidable. 
@@ -200,6 +212,7 @@ Qed.
 
 
 
+
 Inductive universe_level : Type :=
 | minus_two  : universe_level
 | S_universe : universe_level -> universe_level.
@@ -220,7 +233,7 @@ Proof.
   intros A H p q. destruct (H p q). assumption. 
 Qed.
 
-Theorem isHProp_def' : forall A: Type, isHProp A -> isNType HPropLevel A.
+Theorem isHProp_deg : forall A: Type, isHProp A -> isNType HPropLevel A.
 Proof.
   unfold isNType. cbn.
   intros A H p q. apply hprop_def. assumption.
@@ -232,17 +245,17 @@ Proof.
   intros A H x y p q. destruct (H x y p q). assumption. 
 Qed.
 
-Theorem isHSet_def' : forall A: Type, isHSet A -> isNType HSetLevel A.
+Theorem isHSet_deg : forall A: Type, isHSet A -> isNType HSetLevel A.
 Proof.
   unfold isNType. cbn.
   intros A H x y p q. apply hprop_def. apply hset_def.
 Qed.
 
 
-Theorem NType_incusion : forall A: Type, forall n : universe_level,
+Theorem NType_incusion {A: Type} (n : universe_level) :
   isNType n A -> isNType (S_universe n) A.
 Proof.
-  intros A n; revert A.
+  revert A.
   induction n; intros A H.
   - cbn in *; intros x y.
     apply contr_bottom.
@@ -255,9 +268,6 @@ Qed.
 
 
 
-
-Definition id {A: Type} (x: A) := x.
-
 Definition ap {A B: Type} {x y: A} (f: A -> B) (p: x = y): f x = f y :=
   match p with
   | eq_refl => eq_refl
@@ -268,13 +278,6 @@ match path with
 | eq_refl => q
 end.
 
-Notation "p *" := (transport p) (at level 20). 
-
-Definition apd {A: Type} {x y: A} {P: A -> Type} (f: forall x:A, P x) (p: x = y) : 
-  (p *) (f x) = f y :=
-  match p with
-  | eq_refl => eq_refl
-  end.
 
 (* ap proofs *)
 
@@ -289,8 +292,8 @@ Proof.
   destruct p. cbn. reflexivity.
 Qed.
 
-Theorem ap_conn {A B C: Type} {x y: A} (f: A -> B) (g: B -> C) (p: x = y)
-  : ap g (ap f p) = ap (g $ f) p.
+Theorem ap_comp {A B C: Type} {x y: A} (f: A -> B) (g: B -> C) (p: x = y)
+  : ap g (ap f p) = ap (fun x => g (f x)) p.
 Proof.
   destruct p. cbn. reflexivity.
 Qed.
@@ -302,14 +305,9 @@ Qed.
 
 (* transport proofs *)
 
-Theorem transport_dist {A: Type} {P: A -> Type} {x y z: A} (p: x = y) (q: y = z) (u: P x)
-  : (q *) ((p *) u) = ((p @ q) *) u.
-Proof.
-  destruct p, q. cbn. reflexivity.
-Qed.
 
 Theorem transport_ap {A B: Type} {P: B -> Type} {x y: A} (f: A -> B) (p: x = y) (u: P (f x))
-  : transport (P := P $ f) p u = transport (ap f p) u.
+  : transport (P := P <| f) p u = transport (ap f p) u.
 Proof.
   destruct p. cbn. reflexivity.
 Qed.
@@ -334,73 +332,235 @@ Proof.
   intros A P x y p q (-> & []). cbn. reflexivity.
 Qed.
 
-
-
-
-Definition pointwise_paths {A B: Type}  (f g : A -> B)
-  := forall x, f x = g x.
-
-Notation "f == g" := (pointwise_paths f g) (at level 100).
-
-Class IsEquiv {A B : Type} (f : A -> B) := {
-  equiv_inv : B -> A ;
-  eisretr : (f $ equiv_inv) == id ;
-  eissect : (equiv_inv $ f) == id ;
-  eisadj : forall x : A, eisretr (f x) = ap f (eissect x) ;
+Class IsEquiv {A B : Type} (izo : A -> B) := {
+  inv : B -> A ;
+  eisretr : (izo <| inv) == id;
+  eissect : (inv <| izo) == id;
+  eisadj : (eisretr <| izo) == (ap izo <| eissect);
 }.
+
+Lemma eq_loop_mid {A: Type} (f: A -> A) (H : forall x, f x = x) (x y: A) (q : x = y) :  
+  (H x ^) @ (ap f q) @ (H y) = q.
+Proof.
+  destruct q. cbn. symmetry. apply loop_eq.
+Qed.
+
+Lemma eq_loop_mid' {A: Type} {f: A -> A} (H: forall a, f a = a) {x y: A} (p: x = y) 
+  : ap f p = (H x) @ p @ (H y ^).
+Proof.
+  destruct p. cbn. apply loop_eq'.
+Qed.
+
+Definition ap_swap_r {A : Type} {f : A -> A} (p : forall x, x = f x) 
+  {x y : A} (q : x = y): p x @ ap f q = q @ p y.
+Proof.
+  destruct q. cbn. rewrite eq_trans_refl_l. reflexivity.
+Qed.
+
+Definition ap_swap_l {A : Type} {f : A -> A} (p : forall x, f x = x) 
+  {x y : A} (q : x = y): ap f q @ p y = p x @ q.
+Proof.
+  destruct q. cbn. rewrite eq_trans_refl_l. reflexivity.
+Qed.
+
+Definition move_r (A : Type) (x y : A) (p q : x = y) : eq_refl = (p^) @ q -> p = q.
+Proof.
+  intros H. destruct p. cbn in *. rewrite H, eq_trans_refl_l. auto.
+Qed.
+
+Definition move_l (A : Type) (x y z : A) (p : x = z) (q : y = z) (r : x = y)
+  : r @ q = p -> q = (r^) @ p.
+Proof.
+  intro H. destruct p, q. cbn in *. rewrite H. auto.
+Qed.
+
+Global Instance IsEquivTrans {A B C: Type} {f: A -> B} {g: B -> C}
+  (Ef: IsEquiv f) (Eg: IsEquiv g) : IsEquiv (f |> g).
+Proof.
+  destruct Ef as (f', fr, fs, fa). destruct Eg as (g', gr, gs, ga).
+  unshelve esplit; unfold id in *.
+  - exact (f' <| g').
+  - exact (fun c => (ap g (fr (g' c))) @ (gr c)).
+  - exact (fun a => (ap f' (gs (f a))) @ (fs a)).
+  - intros a. cbn.
+    now rewrite <- (ap_comp f g), ap_distr, (ap_comp f' f), 
+      <- (fa a), (ap_swap_l fr), ap_distr, <- ga.
+Defined.
+
+Definition makeIsEquiv {A B : Type} (f : A -> B) (g: B -> A)
+  (retr : forall b : B, f (g b) = b) (sect : forall a : A, g (f a) = a) : IsEquiv f.
+Proof.
+  unshelve esplit.
+  - exact g.
+  - exact retr.
+  - exact (fun x => ap g (ap f (sect x)^) @ ap g (retr (f x)) @ sect x).
+  - intros x; unfold id in *.
+    apply move_r.
+    rewrite ap_distr, ap_distr, eq_trans_assoc, eq_trans_assoc,
+      (ap_comp g f), (ap_swap_r (fun b => (retr b)^)),
+      <- eq_trans_assoc, <- eq_trans_assoc. 
+    apply move_l. 
+    rewrite eq_trans_assoc, (ap_comp g f), 
+      (ap_swap_r (fun b => (retr b)^)).
+    now destruct (retr (f x)), (sect x).
+Defined.
 
 Arguments IsEquiv {A B}.
 
-Class IsEquiv' {A B : Type} (f : A -> B) := {
-  equiv_inv_A : B -> A ;
-  equiv_inv_B : B -> A ;
-  equiv_id_A : f $ equiv_inv_A == id ;
-  equiv_id_B : equiv_inv_B $ f == id ;
+Class Equiv (A B: Type) := {
+  izo: A -> B;
+  equiv: IsEquiv izo;
 }.
 
-Class IsEquiv'' {A B : Type} (f : A -> B) := 
-  contr_equiv : forall y: B, isContr(exists x, f x = y).
+Class HEquiv (A B: Type) := {
+  izo': A -> B;
+  inv' : B -> A ;
+  eisretr' : forall b : B, izo' (inv' b) = b;
+  eissect' : forall a : A, inv' (izo' a) = a;
+  eisadj' : forall a: A, eisretr' (izo' a) = ap izo' (eissect' a);
+}.
 
-
-Theorem equiv_same (A B: Type) (f: A -> B) `{IsEquiv A B f} : IsEquiv' f.
+Global Instance toHEquiv (A B: Type) `{Equiv A B} : HEquiv A B.
 Proof.
-  destruct H. exists equiv_inv0 equiv_inv0; assumption.
+  destruct H as (izo, (inv, eisretr, eissect, eisadj)).
+  econstructor. apply eisadj.
+Defined.
+
+Global Instance toEquiv (A B: Type) `{HEquiv A B} : Equiv A B.
+Proof.
+  destruct H as (izo, inv, eisretr, eissect, eisadj).
+  econstructor. econstructor. apply eisadj.
+Defined.
+
+
+
+Definition ap_rev {A B: Type} {f: A -> B} {g: B -> A} 
+  (H: forall x: A, g (f x) = x) {x y: A} (p: f x = f y) : x = y
+  := ((H x)^) @ (ap g p) @ (H y).
+
+Lemma ap_rev_ap_id {A B: Type} {f: A -> B} {g: B -> A} (H: forall a, g (f a) = a) {x y: A} 
+  : forall p : x = y, ap_rev H (ap f p) = p.
+Proof.
+  intros []. cbn. symmetry. apply loop_eq.
 Qed.
 
-Lemma homotopy_rewrite_l (A B C: Type) (f g: A -> B) (h: B -> C) :
-  (f == g) -> (h $ f) == (h $ g).
-Proof.
-  unfold pointwise_paths, dot. intros H x. rewrite H. auto.
+Lemma ap_ap_rev_id {A B: Type} {f: A -> B} {g: B -> A} 
+  {H: forall a, g (f a) = a} {H': forall b, f (g b) = b} 
+  (adj : forall x, H' (f x) = ap f (H x)) {x y: A} 
+  : forall p: f x = f y, (ap f (ap_rev H p)) = p.
+Proof. 
+  intros p. unfold ap_rev.
+  rewrite ap_distr, ap_distr, (ap_comp g f), ap_inv.
+  assert (E: forall h, ((H' (f x)) ^) @ (ap (fun x => f (g x)) h) @ H' (f y) = h)
+    by apply (eq_loop_mid (fun x => f (g x))).
+  now rewrite <- E, adj, adj.
 Qed.
 
-Lemma homotopy_rewrite_r (A B C: Type) (f: A -> B) (g h: B -> C) :
-  (g == h) -> (g $ f) == (h $ f).
+Lemma fun_id_apply_is_ap {A : Type} (f: A -> A) (H : forall a, f a = a)
+  (a : A) : H (f a) = ap f (H a).
 Proof.
-  unfold pointwise_paths, dot. intros H x. rewrite H. auto.
+Abort.
+
+Lemma adj_sym {A B : Type} {f: A -> B} {g: B -> A}
+  {H: forall a, g (f a) = a} {H': forall b, f (g b) = b}
+  (adj: forall a, H' (f a) = ap f (H a))
+  : forall b: B, H (g b) = ap g (H' b).
+Proof.
+  intros b. apply (ap_rev (f := ap f) (g := ap_rev H)).
+  - intros p. apply ap_rev_ap_id.
+  - rewrite <- adj, ap_comp. apply move_r.
+    rewrite (ap_swap_r (fun x => H' (x) ^)).
+    apply loop_eq'.
+Defined.
+
+Theorem equiv_path (A B: Type) (f: A -> B) :
+  IsEquiv f -> forall x y: A, Equiv (x = y) (f x = f y).
+Proof. 
+  intros (g, retr, sect, adj) x y. econstructor.
+  exact ( makeIsEquiv (ap f) (ap_rev sect) 
+    (ap_ap_rev_id adj) (ap_rev_ap_id sect) ).
+Defined.
+
+Theorem equiv_keep_level (A B: Type) (n: universe_level) :
+   isNType n A -> Equiv B A -> isNType n B.
+Proof.
+  revert A B. induction n; intros A B.
+  - cbn. intros (a, loop) (f, (g, _, retr, _)). unfold id in *.
+    econstructor. intros b. now rewrite <- (retr b), (loop (f b)).
+  - cbn. intros H (f, (g, sect, retr, adj)) x y. 
+    apply (IHn (f x = f y)); [auto | ].
+    apply equiv_path. 
+    econstructor; apply adj.
+Defined.
+
+
+(* Equiv is equivalance relation *)
+
+Global Instance Equiv_refl {A: Type} : (Equiv A A).
+Proof.
+  exists id. unshelve econstructor.
+  - exact id.
+  - reflexivity.
+  - reflexivity.
+  - reflexivity.
+Defined.
+
+Global Instance Equiv_sym {A B: Type} `{Equiv A B} : (Equiv B A).
+Proof.
+  destruct H as (izo, (inv, eisretr, eissect, eisadj)).
+  exists inv. econstructor. apply (adj_sym eisadj).
+Defined.
+
+Global Instance Equiv_trans {A B C: Type} (E : Equiv A B) (E' : Equiv B C) : (Equiv A C).
+Proof.
+  destruct E as (f, Ef). destruct E' as (g, Eg).
+  exists (f |> g). apply IsEquivTrans; auto.
+Defined.
+
+
+(* Function paths *)
+
+Definition happly {A: Type} {B: A-> Type}  {f g : forall x: A, B x} 
+  (p : f = g) (x : A) : f x = g x :=
+match p with
+| eq_refl => eq_refl
+end.
+
+Definition HFunExt : Type := forall (A: Type) (B: A -> Type) (f g: forall a: A, B a), 
+  IsEquiv (happly (f := f) (g := g)).
+
+Lemma fun_is_img_hprop (A: Type) (B: A -> Type) (funExt : HFunExt) :
+  (forall a: A, isHProp (B a)) -> isHProp (forall a: A, B a).
+Proof.
+  unfold isHProp. intros H f g. destruct (funExt A B f g) as (inv, _, _, _). 
+  apply inv. intros x. apply H.
 Qed.
 
-Lemma dot_assoc (A B C D: Type) (h: A-> B) (g: B -> C) (f: C -> D) :
-   (f $ g) $ h == f $ (g $ h).
+
+Lemma fun_is_img_contr (A: Type) (B: A -> Type) (funExt: HFunExt) :
+   (forall a: A, isContr (B a)) -> isContr (forall a: A, B a).
 Proof.
-  unfold pointwise_paths, dot. auto.
+  assert (C': forall T: Type, T * (isHProp T) -> isContr T).
+  { intros T (c, hprop). exists c. intros t. apply hprop. }
+  intros H. apply C'. split.
+  - intros a. destruct (H a). assumption.
+  - apply fun_is_img_hprop; [auto |]. intros a b b'. destruct (H a) as (c, l).
+    rewrite (l b), (l b'). auto. 
 Qed. 
 
-Theorem equiv_same' (A B: Type) (f: A -> B) `{IsEquiv' A B f} : IsEquiv f.
+Lemma fun_is_img_level_dep (A: Type) (B: A -> Type) (n: universe_level) (funExt: HFunExt) :
+   (forall a: A, isNType n (B a)) -> isNType n (forall a: A, B a).
 Proof.
-  assert (f $ (equiv_inv_A $ f $ equiv_inv_B) == id). 
-Abort.
+  revert A B. induction n; intros A B H; cbn in *.
+  - apply fun_is_img_contr; auto.
+  - intros f g. apply (equiv_keep_level (forall x : A, f x = g x)).
+    + apply IHn. intros a. apply H.
+    + destruct (funExt A B f g) as (inv, rets, sect, adj).
+      econstructor; econstructor; apply adj.
+Qed.
 
-Record qinv {A B: Type} (f: A -> B) := {
-  g: B -> A;
-  inv_l: g $ f == id;
-  inv_r: f $ g == id;
-}.
-
-Theorem bad {A B: Type} (f: A -> B) : qinv f -> (qinv f = forall x: A, x = x).
+Lemma fun_is_img_level (A B: Type) (n: universe_level) (funExt: HFunExt) :
+   isNType n B -> isNType n (A -> B).
 Proof.
-  intros [].
-Abort.
-
-
-
- 
+  intros H. apply (fun_is_img_level_dep A (fun _ => B)); auto.
+Qed.
