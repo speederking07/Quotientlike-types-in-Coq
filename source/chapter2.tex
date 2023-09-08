@@ -22,7 +22,7 @@ Record sig' (A : Type) (P : A -> Prop) : Type := exist' {
 \end{minted}
 \end{defi}
 Subtypes in Coq can be defined in two equivalent ways (see definitions \ref{def:siq} and \ref{def:siq'}). The first definition is used in Coq's standard library. The second one nicely shows that a subtype is actually a dependent pair built of two elements -- a value and the proof that the value satisfies a subtype-defining predicate.
-\begin{defi}{Depandent pair}{def:dep_pair}
+\begin{defi}{Dependent pair}{def:dep_pair}
 \emph{Dependent pair} is a generalization of a pair where the type of the second element depends on the value of the first one.
 \end{defi}
 \begin{example}{}{ex:dep_pair}
@@ -38,12 +38,12 @@ Definition lessThanTen := {a : nat | a < 10}.
 \end{minted}
 \end{example}
 \subsection{Connetion to quotient types}
-Subtyping is the dual construction of quotient types. As the introduction mentions, there is no built-in method for implementing quotient types in Coq. Therefore, we will use subtypes to define types containing only normalized elements of the underlying type. The normalized elements are defined as the image of some normalization function. This construction defines a type where equality is equivalent to a quotient-defining equality relation because every equivalence class is reduced to a single element.
+Subtyping is the dual construction of quotient types. As the introduction mentions, there is no built-in method for implementing quotient types in Coq. Therefore, we will use subtypes to define quotient-like types containing only normalized elements of the underlying type. The normalized elements are defined as the image of some normalization function. This construction defines a type where equality is equivalent to a quotient-defining equality relation because every equivalence class is reduced to a single element.
 \begin{defi}{Subtype of normalized elements}{def:subtype_quot}
 \begin{minted}{coq}
 Record quotient {A : Type} (f : A -> A) `{normalization f} := {
   val         : A;
-  valIsNormal : val = f val
+  valIsNormal : val = f val;
 }.
 \end{minted}
 \end{defi}
@@ -126,7 +126,7 @@ If there exists a larger equivalence relation $(\simeq)$ for which  $X$, $A$, $B
 \end{theo}
 
 \begin{proof}{}{proof:pushout}
-Since $|Q| > |P|$, morphism $u$ cannot be a surjection. Therefore,  there exists $y \in Q$ such that for all  $x \in P$ $u(x)$ is not equal to $y$. 
+Since $|Q| > |P|$, morphism $u: P \rightarrow Q$ cannot be a surjection. Therefore,  there exists $y \in Q$ such that $(\forall x \in P) \; u(x) \neq y$. 
 Without loss of generality exists $a \in A$ such that $\zeta_1(a) = y$. From commutivity we know that $\zeta_1(a) = u(\eta_1(a))$, but $\eta_1(a) \in P$. \contradiction
 \end{proof}
 
@@ -153,7 +153,7 @@ Let us check if $C$ is a circle. Since the diagram above commutes, then we know 
 \end{example}
 
 \subsection{Pullback}
-Knowing that a pullback is a dual construction to pushout and knowing what dual construction is, everyone should be able to draw a pushout defining diagram.
+Knowing that a pullback is a dual construction to pushout and knowing what dual construction is, everyone should be able to draw a diagram that defines pushout.
 \begin{defi}{Pullback}{def:pullback}
 The pullback \cite{CategoryTheory} $P$ is defined by two morphisms $f: A \rightarrow X$ and $g: B \rightarrow X$, with common codomain $X$.
 \begin{center}
@@ -208,11 +208,11 @@ As we know, the "most general" $P$ that completes this commutative square is $\{
 \end{example}
 \subsection{Conclusion}
 As shown in the examples above, the pushout can define quotient types in category theory, and the pullback can be used to define subtypes.  Those two constructions are mutually dual. Therefore, we can call subtyping a dual concept to quotient types.
-\section{Uniqueness of representation}
-In Coq, subtyping is accomplished by using dependent pairs of value and proof that the value satisfies the subtype-defining predicate. Unfortunately, this means that only some properties of subtypes known from mathematics hold in Coq. As it was mentioned at the beginning of this chapter, we cannot use a member of a subtype as a member of the underlying type. This particular problem is easy to fix using projections. The other consequence of using dependent pairs related to using subtyping as quotient-like types is that we cannot prove that only one member of the subtype exists for every value that satisfies the normalization predicate. As we know, the irrelevance of proofs is independent of the axioms of the \mcoq{Prop} sort \cite{CoqBook2}. It is a major problem since we want to use subtyping to reduce each equivalence class to a single element. The possibility of the existence of multiple elements that only differ by proof of subtype defining predicate makes this construction useless for quotient types applications. Hence, we need to define the subset of quotient types for which its subtype representations are unique or redefine this construction for these purposes.
-\begin{defi}{Class of subtypes with unique represenations}{def:unique_representation}
+\section{Uniqueness of representations}
+In Coq, subtyping is accomplished by using dependent pairs of value and proof that the value satisfies the subtype-defining predicate. Unfortunately, this means that only some properties of subtypes known from mathematics hold in Coq. As it was mentioned at the beginning of this chapter, we cannot use a member of a subtype as a member of the underlying type. This particular problem is easy to fix using projections. The other problem of Coq's subtypes related to using subtyping as quotient-like types is that we cannot prove that only one member of the subtype exists for every value that satisfies the normalization predicate. As we know, the irrelevance of proofs is independent of the axioms of the \mcoq{Prop} sort \cite{CoqBook2}. It is a major problem since we want to use subtyping to reduce each equivalence class to a single element. The possibility of the existence of multiple elements that only differ by proof of subtype defining predicate makes this construction useless for quotient types applications. Hence, we need to define the subset of quotient types for which its subtype representations are unique.
+\begin{defi}{Class of subtypes with unique representations}{def:unique_representation}
 \begin{minted}{coq}
-Class unique_representation {A : Type} (P : A -> Prop) := 
+Class unique_representations {A : Type} (P : A -> Prop) := 
   uniq : forall (x y : {a : A | P a}), proj1_sig x = proj1_sig y 
            -> x = y.
 \end{minted}
@@ -229,11 +229,11 @@ Proof irrelevance is a known concept in computer science \cite{ProofIrrelevance}
 Definition Irrelevance := forall (P : Prop) (x y : P), x = y.
 \end{minted}
 \end{defi}
-Using this axiom, we can easily prove that every subtype has a unique representation (as defined in \ref{def:unique_representation}).
+Using this axiom, we can easily prove that every subtype has a unique representations (as defined in \ref{def:unique_representation}).
 \begin{theo}{}{th:irr_uniq}
     \begin{minted}{coq}
 Theorem irrelevance_impl_unique_representation : Irrelevance -> 
-  forall (A : Type) (P : A -> Prop), unique_representation P.
+  forall (A : Type) (P : A -> Prop), unique_representations P.
     \end{minted}
 \end{theo}
 \begin{proof}{}{proof:irr_uniq}
@@ -246,12 +246,12 @@ specialize (Irr (P y) xp yp); subst.
 constructor. Qed.
 \end{minted}
 \end{proof}
-Those two statements are equivalent. Thus, the axiom of proof irrelevance is required for every subtype to have a unique representation.
+Those two statements are equivalent. Thus, the axiom of proof irrelevance is required for every subtype to have a unique representations.
 \begin{theo}{}{th:irr_uniq2}
     \begin{minted}{coq}
 Theorem unique_representation_impl_irrelevance : 
-  (forall (A : Type) (P : A -> Prop), unique_representation P) -> 
-  Irrelevance.
+  (forall (A : Type) (P : A -> Prop), unique_representations P) 
+    -> Irrelevance.
     \end{minted}
 \end{theo}
 \begin{proof}{}{proof:irr_uniq2}
@@ -290,7 +290,7 @@ Fact eq_dep_embedded_in_eq : forall (A : Type) (P : A -> Prop)
 \end{minted}
 Moreover, this fact is equivalent to axiom K. Proofs of these facts are outside the scope of this section, but they can be found in \coqsource{Extras/Stricher.v}.
 \end{coq}
-Since axiom K is weaker than the proof irrelevance axiom, we cannot prove that every subtype has unique representations. However, we can use it to prove that every quotient-like type (defined in \ref{def:subtype_quot}) has unique representations as defined in \ref{def:unique_representation}.
+Since axiom K is weaker than the proof irrelevance axiom, we cannot prove using it that every subtype has unique representations. However, we can use it to prove that every quotient-like type (defined in \ref{def:subtype_quot}) has unique representations as defined in \ref{def:unique_representation}.
 \begin{theo}{}{th:subtype_quot_uniq}
 \begin{minted}{coq}
 Theorem quotient_unique_representation : K -> forall (A : Type) 
@@ -309,7 +309,7 @@ reflexivity. Qed.
 \subsection{Definitional irrelevance approach}
 As it was mentioned in this section, we can add the axiom of proof irrelevance to solve the problem of unique representations for every subtype. In Coq, there is another approach to proof irrelevance -- \mcoq{SProp}.
 \begin{coq}[]{\mcoq{SProp} sort}{coq:SProp}
-\mcoq{SProp} (Strict Propositions) is a sort of propositions with definitional proof irrelevance as described in \cite{BasesOfSProp}. It is still an experimental feature \cite{coqDoc} of Coq and requires work to be fully functional. That said, The standard library of Coq has several useful constructions for strict propositions:
+\mcoq{SProp} (Strict Propositions) is a sort of propositions with definitional proof irrelevance as described in \cite{BasesOfSProp}. It is still an experimental feature \cite{coqDoc} of Coq and requires work to be fully functional. That said, the standard library of Coq has several useful constructions for strict propositions:
 \begin{description}
     \item \mcoq{Box} -- a record that lifts \mcoq{SProp} proposition to \mcoq{Prop} sort.
     \begin{minted}{coq}
@@ -357,38 +357,38 @@ If we want to work in the \mcoq{Prop} sort without additional axioms, we must fi
 \subsubsection{Homotopy $n$-types}
 Homotopy $n$-types creates a type hierarchy based on the complexity of identity poofs structure ($\omega$-grupoid structure).
 \begin{example}{Selected $n$-types}{ex:n_types}
-Developing intuition regarding this concept is important before formally defining the $n$-th type. Therefore, we will discuss the three most important examples of $n$-types (universes) in this thesis.
+Developing intuition regarding this concept is important before formally defining the $n$-th type. Therefore, we will discuss the three most important examples of $n$-types in this thesis.
 \begin{description}
-    \item \mcoq{Contr} -- it is the lowest minus-second universe. The type that lives in \mcoq{Contr} has exactly one element. A good example of $(-2)$-type is a \mcoq{unit}.
+    \item \mcoq{Contr} -- it is the lowest minus-second type. The type that lives in \mcoq{Contr} has exactly one element. A good example of $(-2)$-type is a \mcoq{unit}.
     \begin{minted}{coq}
  Class isContr (A : Type) := ContrBuilder {
    center : A;
    contr  : forall x : A, x = center
  }.
     \end{minted}
-    \item \mcoq{HProp} -- it is the minus-first universe. Not to be confused with Coq's \mcoq{Prop}. The type that lives in it has every element equal to each other. A good example of $(-1)$-type is \mcoq{Empty_set}. We can easily prove that each element of the empty type is the same element. However, it has no elements, so it cannot live in \mcoq{Contr}.
+    \item \mcoq{HProp} -- it is the minus-first type. Not to be confused with Coq's \mcoq{Prop}. The type that lives in it has every element equal to each other. A good example of $(-1)$-type is \mcoq{Empty_set}. We can easily prove that each element of the empty type is the same element. However, it has no elements, so it cannot live in \mcoq{Contr}.
         \begin{minted}{coq}
  Class isHProp (P : Type) :=
    hProp : forall p q : P, p = q.
     \end{minted}
-    \item \mcoq{HSet} -- it is the zero universe. Not to be confused with Coq's \mcoq{Set}. The type that lives in it has unique identity proofs. A good example of $0$-type is \mcoq{boo}l. Later in this section we will show that it has unique identity proofs. Moreover, it has two elements, so it does not live in \mcoq{HProp}.
+    \item \mcoq{HSet} -- it is the zero type. Not to be confused with Coq's \mcoq{Set}. The type that lives in it has unique identity proofs. A good example of $0$-type is \mcoq{boo}l. Later in this section we will show that it has unique identity proofs. Moreover, it has two elements, so it does not live in \mcoq{HProp}.
     \begin{minted}{coq}
  Class isHSet (X : Type) :=
    hSet : forall (x y : X) (p q : x = y), p = q.
     \end{minted}
 \end{description}
 \end{example}
-\begin{defi}{$N$-th type}{def:nth_type}
+\begin{defi}{$n$-th type}{def:nth_type}
 \begin{minted}{coq}
 Inductive universe : Type :=
 | minus_two  : universe
 | S_universe : universe -> universe.
 
 Fixpoint isNType (n : universe) (A : Type) : Type :=
-match n with
-| minus_two     => isContr A
-| S_universe n' => forall x y : A, isNType n' (x = y)
-end.
+  match n with
+  | minus_two     => isContr A
+  | S_universe n' => forall x y : A, isNType n' (x = y)
+  end.
 \end{minted}
 \end{defi}
 As we see in the definition, $n$-types are defined by where identity proofs of elements of those types live. The hierarchy starts at the $(-2)$-type, where only the most primitive contactable types live. Types with identity proofs in \mcoq{Contr} live in \mcoq{HProp} since the identity proof type is inhabited for every pair of elements. Therefore, every two elements are equal. Similarly, if identity proofs of type live in \mcoq{HProp}, then the type lives in \mcoq{HSet} since one or no identity proof exists for every two elements of an underlying type. The other important fact is that every $n$-type is also a $(n+1)$-type.
@@ -402,7 +402,7 @@ Theorem NType_inclusion : forall A: Type, forall n : universe,
 Proof of this theorem can be found in \coqsource{Lib/HoTT.v}.
 \end{proof}
 \subsubsection{Types with decidable equality}
-If the underlying type of quotient-like type (defined in \ref{def:subtype_quot}) lives in the \mcoq{HSet} universe, then we can easily prove that it has a unique representation the same way as in proof \ref{proof:subtype_quot_uniq}. However, proving that a type lives in \mcoq{HSet} is not trivial. Fortunately, Hedberg's theorem \cite{hedberg_1998} gives us a valuable sufficiency condition for being \mcoq{HSet} -- decidable equality.
+If the underlying type of quotient-like type (defined in \ref{def:subtype_quot}) lives in the \mcoq{HSet} universe, then we can easily prove that it has a unique representations the same way as in proof \ref{proof:subtype_quot_uniq}. However, proving that a type lives in \mcoq{HSet} is not trivial. Fortunately, Hedberg's theorem \cite{hedberg_1998} gives us a valuable sufficiency condition for being \mcoq{HSet} -- decidable equality.
 \begin{defi}{Decidable equality}{def:dec_eq}
 \begin{minted}{coq}
 Class Decidable (A : Type) :=
@@ -448,7 +448,7 @@ Proof.
   intros A dec x y. apply dec_is_collaps. apply dec.
 Qed.
 \end{minted}
-We need a simple lemma about composition identity proofs.
+We need a simple lemma about the composition of identity proofs.
 \begin{minted}{coq}
 Lemma loop_eq : forall A: Type, forall x y: A, forall p: x = y, 
   eq_refl = eq_trans (eq_sym p) p.
@@ -587,7 +587,7 @@ match p with
 end.
 \end{minted}
 \end{defi}
-Transport construction moves an element of type \mcoq{P a} to a new type  \mcoq{P b} along the path (proof of equality) \mcoq{p: a = b}. Using this construction, we can characterize equality of dependent pairs.
+Transport construction moves an element of type \mcoq{P a} to a new type  \mcoq{P b} along the path (proof of equality) \mcoq{p : a = b}. Using this construction, we can characterize equality of dependent pairs.
 \begin{vis}[G]{Transport}{vis:transport}
 $P$ is a family of types indexed by elements of type $A$. Two elements, $a$ and $b$, are equal in $A$, and $p$ is a proof of this fact (path). Element $x$ of type $P(a)$ can be transported along this proof (path) to type $P(b)$.
 \begin{center}

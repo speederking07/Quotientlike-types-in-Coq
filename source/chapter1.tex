@@ -1,5 +1,5 @@
 \section{The purpose}
-The purpose of this master thesis is to analyze methods for defining quotient types in Coq since there is no built-in method for implementing such constructions in this programming language. We seek ways to define types similar to quotient types, where elements are considered equal if and only if they are in a quotient-defining relation. We will focus on quotient types with a normalization function and provide examples without a computable normalization function. For this purpose, we will use methods such as subtyping, inductive types based on traces of normalization functions, and more.
+The purpose of this master thesis is to analyze methods for defining quotient types in Coq since there is no built-in method for implementing such constructions in this programming language. We seek ways to define quotient-like types similar to quotient types, where elements are considered equal if and only if they are in a quotient-defining relation. We will focus on quotient types with a normalization function and provide examples without a computable normalization function. For this purpose, we will use methods such as subtyping, inductive types based on traces of normalization functions, and more.
 
 \section{Prerequisites}
 This thesis assumes basic knowledge of algebraic concepts such as modular groups, fractions, and the Euclidean algorithm. More advanced constructions will be defined, like dividing sets by equivalence relations. The main focus is the Coq language, so basic knowledge of this programming language is necessary. The reader should be able to write definitions in Coq and differentiate between \mcoq{Fixpoint} and \mcoq{Definition}. Understanding how the termination checker works or knowing the sort hierarchy can aid in understanding this thesis fully, but it is optional. The reader is also expected to know the basic concepts of Type Theory, such as the product and sum of types. Additionally, optional sections include category theory and homotopy-type theory concepts. Any advanced construction from those fields needed to comprehend these sections will be defined in this paper.
@@ -70,7 +70,7 @@ $$ \frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8} = \frac{5}{10} = \dots$
 Another example is a modular group from example \ref{ex:clock}. We showed that multiple integers have the same value in modular arithmetic. Hence, all numbers with the same value are in the same equivalence class.
 $$ \dots \equiv -11 \equiv 1 \equiv 13 \equiv 25 \equiv 37 \equiv \dots (\textrm{mod } 12) $$
 \end{example}
-\begin{vis}[G]{Equivalance classes}{vis:equivalance_classes}
+\begin{vis}[G]{Equivalence classes}{vis:equivalance_classes}
 Visualization of equivalence classes for selected elements of group $\mathbb{Z}_{12}$. Lines represent elements in equivalence relation, and ellipses represent equivalence classes:
 \begin{center}
 \begin{tikzpicture}[
@@ -121,12 +121,11 @@ In mathematics, a \emph{setoid} is a set $A$ with an equivalence relation ($\sim
 \end{defi}
 Setoids are concepts known from type theory \cite{SetoidsInTT} \cite{Setoids2}. In Coq, they are often used in the formalization of mathematical concepts. When working with setoids, we need to replace the equality relation in the theorem we are proving with the equivalence relation of the setoid we want to use. It is a minor inconvenience. The bigger one occurs when we want to apply a function on an element of our setoid. In this case, we must prove that the applied function is well-defined on setoid (respects equivalence relation). The Coq standard library has tools to help users use setoids, like rewriting parts of equivalent statements. Unfortunately, it is still far more problematic than using simple equality.
 
-\subsection{The type-based apprach}
-Another approach to the lack of quotients in Coq is to define specific types 
-where equivalence is the same as equality. This approach usually involves reducing each equivalence class to a single element.
+\subsection{The quotient-like type approach}
+Another approach to the lack of quotients in Coq is to define quotient-like types where equivalence is the same as equality. This approach usually involves reducing each equivalence class to a single element.
 
 \subsubsection{Subtyping}
-This concept will be discussed later in Chapter 2, so the formal definition will be skipped here. Its main idea is to construct a type containing a specific subset of elements. Those elements need to satisfy a particular predicate. In case of the quotient it is a predicate of being normalized.
+This concept will be discussed later in Chapter 2, so the formal definition will be skipped here. Its main idea is to construct a type containing a specific subset of elements. Those elements need to satisfy a particular predicate in the case of the quotient -- the predicate of being normalized.
 
 \subsubsection{A tailor-made inductive type}
 This approach usually gives the best results but only applies to some quotient types. Chapter 4 will show examples of such types based on traces of normalization function. Unfortunately, no general way of defining such type out of the normalization process was found.
@@ -155,7 +154,7 @@ Moreover, every function $g: B \rightarrow X$ induces a well-defined function $f
 Proof that ($\sim_h$) is an equivalence relation follows directly from the fact that equality on type $B$ is an equivalence relation. \qed \\ 
 Given $a, b \in T$ such that $a \sim_h b$. By definition of ($\sim_h$) we know that $h(a) = h(b)$ therefore $f(a) = g(h(a)) = g(h(b)) = f(b)$. So $f$ respects relation $\sim_h$. \qed
 \end{proof}
-\subsection{Definition of normalization function}
+\subsection{Definition of a normalization function}
 This paper focuses on the particular case of the function $h: T \rightarrow T$, which is idempotent. Such functions we call normalization functions.
 \begin{defi}{Normalization function}{def:normalization_function}
 \begin{minted}{coq}
@@ -217,7 +216,7 @@ The normalization function for numbers in arithmetic modulo $n$ is as we expect 
 \end{example}
 
 \section{Quotient types without a normalization function}
-Normalization functions are an excellent tool for defining quotient types. By using them, we can select a representative for each equivalence class. Unfortunately, not every quotient type has a computable normalization function. In set theory, with the axiom of choice, we can always select a set of representatives of each equivalence relation. Therefore, we can always define the normalization function. In Coq, however, we cannot use this axiom to define a function. 
+Normalization functions are an excellent tool for defining quotient-like types. By using them, we can select a representative for each equivalence class. Unfortunately, not every quotient type has a computable normalization function. In set theory, with the axiom of choice, we can always select a set of representatives of each equivalence relation. Therefore, we can always define the normalization function. In Coq, however, we cannot use this axiom to define a function. 
 
 \subsection{Unordered pairs}
 An unordered pair is one of the most basic quotients for which a normalization function does not exist. At least in the most general case, as we learned earlier, if an underlying type has decidable linear order, we can define such a normalization function. Moreover, for some types like, for example, $\mathbb{N} \rightarrow \mathbb{N}$, it is also possible to create such a normalization function based on the computable minimum and maximum, although linear order is not decidable \cite{DefinableQuotients}.
@@ -230,14 +229,14 @@ There is no function $f: (A \times A) \rightarrow A \times A$ for any type A tha
 Since $f$ is a function for every type $A$, we cannot use values of $\square, \medcircle$ to determine the order of elements. Therefore, there are only two functions: $f((\medcircle , \square)) = (\medcircle , \square)$ and $f((\medcircle , \square)) = (\square , \medcircle)$, that satisfy the second property. As can be easily checked, neither of them satisfies the first property. \qed
 \end{proof}
 
-\subsection{Real numbers represented by Cauchy's sequances}
+\subsection{Real numbers represented by Cauchy’s sequences}
 \begin{defi}{Cauchy sequance}{def:cauchy_seq}
 Sequence $\{a_n\}_{n\in \mathbb{N}}$ in called \emph{Cauchy sequance} if elements become arbitrarily close to each other as the sequence progresses \cite{Anal}.
 $$
-    \forall \epsilon > 0. \exists N \in \mathbb{N}^+. \forall m, n > N. |a_n - a_m| < \epsilon
+    (\forall \epsilon > 0). \; (\exists N \in \mathbb{N}^+). \; (\forall m, n > N). \; |a_n - a_m| < \epsilon
 $$
 \end{defi}
-Cauchy sequences are often used to construct real numbers out of rational numbers \cite{CauchyReals}. The issue with this construction is that infinitely (even uncountably) many sequences represent a single real number. Using quotients to fix this problem would give us an excellent representation of real numbers. Unfortunately, there is no computable normalization for Cauchy sequences.
+Cauchy sequences are often used to construct real numbers out of rational numbers \cite{CauchyReals}. The issue with this construction is that infinitely (even uncountably) many sequences represent a single real number. Using quotients to fix this problem would give us an excellent representation of real numbers. Unfortunately, there is no computable normalization function for Cauchy sequences.
 
 \begin{theo}{}{th:no_normalization_for_reals}
 There is no computable function $f: (\mathbb{N} \rightarrow \mathbb{Q}) \rightarrow (\mathbb{N} \rightarrow \mathbb{Q})$ that, for any $a, b \in (\mathbb{N} \rightarrow \mathbb{Q})$ we have $\lim_{n \rightarrow \infty}a_n = \lim_{n \rightarrow \infty}b_n \iff f(a) = f(b)$.
@@ -245,7 +244,7 @@ There is no computable function $f: (\mathbb{N} \rightarrow \mathbb{Q}) \rightar
 
 \begin{proof}[G]{}{proof:no_normalization_for_reals}
 Let's assume such function $f$ exists.
-Let $s_k$ be a sequence consisting of ones to $k$-th place and zeros after. Let $s_\infty$ be a sequence consisting of all ones. \\For all $k$ limit of $s_k$ is zero, and limit of $s_\infty$ is one. Therefore $f(s_k) \not = f(s_\infty)$. If they are different, that means there is a number $t \in \mathbb{N}$ for which $f(s_k)_t \not = f(s_\infty)_t$. So, we are able to differentiate between those two in finite time.\\
+Let $s_k$ be a sequence consisting of ones to $k$-th place and zeros after. Let $s_\infty$ be a sequence consisting of all ones. \\For all $k$ limit of $s_k$ is zero, and limit of $s_\infty$ is one. Therefore $f(s_k)  \neq f(s_\infty)$. If they are different, that means there is a number $t \in \mathbb{N}$ for which $f(s_k)_t  \neq f(s_\infty)_t$. So, we are able to differentiate between those two in finite time.\\
 Let $M$ be the initial state of the universal Turing machine. Let $c_M(t)$ be zero if the Turing machine halts before $t$-th step and one otherwise. This function is computable for every $M$, so we can apply a function $f$ to it and check if the Turing machine with initial state $M$ halts. But the halting problem is undecidable \cite{Undecidable}, so such function $f$ cannot exist. \contradiction
 \end{proof}
 
@@ -259,7 +258,7 @@ CoInductive delay (A : Type) : Type :=
 \end{defi}
 The delay monad \cite{DelayedMonad} represents computations that may or may not terminate. It is a valuable concept in Coq since it provides an entirely safe way of implementing functions that may not terminate. We want our normalization function to return a value immediately if the computation ever terminates and return infinite delay otherwise. Unfortunately, similar to Cauchy sequences, such a normalization function does not exist.
 \begin{theo}{}{th:no_normalization_for_delay_monad}
-There is no computable function $f: \textrm{delayed} \; A \rightarrow (A + \textrm{unit})$ that, for any terminating computation, returns its final value. Otherwise, it returns an element of unit type.
+There is no computable function $f: \textrm{delay} \; A \rightarrow (A + \textrm{unit})$ that, for any terminating computation, returns its final value. Otherwise, it returns an element of unit type.
 \end{theo}
 \begin{proof}{}{proof:no_normalization_for_delay_monad}
 Let's assume that such function $f$ exists. We can model the computation of every partial computable function using a delay monad. Using the normalization function $f$, we can determine if a partial function terminates. This makes the halting problem decidable, but we know it is undecidable \cite{Undecidable}. Therefore, such a normalization function cannot exist. \contradiction

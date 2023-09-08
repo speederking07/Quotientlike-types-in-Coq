@@ -1,4 +1,4 @@
-In this chapter, we will explore how to define quotient-like types using functions. However, these representations often lead to more problems than solutions. Nonetheless, they serve as intriguing examples of innovative approaches to quotient types in Coq. These examples are sourced from Coq's set library \cite{coqDoc}. %Better source
+In this chapter, we will explore how to define quotient-like types using functions. However, these representations often lead to more problems than solutions. Nonetheless, they are intriguing examples of innovative approaches to quotient types in Coq. These examples are sourced from Coq's set library \cite{coqDoc}. %Better source
 \section{Quotient-like functions}
 At the beginning of the thesis, we mentioned that it is impossible to define the type of sets and multisets for any arbitrary underlying type. It is true for inductive types, where the order of constructors matters. However, we can utilize the built-in function type. Of course, to reason about the equalities of functions in a sensible manner, we will need to assume the axiom of function extensionality. Introducing this axiom does not introduce any contradictions to the Coq system, so we can safely add it.
 \begin{defi}{Function extensionality}{def:FunExt}
@@ -8,19 +8,21 @@ Definition FunExt := forall (A B : Type) (f g : A -> B),
 \end{minted}
 \end{defi}
 Without this axiom, two functions are equal if and only if they are intentionally equal, which means they perform computations in the same way. With this axiom, two functions are equal if and only if they give the same results. We can use this property to "forget" the order of elements since the order of computations does not matter as long as it does not change the result.
+
 \section{Sets and multisets}
-Knowing this concept, we can define the set as the set characteristic function that decides whether the element is in the set.
+Knowing this concept, we can define the set as the set characteristic function that decides whether the element is in the set or not.
+
 \begin{defi}{Set as characteristic function}{def:fSet}
 \begin{minted}{coq}
 Definition set (A : Type) : Type := A -> bool.
 \end{minted}
 \end{defi}
 In contrast to previous definitions of sets, this one lets us define sets with potentially infinitely many elements. We can use this representation to reason about any set with a computable characteristic function. The cost of such a general definition is that some basic functions on set are uncomputable for this representation.
-\begin{theo}{Checking }{th:emptyNotComp}
+\begin{theo}{Checking emptiness}{th:emptyNotComp}
 The function $E : \textrm{set}(X) \rightarrow \{0, 1\}$, which checks whether the set is empty, is uncomputable.
 \end{theo}
 \begin{proof}{}{proof:emptyNotComp}
-Let $E$ be a computable function. For any Turing machine $M$ there exist set $T_M = \{t \in \mathbb{N} : \textrm{after} \; t \; \textrm{steps machine} \; M \; \textrm{is in HALT state}\}$. Every set $T_M$ has a computable characteristic function since checking if the Turing machine halts after a specific number of steps is a computable problem. Checking if $T_M$ is empty is equivalent to checking if the Truning machine ever halts. However, this is an undecidable problem. Therefore function $E$ is not computable. \phantom{dasd} \contradiction
+Let $E$ be a computable function. For any Turing machine $M$ there exists set $T_M = \{t \in \mathbb{N} : \textrm{after} \; t \; \textrm{steps machine} \; M \; \textrm{is in HALT state}\}$. Every set $T_M$ has a computable characteristic function since checking if the Turing machine halts after a specific number of steps is a computable problem. Checking if $T_M$ is empty is equivalent to checking if the Turning machine ever halts. However, this is an undecidable problem. Therefore, function $E$ is not computable. \phantom{dasd} \contradiction
 \end{proof}
 Multisets can be defined similarly by replacing codomain type from booleans to natural numbers.
 \begin{defi}{Multisets as characteristic function}{def:fMSet}
@@ -28,7 +30,7 @@ Multisets can be defined similarly by replacing codomain type from booleans to n
 Definition mset (A : Type) : Type := A -> nat.
 \end{minted}
 \end{defi}
-We can only express multisets in this representation, such that there are finitely many copies of each element of the underlying type. In order to generalize this representation, we need to replace natural numbers with co-natural numbers.
+We can express in this representation only multisets that have finitely many copies of each element of the underlying type. In order to generalize this representation, we need to replace natural numbers with co-natural numbers.
 \begin{coq}{Co-natural numbers}{coq:conat}
 In Coq, \emph{co-natural numbers} can be defined in the following way:
 \begin{minted}{coq}
@@ -36,11 +38,11 @@ CoInductive conat : Type :=
 | O' : conat
 | S' : conat -> conat.
 \end{minted}
-In contrast to an inductive definition of natural numbers, co-natural numbers are coinductive. That means we define destructors instead of constructors. Destructors describe that from a co-natural number, we can either get \mcoq{O'} -- zero or \mcoq{S' n} -- the successor of co-natural number n. Since we use destructors, we can define a number that is a successor of itself.
+In contrast to an inductive definition of natural numbers, co-natural numbers are coinductive. That means we define destructors instead of constructors. Destructor produces from a co-natural number either\mcoq{O'} -- zero or \mcoq{S' n} -- the successor of co-natural number n. Since we use a destructor, we can define a number that is a successor of itself.
 \begin{minted}{coq}
 CoFixpoint inf : conat := S' inf.
 \end{minted}
-This number can be regarded as infinity. We can also define any finite number.
+This number can be called infinity. We can also define any finite number.
 \begin{minted}{coq}
 Fixpoint toConat (n : nat) : conat :=
   match n with
@@ -50,7 +52,7 @@ Fixpoint toConat (n : nat) : conat :=
 \end{minted}
 \end{coq}
 \section{Basic operations}
-As we showed in theorem \ref{th:emptyNotComp}, checking is set is empty is an uncomputable function. Comparing two sets is also an uncomputable operation since we can compare a set to an empty set to check if it is empty. Another missing operation is a mapping operation. We could check emptiness by mapping every element to unit type if it were computable. Despite those problems, we can still define helpful functions on this set representation. Checking if some element is in a set is trivial since we represent a set as a characteristic function. We can easily define the filtering function.
+As we showed in theorem \ref{th:emptyNotComp}, checking if the set is empty is an undecidable problem. Comparing two sets is an uncomputable operation since we can compare a set to an empty set to check if it is empty. Another missing operation is a mapping operation. We can check emptiness by mapping every element to the element of the unit type if a mapping is computable. Despite those problems, we can still define helpful functions for this set representation. Checking if some element is in a set is trivial since we represent a set as a characteristic function. We can easily define the filtering function.
 \begin{func}{Filtering}{fn:set_filter}
 \begin{minted}{coq}
 Definition set_filter {A : Type} (p : A -> bool) 
@@ -58,7 +60,7 @@ Definition set_filter {A : Type} (p : A -> bool)
   fun x : A => if p x then s x else false.
 \end{minted}
 \end{func}
-This definition utilizes lazy evaluation. Therefore, potential infinity is not a problem. Similarly, we can define set union, intersection, and complement.
+This definition utilizes lazy evaluation. Therefore, potential infinity is not a problem. Similarly, we can define union, intersection, and complement of a set.
 \begin{func}{Union}{fn:set_union}
 \begin{minted}{coq}
 Definition set_union {A : Type} (s s' : set A) : set A :=
@@ -77,12 +79,12 @@ Definition set_complement {A : Type} (s : set A) : set A :=
   fun x : A => negb (s x).
 \end{minted}
 \end{func}
-Those operations can also be implemented similarly on multisets using sum and minimum operations. The complement operation is not defined for multisets. The drawback of these lazy computations is the increasing complexity of checking membership in the set with each subsequent intersection and union. The operations of adding an element to the set can also be defined. However, it requires the underlying type with decidable equality.
+Those operations can also be implemented similarly for multisets using sum and minimum operations. The complement operation is not defined for multisets. The drawback of these lazy computations is that with each subsequent intersection and union, the complexity of the set characteristic function increases. The operation of adding an element to the set can also be defined. However, it requires the underlying type with decidable equality.
 \begin{func}{Addition to a set}{fn:set_add}
 \begin{minted}{coq}
 Definition set_add {A : Type} `{EqDec A} (a : A) (s : set A)  
   : set A :=
-  fun x: A => if eqf x a then true else s x.
+  fun x : A => if eqf x a then true else s x.
 \end{minted}
 \end{func}
 \begin{func}{Conversion to a set}{fn:list_to_set}
@@ -95,4 +97,4 @@ Fixpoint list_to_set {A : Type} `{EqDec A} (l : list A)
   end.
 \end{minted}
 \end{func}
-Proof of fundamental properties of those operations can be found in \coqsource{FunctionalQuotient.v}.
+Proofs of fundamental properties of those operations can be found in \coqsource{FunctionalQuotient.v}.

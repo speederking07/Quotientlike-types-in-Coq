@@ -1,9 +1,9 @@
-The previous chapter discusses using subtyping to define quotient-like types in Coq. This chapter lists examples of quotients that can be easily defined in this way. It focuses on defining quotients with underlying type living in \mcoq{HSet}. Therefore we are able to use the classical equality definition and work in \mcoq{Prop} sort.
+The previous chapter discusses using subtyping to define quotient-like types in Coq. This chapter lists examples of quotients that can be easily defined in this way. It focuses on defining quotients with an underlying type living in \mcoq{HSet}. Therefore, we are able to use the classical equality definition and work in \mcoq{Prop} sort.
 \section{Unordered pairs}
 \begin{defi}{Unordered pairs}{def:upair}
-In mathematics, an \emph{unordered pair} is a set of the form $\{a, b\}$, where $\{a, b\} = \{b, a\}$ \cite{SetTheorey}. In contrast to the ordered pair where $(a, b) \not= (b, a)$.
+In mathematics, an \emph{unordered pair} is a set of the form $\{a, b\}$, where $\{a, b\} = \{b, a\}$ \cite{SetTheorey}. In contrast to the ordered pair where $(a, b) \neq (b, a)$.
 \end{defi}
-As mentioned in the introduction, there is no normalization function for unordered pairs in the most general case. Therefore we will only discuss the case when the underlying type has full decidable order (definition \ref{def:fullOrd}). Antisymmetry is required to prove the uniqueness of representations, and universality (fullness) is required to define a computable function to construct unordered pair out of two elements.
+As mentioned in the introduction, there is no normalization function for unordered pairs in the most general case. Therefore, we will only discuss the case when the underlying type has a full decidable order (definition \ref{def:fullOrd}). Antisymmetry is required to prove the uniqueness of representations and universality (fullness) is required to define a computable function to construct an unordered pair out of two elements.
 \begin{defi}{Full decidable order}{def:fullOrd}
 \begin{minted}{coq}
 Class FullOrd (A : Type) := {
@@ -14,7 +14,7 @@ Class FullOrd (A : Type) := {
 \end{minted}
 \end{defi}
 \begin{defi}{Unordered pairs in Coq}{def:coqupair}
-\emph{Unorder pairs} we can define as a triple of first and second elements and proof that states they are in the correct order.
+\emph{Unorder pairs} can be defined as a triple of first and second element and a proof that states they are in the correct order.
 \begin{minted}{coq}
 Record UPair (A : Type) `{FullOrd A} := {
   fst    : A;
@@ -37,19 +37,19 @@ Qed.
 \end{minted}
 \end{func}
 
-\subsection{Uniquness of representation}
-To talk about the uniqueness of representations, we first need to define the equivalence relation defining this quotient construction. In the case of unordered pairs, if two pairs contain these same elements, they are in quotient defining relation.
+\subsection{Uniquness of representations}
+To talk about the uniqueness of representations, firstly we need to define the equivalence relation defining this quotient construction. In the case of unordered pairs, if two pairs contain the same elements, they are in a quotient-defining relation.
 \begin{defi}{Equivalence relation for unordered pairs}{def:equiv_upair}
 \begin{minted}{coq}
 Definition contains {A : Type} `{FullOrd A}  (x y : A)
   (p : UPair A) := (fst p = x /\ snd p = y) \/ 
     (fst p = y /\ snd p = x).
 
-Definition sim {A : Type} `{FullOrd A} (p q : UPair A) :=
+Definition UPair_equiv {A : Type} `{FullOrd A} (p q : UPair A) :=
   forall x y : A, contains x y p <-> contains x y q. 
 \end{minted}
 \end{defi}
-Having a formal definition of equivalence relation, we can formally verify the claim of unique representation for such defined unordered pairs.
+Having a formal definition of equivalence relation, we can formally verify the claim of unique representations for such defined unordered pairs.
 \begin{theo}{Uniquness of representation for unordered pairs}{th:uniq_upair}
 \begin{minted}{coq}
 Theorem UPair_uniq (A : Type) `{FullOrd A} (p q : UPair A) 
@@ -67,9 +67,9 @@ As we see, the last part of this proof uses \mcoq{bool_is_hset} theorem. As we k
 \end{proof}
 \section{Finite multisets}
 \begin{defi}{Multiset}{def:mset}
-In mathematics, a \emph{multiset} (also known as \emph{bag} or \emph{mset}) is a modification of a set concept that allows for multiple instances of elements \cite{SetTheorey}.
+In mathematics, a \emph{multiset} (also known as \emph{bag} or \emph{mset}) is a modification of a set concept that allows for multiple instances of the same element \cite{SetTheorey}.
 \end{defi}
-A multiset is another example of a quotient type with applications in everyday programming \cite{MSetApplic}. It is a data structure known from mathematics where the order of elements does not matter. They can be considered as unordered lists. Similar to unordered pairs, there is no normalization function for multisets in the most general case. Therefore we restrict ourselves to underlying types with decidable linear order.
+A multiset is another example of a quotient type with applications in everyday programming \cite{MSetApplic}. It is a data structure known from mathematics where the order of elements does not matter. It can be considered as unordered list. Similar to unordered pairs, there is no normalization function for multisets in the most general case. Therefore, in this thesis we will discuss only multisets with underlying types with decidable linear order.
 \begin{defi}{Decidable linear order}{def:lo}
 \begin{minted}{coq}
 Class LinearOrder {A : Type} := {
@@ -82,7 +82,7 @@ Class LinearOrder {A : Type} := {
 }.
 \end{minted}
 \end{defi}
-\subsection{The equivalance relation}
+\subsection{The equivalence relation}
 Two multisets are in equivalence relation when they contain the same elements in the same quantity. In other words, when they both are permutations of the same list of elements. We propose using an alternative permutation definition. 
 \begin{defi}{Permutaion}{def:perm}
 \begin{minted}{coq}
@@ -111,27 +111,27 @@ We also define the insert function that keeps the tree balanced out and the func
 \begin{minted}{coq}
 Fixpoint BTInsert {A : Type} (x : A) (tree : BT A) :=
   match tree with
-  | leaf y => node (leaf x)(leaf y)
+  | leaf y   => node (leaf x)(leaf y)
   | node l r => node r (BTInsert x l)
   end.
 
-Fixpoint listToBT {A : Type} (x : A) (list : list A) : BT A :=
-  match list with
-  | nil => leaf x
-  | cons y list' => BTInsert x (listToBT y list')
+Fixpoint listToBT {A : Type} (x : A) (ls : list A) : BT A :=
+  match ls with
+  | []       => leaf x
+  | l :: ls' => BTInsert x (listToBT l ls')
   end.
 \end{minted}
 \end{func}
-As expected, we also need a merging function of two sorted lists.
+As expected, we also need a merging function for two sorted lists.
 \begin{func}{Merge}{fn:merge}
 \begin{minted}{coq}
 Fixpoint merge {A : Type} (ord : A -> A -> bool) (l1 : list A) 
   : (list A) -> list A :=
   match l1 with
-  | [] => fun (l2 : list A) => l2
+  | []       => fun (l2 : list A) => l2
   | h1 :: t1 => fix anc (l2 : list A) : list A :=
     match l2 with
-    | [] => l1
+    | []       => l1
     | h2 :: t2 => if ord h1 h2 
                   then h1 :: (merge ord t1) l2
                   else h2 :: anc t2
@@ -145,19 +145,19 @@ Now we can define the whole merge sort function, using the defined above ancilla
 Fixpoint BTSort {A : Type} (ord : A -> A -> bool) 
   (t : BT A) : list A :=
   match t with
-  | leaf x => [x]
+  | leaf x   => [x]
   | node l r => merge ord (BTSort ord l) (BTSort ord r)
   end. 
 
 Definition mergeSort {A : Type} `{LinearOrder A}
   (l : list A) : list A :=
   match l with
-  | [] => []
+  | []      => []
   | x :: l' => BTSort ord (listToBT x l')
   end.
 \end{minted}
 \end{func}
-\subsection{Uniquness of representation}
+\subsection{Uniqueness of representations}
 \begin{theo}{Uniquness of representation for multisets}{th:uniq_mset}
 For every multiset, there is exactly one element in \mcoq{quotient mergeSort} type (defined in \ref{def:subtype_quot}). 
 \end{theo}
@@ -167,21 +167,21 @@ A sorting function should satisfy two requirements:
 \begin{itemize}
     \itemsep 0em 
     \item the output is a sorted list,
-    \item the output ts a permutation of input.
+    \item the output is a permutation of input.
 \end{itemize}
-Proof that the sorting function satisfies then can be found in \coqsource{Lib/MergeSort.v}.\\
+Proofs that the sorting function satisfies the above requirements can be found in \coqsource{Lib/MergeSort.v}.\\
 Moreover, we can show that for every list of elements, only one permutation of this list is sorted. Proof of this fact is in \coqsource{Lib/Sorted.v}.\\
 Combining those facts, we know that sorting is an idempotent function, and there is only one output of this function for each equivalence class. More formal proof can be found in \coqsource{FiniteMultiSet.v}. \qed
 \end{proof}
 \section{Finite sets}
-Sets are a basic construction known from mathematics \cite{SetTheorey}. In a set single element can be present at most one time. Therefore, adding an element to a set that already contains this element does not change the result. Moreover, in sets, the order of elements in sets does not matter. Sets can be considered sorted and deduplicated lists. Like the two previous examples, the most general case sets do not have a normalizing function. Therefore we restrict ourselves to underlying types with decidable linear order (defined in \ref{def:lo}).
-\subsection{The equivalance relation}
-Two sets are in equivalence relation when they contain the same elements. In other words, for every element in underlying types, if contained in the first one, it has at least one copy in the second. Here we also propose an alternative definition of this relation similar to the previous definition of permutations (defined in \ref{def:perm}).
-\begin{defi}{Set equivalance}{def:elem_eq}
+Sets are a basic construction known from mathematics \cite{SetTheorey}. It is important to mention that a particular element may appear in a set at most once. Therefore, adding an element to a set that already contains this element does not change the result. Moreover,  the order of elements in sets does not matter. Sets can be considered as sorted and deduplicated lists. Like the two previous examples, sets do not have a normalization function in the most general case. Therefore, we will discuss only sets with underlying types with decidable linear order (defined in \ref{def:lo}).
+\subsection{The equivalence relation}
+Two sets are in equivalence relation when they contain the same elements. In other words, for every element in underlying type, if it is in the first set, it has at least one copy in the second set. Here we also propose an alternative definition of this relation similar to the previous definition of permutations (defined in \ref{def:perm}).
+\begin{defi}{Set equivalence}{def:elem_eq}
 \begin{minted}{coq}
 Fixpoint any {A : Type} (p : A -> bool) (l : list A) : bool :=
   match l with
-  | [] => false
+  | []        => false
   | (x :: l') => if p x then true else any p l'
   end.
 
@@ -189,9 +189,9 @@ Definition Elem_eq {A : Type} (l l' : list A) : Prop :=
   forall p : A -> bool, any p l = any p l'.
 \end{minted}
 \end{defi}
-For types with decidable equality, it is equivalent to the classical definition using \mcoq{In} predicate. Proof of this fact can be found in \coqsource{Lib/Deduplicated}.
+For types with decidable equality, the definition above is equivalent to the classical definition. Proof of this fact can be found in \coqsource{Lib/Deduplicated}.
 \subsection{The normalization function}
-For sets, the normalization function needs to remove duplicates and sort elements. A common approach for such a computer science problem is binary tree \cite{knuth}. This paper also uses it to define a set normalization function.
+For sets, the normalization function needs to remove duplicates and sort elements. A common approach for such a computer science problem is binary tree \cite{knuth}. This paper also uses it to define a normalization function for a set.
 \begin{defi}{Binary tree}{def:binTree}
 \begin{minted}{coq}
 Inductive tree (A : Type) : Type :=
@@ -199,14 +199,14 @@ Inductive tree (A : Type) : Type :=
 | node : A -> tree A -> tree A -> tree A.
 \end{minted}
 \end{defi}
-For purposes of the insert function, we need to use a more convenient interface for comparing elements.
+In order to use the insert function, we need to use a more convenient interface for comparing elements.
 \begin{func}{}{fn:comp}
 \begin{minted}{coq}
 Definition comp {A : Type} `{LinearOrder A} (x y : A) : comparison 
   := if ord x y then (if ord y x then Eq else Gt) else Lt.
 \end{minted}
 \end{func}
-We can define a function for this data structure that inserts elements into the sorted binary tree if and only if the tree does not already contain it.
+We can define a function that inserts elements into the sorted binary tree if and only if the tree does not already contain them.
 \begin{func}[D]{Insertion to binary tree}{fn:binTreeAdd}
 \begin{minted}{coq}
 Fixpoint insert_tree {A : Type} `{LinearOrder A} (x : A) 
@@ -227,8 +227,8 @@ By converting a list into a sorted and deduplicated tree and back to a list, we 
 Fixpoint to_tree {A : Type} `{LinearOrder A} (l : list A) 
   : tree A := 
   match l with
-  | []        => leaf
-  | (x :: l') => insert_tree x (to_tree l')
+  | []      => leaf
+  | x :: l' => insert_tree x (to_tree l')
   end.
 
 Fixpoint to_list {A : Type} (l : tree A) : list A := 
@@ -241,8 +241,8 @@ Definition DSort {A : Type} `{LinearOrder A} (l : list A)
   : list A := to_list (to_tree l).
 \end{minted}
 \end{func}
-\subsection{Uniquness of representation}
-\begin{theo}{Uniquness of representation for sets}{th:uniq_set}
+\subsection{Uniqueness of representations}
+\begin{theo}{Uniqueness of representations for sets}{th:uniq_set}
 For every set, there is exactly one element in \mcoq{quotient DSort} type (defined in \ref{def:subtype_quot}). 
 \end{theo}
 \begin{proof}{}{proof:uniq_set}
@@ -254,7 +254,7 @@ A sorting and deduplicating function should satisfy the following requirements:
     \item the output is a sorted list,
     \item the output and input contain the same elements.
 \end{itemize}
-Proof that the function above meets those requirements can be found in \coqsource{Lib/DedupSort.v}.\\
+Proofs that the function above meets those requirements can be found in \coqsource{Lib/DedupSort.v}.\\
 In addition, we know that each set has exactly one sorted and deduplicated list. Proof of this is in  \coqsource{Lib/Deduplicated.v}.\\
-From those facts, we conclude that the set normalizing function is idempotent. There is exactly one element in the codomain of this function for each set defining equivalence class. Formal proof can be found in \coqsource{FiniteSet.v}. \qed
+On the basis of those facts we can conclude that the normalization function of a set is idempotent. There is exactly one element for each set defining equivalence class in the codomain of this function. Formal proof can be found in \coqsource{FiniteSet.v}. \qed
 \end{proof}

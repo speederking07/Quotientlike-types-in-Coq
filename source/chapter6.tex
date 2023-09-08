@@ -2,26 +2,26 @@ In the previous chapters, we discussed how we can define quotient-like types in 
 \section{Lean}
 Lean is a proof assistant under development since 2013 \cite{lean4}. It is an open-source tool that verifies program reliability and mathematical theorems, similar to Coq. Due to the similarity of both languages, we will translate Lean's axioms into the Coq language.
 \begin{coq}{Differences compared to Coq}{coq:lean}
-Unlike Coq, Lean does not require constructively for theorems \cite{lean4}. It means we are dealing with a system closer to mathematical proofs than programming. Moreover, in Lean, we have definitional irrelevance of propositions. The formal system is based on three axioms:
+Unlike Coq, Lean does not require constructivism of theorems \cite{lean4}. It means we are dealing with a system closer to mathematical proofs than programming. Moreover, in Lean, we have definitional irrelevance of propositions. The formal system is based on three axioms:
 \begin{itemize}
     \item{Propositional Extensionality}
 \begin{minted}{coq}
 Axiom prop_ext: forall P Q : Prop, (P <-> Q) <-> (P = Q)
 \end{minted}
-    \item{Choise}
+    \item{Axiom of choice}
 \begin{minted}{coq}
 Inductive NEmpty (A : Type) : Prop := intro : A -> NEmpty A.
-Axiom choise: forall A: Type, NEmpty A -> A.
+Axiom choice: forall A: Type, NEmpty A -> A.
 \end{minted}
     \item{Quotient types}
 \begin{minted}{coq}
 Axiom Quot : forall {A : Type}, (A -> A -> Prop) -> Type.
 \end{minted}
 \end{itemize}
-One of the main differences between Lean and Coq is the use of classical logic in Lean. Therefore, one might assume that the law of excluded middle should be one of the axioms in this system. However, the three axioms mentioned above are sufficient to derive the law of excluded middle and the extensionality of functions. Extensionality of functions can be derived from quotients, and the law of excluded middle proposed can be derived from the axiom of choice as proposed by Diaconescu \cite{choise}. These proofs can also be found in the Lean standard library under the names \mlean{em} and \mlean{funext}.
+One of the main differences between Lean and Coq is the use of classical logic in Lean. Therefore, one might assume that the law of excluded middle should be one of the axioms in this system. However, the three axioms mentioned above are sufficient to derive the law of excluded middle and the extensionality of functions. Extensionality of functions can be derived from quotients, and the law of excluded middle can be derived from the axiom of choice as proposed by Diaconescu \cite{choise}. These proofs can also be found in the Lean standard library under the names \mlean{em} and \mlean{funext}.
 \end{coq}
 \subsection{Axioms of quotient types}
-As we saw in \ref{coq:lean}, quotient types are integral to Lean language. Let us take a closer look at the axioms that define them.
+As we saw in \ref{coq:lean}, quotient types are integral with Lean language. Let us take a closer look at the axioms that define them.
 \begin{defi}{Axioms of Lean's quotient types}{def:leanQuot}
 
 The first axiom, named in Lean as \mlean{Quot}, states that quotient type exists for every relation and underlying type.
@@ -39,7 +39,7 @@ Axiom Quot_ind :
   forall (A : Type) (r : A -> A -> Prop) (P : Quot r -> Prop),
   (forall a : A, P (Quot_mk r a)) -> forall q: Quot r, P q.
 \end{minted}
-The fourth axiom, named in Lean as \mlean{Quot.lift}, states how functions on the underlying type can be applied to the quotient type. It requires that such function respect quotient-defining relation. In Lean, this axiom comes with a rule that it states that application on quotient type works the same way on quotient type. In Coq, this rule needs to be added as an additional axiom.
+The fourth axiom, named in Lean as \mlean{Quot.lift}, describes how functions on the underlying type can be applied to the quotient type. It requires that such function respect quotient-defining relation. In Lean, this axiom comes with a rule that application on quotient type works the same way as on the underlying type. In Coq, this rule needs to be added as an additional axiom.
 \begin{minted}{coq}
 Axiom Quot_lift :
   forall (A : Type) (r : A -> A -> Prop) (B : Type) (f : A -> B),
@@ -49,23 +49,23 @@ Axiom Quot_lift' : forall {A : Type} {r : A -> A -> Prop}
   {B : Type} (f : A -> B) (P : forall a b: A, r a b -> f a = f b) 
   (x : A), f x = Quot_lift f P (Quot_mk r x).
 \end{minted}
-The fifty axioms, named in Lean as \mlean{Quot.sound}, state that \mlean{Quot} is indeed a quotient type -- if two elements are in the quotient-defining relation, they share the same element in quotient types.
+The fifth axiom, named in Lean as \mlean{Quot.sound}, states that \mlean{Quot} is indeed a quotient type -- if two elements are in the quotient-defining relation, they share the same element in the quotient type.
 \begin{minted}{coq}
 Axiom Quot_sound :
   forall (A : Type) (r : A -> A -> Prop) (a b : A),
   r a b -> Quot_mk r a = Quot_mk r b.
 \end{minted}
 \end{defi}
-As we see in the definition \ref{def:leanQuot}, axioms for quotient types can be expressed in Coq. Therefore, we can use them to add quotient type to the Coq language.
+As we see in the definition \ref{def:leanQuot}, axioms of Lean's quotient types can be expressed in Coq. Therefore, we can use them to add quotient type to the Coq language.
 \section{Agda}
-Agda is a programming language created to support dependent types \cite{agda}. It originated as an extension of Martin-Löf's type theory \cite{MARTINLOF197573}. Due to these features, Agda can be used as a proof assistant. However, unlike languages such as Coq or Lean, Agda does not have a tactic language, which significantly complicates its use as such. On the other hand, handling dependent types in Agda is at a much higher level than what we can experience in Coq. Agda can often infer that a particular case is impossible, making the definition of dependent functions much more accessible than in Coq.
+Agda is a programming language created to support dependent types \cite{agda}. It originated as an extension of Martin-Löf's type theory \cite{MARTINLOF197573}. Due to these features, Agda can be used as a proof assistant. However, unlike languages such as Coq or Lean, Agda does not have a tactic language, which significantly complicates its use as such. On the other hand, handling dependent types in Agda is at a much higher level than in Coq. Agda can often infer that a particular case is impossible, making the definition of dependent functions much more accessible than in Coq.
 \subsection{Higher inductive types}
 In standard Agda, there is no built-in mechanism for defining quotient types. Therefore, in this section, we focus on \emph{Cubical} extension that introduces known from homotopic type theory higher inductive types.
 \begin{defi}{Higher inductive types}{def:HIT}
 \emph{Higher inductive types} (HITs) are a generalization of inductive types that allow constructors to produce not just elements of the defined type but also elements of its iterated identity types \cite{HoTT}.
 \end{defi}
 \begin{example}{Circle}{ex:circle}
-The \emph{circle} is a higher inductive type made out of single elements \magda{base} and extra identity proof \magda{loop} \cite{HoTT}. In homotopic interpretation, this is a point with a loop. Therefore, it is called a circle.
+The \emph{circle} is a higher inductive type made out of single element \magda{base} and extra identity proof \magda{loop} \cite{HoTT}. In homotopic interpretation, this is a point with a loop. Therefore, it is called a circle.
 \begin{minted}{agda}
 data S : Set where
   base : S
@@ -91,7 +91,7 @@ data susp (A : Set) : Set where
 \end{minted}
 \end{example}
 \subsection{Quotient types utilizing HITs}
-Higher inductive types solve the fundamental problem of inductive types: the inability to glue equivalent elements. Using inductive types, we can only add new elements via constructors. If two different construction represents the same value, we need to use some quotient type to glue equivalent elements. In higher inductive types, we can combine those two steps and add additional equalities (paths) for the inductive type that is being defined.
+Higher inductive types solve the fundamental problem of inductive types: the inability to glue equivalent elements. Using inductive types, we can only add new elements via constructors. If two different constructions represent the same value, we need to use some quotient type to glue equivalent elements. Using higher inductive types, we can combine those two steps and add constructors for additional equalities (paths) for the inductive type that is being defined.
 \begin{example}{Multiset}{ex:agdaMSet}
 \begin{minted}{agda}
 data MSet (A : Set) : Set where
@@ -100,7 +100,7 @@ data MSet (A : Set) : Set where
   swap : (x y : A) (z : MSet A) -> x :: y :: z ≡ y :: x :: z
 \end{minted}
 \end{example}
-The higher inductive types' downside is that they complicate defining functions since we also need to handle those constructors for identity proofs. Otherwise, we could define functions that do not respect identities (paths).
+The higher inductive types' downside is that they complicate defining functions since we also need to handle constructors for identity proofs. Otherwise, we could define functions that do not respect identities (paths).
 \begin{example}{Union}{ex:agdaMSetUnion}
 \begin{minted}{agda}
 _ ∪ _ : (xs ys : Bag A) → Bag A
@@ -109,7 +109,7 @@ xs ∪ (y :: ys) = y :: (xs ∪ ys)
 xs ∪ (swap y y' ys i) = swap y y' (xs ∪ ys) i
 \end{minted}
 \end{example}
-As we see in the example \ref{ex:agdaMSetUnion}, to define a multiset union, we also needed to define a case when a multiset is on the path that swaps its heads. For both ends of this path, the result must be the same. Therefore, defining the head function for multisets is impossible.
+As we see in the example \ref{ex:agdaMSetUnion}, to define a multiset union, we also need to define a case when a multiset is on the path that swaps its heads. For both ends of this path, the result must be the same. Therefore, defining the head function for multisets is impossible.
 \begin{coq}{HIT in Coq}{coq:HIT}
-In Coq, we can also define higher inductive types. However, they require using private inductive type, proposed by Yves Bertot \cite{PrivetInductive}. They let us define the inductive type and hide its definition. It turns off pattern matching on those inductive types, forcing users to use only exposed functions. A library for Coq was created using private inductive types, enabling work with homotopy type theory alongside higher inductive types \cite{HoTTinCoq}.
+In Coq, we can also define higher inductive types. However, they require using private inductive types, proposed by Yves Bertot \cite{PrivetInductive}. Private inductive types let us define the inductive types and hide their definitions. They turn off pattern matching on those inductive types, forcing users to use only exposed functions. Coq's library for homotopy type theory, including higher inductive types \cite{HoTTinCoq}, was created using private inductive types.
 \end{coq}
