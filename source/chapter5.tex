@@ -38,7 +38,7 @@ CoInductive conat : Type :=
 | O' : conat
 | S' : conat -> conat.
 \end{minted}
-In contrast to an inductive definition of natural numbers, co-natural numbers are coinductive. That means we define destructors instead of constructors. Destructor produces from a co-natural number either\mcoq{O'} -- zero or \mcoq{S' n} -- the successor of co-natural number n. Since we use a destructor, we can define a number that is a successor of itself.
+In contrast to an inductive definition of natural numbers, co-natural numbers are coinductive. That means we define the destructor instead of constructors. Destructor produces from a co-natural number either \mcoq{O'} -- zero or \mcoq{S' n} -- the successor of co-natural number n. Since we use a destructor, we can define a number that is a successor of itself.
 \begin{minted}{coq}
 CoFixpoint inf : conat := S' inf.
 \end{minted}

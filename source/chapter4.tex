@@ -442,13 +442,13 @@ Definition Qinv (q : FullQ) : FullQ :=
 \end{func}
 The inversion can be easily computed for the Euclidean algorithm trace by swapping two constructors \mcoq{N} and \mcoq{D}. As we know, the inverse operation switches the numerator and the denominator. By swapping inputs of the Euclidean algorithm, we changed which number was greater at each step. The division can be defined as multiplying the inversion. The proof that rational numbers with those operations are an algebraic field can be found in \coqsource{Extras/FullQ.v}.
 \section{Free groups}
-In this chapter, we have already learned how to define a free monoid. In this section, we define another free algebraic structure -- a free group.
+In this chapter, we have already learned how to define a free monoid. In this section, we define another free algebraic structure -- free group.
 \begin{defi}{Group}{def:group}
 An algebraic structure $(\mathbf{A}, \circ)$, where $\mathbf{A}$ is a carrier set and $\circ: \mathbf{A} \rightarrow  \mathbf{A} \rightarrow \mathbf{A}$ is a binary operation is a \emph{group} \cite{AbstractAlgebra} if:
 \setlist{nolistsep}
 \begin{itemize}
     \itemsep 0em 
-    \item there exists a neutral element e $\in \mathbf{A}$, such that $\forall x \in \mathbf{A}. \; e \circ x = x = x \circ e$,
+    \item there exists a neutral element e $\in \mathbf{A}$, such that $\forall x \in \mathbf{A}. \; e \circ x = x = x \circ e$.
     \item the binary operation $\circ: \mathbf{A} \rightarrow \mathbf{A} \rightarrow \mathbf{A}$ is associative, that means $\forall x, y, z \in \mathbf{A}. \; x \circ (y \circ z) = (x \circ y) \circ z$.
     \item for every element $x$ there is an inverse element $x^{-1}$, such that $x \circ x^{-1} = x^{-1} \circ x = e$.
 \end{itemize}
@@ -468,7 +468,7 @@ $$
 $$
 \end{example}
 \subsection{A naive representation}
-We know that a free monoid can be represented as a list. The difference between a monoid and a group is that in the group there are inverse elements and in monoid there are not. Therefore, we can naively define a free monoid as a list of elements and the sign (information if the element is inverted or not) of the element.
+We know that a free monoid can be represented as a list. The difference between a monoid and a group is that in the group there are inverse elements and in monoid there are not. Therefore, we can naively define a free monoid as a list of elements and their signs (information if the element is inverted or not).
 \begin{defi}{Naive free group representation}{def:CanonFreeGroup}
 \begin{minted}{coq}
 Definition NaiveFreeGroup (A : Type) := list (bool * A).
@@ -508,10 +508,10 @@ Inductive reflect (P : Prop) : bool -> Set :=
 Fixpoint normalize {A : Type} `{EqDec A} 
   (x : NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
-  | [] => []
+  | []           => []
   | (b, v) :: x' => 
       match normalize x' with
-      | [] => [(b, v)]
+      | []              => [(b, v)]
       | (b', v') :: x'' => 
           if andb (eqf v v') (xorb b b')
           then x''
@@ -553,7 +553,7 @@ Definition QuotFreeGroup (A: Type) `{EqGroup A}
   := option (NEQuotFreeGroup A).
 \end{minted}
 \end{defi}
-This inductive type \mcoq{NEQuotFreeGroup} of non-empty normalized free groups is made of three constructors. The first one \mcoq{Singl} is the constructor of the last element of a free group. The second one \mcoq{Switch} is the most interesting because it prevents the existence of two elements next to each other that differ only by a sign. It is used to add an element with the opposite sign. It is made of a difference between the added element and the head of the free group and a proof that this difference is not a neutral element. This proof is squashed (see \ref{coq:SProp}), so we do not need to worry about its uniqueness. The third one \mcoq{Stay} is used to add an element with the same sign as the head of the free group. It is made of a difference between the added element and the head of the free group. This construction cannot be used to define a type of free group with an empty group since we know that the inverse of neutral elements is a neutral element from the group's laws. Therefore, to define potentially empty free groups, we need to use a second definition utilizing an option. \mcoq{None} is the empty list constructor. This construction was created for this paper. The definition of groups and free groups is a common problem in Coq \cite{GroupsCoq} \cite{FreeGroupsCoq}. However, no similar definitions have been found in any paper. 
+This inductive type \mcoq{NEQuotFreeGroup} of non-empty normalized free groups is made of three constructors. The first one \mcoq{Singl} is the constructor of the last element of a free group. The second one \mcoq{Switch} is the most interesting because it prevents the existence of two elements next to each other that differ only by a sign. It is used to add an element with the opposite sign. It is made of a difference between the added element and the head of the free group and a proof that this difference is not the neutral element. This proof is squashed (see \ref{coq:SProp}), so we do not need to worry about its uniqueness. The third one \mcoq{Stay} is used to add an element with the same sign as the head of the free group. It is made of a difference between the added element and the head of the free group. This construction cannot be used to define a type of free group with an empty group since we know that the inverse of neutral elements is a neutral element from the group's laws. Therefore, to define potentially empty free groups, we need to use a second definition utilizing an option. \mcoq{None} is the empty list constructor. This construction was created for this paper. The definition of groups and free groups is a common problem in Coq \cite{GroupsCoq} \cite{FreeGroupsCoq}. However, no similar definitions have been found in any paper. 
 
 To apply this construction in practice, it is necessary to define conversion functions since the normalized representation is difficult for users to read and write. Therefore, the best approach is to define a free group in naive representation and convert it to normalized representation.
 \begin{func}{Conversion to normalized representation}{fn:to_quot'}
@@ -568,7 +568,7 @@ Fixpoint to_quot' {A : Type} `{EqGroup A} (b : bool) (v: A)
     else match eqf_leibniz (sub v v') zero with
          | ReflectF _ p => Switch 
              (sub v v') (squash p) (to_quot' b' v' x')
-         | _  => (Singl b v) (* invalid *)
+         | _            => (Singl b v) (* invalid *)
          end
 end.
 \end{minted}
@@ -578,7 +578,7 @@ end.
 Definition to_quot {A : Type} `{EqGroup A} 
   (x : NaiveFreeGroup A) : QuotFreeGroup A :=
 match x with
-| [] => None
+| []           => None
 | (b, v) :: x' => Some (to_quot' b v x')
 end.
 \end{minted}
@@ -613,8 +613,8 @@ Definition to_naive {A : Type} `{EqGroup A}
 \end{func}
 The inverse function \mcoq{to_naive} is simpler. It relies on adding consecutive differences to compute the consecutive values. For the \mcoq{Stay} constructor, the sign of the previous element is copied, while for the \mcoq{Switch} constructor, the opposite sign is used. Since the \mcoq{to_naive'} function deals with non-empty free groups, it returns a non-empty list of elements implemented as a pair consisting of the head and a potentially empty list.
 
-\subsection{Free group as an algebraic group}
-As we know, free groups form a group where the operator is the concatenation of free groups. The neutral element is the free group consisting only of the neutral element, and the inverse of some free group is the same group but reversed and with opposite signs, following the inverse law in groups:
+\subsection{Free groups as algebraic groups}
+As we know, free groups form a group where the operator is the concatenation of free groups. The neutral element is the empty free group, and the inverse of some free group is the same group but reversed and with opposite signs, following the inverse law in groups:
 $$
 (xy)^{-1} = y^{-1}x^{-1}
 $$
@@ -624,7 +624,7 @@ We can define the appropriate operations and demonstrate that they satisfy the g
 Definition naive_cons {A : Type} `{EqGroup A} (b : bool) 
   (v : A) (x : NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
-  | [] => [(b, v)]
+  | []            => [(b, v)]
   | (b', v') :: t => if negb (eqf v v') || eqb b b'
                      then (b, v) :: (b', v') :: t
                      else t
@@ -647,7 +647,7 @@ The concatenation of free groups \mcoq{naive_concat} works similarly to the conc
 Fixpoint naive_apinv {A : Type} `{EqGroup A} 
   (x y : NaiveFreeGroup A) : NaiveFreeGroup A :=
   match x with
-  | [] => y
+  | []           => y
   | (b, v) :: x' => naive_apinv x' ((negb b, v) :: y)
   end.
 
@@ -657,7 +657,7 @@ Definition naive_inv {A : Type} `{EqGroup A}
 \end{func}
 Similarly as in case of reversing regular lists, in order to define the inverse function for free groups \mcoq{naive_inv} in linear time, we will use an ancillary function called \mcoq{naive_apinv}. This function transfers elements from one list to another with their signs changed. The result is also normalized since we assume that the input is normalized.
 To define these operations for normalized representation, we need to compose functions defined above with conversion functions \ref{fn:to_naive} and \ref{fn:to_quot}. In \coqsource{FreeGroup.v}, we can find proof that the operations defined above satisfy the laws of groups. Moreover, we can also find there proof that there is a single normalized representation for each free group.  
-\subsection{Free group as a monad}
+\subsection{Free groups as monads}
 \begin{defi}{Monad}{def:monad}
 \begin{minted}{coq}
 Class Monad (M : Type -> Type) := MondadDef {
@@ -738,9 +738,9 @@ Fixpoint select_sort' (f : nat) (prev : nat) (l : list nat)
     match l with
     | []        => []
     | (h :: l') => 
-      let m := min h l' in
-      let p := prev + m in
-      p :: (select_sort' f' p (rm_one_zero (sub_list m l)))
+        let m := min h l' in
+        let p := prev + m in
+        p :: (select_sort' f' p (rm_one_zero (sub_list m l)))
     end
 end.
 
@@ -748,7 +748,7 @@ Definition select_sort (l : list nat) : list nat :=
   select_sort' (length l) O l.
 \end{minted}
 \end{func}
-For normalization, we use a modified selection sort algorithm for natural numbers. The modification optimizes the comparison operations by subtracting the found minimum from each member of the yet-to-be-sorted list. Comparing natural numbers in unary representation is linear with respect to the smaller number. As a result, the smaller the numbers on the list, the faster the process of finding the minimum becomes. Since the previously found minimum reduces the values on the sorted list, the list of the consecutive minimums this algorithm finds is a list of consecutive differences of the sorted input list.
+For normalization, we use a modified selection sort algorithm for natural numbers. The modification optimizes the comparison operations by subtracting the found minimum from each member of the yet-to-be-sorted part of list. Comparing natural numbers in unary representation is linear with respect to the smaller number. As a result, the smaller the numbers on the list, the faster the process of finding the minimum becomes. Since the previously found minimum reduces the values on the sorted list, the list of the consecutive minimums this algorithm finds is a list of consecutive differences of the sorted input list.
 \subsection{The normalized representation}
 We can generalize this normalization process for all underlying types for which a unique symmetric difference between elements can be computed. For this, an underlying type needs to have a linear order defined. Otherwise, computing a unique minimum would be impossible.
 \begin{defi}{Type with computable unique diffrences}{def:Diff}
@@ -769,7 +769,15 @@ Class Diff (A : Type) `{E : EqDec A} := {
 }.
 \end{minted}
 \end{defi}
-In this paper, the definition above has been used. It implies the existence of a linear order without requiring it as a premise. However, it does require a type of symmetric difference -- \mcoq{D}, a function that computes such a difference for two elements -- \mcoq{diff}, and a function that adds the indicated difference to an element -- \mcoq{add}. Additionally, this function should meet five requirements. The first requirement enforces the symmetry of the difference through the commutative law of the difference operation. The second law defines the relationship between the symmetric difference operation and addition. The third one requires that at least one of the elements can be recovered from the symmetric difference. The fourth states that if we add a difference twice and the result does not change, that difference is neutral. The third and fourth laws imply the antisymmetry of the generated order. The fifth one requires our symmetric differences to be transitive, meaning that if we can recover a value by adding two differences with a common end, we can also recover it from the direct difference. We can use this definition to define a linear order: two elements are in a relation if and only if by adding their common difference to the first element we obtain the second element. The proof of this fact can be found in \coqsource{DifferentialLists.v}.
+In this paper, the definition above has been used. It implies the existence of a linear order without requiring it as a premise. However, it does require a type of symmetric difference -- \mcoq{D}, a function that computes such a difference for two elements -- \mcoq{diff}, and a function that adds the indicated difference to an element -- \mcoq{add}. Additionally, this function should meet five requirements. The first requirement enforces the symmetry of the difference through the commutative law of the difference operation. The second law defines the relationship between the symmetric difference operation and addition. The third one requires that at least one of the elements can be recovered from the symmetric difference. The fourth states that if we add a difference twice and the result does not change, that difference is neutral. The third and fourth laws imply the antisymmetry of the generated order. The fifth one requires our symmetric differences to be transitive, meaning that if we can recover a value by adding two differences with a common end, we can also recover it from the direct difference. We can use this definition to define a linear order: two elements are in a relation if and only if by adding their common difference to the first element we obtain the second element \ref{Diff_is_LO}. The proof of this fact can be found in \coqsource{DifferentialLists.v}.
+\begin{defi}{Linear order induced by \mcoq{Diff} type class}{Diff_is_LO}
+\begin{minted}{coq}
+Global Program Instance Diff_is_LO (A: Type) `{D: Diff A} 
+  : LinearOrder A := {
+  ord := fun x y => eqf y (add x (diff y x))
+}.
+\end{minted}
+\end{defi}
 
 Having the class of types with computable differences, we can define the type of multisets based on this definition. It is an option on the head of the list and the list of consecutive differences.
 \begin{defi}{Normalized representation of multisets}{def:DiffList}
@@ -779,7 +787,7 @@ Definition DiffList (A : Type) `{Diff A} :=
 \end{minted}
 \end{defi}
 For this definition, we can define conversion functions.
-\begin{func}{Conversion to normalized representation}{fn:to_diff}
+\begin{func}{Conversion to normalized representation}{fn:to_diff'}
 \begin{minted}{coq}
 Fixpoint to_diff' {A : Type} `{Diff A} (p : A) (l : list A) 
   : list D :=
@@ -787,7 +795,10 @@ Fixpoint to_diff' {A : Type} `{Diff A} (p : A) (l : list A)
   | []       => []
   | (h :: t) => diff p h :: to_diff' h t
   end.
-
+\end{minted}
+\end{func}
+\begin{func}{Conversion to normalized representation}{fn:to_diff}
+\begin{minted}{coq}
 Definition to_diff {A : Type} `{Diff A} (l : list A) 
   : DiffList A :=
   match l with
@@ -797,14 +808,17 @@ Definition to_diff {A : Type} `{Diff A} (l : list A)
 \end{minted}
 \end{func}
 The function \mcoq{to_diff} computes consecutive differences, assuming that the input is sorted. In order to get a normalized representation for a multiset of any list, we need to compose it with a sort function \ref{fn:mergeSort}.
-\begin{func}{Conversion of list of differences to list}{fn:from_diff}
+\begin{func}{Conversion of list of differences to list}{fn:from_diff'}
 \begin{minted}{coq}
 Fixpoint from_diff' {A : Type} `{Diff A} (x : A) (l : list D) :=
   match l with
   | []      => [x]
   | h :: l' => x :: from_diff' (add x h) l'
   end.
-
+\end{minted}
+\end{func}
+\begin{func}{Conversion of list of differences to list}{fn:from_diff}
+\begin{minted}{coq}
 Definition from_diff {A : Type} `{Diff A} (x : DiffList A) 
   : list A :=
   match x with
@@ -840,4 +854,4 @@ Definition add_to_diff {A : Type} `{Diff A} (x : A)
   end.
 \end{minted}
 \end{func}
-The function \mcoq{add_to_diff} finds a position where the next value is greater than the adding element. In this position, it computes the difference between the previous value and the adding element and between the adding element and the next value. Next, it replaces the previous difference with two new ones. In function \ref{fn:add_to_diff'}, \mcoq{ord} is the linear order defined by symmetric differences. We can prove that after applying such a function to a list, the new element is present, no element has been removed, and the length of the list has increased by one. The proofs of these facts can also be found in \coqsource{DifferentialLists.v}.
+The function \mcoq{add_to_diff} finds a position where the next value is greater than the adding element. In this position, it computes the difference between the previous value and the adding element and between the adding element and the next value. Next, it replaces the previous difference with two new ones. In function \ref{fn:add_to_diff'}, \mcoq{ord} is the linear order defined by symmetric differences (as defined in \ref{Diff_is_LO}). We can prove that after applying such a function to a list, the new element is present, no element has been removed, and the length of the list has increased by one. The proofs of these facts can also be found in \coqsource{DifferentialLists.v}.

@@ -1,6 +1,6 @@
 In the previous chapters, we discussed how we can define quotient-like types in Coq. In this chapter, we will examine languages that have built-in support for quotient types. We will learn how they are implemented and whether similar mechanisms can be utilized in Coq.
 \section{Lean}
-Lean is a proof assistant under development since 2013 \cite{lean4}. It is an open-source tool that verifies program reliability and mathematical theorems, similar to Coq. Due to the similarity of both languages, we will translate Lean's axioms into the Coq language.
+Lean is a proof assistant under development since 2013 \cite{lean4}. It is an open-source tool for verifing program reliability and mathematical theorems, similar to Coq. Due to the similarity of both languages, we will translate Lean's axioms into the Coq language.
 \begin{coq}{Differences compared to Coq}{coq:lean}
 Unlike Coq, Lean does not require constructivism of theorems \cite{lean4}. It means we are dealing with a system closer to mathematical proofs than programming. Moreover, in Lean, we have definitional irrelevance of propositions. The formal system is based on three axioms:
 \begin{itemize}
@@ -30,7 +30,7 @@ Axiom Quot : forall {A : Type}, (A -> A -> Prop) -> Type.
 \end{minted}
 The second axiom, named in Lean as \mlean{Quot.mk}, states that there exists an embedding function that, out of every element of the underlying type, makes an element of quotient type.
 \begin{minted}{coq}
-Axiom Quot_mk : forall {A : Type} (r : A -> A -> Prop),
+Axiom Quot_mk : forall {A : Type} (r : A -> A -> Prop), 
   A -> Quot r.
 \end{minted}
 The third axiom, named in Lean as \mlean{Quot.ind}, provides us with induction law for quotient types. It states that every element of the underlying type is made of an element of the underlying type.
