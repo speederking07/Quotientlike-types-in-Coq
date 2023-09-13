@@ -54,10 +54,10 @@ Theorem naive_bind_cons {A B: Type} `{EqGroup A} `{EqGroup B} (b: bool) (v: A)
 Proof.
   intros Nf. destruct x as [| (b', v')]; cbn; [now destruct b| destruct b, b'].
   - now rewrite eqb_reflx, orb_true_r.
-  - destruct (eqf v v') eqn:veq; [|auto]. rewrite <-eqf_iff in veq. subst. 
+  - destruct (eqf v v') eqn:veq; [|auto]. rewrite <- eqf_iff in veq. subst. 
     cbn. rewrite <- naive_concat_assoc, r_naive_concat_inv; 
     [auto | auto | now apply inv_norm | now apply bind_norm].
-  - destruct (eqf v v') eqn:veq; auto. rewrite <-eqf_iff in veq. subst. 
+  - destruct (eqf v v') eqn:veq; auto. rewrite <- eqf_iff in veq. subst. 
     cbn. rewrite <- naive_concat_assoc, l_naive_concat_inv; 
     [auto | auto | now apply inv_norm | auto | now apply bind_norm].
   - now rewrite eqb_reflx, orb_true_r.
@@ -136,8 +136,8 @@ Qed.
 Lemma concat_inv_inv {A: Type} `{EqGroup A} (x : NaiveFreeGroup A) : 
   Normalized x -> naive_inv (naive_inv x) = x.
 Proof.
-  intro Nx. rewrite <- (r_naive_concat_id (naive_inv (naive_inv x))), <- (l_naive_concat_inv x),
-  <- (naive_concat_assoc), l_naive_concat_inv; auto.
+  intro Nx. rewrite <- (r_naive_concat_id (naive_inv (naive_inv x))),
+  <- (l_naive_concat_inv x), <- (naive_concat_assoc), l_naive_concat_inv; auto.
   2,4: apply inv_norm.
   1-4: now apply inv_norm.
 Qed.

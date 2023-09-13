@@ -21,7 +21,8 @@ Inductive DefPerm {A : Type} : list A -> list A -> Prop :=
 
 
 
-Lemma PredPerm_is_perm {A: Type} `{LinearOrder A} (l l': list A) : PredPerm l l' <-> permutation l l'.
+Lemma PredPerm_is_perm {A: Type} `{LinearOrder A} (l l': list A) 
+  : PredPerm l l' <-> permutation l l'.
 Proof.
   unfold PredPerm, permutation. split; intros P p; apply P; auto.
 Qed.
@@ -48,11 +49,11 @@ Qed.
 Lemma remove_count_false {A: Type} `{EqDec A} (h: A) (l: list A) (p: A -> bool) :
   p h = false -> count p l = count p (remove h l).
 Proof.
-  induction l; intros f; auto. cbn in *. 
-  destruct (p a) eqn:e; destruct (eqf h a) eqn:e1; auto.
+  induction l; intros f; [auto |]. cbn in *. 
+  destruct (p a) eqn:e; destruct (eqf h a) eqn:e1; [| | auto |].
   - rewrite <- eqf_iff in e1. subst. rewrite f in e. discriminate.
-  - cbn. rewrite e. f_equal. apply IHl; auto.
-  - cbn. rewrite e. apply IHl; auto.
+  - cbn. now rewrite e, IHl.
+  - cbn. now rewrite e, IHl.
 Qed.
 
 Lemma in_count_not_O {A: Type} `{EqDec A} (l: list A) (x: A) :
@@ -62,19 +63,19 @@ Proof.
   - intros I. induction l.
     + cbn in I. destruct I.
     + cbn in *. destruct I as [e|I].
-      * subst. rewrite eqf_refl. auto.
-      * destruct (eqf x a) eqn: e; auto.
+      * subst. now rewrite eqf_refl.
+      * destruct (eqf x a) eqn:e; auto.
   - intros C. induction l.
     + cbn in C. contradiction.
-    + cbn in *. destruct (eqf x a) eqn: e; auto. rewrite <- eqf_iff in e.
-      subst. left. auto.
+    + cbn in *. destruct (eqf x a) eqn: e; [|auto]. 
+      rewrite <- eqf_iff in e. subst. auto.
 Qed. 
 
 Lemma perm_in {A: Type} `{EqDec A} (l l': list A) (x: A) :
   PredPerm l l' -> In x l -> In x l'.
 Proof.
   intros perm I. rewrite in_count_not_O. rewrite in_count_not_O in I.
-  specialize (perm (eqf x)). rewrite <-perm. assumption.
+  specialize (perm (eqf x)). now rewrite <- perm.
 Qed.
 
 Lemma remove_perm {A: Type} `{EqDec A} (h: A) (l l': list A) :
@@ -82,14 +83,14 @@ Lemma remove_perm {A: Type} `{EqDec A} (h: A) (l l': list A) :
 Proof.
   unfold PredPerm. revert l'. induction l; intros l' perm p.
   - assert (In h l'). 
-    + apply (perm_in [h]); auto. cbn. auto. 
+    + apply (perm_in [h]); cbn; auto. 
     + cbn. apply eq_add_S. specialize (perm p). cbn in *. destruct (p h) eqn:e.
-      * rewrite <-remove_count_true; auto.
-      * rewrite <-remove_count_false; auto.
+      * now rewrite <- remove_count_true.
+      * rewrite <- remove_count_false; auto.
   - assert (In h l') by (apply (perm_in (h::a::l)); cbn; auto).
     assert (In a l') by (apply (perm_in (h::a::l)); cbn; auto).
-    cbn. apply eq_add_S. apply eq_add_S. specialize (perm p). cbn in *.
-    destruct (p h) eqn:e.
+    cbn. apply eq_add_S. apply eq_add_S. specialize (perm p).
+    cbn in *. destruct (p h) eqn:e.
     + rewrite <-remove_count_true; auto.
     + rewrite <-remove_count_false; auto.
 Qed.
@@ -113,16 +114,15 @@ Proof.
   split.
   - intros P x. apply P.
   - revert l'. induction l; intros l' E p.
-    + destruct l'; auto. specialize (E a). cbn in E. rewrite eqf_refl in E. inversion E.
+    + destruct l'; [auto|]. specialize (E a). cbn in E.
+      rewrite eqf_refl in E. inversion E.
     + rewrite (remove_perm' a l l'); auto.
-      * rewrite in_count_not_O. specialize (E a). rewrite <- E. cbn. rewrite eqf_refl. auto.
+      * rewrite in_count_not_O. specialize (E a). rewrite <- E. cbn. now rewrite eqf_refl.
       * intros p'. apply IHl. intros x. specialize (E x). cbn in *. destruct (eqf x a) eqn:e.
-        -- apply eq_add_S. rewrite E. rewrite (remove_count_true a); auto.
-           rewrite <- eqf_iff in e. subst. rewrite in_count_not_O. rewrite <- E. auto.
-        -- rewrite E. rewrite (remove_count_false a); auto.
+        -- apply eq_add_S. rewrite E. rewrite (remove_count_true a); [auto | | auto].
+           rewrite <- eqf_iff in e. subst. now rewrite in_count_not_O, <- E.
+        -- now rewrite E, (remove_count_false a).
 Qed.
-
-
 
 
 Lemma elem_perm_nil {A: Type} {D: EqDec A} (l : list A) : ElemPerm [] l -> l = [].
@@ -151,14 +151,14 @@ Lemma remove_defperm' {A: Type} {D: EqDec A} (h: A) (l l': list A) :
   In h l' -> DefPerm l (remove h l') -> DefPerm (h :: l) l' .
 Proof.
   intros I H. destruct l'.
-  - cbn in I. destruct I.
+  - cbn in I. contradiction.
   - cbn in *. destruct (eqf h a) eqn:e.
-    + rewrite <- eqf_iff in e. subst. constructor. assumption.
+    + rewrite <- eqf_iff in e. subst. now constructor.
     + apply (perm_trans (h :: l) (a :: h :: remove h l') (a :: l')).
       * apply (perm_trans (h :: l) (h :: a :: remove h l') (a :: h :: remove h l'));
-        constructor. assumption.
-      * constructor. apply remove_cons_def_perm; destruct I; auto. subst.
-        rewrite eqf_refl in e. discriminate.
+        [now constructor | constructor].
+      * constructor. apply remove_cons_def_perm; destruct I; [| auto]. 
+        subst. rewrite eqf_refl in e. discriminate.
 Qed.
 
 (* DefPerm and ElemPerm equivalance for types with deciadable equality *)
@@ -167,14 +167,14 @@ Theorem def_elem_prem_equiv {A: Type} {D: EqDec A} (l l': list A) :
 Proof.
   unfold ElemPerm. split.
   - intros H x. induction H; auto.
-    + cbn. rewrite IHDefPerm. auto.
+    + cbn. now rewrite IHDefPerm.
     + cbn. destruct (eqf x y), (eqf x x0); auto.
     + rewrite IHDefPerm1. assumption.
   - revert l'. induction l; intros l' H.
     + assert (l' = []) by (apply elem_perm_nil; assumption). subst. constructor.
     + specialize (IHl (remove a l')). assert (DefPerm l (remove a l')).
-      * apply IHl. intro x. apply remove_perm. apply pred_elem_prem_equiv. assumption.
-      * apply remove_defperm'; auto. specialize (H a). cbn in *. rewrite eqf_refl in H.
-        rewrite in_count_not_O, <- H. auto.
+      * apply IHl. intro x. apply remove_perm. now apply pred_elem_prem_equiv.
+      * apply remove_defperm'; [|auto]. specialize (H a). cbn in *. 
+        rewrite eqf_refl in H. now rewrite in_count_not_O, <- H.
 Qed.
 
