@@ -29,12 +29,14 @@ Two equivalent notations of $a \circ b \circ c \circ d$.
 \end{center}
 \end{vis}
 \begin{example}{Free monoid}{ex:freeMonoid}
-Lists of natural numbers are a great example of free monoids. Lists, in general, are often called free monoids. We can concatenate lists of natural numbers using the monoid binary operation $\circ$. By associativity, the order of concatenation operation does not matter. The neutral element can be used as an empty list. Since this structure is free, we do not worry about the properties of the carrier set.
-$$(1 \circ 2) \circ (e \circ 3) = (1 \circ 2) \circ 3 =  1 \circ 2 \circ 3 \neq 6$$
+Lists of natural numbers are a great example of free monoids. The type of list is often called a type of free monoid. The binary operation in this monoid is the concatenation of lists (\mcoq{++}). Concatenation is associative - the order of concatenation operation does not matter. The empty list is the neutral element in this free monoid.
+\begin{minted}{coq}
+    [1; 2] ++ [3] = [1] ++ ([2] ++ [3]) = [1] ++ [] ++ [2; 3]
+\end{minted}
 \end{example}
 \subsection{A naive representation}
-We are accustomed to list representation of free monoids. However, not every notation of free monoids can be expressed in this form. We call the type of every notation of free monoid a naive representation. A first attempt to implement free monoid in Coq for someone unfamiliar with this concept would likely look similar. 
-\begin{defi}{Naive free monoid}{def:naiveMonoid}
+We are accustomed to list representation of free monoids. Elements of a free monoid we call \emph{strings}. However, not every notation of a string can be expressed as a unique list since, every notation of the same string shares the same list representation. We call the type of every notation of elements of free monoid a naive representation. A first attempt to implement the type of free monoids in Coq for someone unfamiliar with this concept would likely look similar to the definition below. 
+\begin{defi}{Naive free monoid representation}{def:naiveMonoid}
 \begin{minted}{coq}
 Inductive FreeMonoid (A : Type) :=
 | leaf : FreeMonoid A
@@ -42,9 +44,9 @@ Inductive FreeMonoid (A : Type) :=
 | op   : FreeMonoid A -> FreeMonoid A -> FreeMonoid A.
 \end{minted}
 \end{defi}
-As we can see in the definition above, we have three constructors: an empty list constructor \mcoq{leaf}, a singleton constructor \mcoq{var}, and a list concatenation constructor \mcoq{op}. 
+As we can see in the definition above, we have three constructors: an empty string constructor \mcoq{leaf}, a singleton constructor \mcoq{var}, and a string concatenation constructor \mcoq{op}. 
 \subsection{The normalized representation}
-As it is easy to notice, naive representation \ref{def:naiveMonoid} is not unique for every free monoid. For example, there are infinitely many representations of the neural element: \mcoq{leaf}, \mcoq{op leaf leaf} etc. To deal with this problem, we must define a normalized free monoid form:
+As it is easy to notice, naive representation \ref{def:naiveMonoid} is not unique for every string. For example, there are infinitely many representations of the neutral element: \mcoq{leaf}, \mcoq{op leaf leaf} etc. To deal with this problem, we must define a normalized form of strings:
 $$
     (a_1 \circ (a_2 \circ (a_3 \circ \dots  \circ (a_n \circ e) \dots ))
 $$
@@ -56,7 +58,8 @@ Inductive list (A : Type) :=
 | cons : A -> list A -> list A.
 \end{minted}
 \end{defi}
-The normalization function finds the first element in the naively defined free monoid, puts it as the first constructor, and recursively normalizes the rest of the free monoid. The normalization function returns a natural element if the free monoid is equivalent to a neutral element. The formal definition of this function is not very educative. Therefore, we will skip it. However, we will present a conversion function from a naive representation to a normalized one.
+The normalization function finds the first element in the naively defined string, puts it as the first constructor, and recursively normalizes the rest of the string. The normalization function returns a natural element if the string is equivalent to a neutral element.
+The formal definition of normalization function is not very educative. Therefore, we will skip it. However, we will present a conversion function from a naive representation to a normalized one.
 \begin{func}{Conversion from a naive representation to a list}{fn:free_to_list}
 \begin{minted}{coq}
 Fixpoint free_to_list {A : Type} (m : FreeMonoid A) : list A :=
@@ -196,7 +199,9 @@ Integers representation defined in the previous section is often used in Coq due
 
 \subsection{The alternative normalized representation}
 We can define the normalization process in an alternative way. Instead of finishing when we determine if the number is positive or negative, we can continue the process by moving successors from input to output. Of course, this step is de facto an identity function on natural numbers with linear complexity.
+\pagebreak
 \begin{func}{Alternative normalization}{fn:int_alt_norm}
+
 \begin{minted}{coq}
 Fixpoint alt_norm (n m : nat) : nat * nat :=
   match n, m with
@@ -264,7 +269,7 @@ A naive representation of positive rational numbers is identical to that of inte
 Definition Q' : Type := nat * nat.
 \end{minted}
 \end{defi}
-We chose the second option since we want to use an already defined coq operation on natural numbers. As we know from mathematics, there are many notations for the same fraction. $\frac{1}{2}$ or $\frac{2}{4}$ represents the same rational number. Every fraction can be reduced to an irreducible fraction. In order to find this irreducible fraction, we need to divide the numerator and denominator by their greatest common denominator. There are many algorithms to compute this value, but one of the simplest is the Euclidean algorithm.
+We chose the second option since we want to use an already defined coq operation on natural numbers. As we know from mathematics, there are many notations for the same fraction. $\frac{1}{2}$ or $\frac{2}{4}$ represents the same rational number. Every fraction can be reduced to an irreducible fraction. In order to find this irreducible fraction, we need to divide the numerator and denominator by their greatest common divisor. There are many algorithms to compute this value, but one of the simplest is the Euclidean algorithm.
 \begin{func}{Euclidean algorithm}{fn:euclid}
 \begin{minted}{coq}
 Fixpoint euclid (p q : nat) : nat :=
@@ -298,7 +303,7 @@ Inductive Qplus : Type :=
 | D   : Qplus -> Qplus.
 \end{minted}
 \end{defi}
-This construction also provides a nice induction rule for positive rational numbers. The type \mcoq{Qplus} is based on the Euclidean algorithm. Therefore, the conversion function is a slightly modified version of the Euclidean algorithm that returns its trace instead of computing the greatest common denominator. 
+This construction also provides a nice induction rule for positive rational numbers. The type \mcoq{Qplus} is based on the Euclidean algorithm. Therefore, the conversion function is a slightly modified version of the Euclidean algorithm that returns its trace instead of computing the greatest common divisor. 
 \begin{func}{Conversion to Euclidean algorithm trace}{def:qplus_c}
 \begin{minted}{coq}
 Fixpoint qplus_c' (p q n : nat) : Qplus :=
@@ -315,7 +320,7 @@ Definition qplus_c (x : Q') : Qplus :=
   let (p, q) := x in qplus_c' p q ((p + q) / gcd p q).
 \end{minted}
 \end{func}
-This function differs from the Euclidean algorithm defined in \ref{fn:euclid} because Coq's termination checker cannot deduce the decreasing argument. Therefore, defining the Euclidean algorithm this way is invalid in Coq (8.14.1). We circumvent this problem by adding an argument (the fuel) that constantly decreases, satisfying the termination condition. In order to not change the algorithm output, we need to set the fuel to be big enough. We know that the Euclidean algorithm needs fewer steps to compute the result than the sum of its inputs. Moreover, as we noticed, multiplying inputs by positive numbers does not change the computations so that we can divide the fuel by the greatest common denominator of inputs.
+This function differs from the Euclidean algorithm defined in \ref{fn:euclid} because Coq's termination checker cannot deduce the decreasing argument. Therefore, defining the Euclidean algorithm this way is invalid in Coq (8.14.1). We circumvent this problem by adding an argument (the fuel) that constantly decreases, satisfying the termination condition. In order to not change the algorithm output, we need to set the fuel to be big enough. We know that the Euclidean algorithm needs fewer steps to compute the result than the sum of its inputs. Moreover, as we noticed, multiplying inputs by positive numbers does not change the computations so that we can divide the fuel by the greatest common divisor of inputs.
 \begin{func}{Conversion to naive representation}{def:qplus_i}
 \begin{minted}{coq}
 Fixpoint qplus_i (x : Qplus) : Q' :=
@@ -442,7 +447,7 @@ Definition Qinv (q : FullQ) : FullQ :=
 \end{func}
 The inversion can be easily computed for the Euclidean algorithm trace by swapping two constructors \mcoq{N} and \mcoq{D}. As we know, the inverse operation switches the numerator and the denominator. By swapping inputs of the Euclidean algorithm, we changed which number was greater at each step. The division can be defined as multiplying the inversion. The proof that rational numbers with those operations are an algebraic field can be found in \coqsource{Extras/FullQ.v}.
 \section{Free groups}
-In this chapter, we have already learned how to define a free monoid. In this section, we define another free algebraic structure -- free group.
+In this chapter, we have already learned how to define a free monoid. In this section, we define another free algebraic structure -- free group. Elements of a free group we will call \emph{words}. The construction presented in this subsetion was created for this thesis. The definition of groups and free groups is a common problem in Coq \cite{GroupsCoq} \cite{FreeGroupsCoq}. However, no similar definitions have been found in any paper. 
 \begin{defi}{Group}{def:group}
 An algebraic structure $(\mathbf{A}, \circ)$, where $\mathbf{A}$ is a carrier set and $\circ: \mathbf{A} \rightarrow  \mathbf{A} \rightarrow \mathbf{A}$ is a binary operation is a \emph{group} \cite{AbstractAlgebra} if:
 \setlist{nolistsep}
@@ -468,13 +473,13 @@ $$
 $$
 \end{example}
 \subsection{A naive representation}
-We know that a free monoid can be represented as a list. The difference between a monoid and a group is that in the group there are inverse elements and in monoid there are not. Therefore, we can naively define a free monoid as a list of elements and their signs (information if the element is inverted or not).
+We know that the type of free monoids can be represented as the type of lists. The difference between a monoid and a group is that in the group there are inverse elements and in monoid there are not. Therefore, we can naively represent the type of free groups as a type of lists of elements and their signs (information if the element is inverted or not).
 \begin{defi}{Naive free group representation}{def:CanonFreeGroup}
 \begin{minted}{coq}
 Definition NaiveFreeGroup (A : Type) := list (bool * A).
 \end{minted}
 \end{defi}
-As it is easy to notice, this representation is not unique for every free group. Therefore, we need to define a normalization function. In our case, we will remove two elements next to each other with opposite signs.
+As it is easy to notice, this representation is not unique for every element of a free group. Therefore, we need to define a normalization function. In our case, we will remove two elements next to each other with opposite signs.
 \begin{defi}{Normalized naive representation}{def:Normalized}
 \begin{minted}{coq}
 Inductive Normalized {A : Type} : NaiveFreeGroup A -> Prop :=
@@ -485,7 +490,7 @@ Inductive Normalized {A : Type} : NaiveFreeGroup A -> Prop :=
             Normalized ((b, v) :: (b', w) :: x).
 \end{minted}
 \end{defi}
-We need an underlying type with decidable equality to define the normalization function.
+We need an underlying type with decidable equality to define the normalization function. \pagebreak
 \begin{defi}{Decidable equality in Coq}{def:EqDec}
 \begin{minted}{coq}
 Class EqDec (A : Type) := { 
@@ -540,7 +545,7 @@ Class EqGroup (A : Type) `{E : EqDec A} `{G : Group A} := {}.
 Definition sub {A : Type} `{Group A} (x y : A) := op x (inv y).
 \end{minted}
 \end{defi}
-We can make the following observations if the underlying type is a group. First, we notice that two elements are equal if and only if the difference between them is a neutral element. The second one is that we can define any list as a list of differences between elements. Similar to the normalization process, the list of differences starts with the last element of the free group, and then differences from the previous elements are added.
+We can make the following observations if the underlying type is a group. First, we notice that two elements are equal if and only if the difference between them is a neutral element. The second one is that we can define any list as a list of differences between elements. Similar to the normalization process, the list of differences starts with the last element, and then differences from the previous elements are added.
 \begin{defi}{Normalized representation of free group}{def:Group}
 \begin{minted}{coq}
 Inductive NEQuotFreeGroup (A : Type) `{EqGroup A} :=
@@ -553,9 +558,13 @@ Definition QuotFreeGroup (A: Type) `{EqGroup A}
   := option (NEQuotFreeGroup A).
 \end{minted}
 \end{defi}
-This inductive type \mcoq{NEQuotFreeGroup} of non-empty normalized free groups is made of three constructors. The first one \mcoq{Singl} is the constructor of the last element of a free group. The second one \mcoq{Switch} is the most interesting because it prevents the existence of two elements next to each other that differ only by a sign. It is used to add an element with the opposite sign. It is made of a difference between the added element and the head of the free group and a proof that this difference is not the neutral element. This proof is squashed (see \ref{coq:SProp}), so we do not need to worry about its uniqueness. The third one \mcoq{Stay} is used to add an element with the same sign as the head of the free group. It is made of a difference between the added element and the head of the free group. This construction cannot be used to define a type of free group with an empty group since we know that the inverse of neutral elements is a neutral element from the group's laws. Therefore, to define potentially empty free groups, we need to use a second definition utilizing an option. \mcoq{None} is the empty list constructor. This construction was created for this paper. The definition of groups and free groups is a common problem in Coq \cite{GroupsCoq} \cite{FreeGroupsCoq}. However, no similar definitions have been found in any paper. 
+This inductive type \mcoq{NEQuotFreeGroup}, which contains non-empty normalized words (elements of a free group), is made of three constructors. The first one \mcoq{Singl} is the constructor of a single element word. The second one \mcoq{Switch} is the most interesting because it prevents the existence of two elements next to each other that differ only by a sign. It is used to add an element with the opposite sign. It is made of a difference between the added element and the head of the word and a proof that this difference is not the neutral element. This proof is squashed (see \ref{coq:SProp}), so we do not need to worry about its uniqueness. The third one \mcoq{Stay} is used to add an element with the same sign as the head of the word. It is made of a difference between the added element and the head of the word. This construction cannot be used to define a type of free group with the neutral element since we know that the inverse of neutral elements is a neutral element from the group's laws. Therefore, to define potentially empty words, we need to use a second definition utilizing an option. \mcoq{None} is the empty list constructor.
 
-To apply this construction in practice, it is necessary to define conversion functions since the normalized representation is difficult for users to read and write. Therefore, the best approach is to define a free group in naive representation and convert it to normalized representation.
+\begin{example}{Exotic integers}{ex:exotic_group}
+    The exotic integer representation (defined in \ref{def:Z'}) is the special case of a free group over the single element type (\mcoq{QuotFreeGroup unit}).
+\end{example}
+
+To apply this construction in practice, it is necessary to define conversion functions since the normalized representation is difficult for users to read and write. Therefore, the best approach is to define a word in naive representation and convert it to normalized representation.
 \begin{func}{Conversion to normalized representation}{fn:to_quot'}
 \begin{minted}{coq}
 Fixpoint to_quot' {A : Type} `{EqGroup A} (b : bool) (v: A) 
@@ -583,7 +592,7 @@ match x with
 end.
 \end{minted}
 \end{func}
-In the definition of the function \mcoq{to_quot'}, we need to prove that two consecutive elements are distinct when they differ by sign. Fortunately, using \mcoq{reflect} in the decidable equality definition allows us to extract such proof easily. The \mcoq{to_quot} function works correctly only for normalized free groups, so the result is undefined when mutually inverse elements appear next to each other. In order to create a conversion function for any free group, we first need to normalize it, which means composing the conversion function with the normalization function \ref{fn:normalize}.
+In the definition of the function \mcoq{to_quot'}, we need to prove that two consecutive elements are distinct when they differ by sign. Fortunately, using \mcoq{reflect} in the decidable equality definition allows us to extract such proof easily. The \mcoq{to_quot} function works correctly only for normalized words, so the result is undefined when mutually inverse elements appear next to each other. In order to create a conversion function for any word, we first need to normalize it, which means composing the conversion function with the normalization function \ref{fn:normalize}.
 \begin{func}{Conversion to naive representation}{fn:to_naive'}
 \begin{minted}{coq}
 Fixpoint to_naive' {A : Type} `{EqGroup A} 
@@ -606,20 +615,21 @@ Fixpoint to_naive' {A : Type} `{EqGroup A}
 Definition to_naive {A : Type} `{EqGroup A} 
   (x : QuotFreeGroup A) : NaiveFreeGroup A :=
   match x with
-  | None => []
+  | None    => []
   | Some x' => let (h, t) := to_naive' x' in h :: t
   end.
 \end{minted}
 \end{func}
 The inverse function \mcoq{to_naive} is simpler. It relies on adding consecutive differences to compute the consecutive values. For the \mcoq{Stay} constructor, the sign of the previous element is copied, while for the \mcoq{Switch} constructor, the opposite sign is used. Since the \mcoq{to_naive'} function deals with non-empty free groups, it returns a non-empty list of elements implemented as a pair consisting of the head and a potentially empty list.
 
+
 \subsection{Free groups as algebraic groups}
-As we know, free groups form a group where the operator is the concatenation of free groups. The neutral element is the empty free group, and the inverse of some free group is the same group but reversed and with opposite signs, following the inverse law in groups:
+As we know, elements of a free group form a group where the operator is the concatenation of words. The neutral element is the empty word, and the inverse of some word is the same word but reversed and with opposite signs, following the inverse law in groups:
 $$
 (xy)^{-1} = y^{-1}x^{-1}
 $$
 We can define the appropriate operations and demonstrate that they satisfy the group laws. These operations can be defined on the normalized representation. However, because the normalized representation is a list of differences, operations such as concatenation or reversing the order are difficult to define and inefficient. Therefore, we will define these operations on the naive representation of free groups, ensuring that the result for normalized arguments is also normalized.
-\begin{func}{Adding element to free group}{fn:naive_cons}
+\begin{func}{Insertion}{fn:naive_cons}
 \begin{minted}{coq}
 Definition naive_cons {A : Type} `{EqGroup A} (b : bool) 
   (v : A) (x : NaiveFreeGroup A) : NaiveFreeGroup A :=
@@ -641,7 +651,7 @@ Fixpoint naive_concat {A : Type} `{EqGroup A}
   end.
 \end{minted}
 \end{func}
-The concatenation of free groups \mcoq{naive_concat} works similarly to the concatenation of lists, where elements from the first list are transferred to the second. However, in the case of free groups, adding an element at the beginning of a free group can remove its head if it is the same element but with the opposite sign.
+The concatenation of words \mcoq{naive_concat} works similarly to the concatenation of lists, where elements from the first list are transferred to the second. However, in the case of normalized words, adding an element at the beginning of a word can remove its head if it is the same element but with the opposite sign.
 \begin{func}{Inversion}{fn:naive_inv}
 \begin{minted}{coq}
 Fixpoint naive_apinv {A : Type} `{EqGroup A} 
@@ -655,8 +665,8 @@ Definition naive_inv {A : Type} `{EqGroup A}
   (x : NaiveFreeGroup A) : NaiveFreeGroup A := naive_apinv x [].
 \end{minted}
 \end{func}
-Similarly as in case of reversing regular lists, in order to define the inverse function for free groups \mcoq{naive_inv} in linear time, we will use an ancillary function called \mcoq{naive_apinv}. This function transfers elements from one list to another with their signs changed. The result is also normalized since we assume that the input is normalized.
-To define these operations for normalized representation, we need to compose functions defined above with conversion functions \ref{fn:to_naive} and \ref{fn:to_quot}. In \coqsource{FreeGroup.v}, we can find proof that the operations defined above satisfy the laws of groups. Moreover, we can also find there proof that there is a single normalized representation for each free group.  
+Similarly as in case of reversing regular lists, in order to define the inverse function for words (\mcoq{naive_inv}) in linear time, we will use an ancillary function called \mcoq{naive_apinv}. This function transfers elements from one list to another with their signs changed. The result is also normalized since we assume that the input is normalized.
+To define these operations for normalized representation, we need to compose functions defined above with conversion functions \ref{fn:to_naive} and \ref{fn:to_quot}. In \coqsource{FreeGroup.v}, we can find proof that the operations defined above satisfy the laws of groups. Moreover, we can also find there proof that there is a single normalized representation for each word.  
 \subsection{Free groups as monads}
 \begin{defi}{Monad}{def:monad}
 \begin{minted}{coq}
@@ -683,6 +693,7 @@ The bind function for free group is defined as:
 $$
     \textrm{bind}_f \; (a_1 \circ a_2^{-1} \circ \dots \circ a_n) = f (a_1) \circ f (a_2) ^{-1} \circ \dots \circ f (a_n)
 $$
+\pagebreak
 \begin{func}{Bind function}{fn:naive_bind}
 \begin{minted}{coq}
 Fixpoint naive_bind {A B : Type} `{EqGroup A} `{EqGroup B} 

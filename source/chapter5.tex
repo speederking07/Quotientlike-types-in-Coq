@@ -52,7 +52,7 @@ Fixpoint toConat (n : nat) : conat :=
 \end{minted}
 \end{coq}
 \section{Basic operations}
-As we showed in theorem \ref{th:emptyNotComp}, checking if the set is empty is an undecidable problem. Comparing two sets is an uncomputable operation since we can compare a set to an empty set to check if it is empty. Another missing operation is a mapping operation. We can check emptiness by mapping every element to the element of the unit type if a mapping is computable. Despite those problems, we can still define helpful functions for this set representation. Checking if some element is in a set is trivial since we represent a set as a characteristic function. We can easily define the filtering function.
+As we showed in Theorem \ref{th:emptyNotComp}, checking if the set is empty is an undecidable problem. Comparing two sets is an uncomputable operation since we can compare a set to an empty set to check if it is empty. Another missing operation is a mapping operation. We can check emptiness by mapping every element to the element of the unit type if a mapping is computable. Despite those problems, we can still define helpful functions for this set representation. Checking if some element is in a set is trivial since we represent a set as a characteristic function. We can easily define the filtering function.
 \begin{func}{Filtering}{fn:set_filter}
 \begin{minted}{coq}
 Definition set_filter {A : Type} (p : A -> bool) 
@@ -61,6 +61,7 @@ Definition set_filter {A : Type} (p : A -> bool)
 \end{minted}
 \end{func}
 This definition utilizes lazy evaluation. Therefore, potential infinity is not a problem. Similarly, we can define union, intersection, and complement of a set.
+\pagebreak
 \begin{func}{Union}{fn:set_union}
 \begin{minted}{coq}
 Definition set_union {A : Type} (s s' : set A) : set A :=
@@ -80,7 +81,7 @@ Definition set_complement {A : Type} (s : set A) : set A :=
 \end{minted}
 \end{func}
 Those operations can also be implemented similarly for multisets using sum and minimum operations. The complement operation is not defined for multisets. The drawback of these lazy computations is that with each subsequent intersection and union, the complexity of the set characteristic function increases. The operation of adding an element to the set can also be defined. However, it requires the underlying type with decidable equality.
-\begin{func}{Addition to a set}{fn:set_add}
+\begin{func}{Insertion}{fn:set_add}
 \begin{minted}{coq}
 Definition set_add {A : Type} `{EqDec A} (a : A) (s : set A)  
   : set A :=

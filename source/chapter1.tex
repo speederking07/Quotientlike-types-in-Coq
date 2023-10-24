@@ -2,7 +2,7 @@
 The purpose of this master thesis is to analyze methods for defining quotient types in Coq since there is no built-in method for implementing such constructions in this programming language. We seek ways to define quotient-like types similar to quotient types, where elements are considered equal if and only if they are in a quotient-defining relation. We will focus on quotient types with a normalization function and provide examples without a computable normalization function. For this purpose, we will use methods such as subtyping, inductive types based on traces of normalization functions, and more.
 
 \section{Prerequisites}
-This thesis assumes basic knowledge of algebraic concepts such as modular groups, fractions, and the Euclidean algorithm. More advanced constructions will be defined, like dividing sets by equivalence relations. The main focus is the Coq language, so basic knowledge of this programming language is necessary. The reader should be able to write definitions in Coq and differentiate between \mcoq{Fixpoint} and \mcoq{Definition}. Understanding how the termination checker works or knowing the sort hierarchy can aid in understanding this thesis fully, but it is optional. The reader is also expected to know the basic concepts of Type Theory, such as the product and sum of types. Additionally, optional sections include category theory and homotopy-type theory concepts. Any advanced construction from those fields needed to comprehend these sections will be defined in this paper.
+This thesis assumes basic knowledge of algebraic concepts such as modular groups, fractions, and the Euclidean algorithm. More advanced constructions will be defined, like dividing sets by equivalence relations. The main focus is the Coq language, so basic knowledge of this programming language is necessary. The reader should be able to write definitions in Coq and differentiate between \mcoq{Fixpoint} and \mcoq{Definition}. Understanding how the termination checker works or knowing the sort hierarchy can aid in understanding this thesis fully, but it is optional. The reader is also expected to know the basic concepts of Type Theory, such as the product and sum of types. Additionally, optional sections include category theory and homotopy-type theory concepts. Any advanced construction from those fields needed to comprehend these sections will be defined in this thesis.
 
 \section{Coq as a proof assistant}
 Coq is a formal proof management system released under the GNU LGPL license. It was first introduced in 1984 and was based on the Calculus of Constructions, which relied on Type Theory. In 1991, Coq began using the more advanced Calculus of Inductive Constructions \cite{coqDoc} \cite{cicOrigins}, which supports higher-order logic, dependent types, and statically typed programming, among other features, all thanks to the Curry-Howard isomorphism \cite{curry-howard}.
@@ -20,17 +20,17 @@ Coq can perform simple computations. However, it was primarily developed for pro
 \end{description}
 
 \begin{coq}{Hierarchy of sorts}{xoq:universes}
- More experienced readers might notice that this definition of \mcoq{Type} is slightly wrong, leading to a contradiction. We know only bottom sorts can contain itself \cite{TypeNotInType}. Despite this, when Coq is asked what is the type of \mcoq{Type}, it answers \mcoq{Type : Type}. In reality, there is a whole infinite hierarchy of sorts in Coq, and every \mcoq{Type} has its level, which is just hidden from users for convenience. Therefore, \mcoq{Type : Type} should be read as \mcoq{Type(n) : Type(n+1)}.
+ More experienced readers might notice that this definition of \mcoq{Type} seems wrong. We know only sorts at the bottom of the hierarchy can contain itself \cite{TypeNotInType}. \mcoq{Type} is not \mcoq{Prop} but it contains \mcoq{Prop}, therefore it not at the bottom of hierarchy. Despite this, when Coq is asked what is the type of \mcoq{Type}, it answers \mcoq{Type : Type}. In reality, there is a whole infinite hierarchy of sorts in Coq, and every \mcoq{Type} has its level, which is just hidden from users for convenience. Therefore, \mcoq{Type : Type} should be read as \mcoq{Type(n) : Type(n+1)}.
 \end{coq}
 
-Coq allows users to define only functions that terminate. For many simple functions, the termination checker automatically deduces that the function terminates. However, sometimes it requires much work to convince it. The other consequence of this is the fact that in Coq, reasoning about partial functions is difficult. Nevertheless, later we will learn how to represent non-terminating computations. The most significant advantage of Coq is that it has imperative tactic language, which makes proving theorems much more accessible than in languages like Agda \cite{agda} or Idris \cite{idris}.
+Coq allows users to define only functions that terminate. For many simple functions, the termination checker automatically deduces that the function terminates. However, sometimes it requires much work to convince it. The other consequence of this is the fact that in Coq, reasoning about partial functions is difficult. Nevertheless, later we will learn how to represent non-terminating computations. The most significant advantage of Coq is that it has an imperative tactic language, which makes proving theorems much more accessible than in languages like Agda \cite{agda} or Idris \cite{idris}.
 
 \section{Quotient types}
 Quotient type is a concept from abstract algebra \cite{AbstractAlgebra}, which has found applications in other fields like computer science.
 \begin{defi}{Quotients in abstract algebra}{def:quotients_in_aa}
 In abstract algebra, an underlying set $T$ partitioned by equivalence relation ($\sim$) is called a \emph{quotient} and denoted as $T/\sim$.
 \end{defi}
-\begin{example}{Clockwise operations}{ex:clock}
+\begin{example}{Clock operations}{ex:clock}
 An excellent example of a quotient is an analog clock, more precisely, the sequence of consecutive hours on it. The operations on the clock can be modeled by operations in additive integer group modulo 12 (we denote it as $\mathbb{Z}_{12}$). Almost everyone has experience with time tracking, and it is not surprising that after 12 o'clock, there is 1 o'clock. This phenomenon is caused by the fact that numbers 1 and 13 both give the same remainder when divided by 12 and that is why they are equivalent in the context of time tracking.
 $$\ldots \equiv -11 \equiv 1 \equiv 13 \equiv 25 \equiv 37 \equiv \ldots \; (\textrm{mod } 12) $$
 As expected, 1:00 and 13:00 are the same on an analog clock.
@@ -62,12 +62,12 @@ $$ (T / \sim) = \{[t]_\sim : t \in T\}$$
 \end{defi}
 
 \begin{example}{Fraction's notations}{ex:frac_equiv}
-An example of a set with an equivalence relation is the set of fraction's notations. We know that every fraction can be represented in infinitely many ways. Therefore, we can define the equivalence relation in which all representations of that fraction are equivalent.
+An example of a set with an equivalence relation is the set of fraction's notations. We know that every fraction can be represented in infinitely many ways. Therefore, we can define the equivalence relation in which all representations of the same fraction.
 $$ \frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \frac{4}{8} = \frac{5}{10} = \dots$$
 \end{example}
 
 \begin{example}{Modular arithmetic}{ex:mod_equiv}
-Another example is a modular group from example \ref{ex:clock}. We showed that multiple integers have the same value in modular arithmetic. Hence, all numbers with the same value are in the same equivalence class.
+Another example is a modular group from Example \ref{ex:clock}. We showed that multiple integers have the same value in modular arithmetic. Hence, all numbers with the same value are in the same equivalence class.
 $$ \dots \equiv -11 \equiv 1 \equiv 13 \equiv 25 \equiv 37 \equiv \dots (\textrm{mod } 12) $$
 \end{example}
 \begin{vis}[G]{Equivalence classes}{vis:equivalance_classes}
@@ -108,12 +108,12 @@ Visualization of equivalence classes for selected elements of group $\mathbb{Z}_
 \end{vis}
 
 \subsection{Type-theoretic view}
-This paper focuses on the implementation of quotient types in Coq. Thus, we focus on this concept from the type theory perspective. In type theory, quotient types are also induced by some equivalence relation ($\sim$) on underlying type $T$ and denoted as $T/\sim$. We denote the equality of elements in the quotient type $T/\sim$ as $a =_\sim b$. Two elements $a$ and $b$ are equal ($a =_\sim b$) if and only if they are in relation ($a \sim b$). Every element of underlying type $T$ is also an element of quotient type $T/\sim$.
+This thesis focuses on the implementation of quotient types in Coq. Thus, we focus on this concept from the type theory perspective. In type theory, quotient types are also induced by some equivalence relation ($\sim$) on underlying type $T$ and denoted as $T/\sim$. We denote the equality of elements in the quotient type $T/\sim$ as $a =_\sim b$. Two elements $a$ and $b$ are equal ($a =_\sim b$) if and only if they are in the relation ($a \sim b$). Every element of the underlying type $T$ is also an element of quotient type $T/\sim$.
 
-Nevertheless, only some functions from underlying type $T$ are well-defined from type $T/\sim$. Function $f : T \rightarrow X$ is well-defined function $f : (T/\sim) \rightarrow X$, if $a \sim b$ implies that $f(a) = f(b)$. Without this restriction, we could differentiate between elements of this same equivalence class by applying an ill-defined function. In other words, applying an ill-defined function breaks the rule that says: $x = y \Rightarrow f(x) = f(y)$.
+Nevertheless, only some functions from underlying type $T$ are well-defined from type $T/\sim$. Function $f : T \rightarrow X$ defined on the underlying types is also a well-defined function $f : (T/\sim) \rightarrow X$ on the quotient type, if $a \sim b$ implies that $f(a) = f(b)$. Without this restriction, we could differentiate between elements of the same equivalence class by applying an ill-defined function. In other words, applying an ill-defined function breaks the rule that says: $x = y \Rightarrow f(x) = f(y)$.
 
 \section{Quotient types in Coq}
-As we mentioned previously, Coq has no built-in method for quotient constructions. Nevertheless, quotients are a helpful concept in formalizing mathematics. Moreover, quotient data types such as sets and multisets are used in many algorithms. Therefore, since Coq was introduced, users have been looking for ways to deal with quotients in the Coq language \cite{cicQuotient} \cite{PragmaticQT} \cite{NormalizedTypes}. From those studies, two ways of working with quotient-like types emerged. The first one focuses on replacing the equality relation with an equivalence relation. The second focuses on changing the underlying type so that equivalence implies equality. Both approaches have their disadvantages and are used interchangeably depending on the situation. In this paper, we focus on the second approach.
+As we mentioned previously, Coq has no built-in method for quotient constructions. Nevertheless, quotients are a helpful concept in formalizing mathematics. Moreover, quotient data types such as sets and multisets are used in many algorithms. Therefore, since Coq was introduced, users have been looking for ways to deal with quotients in the Coq language \cite{cicQuotient} \cite{PragmaticQT} \cite{NormalizedTypes}. From those studies, two ways of working with quotient-like types emerged. The first one focuses on replacing the equality relation with an equivalence relation. The second focuses on changing the underlying type so that equivalence implies equality. Both approaches have their disadvantages and both are used depending on the situation. In this paper, we focus on the second approach.
 
 \subsection{The setoid approach}
 \begin{defi}{Setoid}{def:setoid}
@@ -128,10 +128,10 @@ Another approach to the lack of quotients in Coq is to define quotient-like type
 This concept will be discussed later in Chapter 2, so the formal definition will be skipped here. Its main idea is to construct a type containing a specific subset of elements. Those elements need to satisfy a particular predicate in the case of the quotient -- the predicate of being normalized.
 
 \subsubsection{A tailor-made inductive type}
-This approach usually gives the best results but only applies to some quotient types. Chapter 4 will show examples of such types based on traces of normalization function. Unfortunately, no general way of defining such type out of the normalization process was found.
+This approach usually gives the best results but only applies to some quotient types. Chapter 4 will show examples of such types based on traces of normalization function. Unfortunately, no general way of defining such type out of the normalization process has been found.
 
 \subsubsection{Additional axioms}
-To the Coq system, we can add axioms, and by doing so, we can define quotients similarly as in other languages like Lean \cite{lean4}. This particular construction will be shown in Chapter 6. Unfortunately, by adding axioms, we lose the computability of our proofs, but usually, we do not need it. Moreover, we must be careful adding axioms since adding contradiction to the Coq system is easy.
+To the Coq system, we can add axioms, and by doing so, we can define quotients similarly as in other languages like Lean \cite{lean4}. This particular construction will be shown in Chapter 6. Unfortunately, by adding axioms, we lose the computability of our proofs. However, usually, we do not need computable proofs. Moreover, it's essential to exercise caution to avoid introducing contradictions into the system.
 \begin{example}{}{ex:ill_defined_mod2}
 When dealing with arithmetic modulo 2, we might be tempted to add the following axiom:
 \begin{minted}{coq}
@@ -141,7 +141,7 @@ It lets us effortlessly rewrite numbers back to their normalized form. Neverthel
 \end{example}
 
 \subsubsection{Private inductive types}
-Another way to construct quotients is by using private inductive types \cite{PrivetInductive}. By using them, we can define the type on which pattern matching outside the module where it is defined is forbidden. If it is done correctly, it enables us to create constructions like in example \ref{ex:ill_defined_mod2} without introducing contradiction since a user cannot define ill-defined functions.
+Another way to construct quotients is by using private inductive types \cite{PrivetInductive}. By using them, we can define the type on which pattern matching outside the module where it is defined is forbidden. If it is done correctly, it enables us to create constructions like in Example \ref{ex:ill_defined_mod2} without introducing contradiction since a user cannot define ill-defined functions.
 
 \section{The equivalence relation induced by a function}
 \begin{theo}{The equivalence relation induced by a function}{th:equiv_by_fun}
@@ -165,7 +165,7 @@ Class normalization {A : Type} (f : A -> A) :=
 As we know, equivalence relations partition elements into equivalence classes. A normalization function selects a single element from each equivalence class. Elements that have been selected are referred to as normalized or elements in normal form. The idempotence restriction is required to ensure that the normalization function does not change elements that are already in normal form.
 
 \begin{vis}[B]{Normalization function}{vis:normalization_fuction}
-Example of applying normalization function to rational numbers represented as $\mathbb{Z} \times \mathbb{N}$:
+Example of applying normalization function to rational numbers represented as $\mathbb{Z} \times \mathbb{N_+}$:
 \begin{center}
     \begin{tikzpicture}[
     node/.style={circle, draw=black!60, very thick, minimum size=0.4}
@@ -216,11 +216,11 @@ The normalization function for numbers in arithmetic modulo $n$ is as we expect 
 \end{example}
 
 \section{Quotient types without a normalization function}
-Normalization functions are an excellent tool for defining quotient-like types. By using them, we can select a representative for each equivalence class. Unfortunately, not every quotient type has a computable normalization function. In set theory, with the axiom of choice, we can always select a set of representatives of each equivalence relation. Therefore, we can always define the normalization function. In Coq, however, we cannot use this axiom to define a function. 
+Normalization functions are an excellent tool for defining quotient-like types. By using them, we can select a representative for each equivalence class. Unfortunately, not every quotient type has a computable normalization function. With the axiom of choice, we can always select a set of representatives of each equivalence relation. Therefore, we can always define the normalization function. However, in this thesis, we try to avoid utilizing additional axioms, since they make functions uncomputable.
 
 \subsection{Unordered pairs}
-An unordered pair is one of the most basic quotients for which a normalization function does not exist. At least in the most general case, as we learned earlier, if an underlying type has decidable linear order, we can define such a normalization function. Moreover, for some types like, for example, $\mathbb{N} \rightarrow \mathbb{N}$, it is also possible to create such a normalization function based on the computable minimum and maximum, although linear order is not decidable \cite{DefinableQuotients}.
-
+An unordered pair is one of the most basic quotients for which a normalization function does not exist. A normalization function exists if an underlying type has a decidable linear order. However, in the general case, it is impossible to define the normalization function. Moreover, for some types like, for example, $\mathbb{N} \rightarrow \mathbb{N}$, it is also possible to create such a normalization function based on the computable minimum and maximum, although linear order is not decidable \cite{DefinableQuotients}.
+\pagebreak
 \begin{theo}{}{th:no_normalization_for_unordered_pair}
 There is no function $f: (A \times A) \rightarrow A \times A$ for any type A that, for any $\medcircle , \square \in A$ we have $f((\medcircle , \square)) = f((\square, \medcircle))$ and $\medcircle , \square \in f((\medcircle , \square))$ 
 \end{theo}

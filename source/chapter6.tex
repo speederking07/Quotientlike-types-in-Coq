@@ -24,7 +24,7 @@ One of the main differences between Lean and Coq is the use of classical logic i
 As we saw in \ref{coq:lean}, quotient types are integral with Lean language. Let us take a closer look at the axioms that define them.
 \begin{defi}{Axioms of Lean's quotient types}{def:leanQuot}
 
-The first axiom, named in Lean as \mlean{Quot}, states that quotient type exists for every relation and underlying type.
+The first axiom, named in Lean as \mlean{Quot}, states that the quotient type exists for every relation and underlying type.
 \begin{minted}{coq}
 Axiom Quot : forall {A : Type}, (A -> A -> Prop) -> Type.
 \end{minted}
@@ -56,7 +56,7 @@ Axiom Quot_sound :
   r a b -> Quot_mk r a = Quot_mk r b.
 \end{minted}
 \end{defi}
-As we see in the definition \ref{def:leanQuot}, axioms of Lean's quotient types can be expressed in Coq. Therefore, we can use them to add quotient type to the Coq language.
+As we see in the Definition \ref{def:leanQuot}, axioms of Lean's quotient types can be expressed in Coq. Therefore, we can use them to add quotient type to the Coq language.
 \section{Agda}
 Agda is a programming language created to support dependent types \cite{agda}. It originated as an extension of Martin-Löf's type theory \cite{MARTINLOF197573}. Due to these features, Agda can be used as a proof assistant. However, unlike languages such as Coq or Lean, Agda does not have a tactic language, which significantly complicates its use as such. On the other hand, handling dependent types in Agda is at a much higher level than in Coq. Agda can often infer that a particular case is impossible, making the definition of dependent functions much more accessible than in Coq.
 \subsection{Higher inductive types}
@@ -103,13 +103,13 @@ data MSet (A : Set) : Set where
 The higher inductive types' downside is that they complicate defining functions since we also need to handle constructors for identity proofs. Otherwise, we could define functions that do not respect identities (paths).
 \begin{example}{Union}{ex:agdaMSetUnion}
 \begin{minted}{agda}
-_ ∪ _ : (xs ys : Bag A) → Bag A
+_ ∪ _ : (xs ys : MSet A) -> MSet A
 xs ∪ [] = xs
 xs ∪ (y :: ys) = y :: (xs ∪ ys)
 xs ∪ (swap y y' ys i) = swap y y' (xs ∪ ys) i
 \end{minted}
 \end{example}
-As we see in the example \ref{ex:agdaMSetUnion}, to define a multiset union, we also need to define a case when a multiset is on the path that swaps its heads. For both ends of this path, the result must be the same. Therefore, defining the head function for multisets is impossible.
+As we see in the Example \ref{ex:agdaMSetUnion}, to define a multiset union, we also need to define a case when a multiset is on the path that swaps its heads. For both ends of this path, the result must be the same. Therefore, defining the head function for multisets is impossible.
 \begin{coq}{HIT in Coq}{coq:HIT}
 In Coq, we can also define higher inductive types. However, they require using private inductive types, proposed by Yves Bertot \cite{PrivetInductive}. Private inductive types let us define the inductive types and hide their definitions. They turn off pattern matching on those inductive types, forcing users to use only exposed functions. Coq's library for homotopy type theory, including higher inductive types \cite{HoTTinCoq}, was created using private inductive types.
 \end{coq}

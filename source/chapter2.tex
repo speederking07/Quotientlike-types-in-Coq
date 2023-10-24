@@ -37,7 +37,7 @@ In Coq, there is a special notation for subtypes: \mcoq{{a : A | P a}} that shou
 Definition lessThanTen := {a : nat | a < 10}.
 \end{minted}
 \end{example}
-\subsection{Connetion to quotient types}
+\subsection{Connection to quotient types}
 Subtyping is the dual construction of quotient types. As the introduction mentions, there is no built-in method for implementing quotient types in Coq. Therefore, we will use subtypes to define quotient-like types containing only normalized elements of the underlying type. The normalized elements are defined as the image of some normalization function. This construction defines a type where equality is equivalent to a quotient-defining equality relation because every equivalence class is reduced to a single element.
 \begin{defi}{Subtype of normalized elements}{def:subtype_quot}
 \begin{minted}{coq}
@@ -47,6 +47,9 @@ Record quotient {A : Type} (f : A -> A) `{normalization f} := {
 }.
 \end{minted}
 \end{defi}
+\begin{coq}{The backtick notation}{coq:backtick}
+In Coq, we do not need to name all assumptions, if they are not needed explicitly in the definition. In this case, we can use the backtick notation \mcoq{`{property}}.
+\end{coq}
 \section{Duality}
 In the previous section, we mentioned that subtyping is a dual concept to quotient types. This optional section explains what it means and why they are considered dual. Knowledge about category theory would improve the reading experience. However, this part is more of an interesting fact than an integral part of this work, so feel free to skip it.
 \begin{defi}[]{Duality}{def:dual}
@@ -58,7 +61,7 @@ In category theory, the statement \emph{dual} to $\sigma$ is denoted as $\sigma^
     \item interchanging the order of composing morphisms in $\sigma$.
 \end{itemize}
 \end{defi}
-
+\pagebreak
 \begin{vis}[]{Product and coproduct}{vis:dual}
 The formal definition of duality might take much effort to understand. A visual example of two dual constructions should give enough insight to comprehend this concept. On the left side, we see a product, and on the right side, a dual construction to product, known as a coproduct.
 \begin{center}
@@ -117,7 +120,9 @@ The \emph{pushout} \cite{CategoryTheory} $P$ is defined by two morphisms $f: X \
     
     \end{tikzpicture}
 \end{center}
-The pushout $P$ is an object along with two morphisms $\eta_1: A \rightarrow P$ and $\eta_2: B \rightarrow P$ that complete commutative square with two given morphisms $f: X \rightarrow A$ and $g: X \rightarrow B$. However, not every object that makes the square commutative is a pushout. The pushout must be the "most general" way to complete the commutative square. By the "most general" way, we mean that for every other object Q, which also completes commutative square with two morphisms $\zeta_1: A \rightarrow Q$ and $\zeta_2: B \rightarrow Q$, a unique morphism $u: P \rightarrow Q$ must exist that makes the whole diagram commutative. Not for all morphisms $f: X \rightarrow A$ and $g: X \rightarrow B$, pushout exists, but if it exists, it is unique up to the unique isomorphism.
+The pushout $P$ is an object along with two morphisms $\eta_1: A \rightarrow P$ and $\eta_2: B \rightarrow P$ that complete commutative square with two given morphisms $f: X \rightarrow A$  \pagebreak
+and $g: X \rightarrow B$. However, not every object that makes the square commutative is a pushout. The pushout must be the "most general" way to complete the 
+commutative square. By the "most general" way, we mean that for every other object Q, which also completes commutative square with two morphisms $\zeta_1: A \rightarrow Q$ and $\zeta_2: B \rightarrow Q$, a unique morphism $u: P \rightarrow Q$ must exist for which the diagram commute. Not for all morphisms $f: X \rightarrow A$ and $g: X \rightarrow B$, pushout exists, but if it exists, it is unique up to the unique isomorphism.
 \end{defi}
 The pushout is a useful concept in category theory, but its connection to quotient types is not obvious. To see this connection let us take a trip to the world of \emph{Set} category. In this category, sets are objects, and functions between sets are morphisms. We will show that, indeed, in this category, quotient types are pushouts. On the diagram of the pushout definition, we can see that $A$, $B$, and $P$ define something in the shape of a coproduct. Let us use coproduct $A \oplus B$ as a base for the pushout definition and let functions $\eta_1: A \rightarrow A \oplus B$ and $\eta_2: B \rightarrow A \oplus B$ be natural injections. For $A \oplus B$ to be pushout, we also need to ensure that $X$, $A$, $B$ and $A \oplus B$ create a commutative square, that means for every $x \in X$ following should be true $\eta_1(f(x)) = \eta_2(g(x))$. In order to achieve that, we need to modify $A \oplus B$, by gluing together injections of $f(x)$ and $g(x)$ in $A \oplus B$. As we know, gluing together elements means defining the quotient type $P = ((A \oplus B) / \sim)$, where for every $x \in X$ $f(x) \sim g(x)$. For $P = ((A \oplus B) / \sim)$ to be a pushout, we need to define $(\sim)$ as the largest in terms of the number of equivalence classes relation that completes the commutative square. 
 \begin{theo}{}{th:pushout}
@@ -177,7 +182,8 @@ The pullback \cite{CategoryTheory} $P$ is defined by two morphisms $f: A \righta
     
     \end{tikzpicture}
 \end{center}
-The pullback $P$ is an object along with two morphisms $\pi_1: P \rightarrow A$ and $\pi_2: P \rightarrow B$ that complete commutative square with two given morphisms $f: A \rightarrow X$ and $g: B \rightarrow X$. However, not every object that makes the square commutative is a pullback. The pullback must be the "most general" way to complete the commutative square. By the "most general" way, we mean that for every other object Q, which also completes commutative square with two morphisms $\zeta_1: Q \rightarrow A$ and $\zeta_2: Q \rightarrow B$, a unique morphism $u: Q \rightarrow P$ must exist that makes the whole diagram commutative. Not for all morphisms $f: A \rightarrow X$ and $g: B \rightarrow X$, pullback exists, but if it exists, it is unique up to the unique isomorphism.
+The pullback $P$ is an object along with two morphisms $\pi_1: P \rightarrow A$ and $\pi_2: P \rightarrow B$ that complete commutative square with two given morphisms $f: A \rightarrow X$ and $g: B \rightarrow X$. However, not every object that makes the square commutative is a pullback. The pullback must be the "most general" way to complete the commutative square. By the "most general" way, we mean that for every other \pagebreak 
+object $Q$, which also completes commutative square with two morphisms $\zeta_1: Q \rightarrow A$ and $\zeta_2: Q \rightarrow B$, a unique morphism $u: Q \rightarrow P$ must exist for which the diagram commute. Not for all morphisms $f: A \rightarrow X$ and $g: B \rightarrow X$, pullback exists, but if it exists, it is unique up to the unique isomorphism.
 \end{defi}
 To understand the connection between a pullback and subtyping, we take a trip to the \emph{Set} category again. As expected in dual construction, in the pullback $A$, $B$, and $P$ are in the shape of a product. Therefore, let us use product $A \times B$ as the base for the pushout definition and let functions $\pi_1: A \times B \rightarrow A$ and $\pi_2: A \times B \rightarrow B$ be natural projections. In order to complete the commutative square for every $p \in A \times B$, the following needs to be true $f (\pi_1 (p)) = g (\pi_2(p))$. Therefore, we need to use the following subset $P = \{(a, b) \in A \times B : f(a) = g(b)\}$. 
 \begin{theo}{}{th:pulback}
@@ -221,7 +227,7 @@ Class unique_representations {A : Type} (P : A -> Prop) :=
 In Coq function \mcoq{proj1_sig} is a projection of the subtype value. It can be thought of as a lifting to the underlying type.
 \end{coq}
 \subsection{Axiomatic approach}
-As mentioned in the introduction, we avoid using axioms in this paper. However, it is worth considering their effect on the uniqueness of representstion problem and whether using them is safe.
+As mentioned in the introduction, we avoid using axioms in this paper. However, it is worth considering their effect on the uniqueness of representations problem and whether using them is safe.
 \subsubsection{Proof irrelevance axiom}
 Proof irrelevance is a known concept in computer science \cite{ProofIrrelevance}. It states that every two proofs of the same statement are equal.
 \begin{defi}{Axiom of proof irrelevance}{def:proof_irrelevance}
@@ -246,7 +252,7 @@ specialize (Irr (P y) xp yp); subst.
 constructor. Qed.
 \end{minted}
 \end{proof}
-Those two statements are equivalent. Thus, the axiom of proof irrelevance is required for every subtype to have a unique representations.
+The uniquness of represenations (defined in \ref{def:unique_representation}) every subtype is equivalent to the proof irrelewance axiom. Thus, the axiom of proof irrelevance is required for every subtype to have a unique representations.
 \begin{theo}{}{th:irr_uniq2}
     \begin{minted}{coq}
 Theorem unique_representation_impl_irrelevance : 
@@ -326,6 +332,7 @@ Inductive sEmpty : SProp := .
 Definition sEmpty_rect : forall (P : sEmpty -> Type) 
   (s : sEmpty), P s.
     \end{minted}
+    \pagebreak
     \item \mcoq{sUnit} -- an equivalent of \mcoq{True} in \mcoq{Prop}.
     \begin{minted}{coq}
 Inductive sUnit : SProp := stt : sUnit.
@@ -391,7 +398,7 @@ Fixpoint isNType (n : universe) (A : Type) : Type :=
   end.
 \end{minted}
 \end{defi}
-As we see in the definition, $n$-types are defined by where identity proofs of elements of those types live. The hierarchy starts at the $(-2)$-type, where only the most primitive contactable types live. Types with identity proofs in \mcoq{Contr} live in \mcoq{HProp} since the identity proof type is inhabited for every pair of elements. Therefore, every two elements are equal. Similarly, if identity proofs of type live in \mcoq{HProp}, then the type lives in \mcoq{HSet} since one or no identity proof exists for every two elements of an underlying type. The other important fact is that every $n$-type is also a $(n+1)$-type.
+As we see in the definition, $n$-types are defined by where identity proofs of elements of those types live. The hierarchy starts at the $(-2)$-type, where only the most primitive contractible types live. Types with identity proofs in \mcoq{Contr} live in \mcoq{HProp} since the identity proof type is inhabited for every pair of elements. Therefore, every two elements are equal. Similarly, if identity proofs of type live in \mcoq{HProp}, then the type lives in \mcoq{HSet} since one or no identity proof exists for every two elements of an underlying type. The other important fact is that every $n$-type is also a $(n+1)$-type.
 \begin{theo}{$n$-type inclusion}{th:nth_incl}
 \begin{minted}{coq}
 Theorem NType_inclusion : forall A: Type, forall n : universe,
@@ -402,7 +409,7 @@ Theorem NType_inclusion : forall A: Type, forall n : universe,
 Proof of this theorem can be found in \coqsource{Lib/HoTT.v}.
 \end{proof}
 \subsubsection{Types with decidable equality}
-If the underlying type of quotient-like type (defined in \ref{def:subtype_quot}) lives in the \mcoq{HSet} universe, then we can easily prove that it has a unique representations the same way as in proof \ref{proof:subtype_quot_uniq}. However, proving that a type lives in \mcoq{HSet} is not trivial. Fortunately, Hedberg's theorem \cite{hedberg_1998} gives us a valuable sufficiency condition for being \mcoq{HSet} -- decidable equality.
+If the underlying type of quotient-like type (defined in \ref{def:subtype_quot}) lives in the \mcoq{HSet} universe, then we can easily prove that it has a unique representations the same way as in Proof \ref{proof:subtype_quot_uniq}. However, proving that a type lives in \mcoq{HSet} is not trivial. Fortunately, Hedberg's theorem \cite{hedberg_1998} gives us a valuable sufficiency condition for being \mcoq{HSet} -- decidable equality.
 \begin{defi}{Decidable equality}{def:dec_eq}
 \begin{minted}{coq}
 Class Decidable (A : Type) :=
@@ -577,7 +584,7 @@ Theorem pair_eq : forall (A B : Type) (a x : A) (b y : B),
 intros. inversion H. split; trivial. Qed.
 \end{minted}
 \end{proof}
-Using the same definition for dependent pairs is impossible. The first issue is the error of ill-defined equality since \mcoq{P x} and \mcoq{P y} differ in the Coq type system, even if \mcoq{x = y}, and elements of two different types cannot be in equality relation. Even if we change our problem to the characterization of equality for dependent pairs with the same first element, it is still impossible to characterize it using simple equality. Such equality can be characterized using dependent equality known from fact \ref{coq:eq_dep}. Moreover, that characterization using simple equality is correct only if dependent equality is equivalent to equality. From fact \ref{coq:eq_emb}, we know that it is true if and only if axiom K is true. To characterize the general case of dependent pairs equality, we must first define the transport along an equality path.
+Using the same definition for dependent pairs is impossible. The first issue is the error of ill-defined equality since \mcoq{P x} and \mcoq{P y} differ in the Coq type system, even if \mcoq{x = y}, and elements of two different types cannot be in equality relation. Even if we change our problem to the characterization of equality for dependent pairs with the same first element, it is still impossible to characterize it using simple equality. Such equality can be characterized using dependent equality known from Fact \ref{coq:eq_dep}. Moreover, that characterization using simple equality is correct only if dependent equality is equivalent to equality. From Fact \ref{coq:eq_emb}, we know that it is true if and only if axiom K is true. To characterize the general case of dependent pairs equality, we must first define the transport along an equality path.
 \begin{defi}{Transport}{def:transport}
 \begin{minted}{coq}
 Definition transport {A : Type} {a b : A} {P : A -> Type} 

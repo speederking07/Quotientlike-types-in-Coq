@@ -3,7 +3,7 @@ The previous chapter discusses using subtyping to define quotient-like types in 
 \begin{defi}{Unordered pairs}{def:upair}
 In mathematics, an \emph{unordered pair} is a set of the form $\{a, b\}$, where $\{a, b\} = \{b, a\}$ \cite{SetTheorey}. In contrast to the ordered pair where $(a, b) \neq (b, a)$.
 \end{defi}
-As mentioned in the introduction, there is no normalization function for unordered pairs in the most general case. Therefore, we will only discuss the case when the underlying type has a full decidable order (definition \ref{def:fullOrd}). Antisymmetry is required to prove the uniqueness of representations and universality (fullness) is required to define a computable function to construct an unordered pair out of two elements.
+As mentioned in the introduction, there is no normalization function for unordered pairs in the most general case. Therefore, we will only discuss the case when the underlying type has a full decidable order (defined in \ref{def:fullOrd}). Antisymmetry is required to prove the uniqueness of representations and universality (fullness) is required to define a computable function to construct an unordered pair out of two elements.
 \begin{defi}{Full decidable order}{def:fullOrd}
 \begin{minted}{coq}
 Class FullOrd (A : Type) := {
@@ -14,7 +14,7 @@ Class FullOrd (A : Type) := {
 \end{minted}
 \end{defi}
 \begin{defi}{Unordered pairs in Coq}{def:coqupair}
-\emph{Unorder pairs} can be defined as a triple of first and second element and a proof that states they are in the correct order.
+\emph{Unordered pairs} can be defined as a triple of first and second element and a proof that states they are in the correct order.
 \begin{minted}{coq}
 Record UPair (A : Type) `{FullOrd A} := {
   fst    : A;
@@ -98,16 +98,16 @@ Definition permutation {A : Type} (a b : list A) :=
 \end{defi}
 This definition works for types with decidable equality, and as we know, decidable linear order implies decidable equality. For such types, the special case of a decidable predicate is the predicate being equal to a specific element. This definition does not require defining all laws of permutations. Therefore, it is easier to use in the context of a sorting function. Proof of the fact that this definition is equivalent to the classic permutation definition for types with decidable equality can be found in \coqsource{Extras/Permutations.v}.
 \subsection{The normalization function}
-We can use the sorting function as a normalization function for a multiset quotient type. One of the sorting functions with the best asymptotic complexity is merge sort. Moreover, it has a nice functional definition, making it the ideal candidate for a multiset normalization function. We propose a definition using B-trees \cite{Btree}.
-\begin{defi}{B-tree}{def:bttree}
+We can use the sorting function as a normalization function for a multiset quotient type. One of the sorting functions with the best asymptotic complexity is merge sort. Moreover, it has a nice functional definition, making it the ideal candidate for a multiset normalization function. We propose a definition using binary trees.
+\begin{defi}{Binary tree}{def:bttree}
 \begin{minted}{coq}
 Inductive BT (A : Type) : Type :=
 | leaf : A -> BT A
 | node : BT A -> BT A -> BT A.
 \end{minted}
 \end{defi}
-We also define the insert function that keeps the tree balanced out and the function that converts a list into a balanced-out B-tree.
-\begin{func}{Conversion to balanced-out B-tree}{fn:BTins}
+We also define the insert function that keeps the tree balanced out and the function that converts a list into a balanced-out tree.
+\begin{func}{Conversion to balanced-out tree}{fn:BTins}
 \begin{minted}{coq}
 Fixpoint BTInsert {A : Type} (x : A) (tree : BT A) :=
   match tree with
