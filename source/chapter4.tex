@@ -275,8 +275,8 @@ We chose the second option since we want to use an already defined coq operation
 Fixpoint euclid (p q : nat) : nat :=
   match compare p q with
   | Eq => p
-  | Gt => euclid (p - q) q n'
-  | Lt => euclid p (q - p) n'
+  | Gt => euclid (p - q) q
+  | Lt => euclid p (q - p)
   end.
 \end{minted}
 \end{func}

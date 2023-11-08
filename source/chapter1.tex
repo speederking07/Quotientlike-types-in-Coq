@@ -239,7 +239,7 @@ $$
 Cauchy sequences are often used to construct real numbers out of rational numbers \cite{CauchyReals}. The issue with this construction is that infinitely (even uncountably) many sequences represent a single real number. Using quotients to fix this problem would give us an excellent representation of real numbers. Unfortunately, there is no computable normalization function for Cauchy sequences.
 
 \begin{theo}{}{th:no_normalization_for_reals}
-There is no computable function $f: (\mathbb{N} \rightarrow \mathbb{Q}) \rightarrow (\mathbb{N} \rightarrow \mathbb{Q})$ that, for any $a, b \in (\mathbb{N} \rightarrow \mathbb{Q})$ we have $\lim_{n \rightarrow \infty}a_n = \lim_{n \rightarrow \infty}b_n \iff f(a) = f(b)$.
+There is no computable function $f: (\overline{\mathbb{N} \rightarrow \mathbb{Q}}) \rightarrow (\overline{\mathbb{N} \rightarrow \mathbb{Q}})$, where $(\overline{\mathbb{N} \rightarrow \mathbb{Q}})$ means computable function. Such that, for any $a, b \in (\overline{\mathbb{N} \rightarrow \mathbb{Q}})$ we have $\lim_{n \rightarrow \infty}a_n = \lim_{n \rightarrow \infty}b_n \iff f(a) = f(b)$.
 \end{theo}
 
 \begin{proof}[G]{}{proof:no_normalization_for_reals}

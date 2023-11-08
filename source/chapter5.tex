@@ -19,7 +19,7 @@ Definition set (A : Type) : Type := A -> bool.
 \end{defi}
 In contrast to previous definitions of sets, this one lets us define sets with potentially infinitely many elements. We can use this representation to reason about any set with a computable characteristic function. The cost of such a general definition is that some basic functions on set are uncomputable for this representation.
 \begin{theo}{Checking emptiness}{th:emptyNotComp}
-The function $E : \textrm{set}(X) \rightarrow \{0, 1\}$, which checks whether the set is empty, is uncomputable.
+There exists set $X$ for which the function $E : \textrm{set}(X) \rightarrow \{0, 1\}$, which checks whether the set is empty, is uncomputable. Where $\textrm{set}(X)$ is the computable characteristic function of set $X$. 
 \end{theo}
 \begin{proof}{}{proof:emptyNotComp}
 Let $E$ be a computable function. For any Turing machine $M$ there exists set $T_M = \{t \in \mathbb{N} : \textrm{after} \; t \; \textrm{steps machine} \; M \; \textrm{is in HALT state}\}$. Every set $T_M$ has a computable characteristic function since checking if the Turing machine halts after a specific number of steps is a computable problem. Checking if $T_M$ is empty is equivalent to checking if the Turning machine ever halts. However, this is an undecidable problem. Therefore, function $E$ is not computable. \phantom{dasd} \contradiction
@@ -61,7 +61,7 @@ Definition set_filter {A : Type} (p : A -> bool)
 \end{minted}
 \end{func}
 This definition utilizes lazy evaluation. Therefore, potential infinity is not a problem. Similarly, we can define union, intersection, and complement of a set.
-\pagebreak
+
 \begin{func}{Union}{fn:set_union}
 \begin{minted}{coq}
 Definition set_union {A : Type} (s s' : set A) : set A :=
