@@ -1,35 +1,13 @@
-# Typy ilorazowe w COQ
+# Quotient like types in coq 
 
-## Przykłdy z śladami algorytmów normalizujących
-* lista jako wolny monoid (różne ustawienia nawiasów różne reprezentacje)
-* liczby wymierne
-* liczby całkowite (2 nullarne + 1 unrny) lub (z nat)
-* liczby w grupie modulo (nic ciekawego)
-* posortowane listy liczb naturalnych
-* wielomian (mało ciekawe)
+This is repo of my master thesis written as part of my studies at the University of Wrocław.
 
-## Przykłady tylko z podtypowaniem
-* Multisety z liniowym porządkiem
-* Set z liniowym porządkiem
-* Pary nieuporządkowane z porządkiem
-* Listy zdeduplikowane
+## Abstract 
 
-## Inne przykłday
-* zbiór cantora w systemie trójkowym
-* wolne grupy (albo inna wolna struktura) 
-  * przemienności to się nie da
-  * element odwortny powinno się dać czasamy poprzez wymuszenie jego nie używania
-* reprezentacje funkcji liczb naturalnych - ostatecznie iloraz wielomianów
-* równoważne lambda termy
-* izomorficzne grafy (pewnie się nie da)
-* równoważe języki reguralne poprzez równoważne automaty skończone (podobna idea do śladów)
-* Pushouty
-* Ideały w pierścienach wielomianów
-* reprezentacje dla permutacji
-
-## Inne pomysły
-* sprawdzenie jak wygląda coinducja dla śladów
-* związek z jednozacznymi gramatykami bezkontekstowymi
-  * coś prostego jak jednznaczna gramatyka wyrażeń algebraicznych
-  * w ogólności się na pewno nie da ze względu na nie rozstrzygalnosć problemu
-
+Despite many applications for quotient types, Coq does not have built-in support for
+them. This thesis will discuss how to mitigate this problem by defining quotient-like
+types in which precisely one element exists for each abstraction class. We will focus
+on two approaches: the first relies on subtyping, while the second involves defining
+inductive types based on normalization traces. Additionally, we will mention other
+methods of defining quotient types, such as using setoids, additional axioms, or
+higher inductive types.
