@@ -1,6 +1,6 @@
 # Quotient like types in coq 
 
-This is repo of my master thesis written as part of my studies at the University of Wrocław.
+This is a repo of my master's thesis written as part of my studies at the University of Wrocław.
 
 ## Abstract 
 
